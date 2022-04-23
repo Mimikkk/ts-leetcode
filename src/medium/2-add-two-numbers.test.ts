@@ -1,38 +1,5 @@
-import { Nullable } from "../utilities";
-
-class ListNode {
-  val: number;
-  next: ListNode | null;
-
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = (val === undefined ?0:val);
-    this.next = (next === undefined ?null:next);
-  }
-
-}
-const node = (numbers: number[]): Nullable<ListNode> => {
-  let head: ListNode | null = null;
-  let tail: ListNode | null = null;
-  for (let n of numbers) {
-    const node = new ListNode(n);
-    if (head === null) {
-      head = node;
-    } else {
-      tail!.next = node;
-    }
-    tail = node;
-  }
-  return head;
-};
-const array = (node: Nullable<ListNode>) => {
-  const result: number[] = [];
-  while (node !== null) {
-    result.push(node.val);
-    node = node.next;
-  }
-
-  return result;
-};
+import { ListNode } from "../structures";
+const { node, array } = ListNode;
 
 const tester = (l1: number[], l2: number[]): number[] => array(addTwoNumbers(node(l1), node(l2)));
 
