@@ -7,27 +7,27 @@ const climbStairs = (n: number): number => {
 };
 
 describe("70 - climbing stairs", () => {
-  test("case 1", () => {
+  it("case 1", () => {
     expect(climbStairs(2)).toBe(2);
   });
 
-  test("case 2", () => {
+  it("case 2", () => {
     expect(climbStairs(3)).toBe(3);
   });
 
-  test("case 3", () => {
+  it("case 3", () => {
     expect(climbStairs(4)).toBe(5);
   });
 
-  test("case 4", () => {
+  it("case 4", () => {
     expect(climbStairs(5)).toBe(8);
   });
 
-  test("case 5", () => {
+  it("case 5", () => {
     expect(climbStairs(6)).toBe(13);
   });
 
-  test("case 6", () => {
+  it("case 6", () => {
     expect(climbStairs(7)).toBe(21);
   });
 });

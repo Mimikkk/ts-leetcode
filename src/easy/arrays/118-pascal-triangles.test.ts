@@ -18,7 +18,7 @@ const generate = (height: number): number[][] => {
 };
 
 describe("118 - pascal triangles", () => {
-  test("case 1", () => {
+  it("case 1", () => {
     expect(generate(5)).toEqual([
       [1],
       [1, 1],
@@ -28,11 +28,11 @@ describe("118 - pascal triangles", () => {
     ]);
   });
 
-  test("case 2", () => {
+  it("case 2", () => {
     expect(generate(0)).toEqual([]);
   });
 
-  test("case 3", () => {
+  it("case 3", () => {
     expect(generate(1)).toEqual([[1]]);
   });
 });

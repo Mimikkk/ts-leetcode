@@ -11,14 +11,14 @@ const removeDuplicates = (nums: number[]): number => {
 };
 
 describe("26 - remove duplicates from sorted array", () => {
-  test("case 1", () => {
+  it("case 1", () => {
     expect(removeDuplicates([1, 1, 2])).toEqual(2);
   });
-  test("case 2", () => {
+  it("case 2", () => {
     expect(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])).toEqual(5);
   });
 
-  test("case 3", () => {
+  it("case 3", () => {
     expect(removeDuplicates([1, 1, 1, 2, 2, 3])).toEqual(3);
   });
 });

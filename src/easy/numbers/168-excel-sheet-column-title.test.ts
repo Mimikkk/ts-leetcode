@@ -14,19 +14,19 @@ const convertToTitle = (n: number): string => {
 };
 
 describe("168 - excel sheet column title", () => {
-  test("#1", () => {
+  it("#1", () => {
     expect(convertToTitle(1)).toEqual("A");
   });
 
-  test("#2", () => {
+  it("#2", () => {
     expect(convertToTitle(28)).toEqual("AB");
   });
 
-  test("#3", () => {
+  it("#3", () => {
     expect(convertToTitle(701)).toEqual("ZY");
   });
 
-  test("#4", () => {
+  it("#4", () => {
     expect(convertToTitle(702)).toEqual("ZZ");
   });
 });
