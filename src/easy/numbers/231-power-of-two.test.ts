@@ -1,3 +1,5 @@
+export {};
+
 const isPowerOfTwo = (n: number): boolean => n > 0 && !(n & n - 1);
 
 describe("231 - power of two", () => {
