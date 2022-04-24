@@ -1,3 +1,5 @@
+export {};
+
 class MinStack {
   stack: number[];
   minStack: number[];

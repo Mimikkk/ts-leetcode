@@ -1,3 +1,5 @@
+export {};
+
 class MyStack {
   first: number[];
   second: number[];
