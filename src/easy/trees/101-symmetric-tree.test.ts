@@ -1,4 +1,4 @@
-import { TreeNode } from "structures";
+import { TreeNode } from "shared/structures";
 
 const isSymmetric = (root: TreeNode | null): boolean => {
   if (!root) return true;

@@ -1,4 +1,4 @@
-import { TreeNode } from "structures";
+import { TreeNode } from "shared/structures";
 
 const minDepth = (root: TreeNode | null): number => {
   if (!root) return 0;

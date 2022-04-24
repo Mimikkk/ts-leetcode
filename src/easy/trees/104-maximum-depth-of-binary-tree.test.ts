@@ -1,4 +1,4 @@
-import { TreeNode } from "structures";
+import { TreeNode } from "shared/structures";
 
 const maxDepth = (root: TreeNode | null): number => root ?Math.max(maxDepth(root.left), maxDepth(root.right)) + 1:0;
 

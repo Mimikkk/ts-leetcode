@@ -1,4 +1,4 @@
-import { ListNode } from "structures";
+import { ListNode } from "shared/structures";
 const { node, array } = ListNode;
 
 const tester = (numbers: number[]): number[] =>

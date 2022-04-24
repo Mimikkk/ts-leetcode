@@ -1,4 +1,4 @@
-import { TreeNode } from "structures";
+import { TreeNode } from "shared/structures";
 
 const hasPathSum = (root: TreeNode | null, target: number): boolean => {
   if (!root) return false;
