@@ -1,4 +1,4 @@
-import { ListNode } from "../structures";
+import { ListNode } from "structures";
 const { node, array } = ListNode;
 
 const tester = (l1: number[], l2: number[]): number[] => array(addTwoNumbers(node(l1), node(l2)));
