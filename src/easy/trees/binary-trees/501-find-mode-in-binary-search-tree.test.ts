@@ -19,7 +19,7 @@ function findMode(root: TreeNode | null): number[] {
   ).map(([val]) => Number(val));
 }
 
-describe("src/easy/trees/501-find-mode-in-binary-search-tree.ts", () => {
+describe("src/easy/binary-trees/501-find-mode-in-binary-search-tree.ts", () => {
   it("Case 0", () => {
     const root = new TreeNode(1);
     root.left = new TreeNode(2);
