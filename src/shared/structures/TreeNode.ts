@@ -12,6 +12,51 @@ export class TreeNode {
 }
 
 export module TreeNode {
+  export const array = (root: TreeNode): (number | null)[] => {
+    const result: (number | null)[] = [];
+    const queue: TreeNode[] = [root];
+
+    while (queue.length > 0) {
+      const node = queue.shift();
+      result.push(node?.val ?? null);
+
+      if (node) {
+        queue.push(node.left!);
+        queue.push(node.right!);
+      }
+    }
+
+    for (let i = result.length - 1; i >= 0; --i) {
+      if (result[i] === null) result.splice(i, 1);
+      else return result;
+    }
+    return result;
+  };
+
+  export const node = (arr: [number, ...Nullable<number>[]]): TreeNode => {
+    const root = new TreeNode(arr.shift()!);
+    const queue: TreeNode[] = [root];
+
+    while (queue.length > 0) {
+      const node = queue.shift();
+
+      if (node !== null && node !== undefined) {
+        const left = arr.shift();
+        if (left !== null && left !== undefined) {
+          node.left = new TreeNode(left!);
+          queue.push(node.left);
+        }
+
+        const right = arr.shift();
+        if (right !== null && right !== undefined) {
+          node.right = new TreeNode(right!);
+          queue.push(node.right);
+        }
+      }
+    }
+    return root;
+  };
+
   export const preorder = (root: Nullable<TreeNode>): number[] => root ?
     [root.val, ...preorder(root.left), ...preorder(root.right)]:
     [];
