@@ -2,7 +2,7 @@ export {};
 
 const truncateSentence = (s: string, k: number): string => s.split(" ").slice(0, k).join(" ");
 
-describe("truncate sentence", () => {
+describe("truncate sentences", () => {
   it("case 1", () => {
     expect(truncateSentence("Hello how are you Contestant", 4)).toEqual("Hello how are you");
   });
