@@ -1,9 +1,10 @@
 export {};
 
-const createCounter = (nums: number[]) => nums.reduce<Record<number, number>>((counter, next) => {
-  counter[next] = (counter[next] || 0) + 1;
+const createCounter = (nums: number[]) => {
+  const counter: Record<number,number> = {};
+  nums.forEach(n => counter[n] = (counter[n] || 0) + 1);
   return counter;
-}, {});
+};
 
 const findLHS = (nums: number[]): number => {
   const counter = createCounter(nums);

@@ -2,9 +2,10 @@ export {};
 
 const createCounter = (words: string[]) => {
   const counter: Record<string, number> = {};
-  for (const word of words) counter[word] = (counter[word] || 0) + 1;
+  words.forEach((w) => counter[w] = (counter[w] || 0) + 1);
   return counter;
 };
+
 const first = <T, Y>([e]: [T, Y]) => e;
 const once = <T>([_, v]: [T, number]) => v === 1;
 const words = (sentence: string) => sentence.split(/ +/);
