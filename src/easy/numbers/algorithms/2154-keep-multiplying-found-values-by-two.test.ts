@@ -1,4 +1,4 @@
-export {};
+  export {};
 
 const findFinalValue = (nums: number[], original: number): number => {
   while (nums.includes(original)) original *= 2;
