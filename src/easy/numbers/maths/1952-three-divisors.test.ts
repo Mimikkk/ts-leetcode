@@ -5,7 +5,7 @@ const isThree = (n: number): boolean => {
   for (let i = 1; i <= n; ++i) if (!(n % i)) ++c;
   return c === 3;
 };
-
+"".replace(/\./g, "");
 describe("isThree", () => {
   it("case 1", () => {
     expect(isThree(3)).toBe(false);
@@ -16,6 +16,6 @@ describe("isThree", () => {
   });
 
   it("case 3", () => {
-    expect(isThree(7)).toBe(true);
+    expect(isThree(6)).toBe(false);
   });
 });
