@@ -6,6 +6,7 @@ const isPalindrome = (s: string): boolean => {
   return s.split('').reverse().join('') === s;
 };
 
+
 describe("125 - valid palindrome", () => {
   it("can be implemented", () => {
     expect(isPalindrome("A")).toBe(true);
