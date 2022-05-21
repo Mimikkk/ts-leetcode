@@ -1,18 +1,29 @@
 export {};
 
-const map =
-  Object.fromEntries([..."abcdefghijklmnopqrstuvwxyz"]
-    .map((char, i) => [`${i + 1}${(i > 8 ?"#":"")}`, char]));
+const distanceBetweenBusStops = (distance: number[], start: number, destination: number) => {
+  if (start > destination) [start, destination] = [destination, start];
 
-const freqAlphabets = (s: string): string =>
-  s.replace(/\d{2}#|\d/g, (x) => map[x]);
+  let result = 0;
+  let total = 0;
 
-describe("freq alphabets", () => {
-  it("case 1", () => {
-    expect(freqAlphabets("10#11#12")).toBe("jkab");
+  distance.forEach((distance, i) => {
+    if (i >= start && i < destination) result += distance;
+    total += distance;
   });
 
-  it("case 2", () => {
-    expect(freqAlphabets("1326#")).toBe("acz");
+  return Math.min(result, total - result);
+};
+
+describe("distance between bus stops", () => {
+  it("case 1", () => {
+    expect(distanceBetweenBusStops([1, 2, 3, 4], 0, 1)).toEqual(1);
+  });
+
+  it("case 1", () => {
+    expect(distanceBetweenBusStops([1, 2, 3, 4], 0, 2)).toEqual(3);
+  });
+
+  it("case 1", () => {
+    expect(distanceBetweenBusStops([1, 2, 3, 4], 0, 3)).toEqual(4);
   });
 });
