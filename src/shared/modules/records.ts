@@ -16,7 +16,7 @@ module R {
   ): Value[] => Object.values(record);
 
   const keyify = <Key extends KeyType>(x: Key): Key =>
-    (Number.isNaN(x) ? x : Number(x)) as Key;
+    (Number.isNaN(Number(x)) ? x : Number(x)) as Key;
 
   export const keys = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
@@ -91,6 +91,28 @@ module R {
       fn(value, index, record, values),
     );
 
+  export const filterByKey = <Key extends KeyType, Value>(
+    record: Record<Key, Value>,
+    fn: MapFn<Key, Key, Value, boolean>,
+  ): Record<Key, Value> => {
+    const keys = R.keys(record);
+
+    return filter(record, ([key], index, record) =>
+      fn(key, index, record, keys),
+    );
+  };
+
+  export const filterByValue = <Key extends KeyType, Value>(
+    record: Record<Key, Value>,
+    fn: MapFn<Value, Key, Value, boolean>,
+  ): Record<Key, Value> => {
+    const values = R.values(record);
+
+    return filter(record, ([, value], index, record) =>
+      fn(value, index, record, values),
+    );
+  };
+
   export const counter = <
     Key extends KeyType,
     Iter extends Iterable<Key> = Iterable<Key>,
@@ -129,15 +151,25 @@ module R {
     fn: (first: Entry<Key, Value>, second: Entry<Key, Value>) => number,
   ) => from(entries(record).sort(fn));
 
-  export const sortedKeys = <Key extends KeyType, Value>(
+  export const sortedByKey = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: (first: Key, second: Key) => number,
   ): Record<Key, Value> => sorted(record, ([k1], [k2]) => fn(k1, k2));
 
-  export const sortedValues = <Key extends KeyType, Value>(
+  export const sortedByValue = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: (first: Value, second: Value) => number,
   ): Record<Key, Value> => sorted(record, ([, v1], [, v2]) => fn(v1, v2));
+
+  export const sortedKeys = <Key extends KeyType, Value>(
+    record: Record<Key, Value>,
+    fn: (first: Key, second: Key) => number,
+  ): Key[] => keys(record).sort(fn);
+
+  export const sortedValues = <Key extends KeyType, Value>(
+    record: Record<Key, Value>,
+    fn: (first: Value, second: Value) => number,
+  ): Value[] => values(record).sort(fn);
 
   export type MapFn<Input, Key extends KeyType, Value, Output> = (
     item: Input,
