@@ -1,6 +1,4 @@
-export {};
-
-module A {
+export module A {
   export const first = <T, Y = undefined>(arr: T[], or?: Y): T | Y =>
     (arr[0] === undefined ? or : arr[0])!;
 
@@ -9,6 +7,14 @@ module A {
 
   export const sorted = <T>(arr: T[], fn: (a: T, b: T) => number) =>
     [...arr].sort(fn);
+
+  export const range = (start: number, end: number, step: number = 1) =>
+    Array.from(
+      { length: (end - start) / step + 1 },
+      (_, i) => start + i * step,
+    );
+
+  export const reversd = <T>(arr: T[]) => arr.reverse();
 
   export module N {
     export const add = (a: number, b: number) => a + b;

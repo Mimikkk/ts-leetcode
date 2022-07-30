@@ -1,6 +1,4 @@
-export {};
-
-module R {
+export module R {
   export const empty = <Key extends KeyType, Value>() =>
     ({} as Record<Key, Value>);
 
