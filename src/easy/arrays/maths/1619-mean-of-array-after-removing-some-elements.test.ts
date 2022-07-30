@@ -1,30 +1,13 @@
-export {};
-
-module A {
-  export const add = (a: number, b: number) => a + b;
-  export const sum = (arr: number[]) => arr.reduce(add, 0);
-  export const len = (arr: number[]): number => arr.length;
-  export const mean = (arr: number[]) => sum(arr) / len(arr);
-
-  export const sorted = (
-    arr: number[],
-    fn: (a: number, b: number) => number = S.asc,
-  ) => [...arr].sort(fn);
-
-  export module S {
-    export const asc = (a: number, b: number) => a - b;
-    export const desc = (a: number, b: number) => b - a;
-  }
-}
+import { A } from "shared/modules";
 
 const trim = (arr: number[], percent: number) => {
   const len = arr.length;
   const remove = Math.ceil(len * percent);
 
-  return A.sorted(arr).slice(remove, len - remove);
+  return A.sorted(arr, A.N.asc).slice(remove, len - remove);
 };
 
-const trimMean = (arr: number[]) => A.mean(trim(arr, 0.05));
+const trimMean = (arr: number[]) => A.N.mean(trim(arr, 0.05));
 
 describe("trailing mean of an array", () => {
   it("case 1", () => {
