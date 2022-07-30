@@ -4,7 +4,7 @@ const specialArray = (nums: number[]): number => {
   const counter = R.counter<number>(nums);
 
   return (
-    A.range(0, nums.length + 1).find(
+    A.N.range(0, nums.length + 1).find(
       (n) =>
         A.N.sum(R.values(R.filterByKey(counter, (count) => count >= n))) === n,
     ) ?? -1

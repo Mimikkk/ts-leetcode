@@ -8,15 +8,37 @@ export module A {
   export const sorted = <T>(arr: T[], fn: (a: T, b: T) => number) =>
     [...arr].sort(fn);
 
-  export const range = (start: number, end: number, step: number = 1) =>
-    Array.from(
-      { length: (end - start) / step + 1 },
-      (_, i) => start + i * step,
-    );
+  export const reversed = <T>(arr: T[]) => arr.reverse();
 
-  export const reversd = <T>(arr: T[]) => arr.reverse();
+  export const pairs = <T>(arr: T[]) => {
+    const result = [];
+
+    for (let i = 0; i < arr.length; ++i) {
+      for (let j = i + 1; j < arr.length; ++j) {
+        result.push([arr[i], arr[j]]);
+      }
+    }
+
+    return result;
+  };
+
+  export const windows = <T>(arr: T[], size: number) => {
+    const result = [];
+
+    for (let i = 0; i < arr.length - size + 1; ++i) {
+      result.push(arr.slice(i, i + size));
+    }
+
+    return result;
+  }
 
   export module N {
+    export const range = (start: number, end: number, step: number = 1) =>
+      Array.from(
+        { length: (end - start) / step + 1 },
+        (_, i) => start + i * step,
+      );
+
     export const add = (a: number, b: number) => a + b;
     export const sum = (arr: number[]) => arr.reduce(add, 0);
     export const len = (arr: number[]): number => arr.length;
