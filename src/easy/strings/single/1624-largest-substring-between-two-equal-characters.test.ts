@@ -1,7 +1,7 @@
 export {};
 
 module R {
-  export const create = <T, Key extends symbol | string | number>() =>
+  export const create = <Key extends symbol | string | number, T>() =>
     ({} as Record<Key, T>);
 
   export const isEmpty = <T, Key extends symbol | string | number>(
