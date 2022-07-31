@@ -1,16 +1,12 @@
-export {};
+import { A } from "shared/modules";
 
-const countKDifference = (nums: number[], k: number): number => {
-  let count = 0;
+const hasAbsoluteDifferenceK =
+  (k: number) =>
+  ([a, b]: A.Pair<number>) =>
+    Math.abs(a - b) === k;
 
-  for (let i = 0; i < nums.length; ++i) {
-    for (let j = i + 1; j < nums.length; ++j) {
-        if (Math.abs(nums[i] - nums[j]) == k) ++count;
-    }
-  }
-
-  return count;
-};
+const countKDifference = (nums: number[], k: number): number =>
+  A.count(A.pairs(nums), hasAbsoluteDifferenceK(k));
 
 describe("count with absolute diff of k", () => {
   it("should return the correct count", () => {
