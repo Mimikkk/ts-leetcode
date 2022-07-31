@@ -10,8 +10,8 @@ export module A {
 
   export const reversed = <T>(arr: T[]) => arr.reverse();
 
-  export const pairs = <T>(arr: T[]) => {
-    const result = [];
+  export const pairs = <T>(arr: T[]): Pair<T>[] => {
+    const result: Pair<T>[] = [];
 
     for (let i = 0; i < arr.length; ++i) {
       for (let j = i + 1; j < arr.length; ++j) {
@@ -22,15 +22,23 @@ export module A {
     return result;
   };
 
-  export const windows = <T>(arr: T[], size: number) => {
-    const result = [];
+  export const windows = <Size extends number, T>(
+    arr: T[],
+    size: Size,
+  ): Tuple<T, Size>[] => {
+    const result: Tuple<T, Size>[] = [];
 
     for (let i = 0; i < arr.length - size + 1; ++i) {
-      result.push(arr.slice(i, i + size));
+      result.push(arr.slice(i, i + size) as Tuple<T, Size>);
     }
 
     return result;
-  }
+  };
+
+  export const count = <T>(
+    arr: T[],
+    fn: (value: T, index: number, values: T[]) => boolean,
+  ): number => arr.filter(fn).length;
 
   export module N {
     export const range = (start: number, end: number, step: number = 1) =>
@@ -52,4 +60,17 @@ export module A {
     export const asc = (a: string, b: string) => a.localeCompare(b);
     export const desc = (a: string, b: string) => b.localeCompare(a);
   }
+
+
+  export type Pair<T, Y = T> = [T, Y];
+
+  export type Tuple<T, N extends number> = N extends N
+    ? number extends N
+      ? T[]
+      : _TupleOf<T, N, []>
+    : never;
+
+  type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N
+    ? R
+    : _TupleOf<T, N, [T, ...R]>;
 }
