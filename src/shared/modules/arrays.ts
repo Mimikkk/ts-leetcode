@@ -6,21 +6,33 @@ export module A {
     (arr.at(-1) === undefined ? or : arr.at(-1))!;
 
   export const sorted = <T>(arr: T[], fn: (a: T, b: T) => number) =>
-    [...arr].sort(fn);
+    copy(arr).sort(fn);
 
-  export const reversed = <T>(arr: T[]) => arr.reverse();
+  export const reversed = <T>(arr: T[]) => copy(arr).reverse();
 
-  export const pairs = <T>(arr: T[]): Pair<T>[] => {
-    const result: Pair<T>[] = [];
+  export const unique = <T>(arr: T[]) => [...new Set(arr)];
+
+  export const copy = <T>(arr: T[]) => [...arr];
+
+  export const pairs = <T>(arr: T[]): Pair<[T, number]>[] => {
+    const result: Pair<[T, number]>[] = [];
 
     for (let i = 0; i < arr.length; ++i) {
       for (let j = i + 1; j < arr.length; ++j) {
-        result.push([arr[i], arr[j]]);
+        result.push([
+          [arr[i], i],
+          [arr[j], j],
+        ]);
       }
     }
 
     return result;
   };
+
+  export const zip = <T>(a: T[], b: T[]): [T, T][] =>
+    b.length < a.length
+      ? b.map((x, i) => [a[i], x])
+      : a.map((x, i) => [x, b[i]]);
 
   export const windows = <Size extends number, T>(
     arr: T[],
@@ -39,6 +51,20 @@ export module A {
     arr: T[],
     fn: (value: T, index: number, values: T[]) => boolean,
   ): number => arr.filter(fn).length;
+
+  export const create = <T>(count: number, fn: (index: number) => T) =>
+    Array.from({ length: count }, (_, i) => fn(i));
+
+  export const subarrays = <T>(arr: T[]): T[][] => {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i; j < arr.length; j++) {
+        result.push(arr.slice(i, j + 1));
+      }
+    }
+
+    return result;
+  };
 
   export module N {
     export const range = (start: number, end: number, step: number = 1) =>
@@ -61,7 +87,6 @@ export module A {
     export const desc = (a: string, b: string) => b.localeCompare(a);
   }
 
-
   export type Pair<T, Y = T> = [T, Y];
 
   export type Tuple<T, N extends number> = N extends N
@@ -70,7 +95,9 @@ export module A {
       : _TupleOf<T, N, []>
     : never;
 
-  type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N
-    ? R
-    : _TupleOf<T, N, [T, ...R]>;
+  type _TupleOf<
+    T,
+    N extends number,
+    R extends unknown[],
+  > = R["length"] extends N ? R : _TupleOf<T, N, [T, ...R]>;
 }

@@ -1,3 +1,4 @@
+import { A } from "./arrays";
 export module R {
   export const empty = <Key extends KeyType, Value>() =>
     ({} as Record<Key, Value>);
@@ -19,6 +20,10 @@ export module R {
   export const keys = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
   ): Key[] => Object.keys(record).map(keyify) as Key[];
+
+  export const commonKeys = <Key extends KeyType, Value>(
+    ...records: Record<Key, Value>[]
+  ): Key[] => A.unique(records.flatMap(keys)) as Key[];
 
   const entrify = <Key extends KeyType, Value>([key, value]: Entry<
     string,
