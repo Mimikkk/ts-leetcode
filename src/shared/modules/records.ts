@@ -116,14 +116,15 @@ export module R {
     );
   };
 
-  export const counter = <
-    Key extends KeyType,
-    Iter extends Iterable<Key> = Iterable<Key>,
-  >(
-    iterable?: Iter,
+  export const counter = <Key extends KeyType>(
+    iterable?: Iterable<Key>,
+    fn: (key: Key, index: number, iterable: Key[]) => boolean = () => true,
   ): Record<Key, number> => {
     const counter = R.empty<Key, number>();
-    for (const item of iterable || []) counter[item] = (counter[item] || 0) + 1;
+    [...(iterable || [])].forEach((key, index, items) => {
+      if (fn(key, index, items)) counter[key] = (counter[key] || 0) + 1;
+    });
+
     return counter;
   };
 

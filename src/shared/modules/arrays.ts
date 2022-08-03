@@ -12,6 +12,9 @@ export module A {
 
   export const unique = <T>(arr: T[]) => [...new Set(arr)];
 
+  export const compact = <T>(arr: T[]): Exclude<T, undefined | null>[] =>
+    arr.filter(Boolean) as any[];
+
   export const copy = <T>(arr: T[]) => [...arr];
 
   export const pairs = <T>(arr: T[]): Pair<[T, number]>[] => {
@@ -29,10 +32,21 @@ export module A {
     return result;
   };
 
-  export const zip = <T>(a: T[], b: T[]): [T, T][] =>
+  export const zip = <T, Y = T>(a: T[], b: Y[]): [T, Y][] =>
     b.length < a.length
       ? b.map((x, i) => [a[i], x])
       : a.map((x, i) => [x, b[i]]);
+
+  export const zipLongest = <T, Y = T>(
+    a: T[],
+    b: Y[],
+  ): [T | undefined, Y | undefined][] =>
+    b.length > a.length
+      ? b.map((x, i) => [a[i], x])
+      : a.map((x, i) => [x, b[i]]);
+
+  export const interweave = <T, Y = T>(a: T[], b: Y[]): (T | Y)[] =>
+    compact(zipLongest(a, b).flat());
 
   export const windows = <Size extends number, T>(
     arr: T[],
