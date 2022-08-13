@@ -1,3 +1,4 @@
+import { N as Num } from "./numbers";
 export module A {
   export const first = <T, Y = undefined>(arr: T[], or?: Y): T | Y =>
     (arr[0] === undefined ? or : arr[0])!;
@@ -80,6 +81,18 @@ export module A {
     return result;
   };
 
+  export const union = <T>(arr: T[], ...others: T[][]) => [
+    ...arr,
+    ...others.flat(),
+  ];
+
+  export const intersection = <T>(...arrays: T[][]) => {
+    const [first, ...others] = arrays;
+    const sets = others.map((others) => new Set(others));
+
+    return first.filter((x) => sets.every((s) => s.has(x)));
+  };
+
   export module N {
     export const range = (start: number, end: number, step: number = 1) =>
       Array.from(
@@ -87,8 +100,7 @@ export module A {
         (_, i) => start + i * step,
       );
 
-    export const add = (a: number, b: number) => a + b;
-    export const sum = (arr: number[]) => arr.reduce(add, 0);
+    export const sum = (arr: number[]) => arr.reduce(Num.add, 0);
     export const len = (arr: number[]): number => arr.length;
     export const mean = (arr: number[]) => sum(arr) / len(arr);
 
