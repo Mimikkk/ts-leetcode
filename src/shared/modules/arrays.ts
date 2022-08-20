@@ -3,6 +3,9 @@ export module A {
   export const first = <T, Y = undefined>(arr: T[], or?: Y): T | Y =>
     (arr[0] === undefined ? or : arr[0])!;
 
+  export const second = <T, Y = undefined>(arr: T[], or?: Y): T | Y =>
+    arr[1] ?? or!;
+
   export const last = <T, Y = undefined>(arr: T[], or?: Y): T | Y =>
     (arr.at(-1) === undefined ? or : arr.at(-1))!;
 
@@ -10,6 +13,9 @@ export module A {
     copy(arr).sort(fn);
 
   export const reversed = <T>(arr: T[]) => copy(arr).reverse();
+
+  export const enumerate = <T>(arr: T[], start: number = 0) =>
+    arr.map((x, i) => [x, i + start] as [T, number]);
 
   export const unique = <T>(arr: T[]) => [...new Set(arr)];
 
