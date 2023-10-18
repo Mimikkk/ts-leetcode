@@ -38,8 +38,7 @@ export module TreeNode {
     return result;
   };
 
-  export const node = (arr?: [number, ...Nullable<number>[]]): TreeNode => {
-    if (!arr) return new TreeNode();
+  export const node = (arr: [number, ...Nullable<number>[]]): TreeNode => {
     const root = new TreeNode(arr.shift()!);
     const queue: TreeNode[] = [root];
 
