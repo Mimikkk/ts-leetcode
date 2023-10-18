@@ -4,10 +4,15 @@ export class TreeNode {
   val: number;
   left: Nullable<TreeNode>;
   right: Nullable<TreeNode>;
-  constructor(val?: number, left?: Nullable<TreeNode>, right?: Nullable<TreeNode>) {
-    this.val = (val === undefined ?0:val);
-    this.left = (left === undefined ?null:left);
-    this.right = (right === undefined ?null:right);
+
+  constructor(
+    val?: number,
+    left?: Nullable<TreeNode>,
+    right?: Nullable<TreeNode>,
+  ) {
+    this.val = val === undefined ? 0 : val;
+    this.left = left === undefined ? null : left;
+    this.right = right === undefined ? null : right;
   }
 }
 
@@ -33,7 +38,8 @@ export module TreeNode {
     return result;
   };
 
-  export const node = (arr: [number, ...Nullable<number>[]]): TreeNode => {
+  export const node = (arr?: [number, ...Nullable<number>[]]): TreeNode => {
+    if (!arr) return new TreeNode();
     const root = new TreeNode(arr.shift()!);
     const queue: TreeNode[] = [root];
 
@@ -57,15 +63,12 @@ export module TreeNode {
     return root;
   };
 
-  export const preorder = (root: Nullable<TreeNode>): number[] => root ?
-    [root.val, ...preorder(root.left), ...preorder(root.right)]:
-    [];
+  export const preorder = (root: Nullable<TreeNode>): number[] =>
+    root ? [root.val, ...preorder(root.left), ...preorder(root.right)] : [];
 
-  export const inorder = (root: Nullable<TreeNode>): number[] => root ?
-    [...inorder(root.left), root.val, ...inorder(root.right)]:
-    [];
+  export const inorder = (root: Nullable<TreeNode>): number[] =>
+    root ? [...inorder(root.left), root.val, ...inorder(root.right)] : [];
 
-  export const postorder = (root: Nullable<TreeNode>): number[] => root ?
-    [...postorder(root.left), ...postorder(root.right), root.val]:
-    [];
+  export const postorder = (root: Nullable<TreeNode>): number[] =>
+    root ? [...postorder(root.left), ...postorder(root.right), root.val] : [];
 }
