@@ -9,7 +9,9 @@ class MyStack {
     this.second = [];
   }
 
-  push = (x: number): void => { this.first.push(x);};
+  push = (x: number): void => {
+    this.first.push(x);
+  };
 
   pop = (): number => {
     while (this.first.length > 1) this.second.push(this.first.shift()!);

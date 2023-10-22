@@ -14,8 +14,7 @@ const checkDistances = (s: string, distance: number[]): boolean => {
     if (lastOccurrence !== undefined) {
       const distanceBetweenOccurrences = i - lastOccurrence - 1;
 
-      if (distanceBetweenOccurrencesByChar[char] !== distanceBetweenOccurrences)
-        return false;
+      if (distanceBetweenOccurrencesByChar[char] !== distanceBetweenOccurrences) return false;
     }
 
     occurred.set(char, i);
@@ -27,25 +26,13 @@ const checkDistances = (s: string, distance: number[]): boolean => {
 describe("2399", () => {
   it("case 1", () => {
     expect(
-      checkDistances(
-        "abaccb",
-        [
-          1, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-      ),
+      checkDistances("abaccb", [1, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
     ).toBe(true);
   });
 
   it("case 2", () => {
-    expect(
-      checkDistances(
-        "aa",
-        [
-          1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-      ),
-    ).toBe(false);
+    expect(checkDistances("aa", [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])).toBe(
+      false,
+    );
   });
 });

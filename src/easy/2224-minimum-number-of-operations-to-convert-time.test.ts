@@ -5,8 +5,7 @@ type time = string;
 module Time {
   export const asMinuteHourPair = (str: time) => str.split(":").map(Number);
 
-  export const asMinutes = (time: time) =>
-    asMinuteHourPair(time).reduce((a, b) => a * 60 + b);
+  export const asMinutes = (time: time) => asMinuteHourPair(time).reduce((a, b) => a * 60 + b);
 
   export const difference = (a: time, b: time) => asMinutes(a) - asMinutes(b);
 }

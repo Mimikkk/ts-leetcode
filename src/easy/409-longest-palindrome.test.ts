@@ -1,15 +1,16 @@
 export {};
 
-const createCounter = (s: string) => [...s].reduce<Record<string, number>>((acc, c) => {
-  acc[c] = acc[c] + 1 || 1;
-  return acc;
-}, {});
+const createCounter = (s: string) =>
+  [...s].reduce<Record<string, number>>((acc, c) => {
+    acc[c] = acc[c] + 1 || 1;
+    return acc;
+  }, {});
 
 const isOdd = (n: number) => n % 2 === 1;
 const longestPalindrome = (s: string): number => {
   const oddCount = Object.values(createCounter(s)).filter(isOdd).length;
 
-  return s.length - oddCount + (oddCount > 0 ?1:0);
+  return s.length - oddCount + (oddCount > 0 ? 1 : 0);
 };
 
 describe("longestPalindrome", () => {

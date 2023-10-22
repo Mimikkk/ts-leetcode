@@ -9,7 +9,6 @@ const findErrorNums = (nums: number[]): number[] => {
 
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] in visited) repeat = nums[i];
-
     else {
       visited[nums[i]] = true;
       actual += nums[i];

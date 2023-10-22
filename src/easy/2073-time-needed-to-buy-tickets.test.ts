@@ -1,7 +1,6 @@
 export {};
 
 const timeRequiredToBuy = (tickets: number[], k: number) => {
-
   let time = 0;
   for (let i = 0; i < tickets.length; i++) {
     if (i === k || tickets[i] < tickets[k]) {

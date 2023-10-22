@@ -7,7 +7,7 @@ const minStartValue = (nums: number[]): number => {
     if (sum < min) min = sum;
   }
 
-  return min < 0 ? -min +1 : 1;
+  return min < 0 ? -min + 1 : 1;
 };
 
 describe("min start value", () => {
@@ -24,6 +24,6 @@ describe("min start value", () => {
   });
 
   it("case 4", () => {
-    expect(minStartValue([-3,2,-3,4,2])).toBe(5);
+    expect(minStartValue([-3, 2, -3, 4, 2])).toBe(5);
   });
 });

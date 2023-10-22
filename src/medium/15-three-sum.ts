@@ -5,7 +5,6 @@ const threeSum = (nums: number[]): Triplet[] => {
     const [a, b, c] = [nums[i], nums[i + 1], nums[i + 2]];
     if (a + b + c === 0) return [[a, b, c]];
   }
-
 };
 
 describe("threeSum", () => {

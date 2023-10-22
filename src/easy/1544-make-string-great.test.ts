@@ -9,7 +9,6 @@ const makeGood = (s: string): string => {
     let top = stack.at(-1)!;
 
     if (isSame(top, c) && top !== c) stack.pop();
-
     else stack.push(c);
   }
   return stack.join("");

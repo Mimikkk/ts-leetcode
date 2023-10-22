@@ -9,7 +9,9 @@ class MyQueue {
     this.second = [];
   }
 
-  push = (x: number): void => { this.first.push(x);};
+  push = (x: number): void => {
+    this.first.push(x);
+  };
 
   pop = (): number => {
     if (!this.second.length) while (this.first.length > 0) this.second.push(this.first.pop()!);

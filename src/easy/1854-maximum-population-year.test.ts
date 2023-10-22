@@ -7,7 +7,7 @@ const maximumPopulation = (logs: [number, number][]) => {
   }
 
   return years.indexOf(Math.max(...years)) + 1950;
-}
+};
 
 describe("max pop", () => {
   it("case 1", () => {

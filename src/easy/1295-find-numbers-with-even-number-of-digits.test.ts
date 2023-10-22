@@ -1,7 +1,10 @@
 export {};
 
 const findNumbers = (nums: number[]) =>
-  nums.map(Math.log10).map(Math.floor).filter(n => n % 2 === 1).length;
+  nums
+    .map(Math.log10)
+    .map(Math.floor)
+    .filter((n) => n % 2 === 1).length;
 
 describe("count even digit numbers", () => {
   it("case 1", () => {

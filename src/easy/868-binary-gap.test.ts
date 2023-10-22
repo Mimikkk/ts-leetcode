@@ -5,10 +5,10 @@ const binaryGap = (n: number) => {
 
   let i = 0;
   while (n > 0) {
-      if (n & 1) {
-        if (last >= 0) result = Math.max(result, i - last);
-        last = i;
-      }
+    if (n & 1) {
+      if (last >= 0) result = Math.max(result, i - last);
+      last = i;
+    }
     n >>= 1;
     ++i;
   }

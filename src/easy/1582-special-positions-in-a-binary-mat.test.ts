@@ -28,8 +28,26 @@ const numSpecial = (mat: number[][]): number => {
 
 describe("num special", () => {
   test("should return correct result", () => {
-    expect(numSpecial([[1, 0, 0], [0, 0, 1], [1, 0, 0]])).toEqual(1);
-    expect(numSpecial([[1, 0, 0], [0, 1, 0], [0, 0, 1]])).toEqual(3);
-    expect(numSpecial([[1, 0, 0], [0, 0, 0], [0, 0, 0]])).toEqual(1);
+    expect(
+      numSpecial([
+        [1, 0, 0],
+        [0, 0, 1],
+        [1, 0, 0],
+      ]),
+    ).toEqual(1);
+    expect(
+      numSpecial([
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1],
+      ]),
+    ).toEqual(3);
+    expect(
+      numSpecial([
+        [1, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ]),
+    ).toEqual(1);
   });
 });

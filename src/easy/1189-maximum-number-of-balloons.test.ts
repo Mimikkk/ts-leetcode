@@ -15,7 +15,7 @@ const maxNumberOfBalloons = (text: string): number => {
     max = Math.min(max, ~~(counter[key] / value));
   });
 
-  return isNaN(max) ?0:max;
+  return isNaN(max) ? 0 : max;
 };
 
 describe("max number of balloons", () => {

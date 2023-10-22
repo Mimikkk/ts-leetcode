@@ -1,9 +1,6 @@
 export {};
 
-const findDifference = (
-  nums1: number[],
-  nums2: number[],
-): [number[], number[]] => {
+const findDifference = (nums1: number[], nums2: number[]): [number[], number[]] => {
   const s1 = new Set(nums1);
   const s2 = new Set(nums2);
 

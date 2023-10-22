@@ -13,7 +13,6 @@ class OrderedStream {
     let { pointer, stream } = this;
     stream[id - 1] = value;
 
-
     let chunk = [];
     while (stream[pointer]) chunk.push(stream[pointer++]);
 

@@ -1,7 +1,6 @@
 import { R } from "@shared/modules";
 
-const makeEqual = (words: string[]) =>
-  R.values(R.counter(words.join(""))).every((v) => v % words.length === 0);
+const makeEqual = (words: string[]) => R.values(R.counter(words.join(""))).every((v) => v % words.length === 0);
 
 describe("make equal", () => {
   it("case 1", () => {

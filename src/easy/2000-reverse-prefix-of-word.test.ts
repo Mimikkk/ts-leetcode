@@ -18,8 +18,6 @@ describe("reversePrefix", () => {
     expect(reversePrefix("abcd", "d")).toBe("dcba");
     expect(reversePrefix("abcdefd", "g")).toBe("abcdefd");
     expect(reversePrefix("abcd", "z")).toBe("abcd");
-    expect(reversePrefix("rzwuktxcjfpamlonbgyieqdvhs", "s")).toBe(
-      "shvdqeiygbnolmapfjcxtkuwzr",
-    );
+    expect(reversePrefix("rzwuktxcjfpamlonbgyieqdvhs", "s")).toBe("shvdqeiygbnolmapfjcxtkuwzr");
   });
 });

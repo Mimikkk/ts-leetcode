@@ -3,8 +3,8 @@ export {};
 const longestCommonPrefix = (strs: string[]): string => {
   const first = strs[0];
 
-  const index = [...first].findIndex((c1, i) => strs.map(s => s[i]).some(c2 => c1 !== c2));
-  return index !== -1 ?first.slice(0, index):first;
+  const index = [...first].findIndex((c1, i) => strs.map((s) => s[i]).some((c2) => c1 !== c2));
+  return index !== -1 ? first.slice(0, index) : first;
 };
 
 describe("14 - longest common prefix", () => {

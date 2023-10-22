@@ -1,7 +1,12 @@
 export {};
 
 type Point = [number, number];
-const neighbors = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+const neighbors = [
+  [0, -1],
+  [0, 1],
+  [-1, 0],
+  [1, 0],
+];
 const createNeighbors = ([x, y]: Point): Point[] => neighbors.map(([i, j]) => [x + i, y + j]);
 const matrix = <T>(m: number, n: number, fill: T): T[][] => Array.from(Array(m), () => Array(n).fill(fill));
 
@@ -29,11 +34,18 @@ const floodFill = (image: number[][], sr: number, sc: number, newColor: number):
 
 describe("flood fill", () => {
   it("case 1", () => {
-    expect(floodFill([
-      [1, 1, 1],
-      [1, 1, 0],
-      [1, 0, 1],
-    ], 1, 1, 2)).toEqual([
+    expect(
+      floodFill(
+        [
+          [1, 1, 1],
+          [1, 1, 0],
+          [1, 0, 1],
+        ],
+        1,
+        1,
+        2,
+      ),
+    ).toEqual([
       [2, 2, 2],
       [2, 2, 0],
       [2, 0, 1],
@@ -41,10 +53,17 @@ describe("flood fill", () => {
   });
 
   it("case 2", () => {
-    expect(floodFill([
-      [0, 0, 0],
-      [0, 1, 0],
-    ], 1, 1, 2)).toEqual([
+    expect(
+      floodFill(
+        [
+          [0, 0, 0],
+          [0, 1, 0],
+        ],
+        1,
+        1,
+        2,
+      ),
+    ).toEqual([
       [0, 0, 0],
       [0, 2, 0],
     ]);

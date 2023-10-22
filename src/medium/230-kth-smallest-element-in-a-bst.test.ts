@@ -14,7 +14,7 @@ const kthSmallest = (root: TreeNode | null, k: number): number => {
   }
   result.sort((a, b) => a - b);
   const kMin = [...new Set(result)][k - 1];
-  return kMin === undefined ?-1:kMin;
+  return kMin === undefined ? -1 : kMin;
 };
 
 // TODO - rewrite as BST not BT

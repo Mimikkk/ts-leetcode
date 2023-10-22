@@ -2,7 +2,7 @@ export {};
 
 const createCounter = (words: string[]) => {
   const counter: Record<string, number> = {};
-  words.forEach((w) => counter[w] = (counter[w] || 0) + 1);
+  words.forEach((w) => (counter[w] = (counter[w] || 0) + 1));
   return counter;
 };
 

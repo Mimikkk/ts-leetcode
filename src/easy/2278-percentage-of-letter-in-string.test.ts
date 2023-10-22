@@ -1,8 +1,7 @@
 export {};
 
 const percentageLetter = (s: string, letter: string) =>
-  Math.floor([...s].filter((c) => c===letter).length / s.length * 100);
-
+  Math.floor(([...s].filter((c) => c === letter).length / s.length) * 100);
 
 describe("percentageLetter", () => {
   it("case 1", () => {

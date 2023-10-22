@@ -1,12 +1,22 @@
 export {};
 
-const filter = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 0], [0, 1], [1, -1], [1, 0], [1, 1]];
+const filter = [
+  [-1, -1],
+  [-1, 0],
+  [-1, 1],
+  [0, -1],
+  [0, 0],
+  [0, 1],
+  [1, -1],
+  [1, 0],
+  [1, 1],
+];
 const createFilter = (x: number, y: number) => filter.map(([nx, ny]) => [nx + x, ny + y]);
 
 const imageSmoother = (img: number[][]): number[][] => {
   const [m, n] = [img.length, img[0].length];
 
-  const result = Array.from({ length:m }, () => Array.from({ length:n }, () => 0));
+  const result = Array.from({ length: m }, () => Array.from({ length: n }, () => 0));
   for (let x = 0; x < m; ++x) {
     for (let y = 0; y < n; ++y) {
       const neighbors = createFilter(x, y).filter(([nx, ny]) => nx >= 0 && nx < m && ny >= 0 && ny < n);

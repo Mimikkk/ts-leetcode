@@ -3,9 +3,7 @@ import { A, R } from "@shared/modules";
 const numberOfPairs = (nums: number[]): [number, number] => {
   const counter = R.counter(nums);
 
-  const pairs = A.N.sum(
-    R.values(counter).map((count) => Math.floor(count / 2)),
-  );
+  const pairs = A.N.sum(R.values(counter).map((count) => Math.floor(count / 2)));
 
   return [pairs, nums.length - 2 * pairs];
 };

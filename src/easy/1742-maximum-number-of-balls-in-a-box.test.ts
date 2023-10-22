@@ -4,7 +4,7 @@ const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 const sumDigits = (n: number) => {
   let [sum, mod] = [0, 0];
 
-  while (n > 0) ([n, mod] = divmod(n, 10), sum += mod);
+  while (n > 0) ([n, mod] = divmod(n, 10)), (sum += mod);
 
   return sum;
 };

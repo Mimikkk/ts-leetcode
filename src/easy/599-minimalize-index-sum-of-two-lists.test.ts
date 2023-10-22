@@ -24,30 +24,25 @@ const findRestaurant = (l1: string[], l2: string[]): string[] => {
 
 describe("Minimum index sum of two lists", () => {
   it("should pass the first case", () => {
-    expect(findRestaurant(
-      ["Shogun", "Tapioca Express", "Burger King", "KFC"],
-      ["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"],
-    )).toEqual(["Shogun"]);
+    expect(
+      findRestaurant(
+        ["Shogun", "Tapioca Express", "Burger King", "KFC"],
+        ["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"],
+      ),
+    ).toEqual(["Shogun"]);
   });
 
   it("should pass the second case", () => {
-    expect(findRestaurant(
-      ["Shogun", "Tapioca Express", "Burger King", "KFC"],
-      ["KFC", "Shogun", "Burger King"],
-    )).toEqual(["Shogun"]);
+    expect(
+      findRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"], ["KFC", "Shogun", "Burger King"]),
+    ).toEqual(["Shogun"]);
   });
 
   it("should pass the third case", () => {
-    expect(findRestaurant(
-      ["S", "TEXP", "BK", "KFC"],
-      ["KFC", "BK", "S"],
-    )).toEqual(["S"]);
+    expect(findRestaurant(["S", "TEXP", "BK", "KFC"], ["KFC", "BK", "S"])).toEqual(["S"]);
   });
 
   it("should pass the fourth case", () => {
-    expect(findRestaurant(
-      ["k", "KFC"],
-      ["k", "KFC"],
-    )).toEqual(["k"]);
+    expect(findRestaurant(["k", "KFC"], ["k", "KFC"])).toEqual(["k"]);
   });
 });

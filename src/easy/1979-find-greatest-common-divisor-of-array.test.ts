@@ -1,6 +1,6 @@
 export {};
 
-const gcd = (x: number, y: number): number => !x ?y:gcd(y % x, x);
+const gcd = (x: number, y: number): number => (!x ? y : gcd(y % x, x));
 const findGCD = (nums: number[]): number => gcd(Math.min(...nums), Math.max(...nums));
 
 describe("gcd of array", () => {

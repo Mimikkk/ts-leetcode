@@ -20,8 +20,7 @@ const triangleArea = ([x1, y1]: Point, [x2, y2]: Point, [x3, y3]: Point) => {
 };
 
 const computeHull = (points: Point[]) => {
-
-  let leftMostPoint = points.reduce((acc, cur) => acc[0] < cur[0] ?acc:cur);
+  let leftMostPoint = points.reduce((acc, cur) => (acc[0] < cur[0] ? acc : cur));
   let a = leftMostPoint;
 
   const next = (a: Point) => points[(points.indexOf(a) + 1) % points.length];
@@ -34,8 +33,7 @@ const computeHull = (points: Point[]) => {
     for (const b of points) {
       if (b === a || b === c) continue;
 
-      if (doesTurnRightRelativeTo(c, a, b) ||
-        (collinear(c, a, b) && distance(a, b) > distance(a, c))) {
+      if (doesTurnRightRelativeTo(c, a, b) || (collinear(c, a, b) && distance(a, b) > distance(a, c))) {
         c = b;
       }
     }
@@ -57,12 +55,12 @@ const largestTriangleArea = (points: Point[]) => {
 
   do {
     while (true) {
-      const c_ = c + 1 < hall.length ?calculateArea(a, b, c + 1):null;
-      const b_ = b + 1 < hall.length ?calculateArea(a, b + 1, c):null;
+      const c_ = c + 1 < hall.length ? calculateArea(a, b, c + 1) : null;
+      const b_ = b + 1 < hall.length ? calculateArea(a, b + 1, c) : null;
       const area = calculateArea(a, b, c);
 
-      if ((c_ && c_ >= area)) ++c;
-      else if ((b_ && b_ >= area)) ++b;
+      if (c_ && c_ >= area) ++c;
+      else if (b_ && b_ >= area) ++b;
       else break;
     }
 
@@ -74,10 +72,24 @@ const largestTriangleArea = (points: Point[]) => {
 
 describe("largest triangle area", () => {
   it("case 1", () => {
-    expect(largestTriangleArea([[0, 0], [0, 1], [1, 0], [0, 2], [2, 0]])).toBeCloseTo(2);
+    expect(
+      largestTriangleArea([
+        [0, 0],
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+      ]),
+    ).toBeCloseTo(2);
   });
 
   it("case 2", () => {
-    expect(largestTriangleArea([[1, 0], [0, 0], [0, 1]])).toBeCloseTo(0.5);
+    expect(
+      largestTriangleArea([
+        [1, 0],
+        [0, 0],
+        [0, 1],
+      ]),
+    ).toBeCloseTo(0.5);
   });
 });

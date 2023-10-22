@@ -1,8 +1,5 @@
 export module N {
-  export const divmod = (n: number, mod: number) => [
-    Math.floor(n / mod),
-    n % mod,
-  ];
+  export const divmod = (n: number, mod: number) => [Math.floor(n / mod), n % mod];
   export const add = (a: number, b: number) => a + b;
   export const sub = (a: number, b: number) => a - b;
 
@@ -33,7 +30,6 @@ export module N {
       return n;
     };
   }
-
 
   export const fromStr = (str: string) => +str;
   export const fromStrs = (str: string[]) => +str.join("");

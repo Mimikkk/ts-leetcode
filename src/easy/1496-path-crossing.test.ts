@@ -4,7 +4,7 @@ const enum Direction {
   North = "N",
   East = "E",
   South = "S",
-  West = "W"
+  West = "W",
 }
 
 const isPathCrossing = (path: string): boolean => {

@@ -3,11 +3,7 @@ import { R } from "@shared/modules";
 const rearrangeCharacters = (s: string, target: string) => {
   const leftover = R.counter(s);
 
-  return Math.min(
-    ...R.entries(R.counter(target)).map(([c, count]) =>
-      Math.floor((leftover[c] || 0) / count),
-    ),
-  );
+  return Math.min(...R.entries(R.counter(target)).map(([c, count]) => Math.floor((leftover[c] || 0) / count)));
 };
 
 describe("rearrangeCharacters", () => {

@@ -2,7 +2,7 @@ export {};
 
 const createCounter = (nums: number[]) => {
   const counter: Record<number, number> = {};
-  for (const num of nums) counter[num] = (counter[num] + 1) || 1;
+  for (const num of nums) counter[num] = counter[num] + 1 || 1;
   return counter;
 };
 

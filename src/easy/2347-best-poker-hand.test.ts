@@ -5,15 +5,9 @@ type Rank = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
 type Card = [Rank, Suit];
 type Hand = Tuple<Card, 5>;
 
-export type Tuple<T, N extends number> = N extends N
-  ? number extends N
-    ? T[]
-    : _TupleOf<T, N, []>
-  : never;
+export type Tuple<T, N extends number> = N extends N ? (number extends N ? T[] : _TupleOf<T, N, []>) : never;
 
-type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N
-  ? R
-  : _TupleOf<T, N, [T, ...R]>;
+type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N ? R : _TupleOf<T, N, [T, ...R]>;
 
 module Hand {
   export const from = (ranks: Tuple<Rank, 5>, suits: Tuple<Suit, 5>): Hand =>
@@ -28,8 +22,7 @@ module Hand {
     for (let i = 0; i < hand.length; ++i) {
       for (let j = i + 1; j < hand.length; ++j) {
         for (let k = j + 1; k < hand.length; ++k) {
-          if (hand[i][0] === hand[j][0] && hand[i][0] === hand[k][0])
-            return true;
+          if (hand[i][0] === hand[j][0] && hand[i][0] === hand[k][0]) return true;
         }
       }
     }
@@ -59,26 +52,18 @@ const bestHand = (ranks: Tuple<Rank, 5>, suits: Tuple<Suit, 5>) => {
 
 describe("best hand", () => {
   it("case 1", () => {
-    expect(bestHand([1, 2, 3, 4, 5], ["a", "a", "a", "a", "a"])).toEqual(
-      "Flush",
-    );
+    expect(bestHand([1, 2, 3, 4, 5], ["a", "a", "a", "a", "a"])).toEqual("Flush");
   });
 
   it("case 2", () => {
-    expect(bestHand([1, 2, 3, 4, 5], ["a", "b", "c", "d", "a"])).toEqual(
-      "High Card",
-    );
+    expect(bestHand([1, 2, 3, 4, 5], ["a", "b", "c", "d", "a"])).toEqual("High Card");
   });
 
   it("case 3", () => {
-    expect(bestHand([1, 1, 3, 4, 5], ["a", "b", "c", "d", "d"])).toEqual(
-      "Pair",
-    );
+    expect(bestHand([1, 1, 3, 4, 5], ["a", "b", "c", "d", "d"])).toEqual("Pair");
   });
 
   it("case 4", () => {
-    expect(bestHand([1, 1, 1, 4, 5], ["a", "b", "c", "d", "d"])).toEqual(
-      "Three of a Kind",
-    );
+    expect(bestHand([1, 1, 1, 4, 5], ["a", "b", "c", "d", "d"])).toEqual("Three of a Kind");
   });
 });

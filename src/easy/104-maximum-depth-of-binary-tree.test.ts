@@ -1,6 +1,7 @@
 import { TreeNode } from "@shared/structures";
 
-const maxDepth = (root: TreeNode | null): number => root ?Math.max(maxDepth(root.left), maxDepth(root.right)) + 1:0;
+const maxDepth = (root: TreeNode | null): number =>
+  root ? Math.max(maxDepth(root.left), maxDepth(root.right)) + 1 : 0;
 
 describe("104 - maximum depth of binary tree", () => {
   it("should be 3 if children have own offspring", () => {
@@ -11,7 +12,6 @@ describe("104 - maximum depth of binary tree", () => {
     root.right.right = new TreeNode(7);
     expect(maxDepth(root)).toEqual(3);
   });
-
 
   it("should be 0", () => {
     const root = null;

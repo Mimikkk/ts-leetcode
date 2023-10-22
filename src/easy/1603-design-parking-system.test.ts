@@ -1,11 +1,7 @@
 export {};
 
 class ParkingSystem {
-  constructor(
-    private big: number,
-    private medium: number,
-    private small: number,
-  ) {}
+  constructor(private big: number, private medium: number, private small: number) {}
 
   addCar(type: 1 | 2 | 3) {
     switch (type) {

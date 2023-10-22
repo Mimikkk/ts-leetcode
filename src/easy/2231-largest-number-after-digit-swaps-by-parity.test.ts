@@ -4,10 +4,7 @@ const largestInteger = (num: number): number => {
   const digits = N.toDigits(num);
   const pattern = digits.map(N.isOdd);
 
-  const [odds, evens] = [
-    digits.filter(N.isOdd).sort(A.N.asc),
-    digits.filter(N.isEven).sort(A.N.asc),
-  ];
+  const [odds, evens] = [digits.filter(N.isOdd).sort(A.N.asc), digits.filter(N.isEven).sort(A.N.asc)];
 
   return N.fromDigits(pattern.map((x) => (x ? odds : evens).pop()!));
 };

@@ -9,7 +9,7 @@ const distributeCandies = (candies: number, num_people: number): number[] => {
   while (candies > 0) {
     dp[i] += count;
     candies -= count;
-    count = count + 1 < candies ?count + 1:candies;
+    count = count + 1 < candies ? count + 1 : candies;
     i = (i + 1) % num_people;
   }
 

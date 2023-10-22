@@ -1,7 +1,6 @@
 export {};
 
-const bitwiseComplement = (n: number) =>
-  n == 0 ? 1 : (2 ** (Math.floor(Math.log2(n)) + 1) - 1) - n;
+const bitwiseComplement = (n: number) => (n == 0 ? 1 : 2 ** (Math.floor(Math.log2(n)) + 1) - 1 - n);
 
 describe("bitwise complement", () => {
   it("case 1", () => {

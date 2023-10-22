@@ -14,17 +14,16 @@ const findSubarrays = (nums: number[]): boolean => {
   return false;
 };
 
-describe('2395 - with equal sums', () => {
-  it('case 1', () => {
+describe("2395 - with equal sums", () => {
+  it("case 1", () => {
     expect(findSubarrays([4, 2, 4])).toBe(true);
   });
 
-  it('case 2', () => {
+  it("case 2", () => {
     expect(findSubarrays([1, 2, 3, 4, 5])).toBe(false);
   });
 
-  it('case 3', () => {
+  it("case 3", () => {
     expect(findSubarrays([0, 0, 0])).toBe(true);
   });
-
 });

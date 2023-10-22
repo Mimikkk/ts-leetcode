@@ -1,5 +1,5 @@
-import { TreeNode } from '@shared/structures';
-import { A } from '@shared/modules';
+import { TreeNode } from "@shared/structures";
+import { A } from "@shared/modules";
 import sum = A.N.sum;
 
 const deepestLeavesSum = (root: TreeNode | null): number => {
@@ -19,16 +19,15 @@ const deepestLeavesSum = (root: TreeNode | null): number => {
     level = next;
   }
 
-
   return 0;
 };
 
-describe('deepest leaves sum', () => {
-  it('case 1', () => {
+describe("deepest leaves sum", () => {
+  it("case 1", () => {
     expect(deepestLeavesSum(TreeNode.node([1, 2, 3, 4, 5, null, 6, 7, null, null, null, null, 8]))).toEqual(15);
   });
 
-  it('case 2', () => {
+  it("case 2", () => {
     expect(deepestLeavesSum(TreeNode.node([1]))).toEqual(1);
   });
 });

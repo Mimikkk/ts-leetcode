@@ -19,62 +19,23 @@ const numberOfLines = (widths: number[], s: string): [number, number] => {
 
 describe("number of lines", () => {
   it("case 1", () => {
-    expect(numberOfLines([10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10], "abcdefghijklmnopqrstuvwxyz")).toEqual([3, 60]);
+    expect(
+      numberOfLines(
+        [
+          10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          10,
+        ],
+        "abcdefghijklmnopqrstuvwxyz",
+      ),
+    ).toEqual([3, 60]);
   });
 
   it("case 2", () => {
-    expect(numberOfLines([4,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10], "bbbcccdddaaa")).toEqual([2, 4]);
+    expect(
+      numberOfLines(
+        [4, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+        "bbbcccdddaaa",
+      ),
+    ).toEqual([2, 4]);
   });
 });

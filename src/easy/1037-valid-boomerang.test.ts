@@ -9,10 +9,22 @@ const isBoomerang = (points: [Position, Position, Position]) => !collinear(...po
 
 describe("valid boomerang", () => {
   it("case 1", () => {
-    expect(isBoomerang([[1, 1], [2, 3], [3, 2]])).toBe(true);
+    expect(
+      isBoomerang([
+        [1, 1],
+        [2, 3],
+        [3, 2],
+      ]),
+    ).toBe(true);
   });
 
   it("case 2", () => {
-    expect(isBoomerang([[1, 1], [2, 2], [3, 3]])).toBe(false);
+    expect(
+      isBoomerang([
+        [1, 1],
+        [2, 2],
+        [3, 3],
+      ]),
+    ).toBe(false);
   });
 });

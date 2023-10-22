@@ -1,4 +1,3 @@
 export {};
 
-const defangIPaddr = (address: string) =>
-  address.replaceAll('.', '[.]');
+const defangIPaddr = (address: string) => address.replaceAll(".", "[.]");

@@ -1,6 +1,5 @@
 export {};
 
-
 // const addStrings = (num1: string, num2: string): string => `${+num1 + +num2}`;
 
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
@@ -13,8 +12,8 @@ const addStrings = (num1: string, num2: string): string => {
   let remainder;
   let [carry, i] = [0, 0];
   while (i < s1.length || i < s2.length) {
-    const num1Digit = s1[i] ?+s1[i]:0;
-    const num2Digit = s2[i] ?+s2[i]:0;
+    const num1Digit = s1[i] ? +s1[i] : 0;
+    const num2Digit = s2[i] ? +s2[i] : 0;
     const sum = num1Digit + num2Digit + carry;
 
     [carry, remainder] = divmod(sum, 10);

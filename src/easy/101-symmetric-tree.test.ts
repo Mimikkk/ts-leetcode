@@ -8,7 +8,7 @@ const isSymmetric = (root: TreeNode | null): boolean => {
     const [left, right] = queue.shift()!;
     if (!left && !right) continue;
 
-    if ((!left || !right) || left.val !== right.val) return false;
+    if (!left || !right || left.val !== right.val) return false;
 
     queue.push([left.left, right.right]);
     queue.push([left.right, right.left]);

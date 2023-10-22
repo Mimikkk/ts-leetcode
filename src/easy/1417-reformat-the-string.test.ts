@@ -20,11 +20,7 @@ const reformat = (s: string): string => {
 
   if (Math.abs(letters.length - digits.length) > 1) return "";
 
-  const joint = zip(letters, digits)
-    .reduce(
-      (acc, [letter, digit]) => `${acc}${letter}${digit}`,
-      "",
-    );
+  const joint = zip(letters, digits).reduce((acc, [letter, digit]) => `${acc}${letter}${digit}`, "");
 
   if (letters.length < digits.length) return `${last(digits)}${joint}`;
   if (letters.length > digits.length) return `${joint}${last(letters)}`;

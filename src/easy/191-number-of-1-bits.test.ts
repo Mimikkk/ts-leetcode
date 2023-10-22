@@ -29,5 +29,4 @@ describe("191 - number of 1 bits", () => {
   test("#5", () => {
     expect(hammingWeight(2)).toEqual(1);
   });
-
 });

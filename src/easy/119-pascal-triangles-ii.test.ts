@@ -26,7 +26,6 @@ describe("119 - pascal triangles II", () => {
     expect(getRow(3)).toEqual([1, 3, 3, 1]);
   });
 
-
   it("get fifth row", () => {
     expect(getRow(4)).toEqual([1, 4, 6, 4, 1]);
   });

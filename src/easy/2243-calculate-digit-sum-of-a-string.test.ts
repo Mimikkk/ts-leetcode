@@ -2,9 +2,12 @@ export {};
 
 const digitSum = (s: string, k: number) => {
   while (s.length > k) {
-    let current = '';
+    let current = "";
     for (let i = 0; i < s.length; i += k) {
-      current += s.slice(i, i + k).split('').reduce((a, b) => +a + +b, 0);
+      current += s
+        .slice(i, i + k)
+        .split("")
+        .reduce((a, b) => +a + +b, 0);
     }
     s = current;
   }

@@ -1,7 +1,6 @@
 export {};
 
-const findLUSlength = (a: string, b: string): number =>
-  a === b ?-1:Math.max(a.length, b.length);
+const findLUSlength = (a: string, b: string): number => (a === b ? -1 : Math.max(a.length, b.length));
 
 describe("fin lus", () => {
   it("case 1", () => {
@@ -21,6 +20,6 @@ describe("fin lus", () => {
   });
 
   it("case 4", () => {
-    expect(findLUSlength("aefawfawfawfaw","aefawfeawfwafwaef")).toEqual(17);
+    expect(findLUSlength("aefawfawfawfaw", "aefawfeawfwafwaef")).toEqual(17);
   });
 });

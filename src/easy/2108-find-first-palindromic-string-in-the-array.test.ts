@@ -1,6 +1,5 @@
 export {};
 
-
 const isPalindrome = (word: string) => word.split("").reverse().join("") === word;
 const firstPalindrome = (words: string[]) => words.find(isPalindrome) || "";
 

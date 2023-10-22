@@ -1,7 +1,6 @@
 export {};
 
-const smallestEqual = (nums: number[]) =>
-  nums.findIndex((n, i) => i % 10 === n);
+const smallestEqual = (nums: number[]) => nums.findIndex((n, i) => i % 10 === n);
 
 describe("smallest equal", () => {
   it("should return the smallest index", () => {

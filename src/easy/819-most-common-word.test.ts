@@ -1,19 +1,26 @@
 export {};
 
-const createCounter = (s: string[], banned: string[]) => s.reduce<Record<string, number>>((acc, c) => {
-  if (banned.includes(c)) return acc;
-  acc[c] = acc[c] + 1 || 1;
-  return acc;
-}, {});
+const createCounter = (s: string[], banned: string[]) =>
+  s.reduce<Record<string, number>>((acc, c) => {
+    if (banned.includes(c)) return acc;
+    acc[c] = acc[c] + 1 || 1;
+    return acc;
+  }, {});
 
 const compact = (s: string[]) => s.filter(Boolean);
-const preprocess = (s: string) => compact(s.replace(/[^a-zA-Z]/g, " ").toLowerCase().split(/ +/));
+const preprocess = (s: string) =>
+  compact(
+    s
+      .replace(/[^a-zA-Z]/g, " ")
+      .toLowerCase()
+      .split(/ +/),
+  );
 
 const mostCommonWord = (paragraph: string, banned: string[]): string => {
   const counter = createCounter(preprocess(paragraph), banned);
   const max = Math.max(...Object.values(counter));
 
-  return Object.keys(counter).find(k => counter[k] === max) || "";
+  return Object.keys(counter).find((k) => counter[k] === max) || "";
 };
 
 describe("most common word", () => {

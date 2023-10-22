@@ -1,9 +1,7 @@
 export {};
 
-
 const dayOfTheWeek = (day: number, month: number, year: number): string =>
-  new Date(year, month - 1, day)
-    .toLocaleString("en-US", { weekday:"long" });
+  new Date(year, month - 1, day).toLocaleString("en-US", { weekday: "long" });
 
 describe("day of week", () => {
   it("case 1", () => {

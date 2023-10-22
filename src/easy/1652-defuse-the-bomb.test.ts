@@ -1,5 +1,3 @@
-import { A } from "@shared/modules";
-
 const decrypt = (code: number[], k: number): number[] => {
   if (k === 0) return code.fill(0);
 

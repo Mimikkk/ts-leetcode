@@ -5,7 +5,7 @@ const divisorSubstrings = (num: number, k: number) =>
     if (i + k > digits.length) return acc;
 
     const n = +digits.slice(i, i + k).join("");
-    return !n || num % n !== 0 ?acc:acc + 1;
+    return !n || num % n !== 0 ? acc : acc + 1;
   }, 0);
 
 describe("divisorSubstrings", () => {

@@ -3,8 +3,7 @@ export {};
 const detectCapitalUse = (word: string) => {
   const allCapital = word.toUpperCase() === word;
   const allLower = word.toLowerCase() === word;
-  const firstCapitalOnly = word[0].toUpperCase() === word[0]
-    && word.slice(1).toLowerCase() === word.slice(1);
+  const firstCapitalOnly = word[0].toUpperCase() === word[0] && word.slice(1).toLowerCase() === word.slice(1);
 
   return allCapital || firstCapitalOnly || allLower;
 };

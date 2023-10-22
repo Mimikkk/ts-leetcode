@@ -16,11 +16,8 @@ describe("decode message", () => {
     expect(decodeMessage("cba", "abc")).toEqual("cba");
   });
   it("case 2", () => {
-    expect(
-      decodeMessage(
-        "the quick brown fox jumps over the lazy dog",
-        "vkbs bs t suepuv",
-      ),
-    ).toEqual("this is a secret");
+    expect(decodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv")).toEqual(
+      "this is a secret",
+    );
   });
 });

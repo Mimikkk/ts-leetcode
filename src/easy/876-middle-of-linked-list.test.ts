@@ -11,7 +11,7 @@ const middleNode = (head: ListNode | null): ListNode | null => {
     fast = fast.next.next;
   }
 
-  return fast.next ?slow.next:slow;
+  return fast.next ? slow.next : slow;
 };
 
 describe("middle node", () => {

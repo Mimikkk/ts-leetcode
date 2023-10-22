@@ -1,7 +1,7 @@
 export {};
 
 const lemonadeChange = (bills: number[]): boolean => {
-  const change = { 5:0, 10:0 };
+  const change = { 5: 0, 10: 0 };
 
   return !bills.some((bill) => {
     switch (bill) {

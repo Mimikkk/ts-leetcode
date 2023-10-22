@@ -14,9 +14,9 @@ function findMode(root: TreeNode | null): number[] {
   }
 
   let max = Math.max(...Object.values(occurrences));
-  return Object.entries(occurrences).filter(
-    ([_, count]) => count === max,
-  ).map(([val]) => Number(val));
+  return Object.entries(occurrences)
+    .filter(([_, count]) => count === max)
+    .map(([val]) => Number(val));
 }
 
 describe("src/easy/binary-trees/501-find-mode-in-binary-search-tree.ts", () => {

@@ -1,9 +1,9 @@
 export {};
 
 const rules: Record<string, number> = {
-  type:0,
-  color:1,
-  name:2,
+  type: 0,
+  color: 1,
+  name: 2,
 };
 
 const countMatches = (items: [string, string, string][], ruleKey: string, ruleValue: string) =>
@@ -11,8 +11,16 @@ const countMatches = (items: [string, string, string][], ruleKey: string, ruleVa
 
 describe("count matches", () => {
   it("case 1", () => {
-    expect(countMatches([["phone", "blue", "pixel"], ["computer", "silver", "lenovo"], ["phone", "gold", "iphone"]],
-      "color",
-      "silver")).toEqual(1);
+    expect(
+      countMatches(
+        [
+          ["phone", "blue", "pixel"],
+          ["computer", "silver", "lenovo"],
+          ["phone", "gold", "iphone"],
+        ],
+        "color",
+        "silver",
+      ),
+    ).toEqual(1);
   });
 });

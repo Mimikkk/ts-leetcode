@@ -1,10 +1,10 @@
 export {};
 
-const range = (start: number, end: number) => Array.from({ length:(end - start) + 1 }, (_, i) => i + start);
+const range = (start: number, end: number) => Array.from({ length: end - start + 1 }, (_, i) => i + start);
 const sumZero = (n: number): number[] => {
   const middle = Math.floor(n / 2);
 
-  return range(-middle, middle).filter(x => n % 2 === 1 || x !== 0);
+  return range(-middle, middle).filter((x) => n % 2 === 1 || x !== 0);
 };
 
 describe("sum to zero", () => {

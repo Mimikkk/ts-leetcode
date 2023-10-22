@@ -4,17 +4,16 @@ const isAsCheap = (first: number, second: number) => first <= second;
 const finalPrices = (prices: number[]): number[] => {
   const result = [];
 
-  prices:
-    for (let i = 0; i < prices.length; i++) {
-      for (let j = i + 1; j < prices.length; j++) {
-        if (isAsCheap(prices[j], prices[i])) {
-          result.push(prices[i] - prices[j]);
-          continue prices;
-        }
+  prices: for (let i = 0; i < prices.length; i++) {
+    for (let j = i + 1; j < prices.length; j++) {
+      if (isAsCheap(prices[j], prices[i])) {
+        result.push(prices[i] - prices[j]);
+        continue prices;
       }
-
-      result.push(prices[i]);
     }
+
+    result.push(prices[i]);
+  }
 
   return result;
 };

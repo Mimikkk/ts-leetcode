@@ -1,7 +1,7 @@
-const symbols: Record<string, number> = { I:1, V:5, X:10, L:50, C:100, D:500, M:1000 };
+const symbols: Record<string, number> = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
 
 export const romanToInt = (s: string): number =>
-  [...s].reduce((sum, n, i) => sum + symbols[n] * (symbols[s[i + 1]] > symbols[n] ?-1:1), 0);
+  [...s].reduce((sum, n, i) => sum + symbols[n] * (symbols[s[i + 1]] > symbols[n] ? -1 : 1), 0);
 
 describe("13 - roman to int", () => {
   it("1 - should return 3 when input is III", () => {

@@ -2,7 +2,7 @@ export {};
 
 const minCostToMoveChips = (position: number[]): number => {
   let [odd, even] = [0, 0];
-  for (const p of position) p % 2 ?++odd:++even;
+  for (const p of position) p % 2 ? ++odd : ++even;
   return Math.min(even, odd);
 };
 

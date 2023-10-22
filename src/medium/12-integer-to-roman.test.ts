@@ -5,7 +5,7 @@ const intToRoman = (n: number) => {
   let result = "";
 
   for (let i = 0; n; ++i) {
-    while (n >= values[i]) result += roman[i], n -= values[i];
+    while (n >= values[i]) (result += roman[i]), (n -= values[i]);
   }
 
   return result;

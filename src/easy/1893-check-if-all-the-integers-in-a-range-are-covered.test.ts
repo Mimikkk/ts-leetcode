@@ -3,9 +3,7 @@ import { A } from "@shared/modules";
 export {};
 
 const isCovered = (ranges: [number, number][], left: number, right: number) =>
-  A.N.range(left, right + 1).some((n) =>
-    ranges.some(([l, r]) => l <= n && n <= r),
-  );
+  A.N.range(left, right + 1).some((n) => ranges.some(([l, r]) => l <= n && n <= r));
 
 describe("is coverede", () => {
   it("case 1", () => {

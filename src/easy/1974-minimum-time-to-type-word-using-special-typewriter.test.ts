@@ -8,8 +8,7 @@ const findDistance = ([a, b]: [number, number]) => {
   return Math.min(difference, 26 - difference) + 1;
 };
 
-const minTimeToType = (word: string) =>
-  A.N.sum(A.windows(["a", ...word].map(asCode), 2).map(findDistance));
+const minTimeToType = (word: string) => A.N.sum(A.windows(["a", ...word].map(asCode), 2).map(findDistance));
 
 describe("min time", () => {
   it("case 1", () => {

@@ -30,5 +30,4 @@ describe("141 - linked list cycle", () => {
     head.next.next = new ListNode(3);
     expect(hasCycle(head)).toBe(false);
   });
-
 });

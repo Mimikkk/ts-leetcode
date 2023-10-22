@@ -7,7 +7,7 @@ const longestPalindrome = (s: string): string => {
     let right = i;
     while (right < s.length && s[i] === s[right]) ++right;
     let left = i - 1;
-    while (left >= 0 && right < s.length && s[left] === s[right]) (--left, ++right);
+    while (left >= 0 && right < s.length && s[left] === s[right]) --left, ++right;
 
     let len = right - left - 1;
     if (len > max) [start, max] = [left + 1, len];

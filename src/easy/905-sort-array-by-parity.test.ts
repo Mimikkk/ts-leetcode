@@ -1,7 +1,6 @@
 export {};
 
-const sortArrayByParity = (nums: number[]) =>
-  nums.sort((a, b) => a % 2 - b % 2);
+const sortArrayByParity = (nums: number[]) => nums.sort((a, b) => (a % 2) - (b % 2));
 
 describe("sort array by parity", () => {
   it("should pass", () => {

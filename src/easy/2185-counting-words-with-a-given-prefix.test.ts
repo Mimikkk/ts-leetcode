@@ -9,9 +9,7 @@ describe("is prefix of word", () => {
   });
 
   it("case 2", () => {
-    expect(
-      prefixCount(["this", "problem", "is", "an", "easy", "problem"], "pro"),
-    ).toBe(2);
+    expect(prefixCount(["this", "problem", "is", "an", "easy", "problem"], "pro")).toBe(2);
   });
 
   it("case 3", () => {

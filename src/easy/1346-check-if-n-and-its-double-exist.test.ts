@@ -3,7 +3,7 @@ export {};
 const checkIfExist = (nums: number[]): boolean => {
   const doubles: Record<number, number> = {};
   for (let n of nums) {
-    if (doubles[n * 2] || doubles[n / 2] || n === 0 && doubles[0] === 0) return true;
+    if (doubles[n * 2] || doubles[n / 2] || (n === 0 && doubles[0] === 0)) return true;
     doubles[n] = n;
   }
 

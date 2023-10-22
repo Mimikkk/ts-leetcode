@@ -2,13 +2,10 @@ export {};
 
 const asc = (a: number, b: number) => a - b;
 const sorted = (nums: number[]) => [...nums].sort(asc);
-const count = <T>(items: T[], predicate: (item: T, index: number) => boolean) =>
-  items.filter(predicate).length;
-const unexpected = (expected: number[]) => (next: number, index: number) =>
-  next !== expected[index];
+const count = <T>(items: T[], predicate: (item: T, index: number) => boolean) => items.filter(predicate).length;
+const unexpected = (expected: number[]) => (next: number, index: number) => next !== expected[index];
 
-const heightChecker = (heights: number[]): number =>
-  count(heights, unexpected(sorted(heights)));
+const heightChecker = (heights: number[]): number => count(heights, unexpected(sorted(heights)));
 
 describe("height checker", () => {
   it("case 1", () => {

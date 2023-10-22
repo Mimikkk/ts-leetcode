@@ -10,11 +10,12 @@ const withMa = (s: string) => `${s}ma`;
 const withATimes = (s: string, times: number) => `${s}${"a".repeat(times + 1)}`;
 
 const toGoatLatin = (sentence: string): string =>
-  sentence.split(" ")
-          .map((word) => beginsWithVowel(word) ?word:shiftFirst(word))
-          .map(withMa)
-          .map(withATimes)
-          .join(" ");
+  sentence
+    .split(" ")
+    .map((word) => (beginsWithVowel(word) ? word : shiftFirst(word)))
+    .map(withMa)
+    .map(withATimes)
+    .join(" ");
 
 describe("goat latin", () => {
   it("case 1", () => {

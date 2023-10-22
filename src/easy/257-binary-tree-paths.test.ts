@@ -1,10 +1,6 @@
 import { TreeNode } from "@shared/structures";
 
-const utility = (
-  node: TreeNode | null,
-  path: string,
-  result: string[],
-): string[] => {
+const utility = (node: TreeNode | null, path: string, result: string[]): string[] => {
   if (!node) return result;
 
   if (!node.left && !node.right) {

@@ -1,9 +1,7 @@
-import { S } from "@shared/modules";
-
 export {};
 
 const numDifferentIntegers = (word: string): number =>
-  [...new Set(word.match(/\d+/g)?.map((s) => s.replace(/^0+/, '')) ?? [])].length;
+  [...new Set(word.match(/\d+/g)?.map((s) => s.replace(/^0+/, "")) ?? [])].length;
 
 describe("num different integers", () => {
   it("case 1", () => {

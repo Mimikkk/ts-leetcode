@@ -6,9 +6,7 @@ const minMovesToSeat = (seats: number[], students: number[]): number => {
   seats.sort(A.N.desc);
   students.sort(A.N.desc);
 
-  return A.N.sum(
-    A.zip(seats, students).map(([seat, student]) => Math.abs(student - seat)),
-  );
+  return A.N.sum(A.zip(seats, students).map(([seat, student]) => Math.abs(student - seat)));
 };
 
 describe("min moves to seat", () => {

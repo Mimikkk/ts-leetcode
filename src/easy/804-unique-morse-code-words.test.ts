@@ -26,8 +26,9 @@ const MorseCode = [
   ".--",
   "-..-",
   "-.--",
-  "--.."];
-const morse = (s: string) => [...s].map(c => MorseCode[c.charCodeAt(0) - 97]).join("");
+  "--..",
+];
+const morse = (s: string) => [...s].map((c) => MorseCode[c.charCodeAt(0) - 97]).join("");
 const uniqueMorseRepresentations = (words: string[]): number => [...new Set(words.map(morse))].length;
 
 describe("unique morse code words", () => {

@@ -3,9 +3,10 @@ export {};
 const asc = (a: number, b: number) => a - b;
 
 const targetIndices = (nums: number[], target: number): number[] =>
-  nums.sort(asc)
-      .map((x, i) => x === target ?i:-1)
-      .filter(x => x !== -1);
+  nums
+    .sort(asc)
+    .map((x, i) => (x === target ? i : -1))
+    .filter((x) => x !== -1);
 
 describe("target indices", () => {
   it("case 1", () => {

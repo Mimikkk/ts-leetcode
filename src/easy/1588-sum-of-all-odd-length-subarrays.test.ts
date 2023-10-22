@@ -15,8 +15,7 @@ const subarrays = (arr: number[]): number[][] => {
 
 const add = (a: number, b: number): number => a + b;
 const sum = (arr: number[]) => arr.reduce(add, 0);
-const sumOddLengthSubarrays = (arr: number[]): number =>
-  sum(subarrays(arr).map(sum));
+const sumOddLengthSubarrays = (arr: number[]): number => sum(subarrays(arr).map(sum));
 
 describe("sum odd length arrays", () => {
   it("should return correct result", () => {

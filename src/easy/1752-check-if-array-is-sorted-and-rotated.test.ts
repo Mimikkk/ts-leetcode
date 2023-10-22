@@ -5,7 +5,7 @@ const isSorted = (nums: number[]) => {
     if (nums[i] > nums[i + 1]) return false;
   }
   return true;
-}
+};
 const check = (nums: number[]): boolean => {
   let count = 0;
   while (count !== nums.length) {

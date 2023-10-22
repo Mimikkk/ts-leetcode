@@ -1,5 +1,3 @@
-import { A } from "@shared/modules";
-
 const largestLocal = (grid: number[][], count: number = 2): number[][] => {
   const n = grid.length;
   const m = n - 2;

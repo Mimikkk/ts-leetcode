@@ -21,7 +21,6 @@ const guessNumber = (n: number): number => {
   return -1;
 };
 
-
 describe("guessNumber", () => {
   it("should return the number if it is correct", () => {
     expect(guessNumber(5)).toEqual(3);

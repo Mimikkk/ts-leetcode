@@ -1,7 +1,6 @@
 import { R } from "@shared/modules";
 
-const areOccurrencesEqual = (s: string) =>
-  R.values(R.counter(s)).every((v, _, values) => v === values[0]);
+const areOccurrencesEqual = (s: string) => R.values(R.counter(s)).every((v, _, values) => v === values[0]);
 
 describe("are oc equal", () => {
   it("case 1", () => {

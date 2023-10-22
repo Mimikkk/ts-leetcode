@@ -1,8 +1,8 @@
 export {};
 
 const createCounter = (nums: number[]) => {
-  const counter: Record<number,number> = {};
-  nums.forEach(n => counter[n] = (counter[n] || 0) + 1);
+  const counter: Record<number, number> = {};
+  nums.forEach((n) => (counter[n] = (counter[n] || 0) + 1));
   return counter;
 };
 

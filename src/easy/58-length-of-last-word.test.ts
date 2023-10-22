@@ -14,26 +14,21 @@ describe("58 - length of last word", () => {
     expect(lengthOfLastWord("a")).toEqual(1);
   });
 
-
   it("should return 1", () => {
     expect(lengthOfLastWord("a ")).toEqual(1);
   });
-
 
   it("should return 1", () => {
     expect(lengthOfLastWord(" a")).toEqual(1);
   });
 
-
   it("should return 1", () => {
     expect(lengthOfLastWord(" a ")).toEqual(1);
   });
 
-
   it("should return 1", () => {
     expect(lengthOfLastWord(" a b")).toEqual(1);
   });
-
 
   it("should return 1", () => {
     expect(lengthOfLastWord(" a b ")).toEqual(1);

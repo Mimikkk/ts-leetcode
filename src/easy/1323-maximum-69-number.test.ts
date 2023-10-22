@@ -1,7 +1,6 @@
 export {};
 
-const maximum69Number = (num: number): number =>
-  `${num}`.indexOf("6") === -1 && num || +`${num}`.replace("6", "9");
+const maximum69Number = (num: number): number => (`${num}`.indexOf("6") === -1 && num) || +`${num}`.replace("6", "9");
 
 describe("maximum 69 number", () => {
   it("case 1", () => {

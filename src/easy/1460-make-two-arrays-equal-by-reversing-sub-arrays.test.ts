@@ -22,8 +22,7 @@ module Counter {
 }
 
 const { isEqual, create } = Counter;
-const canBeEqual = (left: number[], right: number[]) =>
-  isEqual(create(left), create(right));
+const canBeEqual = (left: number[], right: number[]) => isEqual(create(left), create(right));
 
 describe("can be equal by reversing", () => {
   it("case 1", () => {

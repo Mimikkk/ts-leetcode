@@ -1,9 +1,7 @@
 export {};
 
 const countElements = (nums: number[]): number =>
-  nums
-    .filter(num => nums.some((n) => n < num))
-    .filter(num => nums.some((n) => n > num)).length;
+  nums.filter((num) => nums.some((n) => n < num)).filter((num) => nums.some((n) => n > num)).length;
 
 describe("count elements", () => {
   it("case 1", () => {

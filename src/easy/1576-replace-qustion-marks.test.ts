@@ -1,10 +1,8 @@
 export {};
 
 const code = (char: string): number => char.charCodeAt(0);
-const nextSafeChar = (char?: string) =>
-  char && char !== "?" ? nextChar(char) : "a";
-const nextChar = (char: string) =>
-  String.fromCharCode((code(char) - code("a") + 1) % 26 + code("a"));
+const nextSafeChar = (char?: string) => (char && char !== "?" ? nextChar(char) : "a");
+const nextChar = (char: string) => String.fromCharCode(((code(char) - code("a") + 1) % 26) + code("a"));
 
 const modifyString = (s: string) => {
   let result = [...s];

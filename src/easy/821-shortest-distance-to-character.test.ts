@@ -1,15 +1,19 @@
 export {};
 
-const range = (start: number, end: number) =>
-  Array.from({ length:end - start }, (_, i) => i + start);
+const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => i + start);
 
 const min = (a: number[]) => Math.min(...a);
 
 const shortestToChar = (s: string, target: string): number[] => {
-  const chars = Object.entries(s).filter(([, char]) => char === target).map(([i]) => +i);
+  const chars = Object.entries(s)
+    .filter(([, char]) => char === target)
+    .map(([i]) => +i);
   const difference = (i: number) => (j: number) => Math.abs(j - i);
 
-  return range(0, s.length).map(difference).map((fn) => chars.map(fn)).map(min);
+  return range(0, s.length)
+    .map(difference)
+    .map((fn) => chars.map(fn))
+    .map(min);
 };
 
 describe("shorest to characters", () => {

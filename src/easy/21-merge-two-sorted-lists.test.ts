@@ -29,7 +29,6 @@ const mergeTwoLists = (l1: ListNode | null, l2: ListNode | null): ListNode | nul
   return head.next;
 };
 
-
 describe("21 - merge two sorted lists", () => {
   it("should merge two empty lists", () => {
     expect(tester([], [])).toEqual([]);

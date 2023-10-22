@@ -2,8 +2,7 @@ export {};
 
 const isPeak = (num: number, i: number, nums: number[]) => num > nums[i + 1] && num > nums[i - 1];
 
-const peakIndexInMountainArray = (nums: number[]): number =>
-  nums.findIndex(isPeak);
+const peakIndexInMountainArray = (nums: number[]): number => nums.findIndex(isPeak);
 
 describe("peak index in mountain array", () => {
   it("case 1", () => {

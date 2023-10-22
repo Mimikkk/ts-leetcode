@@ -25,7 +25,6 @@ const tree2str = (root: TreeNode | null): string => {
   return result.slice(1, -1);
 };
 
-
 describe("tree2str", () => {
   it("returns the string representation of binary tree", () => {
     expect(tree2str(node([1, 2, 3, 4]))).toBe("1(2(4))(3)");

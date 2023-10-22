@@ -2,11 +2,9 @@ import { TreeNode } from "@shared/structures";
 
 const isBalanced = (root: TreeNode | null): boolean => {
   if (root === null) return true;
-  const height = (node: TreeNode | null): number => node ?Math.max(height(node.left), height(node.right)) + 1:0;
+  const height = (node: TreeNode | null): number => (node ? Math.max(height(node.left), height(node.right)) + 1 : 0);
 
-  return Math.abs(height(root.left) - height(root.right)) <= 1
-    && isBalanced(root.left)
-    && isBalanced(root.right);
+  return Math.abs(height(root.left) - height(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
 };
 
 describe("110 - balanced binary tree", () => {

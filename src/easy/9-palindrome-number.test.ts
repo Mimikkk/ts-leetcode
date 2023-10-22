@@ -1,8 +1,6 @@
 export {};
 
-const isPalindrome = (n: number): boolean =>
-  [...`${n}`].join('') == [...`${n}`].reverse().join('');
-
+const isPalindrome = (n: number): boolean => [...`${n}`].join("") == [...`${n}`].reverse().join("");
 
 describe("3 - palindrome number", () => {
   it("1 - 121", () => {

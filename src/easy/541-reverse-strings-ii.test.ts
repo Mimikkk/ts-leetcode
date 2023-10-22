@@ -7,8 +7,7 @@ const reverseArr = (arr: string[], k: number) => {
   return arr;
 };
 
-const reverseStr = (s: string, k: number) =>
-  reverseArr(s.split(""), k).join("");
+const reverseStr = (s: string, k: number) => reverseArr(s.split(""), k).join("");
 
 describe("reverse string ii", () => {
   it("can reverse string", () => {

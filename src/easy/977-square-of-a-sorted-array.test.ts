@@ -4,7 +4,6 @@ const asc = (a: number, b: number) => a - b;
 const square = (a: number) => a * a;
 const sortedSquares = (nums: number[]) => nums.map(square).sort(asc);
 
-
 describe("sorted squares", () => {
   it("case 1", () => {
     expect(sortedSquares([-4, -1, 0, 3, 10])).toEqual([0, 1, 9, 16, 100]);

@@ -1,7 +1,6 @@
 import { A } from "@shared/modules";
 
-const intersection = (nums: number[][]): number[] =>
-  A.sorted(A.intersection(...nums), A.N.asc);
+const intersection = (nums: number[][]): number[] => A.sorted(A.intersection(...nums), A.N.asc);
 
 describe("intersection of arrays", () => {
   it("should return the intersection of two arrays", () => {

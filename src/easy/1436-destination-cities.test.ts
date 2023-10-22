@@ -19,10 +19,22 @@ const destCity = (paths: string[][]): string => {
 
 describe("destination city", () => {
   it("case 1", () => {
-    expect(destCity([["London", "New York"], ["New York", "Lima"], ["Lima", "Sao Paulo"]])).toEqual("Sao Paulo");
+    expect(
+      destCity([
+        ["London", "New York"],
+        ["New York", "Lima"],
+        ["Lima", "Sao Paulo"],
+      ]),
+    ).toEqual("Sao Paulo");
   });
 
   it("case 2", () => {
-    expect(destCity([["B", "C"], ["D", "B"], ["C", "A"]])).toEqual("A");
+    expect(
+      destCity([
+        ["B", "C"],
+        ["D", "B"],
+        ["C", "A"],
+      ]),
+    ).toEqual("A");
   });
 });

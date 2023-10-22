@@ -1,5 +1,4 @@
-import { ListNode } from '@shared/structures';
-
+import { ListNode } from "@shared/structures";
 
 const mergeNodes = (head: ListNode | null): ListNode | null => {
   if (!head) return null;

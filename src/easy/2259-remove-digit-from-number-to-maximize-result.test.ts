@@ -7,17 +7,11 @@ const removeDigit = (number: string, digit: string) => {
     if (number[i] === digit) {
       indexToRemove = i;
 
-      if (
-        i < number.length - 1 &&
-        number.charCodeAt(i) < number.charCodeAt(i + 1)
-      )
-        break;
+      if (i < number.length - 1 && number.charCodeAt(i) < number.charCodeAt(i + 1)) break;
     }
   }
 
-  return (
-    number.substring(0, indexToRemove) + number.substring(indexToRemove + 1)
-  );
+  return number.substring(0, indexToRemove) + number.substring(indexToRemove + 1);
 };
 
 describe("remove digit", () => {

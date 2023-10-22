@@ -10,8 +10,8 @@ const findTheDifference = (s: string, t: string): string => {
   return "";
 };
 
-describe('findTheDifference', () => {
-  it('#1', () => {
-    expect(findTheDifference('abcd', 'abcde')).toEqual('e');
+describe("findTheDifference", () => {
+  it("#1", () => {
+    expect(findTheDifference("abcd", "abcde")).toEqual("e");
   });
 });

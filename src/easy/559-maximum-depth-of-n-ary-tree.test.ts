@@ -3,7 +3,7 @@ import { Node } from "@shared/structures";
 const maxDepthR = (root: Node | null): number => {
   const utility = (node: Node | null, depth: number): number => {
     if (node === null) return depth;
-    return Math.max(depth, ...node.children.map(child => utility(child, depth + 1)));
+    return Math.max(depth, ...node.children.map((child) => utility(child, depth + 1)));
   };
 
   return utility(root, 1);

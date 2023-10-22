@@ -2,9 +2,8 @@ import { TreeNode } from "@shared/structures";
 import node = TreeNode.node;
 
 const getMinimumDifference = (root: TreeNode | null): number => {
-  const utility = (node: TreeNode | null, min: number, max: number): number => node ?
-    Math.min(utility(node.left, min, node.val), utility(node.right, node.val, max)):
-    max - min;
+  const utility = (node: TreeNode | null, min: number, max: number): number =>
+    node ? Math.min(utility(node.left, min, node.val), utility(node.right, node.val, max)) : max - min;
 
   return utility(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
 };

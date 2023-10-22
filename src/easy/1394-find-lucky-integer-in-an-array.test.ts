@@ -1,6 +1,6 @@
 const createCounter = (nums: number[]) => {
   const counter: Record<number, number> = {};
-  nums.forEach(n => counter[n] = (counter[n] || 0) + 1);
+  nums.forEach((n) => (counter[n] = (counter[n] || 0) + 1));
   return counter;
 };
 
@@ -11,7 +11,7 @@ const desc = (a: number, b: number) => b - a;
 const findLucky = (arr: number[]): number => {
   const counter = createCounter(arr);
 
-  return first(uniq(arr.filter(n => n === counter[n])).sort(desc)) ?? -1;
+  return first(uniq(arr.filter((n) => n === counter[n])).sort(desc)) ?? -1;
 };
 
 describe("find lucky", () => {

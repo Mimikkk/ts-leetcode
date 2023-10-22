@@ -1,7 +1,6 @@
 export {};
 
 const mostVisited = (n: number, rounds: number[]): number[] => {
-
   const start = rounds[0];
   const end = rounds[rounds.length - 1];
 

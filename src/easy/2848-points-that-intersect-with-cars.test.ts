@@ -26,8 +26,7 @@ const sum = (nums: number[]) => {
   for (const num of nums) sum += num;
   return sum;
 };
-const numberOfPoints = (nums: [number, number][]): number =>
-  sum(mergeRanges(nums).map(([a, b]) => b - a + 1));
+const numberOfPoints = (nums: [number, number][]): number => sum(mergeRanges(nums).map(([a, b]) => b - a + 1));
 
 describe("has groups size", () => {
   it("case 1", () => {

@@ -2,7 +2,7 @@ const maxScore = (s: string): number => {
   let max = 0;
   let [leftOnes, rightZeros] = [s.split("1").length - 1, 0];
 
-  for (let i = 0; i < s.length-1; i++) {
+  for (let i = 0; i < s.length - 1; i++) {
     if (s[i] === "0") rightZeros++;
     else leftOnes--;
 

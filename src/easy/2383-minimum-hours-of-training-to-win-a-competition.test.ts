@@ -1,10 +1,5 @@
 export {};
-const minNumberOfHours = (
-  initialEnergy: number,
-  initialExperience: number,
-  energy: number[],
-  experience: number[],
-) => {
+const minNumberOfHours = (initialEnergy: number, initialExperience: number, energy: number[], experience: number[]) => {
   let hours = 0;
   let totalEnergy = initialEnergy;
   let totalExp = initialExperience;

@@ -1,16 +1,14 @@
 export {};
 
 const createCounter = (nums: number[]) => {
-  const counter: Record<number,number> = {};
-  nums.forEach(n => counter[n] = (counter[n] || 0) + 1);
+  const counter: Record<number, number> = {};
+  nums.forEach((n) => (counter[n] = (counter[n] || 0) + 1));
   return counter;
 };
 
-const gcd = (divisor: number, dividend: number): number =>
-  divisor ?gcd(dividend % divisor, divisor):dividend;
+const gcd = (divisor: number, dividend: number): number => (divisor ? gcd(dividend % divisor, divisor) : dividend);
 
-const hasGroupsSizeX = (deck: number[]) =>
-  Object.values(createCounter(deck)).reduce(gcd) !== 1;
+const hasGroupsSizeX = (deck: number[]) => Object.values(createCounter(deck)).reduce(gcd) !== 1;
 
 describe("has groups size", () => {
   it("case 1", () => {

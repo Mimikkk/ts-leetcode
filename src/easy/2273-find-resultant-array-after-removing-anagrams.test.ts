@@ -1,6 +1,5 @@
 export {};
-const isAnagram = (a: string, b: string) =>
-  a.split("").sort().join("") === b.split("").sort().join("");
+const isAnagram = (a: string, b: string) => a.split("").sort().join("") === b.split("").sort().join("");
 
 const removeAnagrams = (words: string[]): string[] => {
   let flag = false;
@@ -19,10 +18,7 @@ const removeAnagrams = (words: string[]): string[] => {
 
 describe("remove anagrams", () => {
   it("case 1", () => {
-    expect(removeAnagrams(["code", "doce", "ecod", "frame", "fraem"])).toEqual([
-      "code",
-      "frame",
-    ]);
+    expect(removeAnagrams(["code", "doce", "ecod", "frame", "fraem"])).toEqual(["code", "frame"]);
   });
   it("case 2", () => {
     expect(removeAnagrams(["code", "doce"])).toEqual(["code"]);

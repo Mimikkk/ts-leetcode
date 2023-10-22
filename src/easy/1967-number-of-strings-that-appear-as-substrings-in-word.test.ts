@@ -1,7 +1,6 @@
 export {};
 
-const numOfStrings = (patterns: string[], word: string) =>
-  patterns.filter((pattern) => word.includes(pattern)).length;
+const numOfStrings = (patterns: string[], word: string) => patterns.filter((pattern) => word.includes(pattern)).length;
 
 describe("num of strings", () => {
   it("case 1", () => {

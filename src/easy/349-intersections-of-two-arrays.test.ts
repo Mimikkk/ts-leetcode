@@ -3,7 +3,7 @@ export {};
 const intersection = (nums1: number[], nums2: number[]): number[] => {
   const set = new Set(nums1);
 
-  return [...new Set(nums2.filter(num => set.has(num)))];
+  return [...new Set(nums2.filter((num) => set.has(num)))];
 };
 
 describe("Intersection of Two Arrays", () => {

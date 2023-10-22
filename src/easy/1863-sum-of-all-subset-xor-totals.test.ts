@@ -1,7 +1,6 @@
 export {};
 
-const subsetXORSum = (nums: number[]) =>
-  nums.reduce((a, b) => a | b, 0) * Math.pow(2, nums.length - 1);
+const subsetXORSum = (nums: number[]) => nums.reduce((a, b) => a | b, 0) * Math.pow(2, nums.length - 1);
 
 describe("subset xor sum", () => {
   it("case 1", () => {

@@ -5,8 +5,6 @@ const mostWordsFound = (sentences: string[]): number =>
 
 describe("most words", () => {
   it("should return the most words", () => {
-    expect(mostWordsFound(["this is a test", "this is another test"])).toEqual(
-      4,
-    );
+    expect(mostWordsFound(["this is a test", "this is another test"])).toEqual(4);
   });
 });

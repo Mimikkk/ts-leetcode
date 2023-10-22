@@ -2,7 +2,7 @@ export {};
 
 const merge = (nums1: number[], m: number, nums2: number[], n: number) => {
   let i = m-- + n--;
-  while (n >= 0) nums1[--i] = (nums1[m] > nums2[n]) ?nums1[m--]:nums2[n--];
+  while (n >= 0) nums1[--i] = nums1[m] > nums2[n] ? nums1[m--] : nums2[n--];
 };
 
 describe("88 - merge sorted array", () => {

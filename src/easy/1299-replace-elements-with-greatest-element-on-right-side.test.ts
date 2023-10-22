@@ -5,7 +5,7 @@ const replaceElements = (arr: number[]) => {
   let max = arr[len - 1];
   arr[len - 1] = -1;
 
-  for (let i = len - 2; i >= 0; --i) [arr[i], max] = [max, max < arr[i] ?arr[i]:max];
+  for (let i = len - 2; i >= 0; --i) [arr[i], max] = [max, max < arr[i] ? arr[i] : max];
 
   return arr;
 };

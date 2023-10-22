@@ -1,12 +1,7 @@
 export {};
 
 type Edge = [number, number];
-const validPath = (
-  n: number,
-  edges: Edge[],
-  source: number,
-  destination: number,
-) => {
+const validPath = (n: number, edges: Edge[], source: number, destination: number) => {
   if (!edges.length) return true;
 
   const visited: boolean[] = [];

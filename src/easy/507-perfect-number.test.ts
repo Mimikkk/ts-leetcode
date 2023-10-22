@@ -7,9 +7,9 @@ const checkPerfectNumber = (num: number): boolean => {
 
   let sum = 1;
   for (let i = 2; i <= sqrt; i++) {
-    if (num % i === 0) sum += (i === sqrt) ?i:i + num / i;
+    if (num % i === 0) sum += i === sqrt ? i : i + num / i;
   }
-  return (sum === num);
+  return sum === num;
 };
 
 describe("check perfect number", () => {

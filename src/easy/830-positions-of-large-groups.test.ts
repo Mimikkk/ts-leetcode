@@ -1,11 +1,8 @@
 export {};
 
-const createGroupPairs = () => {
-}
-
+const createGroupPairs = () => {};
 
 const largeGroupPositions = (s: string): [number, number][] => {
-
   let groups: [number, number][] = [];
   let size = 1;
   for (let i = 1; i < s.length; ++i) {

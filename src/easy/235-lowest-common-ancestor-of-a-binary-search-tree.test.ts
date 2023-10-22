@@ -4,7 +4,7 @@ const lowestCommonAncestor = (root: TreeNode | null, p: TreeNode | null, q: Tree
   if (!root || !p || !q) return root;
   let stack = [root];
 
-  while(stack.length) {
+  while (stack.length) {
     const node = stack.pop()!;
 
     if (node.val > p.val && node.val > q.val) stack.push(node.left!);

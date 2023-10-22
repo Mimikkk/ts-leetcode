@@ -6,9 +6,9 @@ const arrayRankTransform = (arr: number[]): number[] => {
   const sorted = [...new Set(arr)].sort(asc);
 
   const map: Record<number, number> = {};
-  sorted.forEach((x, i) => map[x] = i + 1);
+  sorted.forEach((x, i) => (map[x] = i + 1));
 
-  return arr.map(n => map[n]);
+  return arr.map((n) => map[n]);
 };
 
 describe("rank transform of an array", () => {

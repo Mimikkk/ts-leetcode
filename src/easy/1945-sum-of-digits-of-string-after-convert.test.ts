@@ -2,16 +2,14 @@ import { A, N } from "@shared/modules";
 export {};
 
 const encoder = new TextEncoder();
-const transformString = (s: string) =>
-  A.N.sum([...encoder.encode(s)].map((c) => c - 96).map(N.D.sum));
+const transformString = (s: string) => A.N.sum([...encoder.encode(s)].map((c) => c - 96).map(N.D.sum));
 
 const transformNum = (num: number, k: number) => {
   while (--k && num > 9) num = N.D.sum(num);
   return num;
 };
 
-const getLucky = (s: string, k: number) =>
-  transformNum(transformString(s), k);
+const getLucky = (s: string, k: number) => transformNum(transformString(s), k);
 
 describe("get Lucky", () => {
   it("case 1", () => {

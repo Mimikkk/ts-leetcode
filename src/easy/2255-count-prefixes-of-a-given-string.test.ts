@@ -1,7 +1,6 @@
 export {};
 
-const countPrefixes = (words: string[], s: string) =>
-  words.filter((word) => s.startsWith(word)).length;
+const countPrefixes = (words: string[], s: string) => words.filter((word) => s.startsWith(word)).length;
 
 describe("count prefixes", () => {
   it("case 1", () => {

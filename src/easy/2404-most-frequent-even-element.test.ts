@@ -3,12 +3,13 @@ export {};
 const badMostFrequentEven = (numbers: number[]): number => {
   const counters = Object.entries(
     numbers
-      .filter(n => n % 2 === 0)
+      .filter((n) => n % 2 === 0)
       .sort((a, b) => a - b)
       .reduce<Record<string, number>>((counters, n) => {
         counters[n] = (counters[n] ?? 0) + 1;
         return counters;
-      }, {}))
+      }, {}),
+  );
   if (counters.length === 0) return -1;
 
   return +counters.reduce((first, second) => {
@@ -22,7 +23,7 @@ const badMostFrequentEven = (numbers: number[]): number => {
 
 // numer = 2;
 
-const arena = <number[]>Array.from({length: 10e5 + 1}).fill(0);
+const arena = <number[]>Array.from({ length: 10e5 + 1 }).fill(0);
 const mostFrequentEven = (numbers: number[]): number => {
   let first = undefined;
 

@@ -9,17 +9,19 @@ const findIsland = (grid: number[][]): null | [number, number] => {
   return null;
 };
 
-const neighbors = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+const neighbors = [
+  [0, -1],
+  [0, 1],
+  [-1, 0],
+  [1, 0],
+];
 const createNeighbors = ([x, y]: [number, number]) => neighbors.map(([i, j]) => [x + i, y + j]);
 
 const islandPerimeter = (grid: number[][]): number => {
   let start = findIsland(grid);
 
   if (!start) return 0;
-  const visited: boolean[][] = Array
-    .from(Array(grid.length), () => Array(grid[0].length)
-      .fill(false),
-    );
+  const visited: boolean[][] = Array.from(Array(grid.length), () => Array(grid[0].length).fill(false));
 
   const [x, y] = start;
   visited[x][y] = true;
@@ -60,16 +62,12 @@ describe("islandPerimeter", () => {
   });
 
   it("grid should have perimeter 4", () => {
-    const grid = [
-      [1],
-    ];
+    const grid = [[1]];
     expect(islandPerimeter(grid)).toBe(4);
   });
 
   it("grid should have perimeter 0", () => {
-    const grid = [
-      [0],
-    ];
+    const grid = [[0]];
     expect(islandPerimeter(grid)).toBe(0);
   });
 

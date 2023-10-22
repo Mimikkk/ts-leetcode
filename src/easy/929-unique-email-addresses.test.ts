@@ -10,24 +10,20 @@ const makeCommon = (email: string) => {
   return `${removeDots(local)}@${domain}`;
 };
 
-
-const numUniqueEmails = (emails: string[]) =>
-  unique(emails.map(makeCommon)).length;
+const numUniqueEmails = (emails: string[]) => unique(emails.map(makeCommon)).length;
 
 describe("num unique emails", () => {
   it("case 1", () => {
-    expect(numUniqueEmails([
-      "test.email+alex@leetcode.com",
-      "test.e.mail+bob.cathy@leetcode.com",
-      "testemail+david@lee.tcode.com",
-    ])).toEqual(2);
+    expect(
+      numUniqueEmails([
+        "test.email+alex@leetcode.com",
+        "test.e.mail+bob.cathy@leetcode.com",
+        "testemail+david@lee.tcode.com",
+      ]),
+    ).toEqual(2);
   });
 
   it("case 2", () => {
-    expect(numUniqueEmails([
-      "a@leetcode.com",
-      "b@leetcode.com",
-      "c@leetcode.com",
-    ])).toEqual(3);
+    expect(numUniqueEmails(["a@leetcode.com", "b@leetcode.com", "c@leetcode.com"])).toEqual(3);
   });
 });

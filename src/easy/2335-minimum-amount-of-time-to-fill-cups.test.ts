@@ -1,10 +1,7 @@
 export {};
 
 const fillCups = (amount: number[]): number =>
-  Math.max(
-    Math.max(...amount),
-    Math.floor((amount.reduce((a, b) => a + b) + 1) / 2),
-  );
+  Math.max(Math.max(...amount), Math.floor((amount.reduce((a, b) => a + b) + 1) / 2));
 
 describe("fill cups", () => {
   it("case 1", () => {

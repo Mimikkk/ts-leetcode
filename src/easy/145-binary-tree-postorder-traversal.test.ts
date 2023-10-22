@@ -1,8 +1,7 @@
 import { TreeNode } from "@shared/structures";
 
-const postorderTraversal = (root: TreeNode | null): number[] => root ?
-  [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val]:
-  [];
+const postorderTraversal = (root: TreeNode | null): number[] =>
+  root ? [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val] : [];
 
 describe("145 - binary tree inorder traversal", () => {
   it("runs as expected", () => {

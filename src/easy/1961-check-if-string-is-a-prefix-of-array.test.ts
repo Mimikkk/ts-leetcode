@@ -14,8 +14,6 @@ const isPrefixString = (s: string, words: string[]) => {
 
 describe("is prefix string", () => {
   it("case 1", () => {
-    expect(
-      isPrefixString("iloveleetcode", ["i", "love", "leetcode", "apples"]),
-    ).toBe(true);
+    expect(isPrefixString("iloveleetcode", ["i", "love", "leetcode", "apples"])).toBe(true);
   });
 });

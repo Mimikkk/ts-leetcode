@@ -10,7 +10,7 @@ const isAnagram = (s: string, t: string): boolean => {
     map[char] -= 1;
   }
 
-  return Object.values(map).every(val => val === 0);
+  return Object.values(map).every((val) => val === 0);
 };
 
 describe("242-valid-anagram", () => {

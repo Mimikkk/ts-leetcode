@@ -1,8 +1,7 @@
 import { ListNode } from "@shared/structures";
 const { node, array } = ListNode;
 
-const tester = (numbers: number[]): number[] =>
-  array(deleteDuplicates(node(numbers)));
+const tester = (numbers: number[]): number[] => array(deleteDuplicates(node(numbers)));
 
 const deleteDuplicates = (list: ListNode | null): ListNode | null => {
   let current = list;

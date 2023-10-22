@@ -1,10 +1,8 @@
 export {};
 
-const isValidWord = (word: string) =>
-  !!word.match(/^[a-z]+(-[a-z]+)?[.!,]?$|^[.!,]$/);
+const isValidWord = (word: string) => !!word.match(/^[a-z]+(-[a-z]+)?[.!,]?$|^[.!,]$/);
 
-const countValidWords = (sentence: string) =>
-  sentence.split(/ +/).filter(isValidWord).length;
+const countValidWords = (sentence: string) => sentence.split(/ +/).filter(isValidWord).length;
 
 describe("count valid words", () => {
   it("should return the number of valid words", () => {

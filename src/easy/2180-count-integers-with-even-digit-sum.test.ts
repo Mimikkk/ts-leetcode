@@ -12,8 +12,7 @@ const sumDigits = (n: number): number => {
 };
 
 const isEven = (n: number) => n % 2 === 0;
-const countEven = (num: number) =>
-  A.count(A.N.range(1, num).map(sumDigits), isEven);
+const countEven = (num: number) => A.count(A.N.range(1, num).map(sumDigits), isEven);
 
 describe("count even", () => {
   it("should return the number of even numbers", () => {

@@ -2,8 +2,7 @@ export {};
 
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 
-const range = (start: number, end: number) =>
-  Array.from({ length:end - start }, (_, i) => i + start);
+const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => i + start);
 
 const isSelfDividing = (n: number) => {
   let original = n;
@@ -16,8 +15,7 @@ const isSelfDividing = (n: number) => {
   return true;
 };
 
-const selfDividingNumbers = (left: number, right: number) =>
-  range(left, right + 1).filter(isSelfDividing);
+const selfDividingNumbers = (left: number, right: number) => range(left, right + 1).filter(isSelfDividing);
 
 describe("self dividing numbers", () => {
   it("case 1", () => {

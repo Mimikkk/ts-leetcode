@@ -1,16 +1,17 @@
 export {};
 
 const thousandSeparator = (n: number): string =>
-  n.toString()
-   .split("")
-   .reverse()
-   .reduce<string[]>((acc, next, i) => {
-     if (i % 3 === 0 && i !== 0) acc.push(".");
-     acc.push(next);
-     return acc;
-   }, [])
-   .reverse()
-   .join("");
+  n
+    .toString()
+    .split("")
+    .reverse()
+    .reduce<string[]>((acc, next, i) => {
+      if (i % 3 === 0 && i !== 0) acc.push(".");
+      acc.push(next);
+      return acc;
+    }, [])
+    .reverse()
+    .join("");
 
 describe("thousandSeparator", () => {
   test("should return correct result", () => {

@@ -1,7 +1,6 @@
 export {};
 
-const range = (start: number, end: number) =>
-  Array.from({ length:end - start }, (_, i) => i + start);
+const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => i + start);
 
 // TODO - what the - is this?
 const maxSubsequence = (nums: number[], k: number): number[] => {
@@ -34,8 +33,10 @@ const maxSubsequence = (nums: number[], k: number): number[] => {
   }
 
   let headempty = new Array(nums.length).fill(false);
-  range(index, nums.length).forEach((i) => headempty[indices[i]] = true);
-  return range(0, nums.length).filter((i) => headempty[i]).map((i) => nums[i]);
+  range(index, nums.length).forEach((i) => (headempty[indices[i]] = true));
+  return range(0, nums.length)
+    .filter((i) => headempty[i])
+    .map((i) => nums[i]);
 };
 
 describe("subsequence of length k with the largest sum", () => {
@@ -52,7 +53,8 @@ describe("subsequence of length k with the largest sum", () => {
   });
 
   it("case 4", () => {
-    expect(maxSubsequence([63, -74, 61, -17, -55, -59, -10, 2, -60, -65], 9))
-      .toEqual([63, 61, -17, -55, -59, -10, 2, -60, -65]);
+    expect(maxSubsequence([63, -74, 61, -17, -55, -59, -10, 2, -60, -65], 9)).toEqual([
+      63, 61, -17, -55, -59, -10, 2, -60, -65,
+    ]);
   });
 });

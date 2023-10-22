@@ -18,9 +18,7 @@ const isSubset = (available: Counter, counter: Counter) =>
 const isSubsetAdapter = (available: string) => (word: string) =>
   isSubset(createCounter(available), createCounter(word));
 
-const countCharacters = (words: string[], chars: string) =>
-  sum(words.filter(isSubsetAdapter(chars)).map(length));
-
+const countCharacters = (words: string[], chars: string) => sum(words.filter(isSubsetAdapter(chars)).map(length));
 
 describe("create counter", () => {
   it("case 1", () => {

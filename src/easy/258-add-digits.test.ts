@@ -4,9 +4,9 @@ const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 
 const addDigits = (num: number): number => {
   let m = 0;
-  while(num > 9) {
+  while (num > 9) {
     let sum = 0;
-    while(num > 0) {
+    while (num > 0) {
       [num, m] = divmod(num, 10);
       sum += m;
     }

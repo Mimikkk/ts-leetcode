@@ -6,8 +6,7 @@ const slowestKey = (releaseTimes: number[], keysPressed: string): string => {
   for (let i = 0; i < releaseTimes.length; ++i) {
     const duration = releaseTimes[i] - (releaseTimes[i - 1] || 0);
 
-    if ((durations[keysPressed[i]] || 0) < duration)
-      durations[keysPressed[i]] = duration;
+    if ((durations[keysPressed[i]] || 0) < duration) durations[keysPressed[i]] = duration;
   }
 
   let max = R.maxValue(durations);

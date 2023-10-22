@@ -1,10 +1,7 @@
 import { TreeNode } from "@shared/structures";
 import node = TreeNode.node;
 
-const isSameTreeR = (
-  root: TreeNode | null,
-  sub: TreeNode | null,
-): boolean => {
+const isSameTreeR = (root: TreeNode | null, sub: TreeNode | null): boolean => {
   if (!root && !sub) return true;
   if (!root || !sub) return false;
   if (root.val !== sub.val) return false;
@@ -19,11 +16,7 @@ const isSubtreeR = (root: TreeNode | null, sub: TreeNode | null): boolean => {
   return isSubtreeR(root.left, sub) || isSubtreeR(root.right, sub);
 };
 
-
-const isSameTree = (
-  root: TreeNode | null,
-  sub: TreeNode | null,
-) => {
+const isSameTree = (root: TreeNode | null, sub: TreeNode | null) => {
   let stack = [[root, sub]];
 
   while (stack.length) {

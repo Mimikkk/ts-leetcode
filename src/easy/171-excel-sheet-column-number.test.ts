@@ -1,8 +1,7 @@
 export {};
 
 const titleToNumber = (title: string): number =>
-  [...title].map((c) => c.charCodeAt(0) - 64)
-            .reduce((acc, curr) => acc * 26 + curr);
+  [...title].map((c) => c.charCodeAt(0) - 64).reduce((acc, curr) => acc * 26 + curr);
 
 describe("171 - excel number column number", () => {
   it("columnTitle: A", () => {

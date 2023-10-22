@@ -29,6 +29,6 @@ describe("maximum difference between increasing elements", () => {
   });
 
   it("case 5", () => {
-    expect(maximumDifference([44,21,43,5,24])).toBe(22);
+    expect(maximumDifference([44, 21, 43, 5, 24])).toBe(22);
   });
 });

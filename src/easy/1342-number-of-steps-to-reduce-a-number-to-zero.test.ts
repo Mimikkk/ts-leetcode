@@ -1,7 +1,7 @@
 export {};
 
 const numberOfSteps = (n: number, count: number = -1): number => {
-  while ((count++, n > 0)) n & 1 ?n--:n /= 2;
+  while ((count++, n > 0)) n & 1 ? n-- : (n /= 2);
   return count;
 };
 

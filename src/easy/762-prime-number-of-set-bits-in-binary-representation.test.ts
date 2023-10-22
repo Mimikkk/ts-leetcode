@@ -1,7 +1,6 @@
 export {};
 
-const range = (start: number, end: number) =>
-  Array.from({ length:end - start }, (_, i) => i + start);
+const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => i + start);
 
 const countBits = (n: number) => {
   let count = 0;
@@ -11,7 +10,7 @@ const countBits = (n: number) => {
   }
   return count;
 };
-const isPrime = (n: number) => n > 1 ?range(2, Math.sqrt(n) + 1).every(i => n % i):false;
+const isPrime = (n: number) => (n > 1 ? range(2, Math.sqrt(n) + 1).every((i) => n % i) : false);
 
 const countPrimeSetBits = (left: number, right: number): number =>
   range(left, right + 1)

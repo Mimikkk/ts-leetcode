@@ -3,13 +3,12 @@ export {};
 const zip = (a: number[], b: number[]): [number, number][] => a.map((x, i) => [x, b[i]]);
 const prefixsum = (nums: number[]) => {
   let sum = 0;
-  return nums.map(n => sum += n);
+  return nums.map((n) => (sum += n));
 };
 const equal = ([a, b]: [number, number]) => a === b;
 
 const findMiddleIndex = (nums: number[]): number =>
-  zip(prefixsum(nums), prefixsum(nums.reverse()).reverse())
-    .findIndex(equal);
+  zip(prefixsum(nums), prefixsum(nums.reverse()).reverse()).findIndex(equal);
 
 describe("find middle index", () => {
   it("case 1", () => {

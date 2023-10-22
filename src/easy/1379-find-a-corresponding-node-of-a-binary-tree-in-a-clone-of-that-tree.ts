@@ -1,8 +1,10 @@
 import { TreeNode } from "@shared/structures";
 
-const getTargetCopy = (original: TreeNode | null,
-                       cloned: TreeNode | null,
-                       target: TreeNode | null): TreeNode | null => {
+const getTargetCopy = (
+  original: TreeNode | null,
+  cloned: TreeNode | null,
+  target: TreeNode | null,
+): TreeNode | null => {
   if (!original || !cloned) return null;
   if (original === target) return cloned;
 

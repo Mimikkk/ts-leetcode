@@ -1,11 +1,10 @@
 export {};
 
 const isPalindrome = (s: string): boolean => {
-  s = s.toLowerCase().replace(/[^A-Za-z0-9]+/g, '');
+  s = s.toLowerCase().replace(/[^A-Za-z0-9]+/g, "");
 
-  return s.split('').reverse().join('') === s;
+  return s.split("").reverse().join("") === s;
 };
-
 
 describe("125 - valid palindrome", () => {
   it("can be implemented", () => {

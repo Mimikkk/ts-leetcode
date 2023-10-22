@@ -18,7 +18,6 @@ describe("206 - reverse linked list", () => {
     expect(tester([1])).toEqual([1]);
   });
 
-
   it("case 3", () => {
     expect(tester([])).toEqual([]);
   });

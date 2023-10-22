@@ -1,11 +1,8 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from '@shared/structures';
 
 // Recursive
 const isSameTreeR = (p: TreeNode | null, q: TreeNode | null): boolean =>
-  (
-    (!p && !q) ||
-    (!!p && !!q && p.val === q.val && isSameTreeR(p.left, q.left) && isSameTreeR(p.right, q.right))
-  );
+  (!p && !q) || (!!p && !!q && p.val === q.val && isSameTreeR(p.left, q.left) && isSameTreeR(p.right, q.right));
 
 // Iterative
 const isSameTreeI = (p: TreeNode | null, q: TreeNode | null): boolean => {

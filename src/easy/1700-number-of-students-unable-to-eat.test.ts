@@ -1,7 +1,6 @@
 export {};
 
 const countStudents = (students: number[], sandwiches: number[]): number => {
-
   let count = 0;
   while (students.length > count) {
     const student = students.shift()!;

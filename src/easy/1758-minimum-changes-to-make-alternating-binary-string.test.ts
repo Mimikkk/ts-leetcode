@@ -1,6 +1,5 @@
 export {};
 
-
 const minOperations = (s: string) => {
   let chars = ["1", "0"];
 
@@ -11,7 +10,6 @@ const minOperations = (s: string) => {
 
   return Math.min(count, s.length - count);
 };
-
 
 describe("minimum to alternate", () => {
   it("case 1", () => {

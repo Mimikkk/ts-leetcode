@@ -1,11 +1,9 @@
 export {};
 
-const gcd = (x: number, y: number): number => !(y % x) ?x:gcd(y % x, x);
+const gcd = (x: number, y: number): number => (!(y % x) ? x : gcd(y % x, x));
 
 const gcdOfStrings = (str1: string, str2: string): string =>
-  str1 + str2 === str2 + str1
-    ?str1.slice(0, gcd(str1.length, str2.length))
-    :"";
+  str1 + str2 === str2 + str1 ? str1.slice(0, gcd(str1.length, str2.length)) : "";
 
 describe("gcd of strings", () => {
   it("case 1", () => {

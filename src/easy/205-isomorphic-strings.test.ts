@@ -8,7 +8,7 @@ const isIsomorphic = (s: string, t: string): boolean => {
     if (map.has(s[i])) {
       if (map.get(s[i]) !== t[i]) return false;
     } else {
-      if ([...map.values()].some(x => x === t[i])) return false;
+      if ([...map.values()].some((x) => x === t[i])) return false;
       map.set(s[i], t[i]);
     }
   }

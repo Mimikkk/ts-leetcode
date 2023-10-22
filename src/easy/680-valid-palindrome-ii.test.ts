@@ -14,8 +14,7 @@ const validPalindrome = (s: string) => {
   let right = s.length - 1;
 
   while (left < right) {
-    if (s[left] !== s[right])
-      return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
+    if (s[left] !== s[right]) return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
     ++left;
     --right;
   }

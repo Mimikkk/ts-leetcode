@@ -1,7 +1,7 @@
 export {};
 const convert = (s: string, numRows: number): string => {
   if (numRows === 1) return s;
-  const rows = Array(numRows).fill('');
+  const rows = Array(numRows).fill("");
 
   let row = 0;
   let isGoingDown = false;
@@ -11,7 +11,7 @@ const convert = (s: string, numRows: number): string => {
     row += isGoingDown ? 1 : -1;
   }
 
-  return rows.join('');
+  return rows.join("");
 };
 
 describe("zigzag", () => {

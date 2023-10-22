@@ -1,6 +1,6 @@
 export {};
 
-const missingNumber = (nums: number[]) => nums.length * (nums.length + 1) / 2 - nums.reduce((a, b) => a + b);
+const missingNumber = (nums: number[]) => (nums.length * (nums.length + 1)) / 2 - nums.reduce((a, b) => a + b);
 
 describe("268. Missing Number", () => {
   test("#1", () => {

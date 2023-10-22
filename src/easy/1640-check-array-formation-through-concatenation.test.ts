@@ -35,8 +35,6 @@ describe("can form array", () => {
   it("should return false", () => {
     expect(canFormArray([49, 18, 16], [[16, 18, 49]])).toBe(false);
     expect(canFormArray([15, 88], [[88], [15, 91]])).toBe(false);
-    expect(canFormArray([91, 4, 64, 78], [[78], [4, 64], [91, 15]])).toBe(
-      false,
-    );
+    expect(canFormArray([91, 4, 64, 78], [[78], [4, 64], [91, 15]])).toBe(false);
   });
 });

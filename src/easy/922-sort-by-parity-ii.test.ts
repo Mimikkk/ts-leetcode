@@ -1,9 +1,7 @@
 export {};
 
 const sortArrayByParityII = (nums: number[]) =>
-  nums
-    .sort(a => ~-(a & 1))
-    .map((_, i) => nums[(i >> 1) + (i & 1) * (nums.length >> 1)]);
+  nums.sort((a) => ~-(a & 1)).map((_, i) => nums[(i >> 1) + (i & 1) * (nums.length >> 1)]);
 
 describe("sort array by parity ii", () => {
   it("should pass", () => {

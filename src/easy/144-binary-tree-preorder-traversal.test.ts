@@ -1,8 +1,7 @@
 import { TreeNode } from "@shared/structures";
 
-const preorderTraversal = (root: TreeNode | null): number[] => root ?
-  [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)]:
-  [];
+const preorderTraversal = (root: TreeNode | null): number[] =>
+  root ? [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)] : [];
 
 describe("144 - binary tree preorder traversal", () => {
   it("runs as expected", () => {

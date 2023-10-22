@@ -1,8 +1,7 @@
 export {};
 
 const isPrefixOfWord = (sentence: string, searchWord: string): number =>
-  sentence.split(" ")
-          .findIndex((word) => word.startsWith(searchWord)) + 1 || -1;
+  sentence.split(" ").findIndex((word) => word.startsWith(searchWord)) + 1 || -1;
 
 describe("is prefix of word", () => {
   it("case 1", () => {

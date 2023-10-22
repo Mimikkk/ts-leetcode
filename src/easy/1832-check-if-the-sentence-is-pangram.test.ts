@@ -1,7 +1,6 @@
 export {};
 
-const checkIfPangram = (sentence: string) =>
-  new Set(sentence).size === 26;
+const checkIfPangram = (sentence: string) => new Set(sentence).size === 26;
 
 describe("check if pangram", () => {
   it("case 1", () => {

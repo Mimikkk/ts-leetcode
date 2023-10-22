@@ -1,7 +1,7 @@
 export {};
 
 const countOperations = (n1: number, n2: number, count: number = -1): number => {
-  while ((count++, n1 && n2)) n1 >= n2 ?n1 -= n2:n2 -= n1;
+  while ((count++, n1 && n2)) n1 >= n2 ? (n1 -= n2) : (n2 -= n1);
   return count;
 };
 

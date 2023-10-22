@@ -1,26 +1,28 @@
 export {};
 
 const complement: Record<string, string> = {
-  "(":")",
-  "{":"}",
-  "[":"]",
+  "(": ")",
+  "{": "}",
+  "[": "]",
 };
 
 const isValid = (s: string): boolean => {
   const stack: string[] = [];
 
-  return [...s].every(c => {
-    switch (c) {
-      case "(":
-      case "{":
-      case "[":
-        return stack.push(c) > 0;
-      case ")":
-      case "}":
-      case "]":
-        return complement[stack.pop() ?? ""] === c;
-    }
-  }) && stack.length === 0;
+  return (
+    [...s].every((c) => {
+      switch (c) {
+        case "(":
+        case "{":
+        case "[":
+          return stack.push(c) > 0;
+        case ")":
+        case "}":
+        case "]":
+          return complement[stack.pop() ?? ""] === c;
+      }
+    }) && stack.length === 0
+  );
 };
 
 describe("20 - valid parentheses", () => {

@@ -15,7 +15,6 @@ describe("find complement", () => {
     expect(findComplement(1)).toBe(0);
   });
 
-
   it("should pass the fourth test", () => {
     expect(findComplement(2147483647)).toBe(0);
   });

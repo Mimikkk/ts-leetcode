@@ -1,7 +1,6 @@
 export {};
 
-const interpret = (command: string) =>
-  command.replace(/\(al\)/gi, "al").replace(/\(\)/gi, "o");
+const interpret = (command: string) => command.replace(/\(al\)/gi, "al").replace(/\(\)/gi, "o");
 
 describe("goal parser", () => {
   it("case 1", () => {

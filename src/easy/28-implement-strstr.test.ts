@@ -1,13 +1,15 @@
 export {};
 
 const strStr = (haystack: string, needle: string): number =>
-  needle.length ?[...haystack].findIndex((c, i) => {
-    if (c === needle[0]) {
-      let j = 1;
-      while (j < needle.length && i + j < haystack.length && haystack[i + j] === needle[j]) j++;
-      return j === needle.length;
-    }
-  }):0;
+  needle.length
+    ? [...haystack].findIndex((c, i) => {
+        if (c === needle[0]) {
+          let j = 1;
+          while (j < needle.length && i + j < haystack.length && haystack[i + j] === needle[j]) j++;
+          return j === needle.length;
+        }
+      })
+    : 0;
 
 describe("28 - implement strstr", () => {
   it("should pass", () => {

@@ -1,7 +1,6 @@
 export {};
 
-const isSameAfterReversals = (num: number) =>
-  num === 0 || !`${num}`.endsWith("0");
+const isSameAfterReversals = (num: number) => num === 0 || !`${num}`.endsWith("0");
 
 describe("is same after reversed numbers", () => {
   it("should return true", () => {

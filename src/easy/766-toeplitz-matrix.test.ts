@@ -19,17 +19,21 @@ const isToeplitzMatrix = (matrix: number[][]): boolean => {
 
 describe("is toeplitz matrix", () => {
   it("case 1", () => {
-    expect(isToeplitzMatrix([
-      [1, 2, 3, 4],
-      [5, 1, 2, 3],
-      [9, 5, 1, 2],
-    ])).toEqual(true);
+    expect(
+      isToeplitzMatrix([
+        [1, 2, 3, 4],
+        [5, 1, 2, 3],
+        [9, 5, 1, 2],
+      ]),
+    ).toEqual(true);
   });
 
   it("case 2", () => {
-    expect(isToeplitzMatrix([
-      [1, 2],
-      [2, 2],
-    ])).toEqual(false);
+    expect(
+      isToeplitzMatrix([
+        [1, 2],
+        [2, 2],
+      ]),
+    ).toEqual(false);
   });
 });

@@ -5,11 +5,7 @@ export class TreeNode {
   left: Nullable<TreeNode>;
   right: Nullable<TreeNode>;
 
-  constructor(
-    val?: number,
-    left?: Nullable<TreeNode>,
-    right?: Nullable<TreeNode>,
-  ) {
+  constructor(val?: number, left?: Nullable<TreeNode>, right?: Nullable<TreeNode>) {
     this.val = val === undefined ? 0 : val;
     this.left = left === undefined ? null : left;
     this.right = right === undefined ? null : right;

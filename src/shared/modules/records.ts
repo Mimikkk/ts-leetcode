@@ -1,43 +1,27 @@
 import { A } from "./arrays";
 export module R {
-  export const empty = <Key extends KeyType, Value>() =>
-    ({} as Record<Key, Value>);
+  export const empty = <Key extends KeyType, Value>() => ({} as Record<Key, Value>);
 
-  export const isEmpty = <Key extends KeyType, Value>(
-    record: Record<Key, Value>,
-  ): boolean =>
-    record &&
-    Object.keys(record).length === 0 &&
-    Object.getPrototypeOf(record) === Object.prototype;
+  export const isEmpty = <Key extends KeyType, Value>(record: Record<Key, Value>): boolean =>
+    record && Object.keys(record).length === 0 && Object.getPrototypeOf(record) === Object.prototype;
 
-  export const values = <Key extends KeyType, Value>(
-    record: Record<Key, Value>,
-  ): Value[] => Object.values(record);
+  export const values = <Key extends KeyType, Value>(record: Record<Key, Value>): Value[] => Object.values(record);
 
-  const keyify = <Key extends KeyType>(x: Key): Key =>
-    (Number.isNaN(Number(x)) ? x : Number(x)) as Key;
+  const keyify = <Key extends KeyType>(x: Key): Key => (Number.isNaN(Number(x)) ? x : Number(x)) as Key;
 
-  export const keys = <Key extends KeyType, Value>(
-    record: Record<Key, Value>,
-  ): Key[] => Object.keys(record).map(keyify) as Key[];
+  export const keys = <Key extends KeyType, Value>(record: Record<Key, Value>): Key[] =>
+    Object.keys(record).map(keyify) as Key[];
 
-  export const commonKeys = <Key extends KeyType, Value>(
-    ...records: Record<Key, Value>[]
-  ): Key[] => A.unique(records.flatMap(keys)) as Key[];
+  export const commonKeys = <Key extends KeyType, Value>(...records: Record<Key, Value>[]): Key[] =>
+    A.unique(records.flatMap(keys)) as Key[];
 
-  const entrify = <Key extends KeyType, Value>([key, value]: Entry<
-    string,
-    unknown
-  >): Entry<Key, Value> => [keyify(key), value] as Entry<Key, Value>;
+  const entrify = <Key extends KeyType, Value>([key, value]: Entry<string, unknown>): Entry<Key, Value> =>
+    [keyify(key), value] as Entry<Key, Value>;
 
-  export const entries = <Key extends KeyType, Value>(
-    record: Record<Key, Value>,
-  ): Entry<Key, Value>[] =>
+  export const entries = <Key extends KeyType, Value>(record: Record<Key, Value>): Entry<Key, Value>[] =>
     Object.entries(record).map(entrify) as Entry<Key, Value>[];
 
-  export const from = <Key extends KeyType, Value>(
-    entries: Entry<Key, Value>[],
-  ) =>
+  export const from = <Key extends KeyType, Value>(entries: Entry<Key, Value>[]) =>
     entries.reduce<Record<Key, Value>>((record, [key, value]) => {
       record[key] = value;
       return record;
@@ -45,54 +29,34 @@ export module R {
 
   export const find = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
-    fn: (
-      entry: Entry<Key, Value>,
-      index: number,
-      record: Record<Key, Value>,
-      entries: Entry<Key, Value>[],
-    ) => boolean,
+    fn: (entry: Entry<Key, Value>, index: number, record: Record<Key, Value>, entries: Entry<Key, Value>[]) => boolean,
   ): Entry<Key, Value> | undefined =>
-    entries(record).find((entry, index, entries) =>
-      fn(entry, index, record, entries),
-    );
+    entries(record).find((entry, index, entries) => fn(entry, index, record, entries));
 
   export const filter = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: MapFn<Entry<Key, Value>, Key, Value, boolean>,
-  ): Record<Key, Value> =>
-    from(
-      entries(record).filter((entry, index, entries) =>
-        fn(entry, index, record, entries),
-      ),
-    );
+  ): Record<Key, Value> => from(entries(record).filter((entry, index, entries) => fn(entry, index, record, entries)));
 
   export const findKey = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: MapFn<Key, Key, Value, boolean>,
-  ): Key | undefined =>
-    keys(record).find((key, index, keys) => fn(key, index, record, keys));
+  ): Key | undefined => keys(record).find((key, index, keys) => fn(key, index, record, keys));
 
   export const findValue = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: MapFn<Value, Key, Value, boolean>,
-  ): Value | undefined =>
-    values(record).find((value, index, values) =>
-      fn(value, index, record, values),
-    );
+  ): Value | undefined => values(record).find((value, index, values) => fn(value, index, record, values));
 
   export const filterKeys = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: MapFn<Key, Key, Value, boolean>,
-  ): Key[] =>
-    keys(record).filter((key, index, keys) => fn(key, index, record, keys));
+  ): Key[] => keys(record).filter((key, index, keys) => fn(key, index, record, keys));
 
   export const filterValues = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
     fn: MapFn<Value, Key, Value, boolean>,
-  ): Value[] =>
-    values(record).filter((value, index, values) =>
-      fn(value, index, record, values),
-    );
+  ): Value[] => values(record).filter((value, index, values) => fn(value, index, record, values));
 
   export const filterByKey = <Key extends KeyType, Value>(
     record: Record<Key, Value>,
@@ -100,9 +64,7 @@ export module R {
   ): Record<Key, Value> => {
     const keys = R.keys(record);
 
-    return filter(record, ([key], index, record) =>
-      fn(key, index, record, keys),
-    );
+    return filter(record, ([key], index, record) => fn(key, index, record, keys));
   };
 
   export const filterByValue = <Key extends KeyType, Value>(
@@ -111,9 +73,7 @@ export module R {
   ): Record<Key, Value> => {
     const values = R.values(record);
 
-    return filter(record, ([, value], index, record) =>
-      fn(value, index, record, values),
-    );
+    return filter(record, ([, value], index, record) => fn(value, index, record, values));
   };
 
   export const counter = <Key extends KeyType>(
@@ -128,17 +88,13 @@ export module R {
     return counter;
   };
 
-  export const maxValue = <Key extends KeyType>(record: Record<Key, number>) =>
-    Math.max(...values(record));
+  export const maxValue = <Key extends KeyType>(record: Record<Key, number>) => Math.max(...values(record));
 
-  export const minValue = <Key extends KeyType>(record: Record<Key, number>) =>
-    Math.min(...values(record));
+  export const minValue = <Key extends KeyType>(record: Record<Key, number>) => Math.min(...values(record));
 
-  export const maxKey = <Value>(record: Record<number, Value>) =>
-    Math.max(...keys(record));
+  export const maxKey = <Value>(record: Record<number, Value>) => Math.max(...keys(record));
 
-  export const minKey = <Value>(record: Record<number, Value>) =>
-    Math.min(...keys(record));
+  export const minKey = <Value>(record: Record<number, Value>) => Math.min(...keys(record));
 
   export const countValues = <Key extends KeyType, Value>(
     record: Record<Key, Value>,

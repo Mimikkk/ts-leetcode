@@ -9,7 +9,7 @@ const nextGreaterElement = (nums1: number[], nums2: number[]): number[] => {
     stack.push(num);
   }
 
-  return nums1.map(num => record[num] || -1);
+  return nums1.map((num) => record[num] || -1);
 };
 
 describe("next greater element", () => {

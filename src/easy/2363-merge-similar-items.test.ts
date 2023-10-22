@@ -1,4 +1,3 @@
-
 type item = [number, number];
 module Item {
   export const byValue = ([a]: item, [b]: item) => a - b;
