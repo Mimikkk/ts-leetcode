@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { exercise } from "@shared/utilities/exercise";
 export {};
 
 const differenceAt = (a: string, i: number): number => a.charCodeAt(i + 1) - a.charCodeAt(i);
@@ -19,18 +19,17 @@ const oddString = (words: string[]): string => {
   return "";
 };
 
-describe("2451", () =>
-  it.each([
-    {
-      words: ["adc", "wzy", "abc"],
-      output: "abc",
-    },
-    {
-      words: ["aaa", "bob", "ccc", "ddd"],
-      output: "bob",
-    },
-    {
-      words: ["bob", "aaa", "ccc", "ddd"],
-      output: "bob",
-    },
-  ])("$words -> $output", ({ words, output }) => expect(oddString(words)).toBe(output)));
+exercise<string[], string>(2451, oddString, [
+  {
+    input: [["adc", "wzy", "abc"]],
+    output: "abc",
+  },
+  {
+    input: [["aaa", "bob", "ccc", "ddd"]],
+    output: "bob",
+  },
+  {
+    input: [["bob", "aaa", "ccc", "ddd"]],
+    output: "bob",
+  },
+]);
