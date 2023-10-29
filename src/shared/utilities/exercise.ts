@@ -11,7 +11,15 @@ export const exercise = <T, Y = any, Fn extends (...args: T[]) => Y = (...args: 
 
   return describe(problemNo, () =>
     it.each(
-      cases.map((c) => (Array.isArray(c) ? { input: c[0], output: c[1] } : c)).map((c, i) => ({ ...c, index: i + 1 })),
-    )("case $index: $input -> $output", ({ input, output }) => expect(fn(...input)).toEqual(output)),
+      cases
+        .map((c) => (Array.isArray(c) ? { input: c[0], output: c[1] } : c))
+        .map(({ input, output }, index) => ({
+          input,
+          output,
+          index: index + 1,
+          inputRepr: JSON.stringify(input),
+          outputRepr: JSON.stringify(output),
+        })),
+    )("case $index: $inputRepr -> $outputRepr", ({ input, output }) => expect(fn(...input)).toEqual(output)),
   );
 };
