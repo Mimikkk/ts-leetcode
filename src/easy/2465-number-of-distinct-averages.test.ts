@@ -39,7 +39,7 @@ const distinctAverages = (nums: number[]): number => {
   return averages.size;
 };
 
-exercise(2465, distinctAverages, [
+exercise(distinctAverages, [
   [[[1, 0, 2, 0, 0, 1]], 2],
   [[[1, 0]], 1],
 ]);

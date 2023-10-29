@@ -19,7 +19,7 @@ const oddString = (words: string[]): string => {
   return "";
 };
 
-exercise<string[], string>(2451, oddString, [
+exercise(oddString, [
   {
     input: [["adc", "wzy", "abc"]],
     output: "abc",

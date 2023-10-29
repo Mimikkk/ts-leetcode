@@ -15,7 +15,7 @@ const averageValue = (nums: number[]): number => {
   return count ? Math.floor(values / count) : 0;
 };
 
-exercise(2455, averageValue, [
+exercise(averageValue, [
   {
     input: [[1, 3, 6, 10, 12, 15]],
     output: 9,

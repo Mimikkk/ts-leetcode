@@ -24,7 +24,7 @@ const applyOperations = (nums: number[]): number[] => {
   return result;
 };
 
-exercise(2460, applyOperations, [
+exercise(applyOperations, [
   {
     input: [[1, 0, 2, 0, 0, 1]],
     output: [1, 2, 1, 0, 0, 0],

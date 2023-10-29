@@ -8,7 +8,7 @@ const convertTemperature = (celsius: number): [number, number] => [
   celsiusToFahrenheit(celsius),
 ];
 
-exercise(2469, convertTemperature, [
+exercise(convertTemperature, [
   [[36.5], [309.65, 97.7]],
   [[122.11], [395.26, 251.798]],
 ]);

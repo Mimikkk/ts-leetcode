@@ -15,7 +15,7 @@ const unequalTriplets = (nums: number[]): number => {
   return count;
 };
 
-exercise(2469, unequalTriplets, [
+exercise(unequalTriplets, [
   [[[4, 4, 2, 4, 3]], 3],
   [[[1, 1, 1, 1, 1]], 0],
 ]);
