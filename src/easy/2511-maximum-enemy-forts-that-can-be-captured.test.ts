@@ -13,33 +13,40 @@ import { exercise } from "@shared/utilities/exercise";
 //
 // Return the maximum number of enemy forts that can be captured. In case it is impossible to move your army, or you do not have any fort under your command, return 0.
 const enum FortType {
-  Empty = -1,
-  Enemy = 0,
+  Empty = 0,
+  Enemy = -1,
   Friendly = 1,
 }
 
 const captureForts = (forts: number[]): number => {
   let max = 0;
-  let i = 0;
 
-  here: while (i < forts.length - 1) {
-    console.log(i);
-
-    if (forts[i] !== FortType.Friendly) ++i;
-
-    for (let j = i + 1; j < forts.length; ++j) {
-      if (forts[j] === FortType.Enemy) {
-        const value = j - i - 1;
-        if (value > max) max = value;
-        break;
-      } else if (forts[j] === FortType.Friendly) {
-        i = j;
-        continue here;
+  const traverse = () => {
+    let i = 0;
+    outer: while (i < forts.length - 1) {
+      if (forts[i] !== FortType.Friendly) {
+        ++i;
+        continue;
       }
-    }
 
-    ++i;
-  }
+      for (let j = i + 1; j < forts.length; ++j) {
+        if (forts[j] === FortType.Empty) continue;
+
+        if (forts[j] === FortType.Enemy) {
+          const value = j - i - 1;
+          if (value > max) max = value;
+        }
+
+        i = j;
+        continue outer;
+      }
+
+      ++i;
+    }
+  };
+  traverse();
+  forts.reverse();
+  traverse();
 
   return max;
 };
@@ -47,4 +54,8 @@ const captureForts = (forts: number[]): number => {
 exercise(captureForts, [
   [[[1, 0, 0, -1, 0, 0, 0, 0, 1]], 4],
   [[[0, 0, 1, -1]], 0],
+  [[[1, 0, 0, 0, 1, 0, 0, -1]], 2],
+  [[[1, 0, 0, 1, 0, 0, 0, -1]], 3],
+  [[[-1, 0, 0, 0, 1, 0, 0, 1]], 3],
+  [[[-1, 0, 0, 1, 0, 0, 0, 1]], 2],
 ]);

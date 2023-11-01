@@ -17,9 +17,8 @@ export const exercise = <T, Y = any, Fn extends (...args: T[]) => Y = (...args: 
           input,
           output,
           index: index + 1,
-          inputRepr: JSON.stringify(input),
-          outputRepr: JSON.stringify(output),
+          repr: `${JSON.stringify(input)} -> ${JSON.stringify(output)}`,
         })),
-    )("case $index: $inputRepr -> $outputRepr", ({ input, output }) => expect(fn(...input)).toEqual(output)),
+    )("case $index: $repr", ({ input, output }) => expect(fn(...input)).toEqual(output)),
   );
 };
