@@ -1,22 +1,39 @@
 import { exercise } from "@shared/utilities/exercise";
 
-const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
-const digitSum = (num: number): number => {
-  let sum = 0;
+const getCommon = (nums1: number[], nums2: number[]): number => {
+  let i = 0;
+  let j = 0;
 
-  let digit;
-  let div = num;
-  while (div > 0) {
-    [div, digit] = divmod(div, 10);
-    sum += digit;
+  while (i < nums1.length && j < nums2.length) {
+    if (nums1[i] === nums2[j]) return nums1[i];
+
+    if (nums1[i] < nums2[j]) ++i;
+    else ++j;
   }
 
-  return sum;
+  return -1;
 };
-const sum = (nums: number[]): number => nums.reduce((a, b) => a + b, 0);
-const differenceOfSum = (nums: number[]): number => Math.abs(sum(nums) - sum(nums.map(digitSum)));
 
-exercise(differenceOfSum, [
-  [[[1, 15, 6, 3]], 9],
-  [[[1, 2, 3, 4]], 0],
+exercise(getCommon, [
+  [
+    [
+      [1, 2, 3],
+      [2, 4],
+    ],
+    2,
+  ],
+  [
+    [
+      [1, 2, 3],
+      [5, 4],
+    ],
+    -1,
+  ],
+  [
+    [
+      [1, 2, 3, 6],
+      [2, 3, 4, 5],
+    ],
+    2,
+  ],
 ]);
