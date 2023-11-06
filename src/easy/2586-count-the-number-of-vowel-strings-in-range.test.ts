@@ -1,6 +1,8 @@
 import { exercise } from "@shared/utilities/exercise";
 
 const vowelStrings = (words: string[], left: number, right: number): number => {
+  console.log(words.splice(left, right));
+
   return 0;
 };
 
