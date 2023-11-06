@@ -13,7 +13,6 @@ const findTheArrayConcVal = (nums: number[]): number => {
   return result;
 };
 
-//@ts-ignore
 exercise(findTheArrayConcVal, [
   [[[7, 52, 2, 4]], 596],
   [[[5, 14, 13, 8, 12]], 673],

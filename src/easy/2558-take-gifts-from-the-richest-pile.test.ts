@@ -30,5 +30,4 @@ const pickGifts = (gifts: number[], k: number): number => {
   return sum(gifts);
 };
 
-//@ts-ignore
 exercise(pickGifts, [[[[25, 64, 9, 4, 100], 4], 29]]);

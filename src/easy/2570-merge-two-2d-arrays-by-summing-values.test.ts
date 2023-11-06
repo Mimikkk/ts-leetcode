@@ -14,7 +14,6 @@ const mergeArrays = (nums1: [number, number][], nums2: [number, number][]): [num
   return [...map.entries()].sort(([a], [b]) => a - b);
 };
 
-//@ts-expect-error
 exercise(mergeArrays, [
   [
     [

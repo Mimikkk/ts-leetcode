@@ -20,7 +20,6 @@ const closetTarget = (words: string[], target: string, startIndex: number): numb
   return a ? (b && a > b ? b : a) : -1;
 };
 
-//@ts-expect-error
 exercise(closetTarget, [
   [[["hello", "i", "am", "leetcode", "hello"], "hello", 1], 1],
   [[["i", "am", "leetcode"], "leetcode", 0], 1],
