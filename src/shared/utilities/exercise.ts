@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-const problemRe = /src\\(easy|medium|hard)\\(\d+)-/;
+const problemRe = /src[\\/](easy|medium|hard)[\\/](\d+)-/;
 export const exercise = <T, Y = any, Fn extends (...args: T[]) => Y = (...args: T[]) => Y>(
   fn: Fn,
   cases: ({ input: T[]; output: Y } | [T[], Y])[],
