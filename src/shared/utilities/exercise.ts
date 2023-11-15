@@ -20,6 +20,8 @@ export const exercise = <Fn extends (...args: any) => any>(
           index: index + 1,
           repr: `${JSON.stringify(input)} -> ${JSON.stringify(output)}`,
         })),
-    )("case $index: $repr", ({ input, output }) => expect(fn(...(input as Iterable<unknown>))).toEqual(output)),
+    )("case $index: $repr", async ({ input, output }) =>
+      expect(await fn(...(input as Iterable<unknown>))).toEqual(await output),
+    ),
   );
 };
