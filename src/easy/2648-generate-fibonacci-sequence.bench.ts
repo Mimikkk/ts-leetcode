@@ -1,4 +1,7 @@
+import { setFlagsFromString } from "v8";
 import { bench } from "vitest";
+import { Analyser } from "@shared/utilities/analyser";
+import { runInNewContext } from "vm";
 
 function* fibGenerator1(): Generator<number, any, number> {
   let current = 0;
@@ -22,26 +25,43 @@ function* fibGenerator2(): Generator<number, any, number> {
   }
 }
 
-describe("abc", () => {
-  const gen1 = fibGenerator1();
-  const gen2 = fibGenerator2();
+describe("swapping variables with descructuring", async () => {
+  let analyser = Analyser.create({ format: "B" });
+  setFlagsFromString("--expose-gc");
 
-  bench(
-    "1",
-    () => {
-      for (let i = 0; i < 100000; ++i) gen1.next().value;
-    },
-    {
-      teardown: (a, mode) => {
-        if (mode === "run") {
-          memoryUsage();
-          console.log(a, "here");
-        }
-      },
-    },
-  );
+  const gc = runInNewContext("gc");
 
-  bench("2", () => {
-    for (let i = 0; i < 100000; ++i) gen2.next().value;
-  });
+  // bench(
+  //   "1",
+  //   () => {
+  //     const gen = fibGenerator1();
+  //     for (let i = 0; i < 1e5; ++i) gen.next().value;
+  //   },
+  //   {
+  //     ...Analyser.inject(analyser, "classic-swap"),
+  //     iterations: 1,
+  //     warmupIterations: 100,
+  //   },
+  // );
+
+  // bench(
+  //   "2",
+  //   () => {
+  //     const gen = fibGenerator2();
+  //     for (let i = 0; i < 1e5; ++i) gen.next().value;
+  //   },
+  //   {
+  //     ...Analyser.inject(analyser, "destruct-swap"),
+  //     iterations: 1,
+  //     warmupIterations: 100,
+  //   },
+  // );
+  const gen = fibGenerator2();
+  await gc();
+
+  analyser.start();
+  // for (let i = 0; i < 1e5; ++i) gen.next().value;
+  analyser.end();
+
+  console.log(analyser.difference);
 });

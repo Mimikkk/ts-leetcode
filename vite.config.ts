@@ -7,4 +7,7 @@ export default defineConfig({
     include: ["src/**/*.test.ts"],
     alias: { "@shared": "src/shared" },
   },
+  resolve: {
+    alias: { "@shared": "src/shared" },
+  },
 });
