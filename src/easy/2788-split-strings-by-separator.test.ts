@@ -22,7 +22,6 @@ const splitWordsBySeparator = (words: string[], separator: string): string[] => 
     if (0 !== end) splat.unshift(words[k].substring(0, end));
   }
 
-  console.log(X);
   return splat;
 };
 
