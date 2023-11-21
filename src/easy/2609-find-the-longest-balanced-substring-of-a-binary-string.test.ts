@@ -1,35 +1,23 @@
 import { exercise } from "@shared/utilities/exercise";
 
 const findTheLongestBalancedSubstring = (s: string): number => {
-  let left = 0;
+  const n = s.length;
+
   let longest = 0;
+  for (let i = 0; i < n; ++i) {
+    if (s[i] === "1") continue;
+    for (let j = i + 1; j < n; ++j) {
+      if (s[j] === "0") continue;
+      let zeroCount = 0;
+      let oneCount = 0;
 
-  outer: while (left < s.length - 1) {
-    if (s[left] === "1") {
-      ++left;
-      continue;
+      let k = i - 1;
+      while (s[++k] === "0") ++zeroCount;
+      while (s[k++] === "1") if (++oneCount === zeroCount) break;
+
+      const length = oneCount * 2;
+      if (length > longest) longest = length;
     }
-
-    let k = left + 1;
-
-    let ones = 0;
-    let zeros = 0;
-    while (k < s.length - 1) {
-      console.log(left, s[k], k, zeros, ones);
-      const isOne = s[k] === "1";
-
-      if (isOne) {
-        if (zeros) {
-          ++ones;
-          left = k + 1;
-          continue outer;
-        } else ++ones;
-      } else ++zeros;
-
-      ++k;
-    }
-
-    ++left;
   }
 
   return longest;
@@ -40,4 +28,5 @@ exercise(findTheLongestBalancedSubstring, [
   [["01000111000"], 6],
   [["00111"], 4],
   [["111"], 0],
+  [["001"], 2],
 ]);
