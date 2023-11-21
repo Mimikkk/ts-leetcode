@@ -12,7 +12,7 @@ const isGood = (nums: number[]): boolean => {
     values.set(nums[i], (values.get(nums[i]) ?? 0) + 1);
   }
 
-  for (const n of values.keys()) if (n < 1 || n > n) return false;
+  for (const key of values.keys()) if (key < 1 || key > n) return false;
   return values.get(n) === 2;
 };
 
