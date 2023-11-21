@@ -1,15 +1,24 @@
 import { exercise } from "@shared/utilities/exercise";
 
+const createCounter = (word: string): Map<string, number> => {
+  const counter = new Map<string, number>();
+  for (const letter of word) counter.set(letter, (counter.get(letter) || 0) + 1);
+  return counter;
+};
+
+const countNonZeros = (counter: Map<string, number>): number => {
+  let count = 0;
+  for (const value of new Set(counter.values())) if (value !== 0) ++count;
+  return count;
+};
+
 const equalFrequency = (word: string): boolean => {
-  for (let i = 0; i < word.length; i++) {
-    const counter = new Map<string, number>();
+  const counter = createCounter(word);
 
-    for (let j = 0; j < word.length; j++) {
-      if (j == i) continue;
-      counter.set(word[j], (counter.get(word[j]) || 0) + 1);
-    }
-
-    if (new Set(counter.values()).size == 1) return true;
+  for (const [key, value] of counter) {
+    counter.set(key, value - 1);
+    if (countNonZeros(counter) == 1) return true;
+    counter.set(key, value);
   }
 
   return false;
