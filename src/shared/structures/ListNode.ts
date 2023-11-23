@@ -10,7 +10,7 @@ export class ListNode {
   }
 }
 
-export module ListNode {
+export namespace ListNode {
   export const node = (numbers: number[]): Nullable<ListNode> => {
     let head: ListNode | null = null;
     let tail: ListNode | null = null;
@@ -25,7 +25,8 @@ export module ListNode {
     }
     return head;
   };
-  export const array = (node: Nullable<ListNode>) => {
+
+  export const array = (node: Nullable<ListNode>): number[] => {
     const result: number[] = [];
 
     while (node) {

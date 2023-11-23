@@ -66,4 +66,69 @@ export module TreeNode {
 
   export const postorder = (root: Nullable<TreeNode>): number[] =>
     root ? [...postorder(root.left), ...postorder(root.right), root.val] : [];
+
+  export namespace iterative {
+    export const preorder = (root: Nullable<TreeNode>): number[] => {
+      const result: number[] = [];
+      const stack: Nullable<TreeNode>[] = [root];
+
+      while (stack.length) {
+        const { left, right, val } = stack.pop()!;
+
+        result.push(val);
+        if (right) stack.push(right);
+        if (left) stack.push(left);
+      }
+
+      return result;
+    };
+
+    export const inorder = (root: Nullable<TreeNode>): number[] => {
+      if (!root) return [];
+      const result: number[] = [];
+      const stack: Nullable<TreeNode>[] = [];
+
+      let node: Nullable<TreeNode> = root;
+      while (node || stack.length) {
+        if (node) {
+          stack.push(node);
+          node = node.left;
+          continue;
+        }
+
+        node = stack.pop()!;
+        result.push(node.val);
+        node = node.right;
+      }
+
+      return result;
+    };
+
+    export const postorder = (root: Nullable<TreeNode>): number[] => {
+      if (!root) return [];
+      const result: number[] = [];
+      const stack: Nullable<TreeNode>[] = [];
+
+      let prev: Nullable<TreeNode> = null;
+
+      while (root || stack.length) {
+        if (root) {
+          stack.push(root);
+          root = root.left;
+          continue;
+        }
+
+        const node = stack[stack.length - 1]!;
+        if (node.right && prev !== node.right) {
+          root = node.right;
+          continue;
+        }
+
+        result.push(node.val);
+        prev = stack.pop()!;
+      }
+
+      return result;
+    };
+  }
 }
