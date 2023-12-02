@@ -4,21 +4,21 @@ import { bench } from "vitest";
 import { funcTrebuchet, iterTrebuchet } from "./1-trebuchet-easy.test";
 
 describe("Benchmark - Easy Trebuchet - Test", () => {
-  bench("TestCase - Functional", () => {
+  bench("Functional", () => {
     funcTrebuchet(TestCase);
   });
 
-  bench("TestCase - Iterative", () => {
+  bench("Iterative", () => {
     iterTrebuchet(TestCase);
   });
 });
 
 describe("Benchmark - Easy Trebuchet - User", () => {
-  bench("UserCase - Functional", () => {
+  bench("Functional", () => {
     funcTrebuchet(UserCase);
   });
 
-  bench("UserCase - Iterative", () => {
+  bench("Iterative", () => {
     iterTrebuchet(UserCase);
   });
 });
