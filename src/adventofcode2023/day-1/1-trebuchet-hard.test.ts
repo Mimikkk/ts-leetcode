@@ -2,7 +2,7 @@ import { exercise } from "@shared/utilities/exercise";
 import TestCase from "./1-trebuchet-hard.case.txt?raw";
 import UserCase from "./1-trebuchet.user.txt?raw";
 
-namespace IterDigit {
+export namespace IterDigit {
   const digits = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] as const;
   const DigitCount = 10;
   const is = (c: string): boolean => c >= "0" && c <= "9";
@@ -40,8 +40,7 @@ namespace IterDigit {
     return undefined!;
   };
 }
-
-const iterTrebuchet = (input: string): number => {
+export const iterTrebuchet = (input: string): number => {
   const lines = input.split("\r\n").filter((Line) => Line);
 
   let result = 0;
@@ -51,7 +50,7 @@ const iterTrebuchet = (input: string): number => {
   return result;
 };
 
-namespace FuncDigit {
+export namespace FuncDigit {
   const DigitStrings = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] as const;
   const Characters = "0123456789";
 
@@ -77,7 +76,7 @@ namespace FuncDigit {
     return undefined!;
   };
 }
-const funcTrebuchet = (input: string): number =>
+export const funcTrebuchet = (input: string): number =>
   input
     .split("\r\n")
     .filter((Line) => Line)
@@ -87,7 +86,6 @@ exercise(iterTrebuchet, [
   [[TestCase], 281],
   [[UserCase], 54875],
 ]);
-
 exercise(funcTrebuchet, [
   [[TestCase], 281],
   [[UserCase], 54875],
