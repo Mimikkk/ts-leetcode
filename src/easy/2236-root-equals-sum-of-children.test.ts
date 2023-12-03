@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const checkTree = (root: TreeNode | null): boolean => {
   if (!root) return false;

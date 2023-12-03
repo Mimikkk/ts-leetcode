@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const closetTarget = (words: string[], target: string, startIndex: number): number => {
   if (words[startIndex] === target) return 0;

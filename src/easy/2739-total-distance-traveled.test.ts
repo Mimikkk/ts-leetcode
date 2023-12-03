@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const distanceTraveled = (mainTank: number, additionalTank: number): number => {
   let distance = 0;

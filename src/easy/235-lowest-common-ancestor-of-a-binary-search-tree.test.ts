@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const lowestCommonAncestor = (root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null => {
   if (!root || !p || !q) return root;

@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 import node = TreeNode.node;
 
 const kthSmallest = (root: TreeNode | null, k: number): number => {

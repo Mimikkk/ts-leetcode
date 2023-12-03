@@ -1,4 +1,5 @@
-import { A, R } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
+import { R } from "@shared/modules/records.js";
 
 const specialArray = (nums: number[]): number => {
   const counter = R.counter<number>(nums);

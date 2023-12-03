@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const invertTree = (root: TreeNode | null): TreeNode | null => {
   let stack = [root];

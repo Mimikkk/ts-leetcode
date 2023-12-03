@@ -1,4 +1,4 @@
-import { A } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
 
 const sortEvenOdd = (nums: number[]): number[] => {
   const even = nums.filter((_, i) => i % 2 === 0).sort(A.N.asc);

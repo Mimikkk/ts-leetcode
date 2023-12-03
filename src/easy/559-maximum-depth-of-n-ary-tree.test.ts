@@ -1,4 +1,4 @@
-import { Node } from "@shared/structures";
+import { Node } from "@shared/structures/Node.js";
 
 const maxDepthR = (root: Node | null): number => {
   const utility = (node: Node | null, depth: number): number => {

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const chunk = <T>(arr: T[], size: number): T[][] => {
   const chunks: T[][] = [];

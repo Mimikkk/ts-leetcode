@@ -1,4 +1,5 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
+
 import TestCase from "./2-cube-conundrum.case.txt?raw";
 import UserCase from "./2-cube-conundrum.user.txt?raw";
 

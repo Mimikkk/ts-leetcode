@@ -1,7 +1,7 @@
 import TestCase from "./1-trebuchet-hard.case.txt?raw";
 import UserCase from "./1-trebuchet.user.txt?raw";
 import { bench } from "vitest";
-import { funcTrebuchet, iterTrebuchet } from "./1-trebuchet-hard.test";
+import { funcTrebuchet, iterTrebuchet } from "./1-trebuchet-hard.test.js";
 
 describe("Benchmark - Hard Trebuchet - Test", () => {
   bench("Functional", () => {

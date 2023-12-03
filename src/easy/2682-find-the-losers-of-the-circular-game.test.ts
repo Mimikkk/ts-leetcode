@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const circularGameLosers = (n: number, k: number): number[] => {
   const losers = new Set(Array.from({ length: n }, (_, index) => index));

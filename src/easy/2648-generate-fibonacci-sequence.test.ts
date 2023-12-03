@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 function* fibGenerator(): Generator<number, any, number> {
   let current = 0;

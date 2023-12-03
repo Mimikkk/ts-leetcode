@@ -1,4 +1,4 @@
-import { A } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
 export {};
 
 const countPairs = (nums: number[], k: number) =>

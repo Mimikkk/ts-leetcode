@@ -1,4 +1,5 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
+
 export {};
 
 const averageValue = (nums: number[]): number => {

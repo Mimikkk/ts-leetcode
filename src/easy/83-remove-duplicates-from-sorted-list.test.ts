@@ -1,4 +1,4 @@
-import { ListNode } from "@shared/structures";
+import { ListNode } from "@shared/structures/ListNode.js";
 const { node, array } = ListNode;
 
 const tester = (numbers: number[]): number[] => array(deleteDuplicates(node(numbers)));

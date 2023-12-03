@@ -1,5 +1,6 @@
-import { exercise } from "@shared/utilities/exercise";
-import { TreeNode } from "@shared/structures";
+import { exercise } from "@shared/utilities/exercise.js";
+
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const averageOfSubtree = (root: TreeNode | null): number => {
   if (!root) return 0;

@@ -1,4 +1,5 @@
-import { A, N } from "@shared/modules";
+import { N } from "@shared/modules/numbers.js";
+import { A } from "@shared/modules/arrays.js";
 export {};
 
 const encoder = new TextEncoder();

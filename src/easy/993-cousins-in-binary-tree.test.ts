@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 import node = TreeNode.node;
 
 const isCousins = (root: TreeNode | null, x: number, y: number): boolean => {

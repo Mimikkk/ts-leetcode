@@ -1,4 +1,4 @@
-import { ListNode } from "@shared/structures";
+import { ListNode } from "@shared/structures/ListNode.js";
 
 const deleteNode = (root: ListNode | null): void => {
   if (!root || !root.next) return;

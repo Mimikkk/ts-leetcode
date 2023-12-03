@@ -1,4 +1,5 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
+
 export {};
 
 const differenceAt = (a: string, i: number): number => a.charCodeAt(i + 1) - a.charCodeAt(i);

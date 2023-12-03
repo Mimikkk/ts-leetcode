@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const crawlingSum = (nums: number[]): number[] => {
   const sums = Array(nums.length);

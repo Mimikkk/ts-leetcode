@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const splitWordsBySeparator = (words: string[], separator: string): string[] => {
   const splat: string[] = [];

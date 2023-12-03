@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const sortedArrayToBST = (nums: number[]): TreeNode | null => {
   if (!nums.length) return null;

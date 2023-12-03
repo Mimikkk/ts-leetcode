@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const isBalanced = (root: TreeNode | null): boolean => {
   if (root === null) return true;

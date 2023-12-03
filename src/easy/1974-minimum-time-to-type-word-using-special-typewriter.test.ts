@@ -1,4 +1,4 @@
-import { A } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
 
 const asCode = (char: string) => char.charCodeAt(0);
 

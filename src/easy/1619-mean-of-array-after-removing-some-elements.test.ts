@@ -1,4 +1,4 @@
-import { A } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
 
 const trim = (arr: number[], percent: number) => {
   const len = arr.length;

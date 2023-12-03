@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const distinctDifferenceArray = (nums: number[]): number[] => {
   const result = Array(nums.length);

@@ -1,4 +1,4 @@
-import { A } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
 
 const intersection = (nums: number[][]): number[] => A.sorted(A.intersection(...nums), A.N.asc);
 

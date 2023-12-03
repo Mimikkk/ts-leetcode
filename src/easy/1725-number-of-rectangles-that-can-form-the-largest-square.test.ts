@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 type Rectangle = [number, number];
 const maxSquare = (rectangle: Rectangle) => Math.min(...rectangle);

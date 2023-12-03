@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const isGood = (nums: number[]): boolean => {
   const n = new Set(nums).size;

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const similarPairs = (words: string[]): number => {
   let sets = words.map((x) => new Set(x)).map((x) => [...x].sort().join(""));

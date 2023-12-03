@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 import node = TreeNode.node;
 
 const mergeTrees = (root1: TreeNode | null, root2: TreeNode | null): TreeNode | null => {

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const map = (arr: number[], fn: (n: number, i: number) => number): number[] => {
   let result: number[] = [];

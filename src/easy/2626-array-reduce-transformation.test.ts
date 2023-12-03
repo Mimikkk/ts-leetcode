@@ -1,4 +1,5 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
+
 type Fn = (accum: number, curr: number) => number;
 
 const reduce = (nums: number[], fn: Fn, init: number): number => {

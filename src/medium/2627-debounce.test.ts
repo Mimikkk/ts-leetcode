@@ -1,4 +1,5 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
+
 import { sleep } from "../easy/2621-sleep.test";
 
 const debounce = <Fn extends (...args: any) => void>(fn: Fn, timeMs: number): Fn => {

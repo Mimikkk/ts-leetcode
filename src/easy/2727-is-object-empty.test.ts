@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
 type Object = Record<string, JSONValue> | JSONValue[];

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const findMinimumOperations = (s1: string, s2: string, s3: string): number => {
   let commonLength = 0;

@@ -1,4 +1,4 @@
-import { ListNode } from "@shared/structures";
+import { ListNode } from "@shared/structures/ListNode.js";
 const { array, node } = ListNode;
 
 const tester = (l1: number[], l2: number[]): number[] => array(mergeTwoLists(node(l1), node(l2)));

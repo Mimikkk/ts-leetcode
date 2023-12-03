@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 const mostFrequent = (nums: number[], key: number) => {
   const frequencies = R.counter(nums, (n, i, nums) => nums[i - 1] === key);

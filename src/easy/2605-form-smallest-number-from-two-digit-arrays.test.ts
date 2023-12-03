@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const minNumber = (nums1: number[], nums2: number[]): number => {
   nums1.sort((a, b) => a - b);

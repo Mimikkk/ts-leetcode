@@ -1,4 +1,5 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
+
 import TestCase from "./1-trebuchet-hard.case.txt?raw";
 import UserCase from "./1-trebuchet.user.txt?raw";
 

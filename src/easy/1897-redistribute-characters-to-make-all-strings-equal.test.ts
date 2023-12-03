@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 const makeEqual = (words: string[]) => R.values(R.counter(words.join(""))).every((v) => v % words.length === 0);
 

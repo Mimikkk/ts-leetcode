@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 const divideArray = (nums: number[]) => R.values(R.counter(nums)).every((value) => value % 2 === 0);
 

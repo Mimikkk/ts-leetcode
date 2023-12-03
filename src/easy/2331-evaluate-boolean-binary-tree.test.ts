@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const evaluateTree = (root: TreeNode | null): boolean => {
   switch (root?.val) {

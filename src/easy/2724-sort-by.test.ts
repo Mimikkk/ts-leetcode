@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
 type Fn<T extends JSONValue> = (value: T) => number;

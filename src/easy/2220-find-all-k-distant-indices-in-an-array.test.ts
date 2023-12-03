@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 const findKDistantIndices = (nums: number[], key: number, k: number) => {
   let indices = R.keys(R.filterByValue<number, number>(nums, (n) => n === key));

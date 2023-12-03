@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const sumOfLeftLeaves = (root: TreeNode | null): number => {
   if (!root) return 0;

@@ -1,4 +1,4 @@
-import { Analyser } from "@shared/utilities/analyser";
+import { Analyser } from "@shared/utilities/analyser.js";
 import { setFlagsFromString } from "v8";
 
 export namespace Swap {

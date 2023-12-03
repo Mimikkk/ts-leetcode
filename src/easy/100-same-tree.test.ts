@@ -1,4 +1,4 @@
-import { TreeNode } from '@shared/structures';
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 // Recursive
 const isSameTreeR = (p: TreeNode | null, q: TreeNode | null): boolean =>

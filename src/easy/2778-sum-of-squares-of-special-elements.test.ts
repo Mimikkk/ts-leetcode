@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const sumOfSquares = (nums: number[]): number => {
   const n = nums.length;

@@ -1,4 +1,4 @@
-import { ListNode } from "@shared/structures";
+import { ListNode } from "@shared/structures/ListNode.js";
 
 const getIntersectionNode = (l1: ListNode | null, l2: ListNode | null): ListNode | null => {
   if (!l1 || !l2) return null;

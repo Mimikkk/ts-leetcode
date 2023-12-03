@@ -1,5 +1,6 @@
-import { exercise } from "@shared/utilities/exercise";
-import { ListNode } from "@shared/structures";
+import { exercise } from "@shared/utilities/exercise.js";
+
+import { ListNode } from "@shared/structures/ListNode.js";
 
 const gcd = (a: number, b: number): number => {
   while (b) {

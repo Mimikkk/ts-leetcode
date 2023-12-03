@@ -1,11 +1,12 @@
-/// <reference types="vitest" />
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config.js";
 
 export default defineConfig({
   test: {
     globals: true,
     include: ["src/**/*.test.ts"],
-    alias: { "@shared": "src/shared" },
+    alias: {
+      "@shared": new URL("./src/shared", import.meta.url).pathname,
+    },
   },
   resolve: {
     alias: { "@shared": "src/shared" },

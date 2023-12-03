@@ -1,4 +1,4 @@
-import { ListNode } from "@shared/structures";
+import { ListNode } from "@shared/structures/ListNode.js";
 
 const hasCycle = (head: ListNode | null): boolean => {
   if (!head) return false;

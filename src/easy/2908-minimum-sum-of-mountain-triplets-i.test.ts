@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const minimumSum = (nums: number[]): number => {
   let sum: number | undefined;

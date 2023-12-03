@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 const areOccurrencesEqual = (s: string) => R.values(R.counter(s)).every((v, _, values) => v === values[0]);
 

@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const inorderTraversal = (root: TreeNode | null): number[] =>
   root ? [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)] : [];

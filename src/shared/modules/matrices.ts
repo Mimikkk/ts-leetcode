@@ -1,4 +1,4 @@
-import { A } from "./arrays";
+import { A } from "./arrays.js";
 
 export module M {
   export const create = <T>(m: number, n: number, fn: (i: number, j: number) => T): T[][] =>

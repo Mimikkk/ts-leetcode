@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const garbageCollection = (garbage: string[], travel: number[]): number => {};
 

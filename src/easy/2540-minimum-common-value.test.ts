@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const getCommon = (nums1: number[], nums2: number[]): number => {
   let i = 0;

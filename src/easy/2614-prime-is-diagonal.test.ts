@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const memo = <T, Y>(fn: (n: T) => Y) => {
   const cache = new Map<T, Y>();

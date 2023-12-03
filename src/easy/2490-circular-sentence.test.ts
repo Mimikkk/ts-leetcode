@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const isCircularSentence = (sentence: string): boolean => {
   const words = sentence.split(" ");

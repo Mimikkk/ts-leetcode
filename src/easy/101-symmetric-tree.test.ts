@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const isSymmetric = (root: TreeNode | null): boolean => {
   if (!root) return true;
@@ -63,4 +63,3 @@ describe("101 - symetric tree", () => {
     expect(isSymmetric(root)).toBe(true);
   });
 });
-

@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 type Color = "R" | "G" | "B";
 type Position = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;

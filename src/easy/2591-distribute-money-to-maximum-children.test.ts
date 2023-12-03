@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const distMoney = (money: number, children: number): number => {
   if (money < children) return -1;

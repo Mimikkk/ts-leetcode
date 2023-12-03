@@ -1,4 +1,4 @@
-import { ListNode } from "@shared/structures";
+import { ListNode } from "@shared/structures/ListNode.js";
 import node = ListNode.node;
 
 const middleNode = (head: ListNode | null): ListNode | null => {

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 let divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 let digits = (n: number): number[] => {

@@ -1,4 +1,4 @@
-import { A } from "@shared/modules";
+import { A } from "@shared/modules/arrays.js";
 
 type Point = [number, number];
 const distance = ([x1, y1]: Point, [x2, y2]: Point) => Math.hypot(x1 - x2, y1 - y2);

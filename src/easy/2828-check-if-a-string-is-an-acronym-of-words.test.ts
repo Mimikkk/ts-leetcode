@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const isAcronym = (words: string[], s: string): boolean => {
   if (words.length !== s.length) return false;

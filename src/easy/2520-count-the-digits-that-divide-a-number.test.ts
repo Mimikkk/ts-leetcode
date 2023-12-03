@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 const countDigits = (num: number): number => {

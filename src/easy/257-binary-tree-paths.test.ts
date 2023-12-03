@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const utility = (node: TreeNode | null, path: string, result: string[]): string[] => {
   if (!node) return result;

@@ -1,5 +1,5 @@
 export {};
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const countNodes = (root: TreeNode | null): number => {
   let count = 0;

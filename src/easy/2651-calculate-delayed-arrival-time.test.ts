@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const findDelayedArrivalTime = (arrivalTime: number, delayedTime: number): number => (arrivalTime + delayedTime) % 24;
 

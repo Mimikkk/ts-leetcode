@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures";
+import { TreeNode } from "@shared/structures/TreeNode.js";
 
 const maxDepth = (root: TreeNode | null): number =>
   root ? Math.max(maxDepth(root.left), maxDepth(root.right)) + 1 : 0;
@@ -29,4 +29,3 @@ describe("104 - maximum depth of binary tree", () => {
     expect(maxDepth(root)).toEqual(2);
   });
 });
-

@@ -1,5 +1,5 @@
-import { TreeNode } from "@shared/structures";
-import { A } from "@shared/modules";
+import { TreeNode } from "@shared/structures/TreeNode.js";
+import { A } from "@shared/modules/arrays.js";
 import sum = A.N.sum;
 
 const deepestLeavesSum = (root: TreeNode | null): number => {

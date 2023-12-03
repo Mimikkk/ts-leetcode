@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const lexicallySmaller = (a: string, b: string): string => (a < b ? a : b);
 const makeSmallestPalindrome = (s: string): string => {

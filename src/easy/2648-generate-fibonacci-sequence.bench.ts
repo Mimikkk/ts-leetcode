@@ -1,6 +1,6 @@
 import { setFlagsFromString } from "v8";
 import { bench } from "vitest";
-import { Analyser } from "@shared/utilities/analyser";
+import { Analyser } from "@shared/utilities/analyser.js";
 import { runInNewContext } from "vm";
 
 function* fibGenerator1(): Generator<number, any, number> {

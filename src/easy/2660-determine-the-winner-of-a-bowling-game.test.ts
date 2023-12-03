@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const enum MatchResult {
   Draw = 0,
@@ -28,8 +28,8 @@ const isWinner = (player1: number[], player2: number[]): MatchResult => {
   return firstScore === secondScore
     ? MatchResult.Draw
     : firstScore > secondScore
-    ? MatchResult.First
-    : MatchResult.Second;
+      ? MatchResult.First
+      : MatchResult.Second;
 };
 
 exercise(isWinner, [

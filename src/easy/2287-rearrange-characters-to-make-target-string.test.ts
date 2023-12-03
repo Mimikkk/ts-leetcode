@@ -1,4 +1,4 @@
-import { R } from "@shared/modules";
+import { R } from "@shared/modules/records.js";
 
 const rearrangeCharacters = (s: string, target: string) => {
   const leftover = R.counter(s);

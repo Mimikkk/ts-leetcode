@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise";
+import { exercise } from "@shared/utilities/exercise.js";
 
 const removeTrailingZeros = (num: string): string => {
   let i = num.length - 1;

@@ -1,4 +1,4 @@
-import { N as Num } from "./numbers";
+import { N as Num } from "./numbers.js";
 export module A {
   export const first = <T, Y = undefined>(arr: T[], or?: Y): T | Y => (arr[0] === undefined ? or : arr[0])!;
 
