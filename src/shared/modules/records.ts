@@ -1,6 +1,7 @@
-import { A } from "./arrays";
+import { A } from "./arrays.js";
+
 export module R {
-  export const empty = <Key extends KeyType, Value>() => ({} as Record<Key, Value>);
+  export const empty = <Key extends KeyType, Value>() => ({}) as Record<Key, Value>;
 
   export const isEmpty = <Key extends KeyType, Value>(record: Record<Key, Value>): boolean =>
     record && Object.keys(record).length === 0 && Object.getPrototypeOf(record) === Object.prototype;

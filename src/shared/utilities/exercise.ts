@@ -18,7 +18,7 @@ export const exercise = <Fn extends (...args: any) => any>(
           input,
           output,
           index: index + 1,
-          repr: `${JSON.stringify(input)} -> ${JSON.stringify(output)}`,
+          repr: `${JSON.stringify(input)} -> ${JSON.stringify(output)}`.substring(0, 500),
         })),
     )("case $index: $repr", async ({ input, output }) =>
       expect(await fn(...(input as Iterable<unknown>))).toEqual(await output),
