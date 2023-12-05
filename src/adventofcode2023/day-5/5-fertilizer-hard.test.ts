@@ -12,7 +12,7 @@ export const iterFertilizer = (input: string): number => {
   for (const map of maps) {
     const next: [number, number][] = [];
 
-    inner: for (const [start, end] of ranges) {
+    ranges: for (const [start, end] of ranges) {
       for (const [destination, source, range] of map) {
         if (!(start < source + range && source < start + end)) continue;
         const max = Math.max(start, source);
@@ -22,7 +22,7 @@ export const iterFertilizer = (input: string): number => {
         if (max > start || max + min < start + end)
           ranges.push([start, max - start], [max + min, start + end - max - min]);
 
-        continue inner;
+        continue ranges;
       }
 
       next.push([start, end]);
