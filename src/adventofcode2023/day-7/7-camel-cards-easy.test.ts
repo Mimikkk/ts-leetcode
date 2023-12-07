@@ -2,9 +2,8 @@ import { exercise } from "@shared/utilities/exercise.js";
 import TestCase from "./7-camel-cards.case.txt?raw";
 import UserCase from "./7-camel-cards.user.txt?raw";
 
-const cards = "AKQJT98765432";
-
 namespace Hand {
+  const cards = "AKQJT98765432";
   type Hand = { cards: string; values: Record<string, number> };
 
   const rank = (hand: Hand): number => {
