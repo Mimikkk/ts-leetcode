@@ -1,5 +1,5 @@
 import { exercise } from "@shared/utilities/exercise.js";
-import TestCase from "./8-haunted-wasteland.case.txt?raw";
+import TestCase from "./8-haunted-wasteland.easy-case.txt?raw";
 import UserCase from "./8-haunted-wasteland.user.txt?raw";
 
 const enum Direction {
@@ -26,9 +26,8 @@ const uglyassWasteland = (input: string): number => {
     let [directions, pathways] = parse(input), i = -1, count = 0, current = "AAA";
     ;
     current = (++count, pathways.get(current)![directions[(i = (i + 1) % directions.length)]])
-  ) {
+  )
     if (current === "ZZZ") return count;
-  }
 };
 const wasteland = (input: string): number => {
   const [directions, pathways] = parse(input);
