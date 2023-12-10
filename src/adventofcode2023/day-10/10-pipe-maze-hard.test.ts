@@ -181,16 +181,12 @@ const maze = (input: string): number => {
   map[start[0]][start[1]] = Tile.infer(start, map);
 
   const path: Position[] = [];
-
   Maze.searchDepth(map, start, ({ position }) => path.push(position));
 
+  const add = ([x1, y1]: Position, [x2, y2]: Position): number => x1 * y2 - x2 * y1;
   let area = 0;
-  for (let i = 0, it = path.length; i < it; ++i) {
-    const [x1, y1] = path[i];
-    const [x2, y2] = path[(i + 1) % it];
-
-    area += x1 * y2 - x2 * y1;
-  }
+  for (let i = 1, it = path.length; i < it; ++i) area += add(path[i - 1], path[i]);
+  area += add(path[path.length - 1], path[0]);
 
   area = Math.abs(area) >> 1;
 
