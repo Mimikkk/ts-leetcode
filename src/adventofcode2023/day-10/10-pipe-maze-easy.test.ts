@@ -3,6 +3,7 @@ import ComplexTestCase from "./10-pipe-maze.easy-complex-case.txt?raw";
 import SimpleTestCase from "./10-pipe-maze.easy-simple-case.txt?raw";
 import UserCase from "./10-pipe-maze.user.txt?raw";
 
+type Position = [number, number];
 type Maze = Tile[][] & { n: number; m: number };
 namespace Maze {
   export const parse = (input: string): Maze => {
@@ -27,9 +28,65 @@ namespace Maze {
 
     throw Error("Invalid map: no start found");
   };
+
+  interface SearchResult {
+    position: Position;
+    directions: Direction[];
+    depth: number;
+  }
+
+  export const searchDepth = (map: Maze, start: Position, fn: (result: SearchResult) => void): void => {
+    const [x, y] = start;
+    const queue: [Position, Direction[], number][] = [[start, Tile.directions[map[x][y]], 0]];
+
+    const visits = createMatrix(map.n, map.m, false);
+    visits[x][y] = true;
+
+    while (queue.length) {
+      let [position, directions, depth] = queue.pop()!;
+
+      const [i, j] = position;
+      if (visits[i][j]) continue;
+      visits[i][j] = true;
+      fn({ position, directions, depth });
+
+      for (const [x, y] of directions) {
+        const xi = i + x;
+        const yj = j + y;
+
+        if (visits[xi][yj]) continue;
+
+        queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
+      }
+    }
+  };
+
+  export const searchBreadth = (map: Maze, start: Position, fn: (result: SearchResult) => void): void => {
+    const [x, y] = start;
+    const queue: [Position, Direction[], number][] = [[start, Tile.directions[map[x][y]], 0]];
+
+    const visits = createMatrix(map.n, map.m, false);
+    visits[x][y] = true;
+
+    while (queue.length) {
+      const [position, directions, depth] = queue.shift()!;
+      const [i, j] = position;
+
+      fn({ position, directions, depth });
+
+      for (const [x, y] of directions) {
+        const xi = x + i;
+        const yj = y + j;
+
+        if (visits[xi][yj]) continue;
+        visits[xi][yj] = true;
+
+        queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
+      }
+    }
+  };
 }
 
-type Position = [number, number];
 type Direction = Position;
 namespace Direction {
   export const up: Direction = [-1, 0];
@@ -39,10 +96,10 @@ namespace Direction {
 }
 
 namespace Position {
-  export const up = ([i, j]: Position, map: Maze): Tile => map[i - 1][j] ?? Tile.Ground;
-  export const down = ([i, j]: Position, map: Maze): Tile => map[i + 1][j] ?? Tile.Ground;
-  export const left = ([i, j]: Position, map: Maze): Tile => map[i]?.[j - 1] ?? Tile.Ground;
-  export const right = ([i, j]: Position, map: Maze): Tile => map[i]?.[j + 1] ?? Tile.Ground;
+  export const up = ([i, j]: Position, map: Maze): Tile => map[i - 1]?.[j] ?? Tile.Ground;
+  export const down = ([i, j]: Position, map: Maze): Tile => map[i + 1]?.[j] ?? Tile.Ground;
+  export const left = ([i, j]: Position, map: Maze): Tile => map[i][j - 1] ?? Tile.Ground;
+  export const right = ([i, j]: Position, map: Maze): Tile => map[i][j + 1] ?? Tile.Ground;
 
   export const canUp = (position: Position, map: Maze): boolean => {
     const tile = up(position, map);
@@ -64,7 +121,6 @@ namespace Position {
 
     return tile === Tile.HorizontalPipe || tile === Tile.TopRightCorner || tile === Tile.BottomRightCorner;
   };
-  export const hash = ([i, j]: Position): number => i * 1e8 + j;
 }
 
 enum Tile {
@@ -82,9 +138,9 @@ namespace Tile {
   export const directions: Record<Tile, Direction[]> = {
     [Tile.VerticalPipe]: [Direction.up, Direction.down],
     [Tile.HorizontalPipe]: [Direction.left, Direction.right],
-    [Tile.BottomLeftCorner]: [Direction.up, Direction.right],
+    [Tile.BottomLeftCorner]: [Direction.right, Direction.up],
     [Tile.BottomRightCorner]: [Direction.up, Direction.left],
-    [Tile.TopLeftCorner]: [Direction.down, Direction.right],
+    [Tile.TopLeftCorner]: [Direction.right, Direction.down],
     [Tile.TopRightCorner]: [Direction.down, Direction.left],
     [Tile.Ground]: [],
     [Tile.Start]: [],
@@ -111,45 +167,21 @@ namespace Tile {
   };
 }
 
+const createMatrix = <T>(n: number, m: number, value: T): T[][] =>
+  Array(n)
+    .fill(undefined)
+    .map(() => Array(m).fill(value));
+
 const maze = (input: string): number => {
   const map = Maze.parse(input);
 
   const start = Maze.findStart(map);
-  const startTile = Tile.infer(start, map);
-
-  const queue: [Position, Direction[], number][] = [[start, Tile.directions[startTile], 0]];
-  const visited = new Set<number>();
-  visited.add(Position.hash(start));
-
-  const { n, m } = map;
-  const depths = Array(n)
-    .fill(undefined)
-    .map(() => Array(m).fill(Infinity));
-
-  while (queue.length) {
-    let [position, directions, depth] = queue.shift()!;
-
-    const [i, j] = position;
-    if (depths[i][j] > depth) depths[i][j] = depth;
-
-    for (const [x, y] of directions) {
-      const xi = i + x;
-      const yj = j + y;
-
-      const hash = Position.hash([xi, yj]);
-      if (visited.has(hash)) continue;
-      visited.add(hash);
-
-      queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
-    }
-  }
+  map[start[0]][start[1]] = Tile.infer(start, map);
 
   let maxDepth = 0;
-  for (let i = 0; i < n; ++i) {
-    for (let j = 0; j < m; ++j) {
-      if (depths[i][j] !== Infinity && depths[i][j] > maxDepth) maxDepth = depths[i][j];
-    }
-  }
+  Maze.searchBreadth(map, start, ({ depth }) => {
+    if (maxDepth < depth) maxDepth = depth;
+  });
 
   return maxDepth;
 };

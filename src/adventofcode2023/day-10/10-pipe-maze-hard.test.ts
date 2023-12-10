@@ -6,6 +6,7 @@ import Complex3TestCase from "./10-pipe-maze.hard-3-case.txt?raw";
 import Complex4TestCase from "./10-pipe-maze.hard-4-case.txt?raw";
 import UserCase from "./10-pipe-maze.user.txt?raw";
 
+type Position = [number, number];
 type Maze = Tile[][] & { n: number; m: number };
 namespace Maze {
   export const parse = (input: string): Maze => {
@@ -30,34 +31,70 @@ namespace Maze {
 
     throw Error("Invalid map: no start found");
   };
+
+  interface SearchResult {
+    position: Position;
+    directions: Direction[];
+    depth: number;
+  }
+
+  export const searchDepth = (map: Maze, start: Position, fn: (result: SearchResult) => void): void => {
+    const [x, y] = start;
+    const queue: [Position, Direction[], number][] = [[start, Tile.directions[map[x][y]], 0]];
+
+    const visits = createMatrix(map.n, map.m, false);
+
+    while (queue.length) {
+      let [position, directions, depth] = queue.pop()!;
+
+      const [i, j] = position;
+      if (visits[i][j]) continue;
+      fn({ position, directions, depth });
+
+      for (const [x, y] of directions) {
+        const xi = i + x;
+        const yj = j + y;
+
+        if (visits[xi][yj]) continue;
+        visits[i][j] = true;
+
+        queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
+      }
+    }
+  };
+
+  export const searchBreadth = (map: Maze, start: Position, fn: (result: SearchResult) => void): void => {
+    const [x, y] = start;
+    const queue: [Position, Direction[], number][] = [[start, Tile.directions[map[x][y]], 0]];
+
+    const visits = createMatrix(map.n, map.m, false);
+    visits[x][y] = true;
+
+    while (queue.length) {
+      const [position, directions, depth] = queue.shift()!;
+      const [i, j] = position;
+
+      fn({ position, directions, depth });
+
+      for (const [x, y] of directions) {
+        const xi = x + i;
+        const yj = y + j;
+
+        if (visits[xi][yj]) continue;
+        visits[xi][yj] = true;
+
+        queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
+      }
+    }
+  };
 }
 
-type Position = [number, number];
 type Direction = Position;
 namespace Direction {
   export const up: Direction = [-1, 0];
   export const down: Direction = [1, 0];
   export const left: Direction = [0, -1];
   export const right: Direction = [0, 1];
-
-  const nameMap = new Map([
-    [up, "up"],
-    [down, "down"],
-    [left, "left"],
-    [right, "right"],
-  ]);
-
-  export const name = (direction: Direction): string => {
-    const x = nameMap.get(direction)!;
-    if (x) return x;
-
-    for (const [key, value] of nameMap.entries()) {
-      if (key[0] === direction[0] && key[1] === direction[1]) return value;
-    }
-
-    return "unknown";
-  };
-  export const names = (directions: Direction[]): string[] => directions.map(name);
 }
 
 namespace Position {
@@ -132,39 +169,20 @@ namespace Tile {
   };
 }
 
+const createMatrix = <T>(n: number, m: number, value: T): T[][] =>
+  Array(n)
+    .fill(undefined)
+    .map(() => Array(m).fill(value));
+
 const maze = (input: string): number => {
   const map = Maze.parse(input);
 
   const start = Maze.findStart(map);
-  const startTile = Tile.infer(start, map);
-  map[start[0]][start[1]] = startTile;
-
-  const queue: [Position, Direction[], number][] = [[start, Tile.directions[startTile], 0]];
-  const { n, m } = map;
+  map[start[0]][start[1]] = Tile.infer(start, map);
 
   const path: Position[] = [];
 
-  const visit = Array(n)
-    .fill(undefined)
-    .map(() => Array(m).fill(Infinity));
-
-  while (queue.length) {
-    let [position, directions, depth] = queue.pop()!;
-
-    const [i, j] = position;
-    if (visit[i][j] !== Infinity) continue;
-    visit[i][j] = depth;
-    path.push(position);
-
-    for (const [x, y] of directions) {
-      const xi = i + x;
-      const yj = j + y;
-
-      if (visit[xi][yj] !== Infinity) continue;
-
-      queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
-    }
-  }
+  Maze.searchDepth(map, start, ({ position }) => path.push(position));
 
   let area = 0;
   for (let i = 0, it = path.length; i < it; ++i) {
