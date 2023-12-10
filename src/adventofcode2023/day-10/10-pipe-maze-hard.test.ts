@@ -1,7 +1,9 @@
 import { exercise } from "@shared/utilities/exercise.js";
-import Complex1TestCase from "./10-pipe-maze.hard-complex-1-case.txt?raw";
-import Complex2TestCase from "./10-pipe-maze.hard-complex-2-case.txt?raw";
-import SimpleTestCase from "./10-pipe-maze.hard-simple-case.txt?raw";
+import SimpleTestCase from "./10-pipe-maze.easy-simple-case.txt?raw";
+import Complex1TestCase from "./10-pipe-maze.hard-1-case.txt?raw";
+import Complex2TestCase from "./10-pipe-maze.hard-2-case.txt?raw";
+import Complex3TestCase from "./10-pipe-maze.hard-3-case.txt?raw";
+import Complex4TestCase from "./10-pipe-maze.hard-4-case.txt?raw";
 import UserCase from "./10-pipe-maze.user.txt?raw";
 
 type Maze = Tile[][] & { n: number; m: number };
@@ -37,6 +39,25 @@ namespace Direction {
   export const down: Direction = [1, 0];
   export const left: Direction = [0, -1];
   export const right: Direction = [0, 1];
+
+  const nameMap = new Map([
+    [up, "up"],
+    [down, "down"],
+    [left, "left"],
+    [right, "right"],
+  ]);
+
+  export const name = (direction: Direction): string => {
+    const x = nameMap.get(direction)!;
+    if (x) return x;
+
+    for (const [key, value] of nameMap.entries()) {
+      if (key[0] === direction[0] && key[1] === direction[1]) return value;
+    }
+
+    return "unknown";
+  };
+  export const names = (directions: Direction[]): string[] => directions.map(name);
 }
 
 namespace Position {
@@ -65,7 +86,6 @@ namespace Position {
 
     return tile === Tile.HorizontalPipe || tile === Tile.TopRightCorner || tile === Tile.BottomRightCorner;
   };
-  export const hash = ([i, j]: Position): number => i * 1e8 + j;
 }
 
 enum Tile {
@@ -83,9 +103,9 @@ namespace Tile {
   export const directions: Record<Tile, Direction[]> = {
     [Tile.VerticalPipe]: [Direction.up, Direction.down],
     [Tile.HorizontalPipe]: [Direction.left, Direction.right],
-    [Tile.BottomLeftCorner]: [Direction.up, Direction.right],
+    [Tile.BottomLeftCorner]: [Direction.right, Direction.up],
     [Tile.BottomRightCorner]: [Direction.up, Direction.left],
-    [Tile.TopLeftCorner]: [Direction.down, Direction.right],
+    [Tile.TopLeftCorner]: [Direction.right, Direction.down],
     [Tile.TopRightCorner]: [Direction.down, Direction.left],
     [Tile.Ground]: [],
     [Tile.Start]: [],
@@ -117,55 +137,53 @@ const maze = (input: string): number => {
 
   const start = Maze.findStart(map);
   const startTile = Tile.infer(start, map);
+  map[start[0]][start[1]] = startTile;
 
-  const queue: [Position, Direction[]][] = [[start, Tile.directions[startTile]]];
-  const visited = new Set<number>();
-
+  const queue: [Position, Direction[], number][] = [[start, Tile.directions[startTile], 0]];
   const { n, m } = map;
+
+  const path: Position[] = [];
+
   const visit = Array(n)
     .fill(undefined)
-    .map(() => Array(m).fill(0));
+    .map(() => Array(m).fill(Infinity));
 
   while (queue.length) {
-    let [position, directions] = queue.pop()!;
-
-    const hash = Position.hash(position);
-    visited.add(hash);
+    let [position, directions, depth] = queue.pop()!;
 
     const [i, j] = position;
-    visit[i][j] = 1;
+    if (visit[i][j] !== Infinity) continue;
+    visit[i][j] = depth;
+    path.push(position);
 
     for (const [x, y] of directions) {
       const xi = i + x;
       const yj = j + y;
 
-      const hash = Position.hash([xi, yj]);
-      if (visited.has(hash)) continue;
+      if (visit[xi][yj] !== Infinity) continue;
 
-      queue.push([[xi, yj], Tile.directions[map[xi][yj]]]);
+      queue.push([[xi, yj], Tile.directions[map[xi][yj]], depth + 1]);
     }
   }
 
-  console.log(visit.map((x) => x.map((x) => (x === 0 ? "." : 1)).join("")).join("\n"));
-  console.log();
+  let area = 0;
+  for (let i = 0, it = path.length; i < it; ++i) {
+    const [x1, y1] = path[i];
+    const [x2, y2] = path[(i + 1) % it];
 
-  console.log(map.map((x) => x.map((x) => x).join("")).join("\n"));
-  console.log();
-  for (let i = 0; i < n; ++i) {
-    for (let j = 0; j < m; ++j) {
-      if (visit[i][j] === 0) map[i][j] = Tile.Ground;
-    }
+    area += x1 * y2 - x2 * y1;
   }
 
-  console.log(map.map((x) => x.map((x) => x).join("")).join("\n"));
-  console.log();
+  area = Math.abs(area) >> 1;
 
-  return 0;
+  return area - (path.length >>> 1) + 1;
 };
 
 exercise(maze, [
-  [[SimpleTestCase], 4],
-  [[Complex1TestCase], 8],
-  [[Complex2TestCase], 10],
-  // [[UserCase], 6897],
+  [[SimpleTestCase], 1],
+  [[Complex1TestCase], 18],
+  [[Complex2TestCase], 8],
+  [[Complex3TestCase], 10],
+  [[Complex4TestCase], 4],
+  [[UserCase], 367],
 ]);
