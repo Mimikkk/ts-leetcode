@@ -12,5 +12,5 @@ const springs = (input: string): number =>
 exercise(springs, [
   [[Test1Case], 4],
   [[Test2Case], 21],
-  [[UserCase], 9647174],
+  [[UserCase], 7843],
 ]);

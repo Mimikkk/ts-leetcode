@@ -20,36 +20,39 @@ export namespace Schema {
 
   export const extend = ([cells, sizes]: Schema, times: number): Schema => [
     range(0, times - 1)
-      .map(() => cells)
+      .map(() => cells.join(""))
       .join(Cell.Unknown)
       .split("") as Cell[],
-    range(0, times).flatMap(() => sizes),
+    range(0, times - 1).flatMap(() => sizes),
   ];
 
+  // rewrite using caching
   const combinations = (cells: Cell[], replacements: number) => {
     const result: Cell[][] = [];
 
-    const recurse = (index: number, cells: Cell[]) => {
-      if (cells.length === replacements) {
+    const recurse = (cells: Cell[], replacements: number, index: number) => {
+      if (replacements === 0) {
         result.push(cells);
         return;
       }
 
       for (let i = index; i < cells.length; ++i) {
-        const copy = cells.slice();
-        copy[i] = Cell.Unknown;
-        recurse(i + 1, copy);
+        if (cells[i] !== Cell.Unknown) continue;
+
+        const copy = [...cells];
+        copy[i] = Cell.Damaged;
+
+        recurse(copy, replacements - 1, i + 1);
       }
     };
 
-    recurse(0, cells);
+    recurse(cells, replacements, 0);
     return result;
   };
-
   export const countArrangements = (schema: Schema): number => {
     const [cells, sizes] = schema;
 
-    return range(0, cells.length)
+    return range(0, cells.filter((x) => x === Cell.Unknown).length)
       .flatMap((count) => combinations(cells, count))
       .map((x) => x.map((x) => (x === Cell.Unknown ? "." : x)).join(""))
       .map((s) => s.split(/\.+/).filter((x) => x !== ""))
