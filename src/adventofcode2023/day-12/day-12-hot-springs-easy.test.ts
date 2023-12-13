@@ -1,5 +1,5 @@
 import { exercise } from "@shared/utilities/exercise.js";
-import TestCase from "./day-12-hot-springs.case.txt?raw";
+import Test1Case from "./day-12-hot-springs.case-1.txt?raw";
 import { createMatrix } from "../day-10/10-pipe-maze.utils.js";
 
 export type Schema = [Schema.Cell[], number[]];
@@ -30,12 +30,13 @@ const withCursors = (line: string, cursors: [number, Color][]) => {
 
   for (const [pointer, cursor] of pointers) {
     for (let i = 0; i < counter.get(pointer)!; ++i) {
-      if (result[lineCount - i - 1][pointer] !== " ") break;
-      result[lineCount - i - 1][pointer] = cursor;
+      if (result[i][pointer] !== " ") continue;
+      result[i][pointer] = cursor;
+      break;
     }
   }
 
-  return [line, ...result.map((x) => x.join(""))].join("\n");
+  return [line, ...result.map((line) => line.join(""))].join("\n");
 };
 
 export namespace Schema {
@@ -55,27 +56,54 @@ export namespace Schema {
       );
 
   export const countArrangements = ([cells, sizes]: Schema): number => {
-    console.log(
-      withCursors(cells.join(""), [
-        [0, "cyan"],
-        [0, "red"],
-      ]),
-    );
-
-    for (let i = 0; i < cells.length; ++i) {
-      if (cells[i] !== Cell.Unknown) continue;
+    next: for (let i = 0; i < cells.length; ++i) {
+      if (cells[i] === Cell.Operational) continue;
 
       let start = i;
-      let size = sizes[0];
+      here: for (let size of sizes) {
+        while (cells[start] === Cell.Operational) ++start;
+        console.log({ size, start, i });
+        console.log(
+          withCursors(cells.join(""), [
+            [i, "red"],
+            [start, "green"],
+          ]),
+        );
+        let damagedCount = 0;
+        let unknownCount = 0;
 
-      while (start < cells.length) {
-        let currSize = start - i;
-        console.log({ currSize, p: currSize === size });
-        if (currSize === size) {
+        while (true) {
+          let range = start - i + 1;
+
+          if (cells[start] === Cell.Operational) break;
+
+          if (cells[start] === Cell.Damaged) {
+            ++damagedCount;
+          } else {
+            ++unknownCount;
+          }
+
+          if (range < size) {
+            ++start;
+            continue;
+          }
+          // Element Fits schema
+
+          console.log({ range, start, size, damagedCount, unknownCount });
+          console.log(
+            withCursors(cells.join(""), [
+              [i, "red"],
+              [start, "green"],
+            ]),
+          );
+
+          ++start;
           break;
         }
-        ++start;
+        console.log("broken");
       }
+
+      break;
     }
 
     return 0;
@@ -88,6 +116,7 @@ const springs = (input: string): number =>
     .reduce((a, b) => a + b, 0);
 
 exercise(springs, [
-  [[TestCase], 21],
+  [[Test1Case], 4],
+  // [[Test2Case], 21],
   // [[UserCase], 9647174],
 ]);
