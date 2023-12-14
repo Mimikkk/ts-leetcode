@@ -14,7 +14,7 @@ export namespace Mirror {
 
   const bin = (num: string[]): number => parseInt(num.join(""), 2);
   export const asBin = (chars: string[]) =>
-    <Mirror[]>chars.slice(0, -1).map((_, i) => [chars.slice(0, i + 1), chars.slice(i + 1).reverse()].map(bin));
+    <Mirror[]>chars.map((_, i) => [chars.slice(0, i + 1), chars.slice(i + 1).reverse()].map(bin));
 }
 
 export namespace Pattern {
