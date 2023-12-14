@@ -1,56 +1,54 @@
-export const levenshtein = (a: string, b: string): number => {
-  const alen = a.length;
-  const blen = b.length;
+export type Mirror = [number, number];
+export type Pattern = [Mirror[][], Mirror[][]];
 
-  if (alen === 0) return blen;
-  if (blen === 0) return alen;
+export namespace Mirror {
+  export const find = (lines: Mirror[][], n: number, tolerance: number): number | undefined => {
+    const distance = (i: number) =>
+      lines
+        .map((line) => [getMask(i, n), line[i]] as const)
+        .map(([mask, [a, b]]) => bitCount((a & mask) ^ (b & mask)))
+        .reduce((a, b) => a + b, 0);
 
-  const matrix = [];
+    for (let i = 0; i < n; ++i) if (distance(i) === tolerance) return i;
+  };
 
-  for (let i = 0; i <= blen; i++) {
-    matrix[i] = i;
-  }
+  const bin = (num: string[]): number => parseInt(num.join(""), 2);
+  export const asBin = (chars: string[]) =>
+    <Mirror[]>chars.slice(0, -1).map((_, i) => [chars.slice(0, i + 1), chars.slice(i + 1).reverse()].map(bin));
+}
 
-  for (let i = 1; i <= alen; i++) {
-    let prev = i;
+export namespace Pattern {
+  const transpose = (map: string[][]): string[][] => map[0].map((_, i) => map.map((_, j) => map[j][i]));
 
-    for (let j = 1; j <= blen; j++) {
-      const val = a[i - 1] !== b[j - 1] ? Math.min(matrix[j], matrix[j - 1], prev) + 1 : matrix[j - 1];
+  export const parse = (input: string): Pattern[] =>
+    input
+      .split(/\r?\n\r?\n/)
+      .map((line) =>
+        line
+          .replaceAll(".", "0")
+          .replaceAll("#", "1")
+          .split(/\r?\n/)
+          .filter((line) => line)
+          .map((line) => line.split("")),
+      )
+      .map(Pattern.from);
 
-      matrix[j - 1] = prev;
+  export const from = (map: string[][]): Pattern => [map.map(Mirror.asBin), transpose(map).map(Mirror.asBin)];
 
-      prev = val;
-    }
+  export const score = ([rows, cols]: Pattern, tolerance: number): number => {
+    const column = Mirror.find(rows, cols.length - 1, tolerance);
+    if (column !== undefined) return column + 1;
 
-    matrix[blen] = prev;
-  }
-
-  return matrix[blen];
-};
-
-export namespace Points {
-  export enum Cell {
-    Rock = "#",
-    Ash = ".",
-  }
-
-  export type Map = string[];
-
-  export const parse = (input: string): Map[] => {
-    const lines = input.split(/\r?\n/).concat("");
-
-    const maps = [];
-    for (let i = 0, map = []; i < lines.length; ++i) {
-      if (!lines[i]) {
-        maps.push(map);
-        map = [];
-
-        continue;
-      }
-
-      map.push(lines[i]);
-    }
-
-    return maps;
+    const row = Mirror.find(cols, rows.length - 1, tolerance);
+    if (row !== undefined) return (row + 1) * 100;
+    return 0;
   };
 }
+
+const getMask = (index: number, length: number): number => 2 ** (Math.min(index, length - index - 1) + 1) - 1;
+
+const bitCount = (n: number) => {
+  n = n - ((n >> 1) & 0x55555555);
+  n = (n & 0x33333333) + ((n >> 2) & 0x33333333);
+  return (((n + (n >> 4)) & 0xf0f0f0f) * 0x1010101) >> 24;
+};
