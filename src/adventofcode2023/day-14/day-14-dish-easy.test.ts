@@ -7,6 +7,6 @@ const { scoreLoad, tiltNorth, parse } = Dish;
 const dish = (input: string): number => scoreLoad(tiltNorth(parse(input)));
 
 exercise(dish, [
-  [[TestCase], 405],
-  [[UserCase], 30487],
+  [[TestCase], 136],
+  [[UserCase], 108955],
 ]);
