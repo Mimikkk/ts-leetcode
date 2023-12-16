@@ -1,3 +1,4 @@
+import { createMatrix } from "../day-10/10-pipe-maze.utils.js";
 export namespace Floor {
   export type Position = [number, number];
 
@@ -75,5 +76,38 @@ export namespace Floor {
             return [directions.left];
         }
     }
+  };
+
+  export const explore = (map: Map, start: [Position, Direction]) => {
+    const stack: [Floor.Position, Floor.Direction][] = [start];
+    let visited = createMatrix(map.n, map.m, () => new Set<Floor.Direction>());
+    const [[x, y], direction] = start;
+    visited[x][y].add(direction);
+
+    while (stack.length) {
+      const {
+        0: [x, y],
+        0: position,
+        1: direction,
+      } = stack.pop()!;
+
+      const directions = Floor.directionsOf(map, position, direction);
+      for (const [[i, j], direction] of directions) {
+        const xi = x + i;
+        const yj = y + j;
+        if (xi < 0 || xi >= map.n || yj < 0 || yj >= map.m) continue;
+        if (visited[xi][yj].has(direction)) continue;
+        visited[xi][yj].add(direction);
+
+        stack.push([[xi, yj], direction]);
+      }
+    }
+
+    let energized = 0;
+    for (let i = 0, it = map.n, jt = map.m; i < it; i++) {
+      for (let j = 0; j < jt; j++) if (visited[i][j].size) ++energized;
+    }
+
+    return energized;
   };
 }
