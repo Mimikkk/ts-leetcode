@@ -165,7 +165,11 @@ export namespace Tile {
   };
 }
 
-export const createMatrix = <T>(n: number, m: number, value: T): T[][] =>
+export const createMatrix = <T>(n: number, m: number, value: T | (() => T)): T[][] =>
   Array(n)
-    .fill(undefined)
-    .map(() => Array(m).fill(value));
+    .fill(0)
+    .map(() =>
+      Array(m)
+        .fill(0)
+        .map(() => (value instanceof Function ? value() : value)),
+    );
