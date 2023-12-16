@@ -8,5 +8,5 @@ const dish = (input: string): number => scoreLoad(cycles(parse(input), 1_000_000
 
 exercise(dish, [
   [[TestCase], 64],
-  [[UserCase], 108955],
+  [[UserCase], 106689],
 ]);
