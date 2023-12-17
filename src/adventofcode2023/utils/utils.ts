@@ -60,3 +60,22 @@ export const createMatrix = <T>(n: number, m: number, value: T | (() => T)): T[]
         .fill(0)
         .map(() => (value instanceof Function ? value() : value)),
     );
+
+export const memoize = <Fn extends (...args: any[]) => any>(fn: Fn, keyBy: (...args: Parameters<Fn>) => string) => {
+  const cache = new Map<string, ReturnType<Fn>>();
+
+  return (...args: Parameters<Fn>): ReturnType<Fn> => {
+    const key = keyBy(...args);
+    let value = cache.get(key);
+    if (value !== undefined) return value;
+
+    value = fn(...args);
+    cache.set(key, value!);
+    return value!;
+  };
+};
+
+export const contains = <T>(items: T[], needle: T, start: number = 0, end: number = items.length) => {
+  for (let i = start; i < end; ++i) if (items[i] === needle) return true;
+  return false;
+};
