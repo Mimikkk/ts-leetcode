@@ -5,7 +5,8 @@ import Complex2TestCase from "./10-pipe-maze.hard-2-case.txt?raw";
 import Complex3TestCase from "./10-pipe-maze.hard-3-case.txt?raw";
 import Complex4TestCase from "./10-pipe-maze.hard-4-case.txt?raw";
 import UserCase from "./10-pipe-maze.user.txt?raw";
-import { createMatrix, Direction, Maze, Position, Tile } from "./10-pipe-maze.utils.js";
+import { Direction, Maze, Position, Tile } from "./10-pipe-maze.utils.js";
+import { createMatrix } from "../utils/utils.js";
 
 const maze = (input: string): number => {
   const map = Maze.parse(input);

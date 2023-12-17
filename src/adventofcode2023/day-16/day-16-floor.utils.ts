@@ -1,4 +1,4 @@
-import { createMatrix } from "../day-10/10-pipe-maze.utils.js";
+import { createMatrix } from "../utils/utils.js";
 export namespace Floor {
   export type Position = [number, number];
 

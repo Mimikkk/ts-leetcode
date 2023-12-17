@@ -1,6 +1,5 @@
+import { createMatrix } from "../adventofcode2023/utils/utils.js";
 export {};
-
-const createMatrix = <T>(m: number, n: number, fill: T): T[][] => Array.from(Array(m), () => Array(n).fill(fill));
 
 type position = [number, number];
 

@@ -1,3 +1,5 @@
+import { createMatrix } from "../utils/utils.js";
+
 export type Position = [number, number];
 export type Maze = Tile[][] & { n: number; m: number };
 export namespace Maze {
@@ -164,12 +166,3 @@ export namespace Tile {
     return Tile.Ground;
   };
 }
-
-export const createMatrix = <T>(n: number, m: number, value: T | (() => T)): T[][] =>
-  Array(n)
-    .fill(0)
-    .map(() =>
-      Array(m)
-        .fill(0)
-        .map(() => (value instanceof Function ? value() : value)),
-    );

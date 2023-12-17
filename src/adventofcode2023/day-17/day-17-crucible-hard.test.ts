@@ -1,10 +1,13 @@
 import { exercise } from "@shared/utilities/exercise.js";
-import TestCase from "./day-17-crucible.case.txt?raw";
+import Test1Case from "./day-17-crucible.case-1.txt?raw";
+import Test2Case from "./day-17-crucible.case-2.txt?raw";
 import UserCase from "./day-17-crucible.user.txt?raw";
+import { Crucible } from "./day-17-crucible.utils.js";
 
-const crucible = (input: string): number => 0;
+const crucible = (input: string): number => Crucible.search(Crucible.parse(input), 4, 10);
 
 exercise(crucible, [
-  [[TestCase], 51],
-  [[UserCase], 8026],
+  [[Test1Case], Infinity],
+  [[Test2Case], 94],
+  [[UserCase], 809],
 ]);
