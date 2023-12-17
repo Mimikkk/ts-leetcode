@@ -32,10 +32,8 @@ export namespace Crucible {
     const costOf = (x: number, y: number, direction: Direction) => records[x][y].get(direction) ?? Infinity;
 
     const heap = new Heap<[number, Position, Direction]>(([a], [b]) => a - b);
-
-    let start: Position = [0, 0];
-    heap.push([0, start, "right"]);
-    heap.push([0, start, "down"]);
+    const start: Position = [0, 0];
+    heap.push([0, start, "right"], [0, start, "down"]);
 
     while (heap.size()) {
       let [cost, [x, y], direction] = heap.pop()!;
@@ -44,20 +42,19 @@ export namespace Crucible {
       if (cost > costOf(x, y, direction)) continue;
 
       for (let [[i, j], dir] of directions[direction]) {
-        let nextCost = cost;
-
+        let stepCost = cost;
         for (let step = 1; step <= maxSteps; ++step) {
           const xi = x + i * step;
           const yj = y + j * step;
           if (0 > xi || xi >= n || 0 > yj || yj >= m) continue;
 
-          nextCost += grid[xi][yj];
+          stepCost += grid[xi][yj];
           if (step < minSteps) continue;
 
-          if (nextCost >= costOf(xi, yj, dir)) continue;
-          records[xi][yj].set(dir, nextCost);
+          if (stepCost >= costOf(xi, yj, dir)) continue;
+          records[xi][yj].set(dir, stepCost);
 
-          heap.push([nextCost, [xi, yj], dir]);
+          heap.push([stepCost, [xi, yj], dir]);
         }
       }
     }
