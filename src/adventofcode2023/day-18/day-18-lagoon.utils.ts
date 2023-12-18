@@ -6,15 +6,36 @@ export namespace Lagoon {
     Down = "D",
   }
 
-  type Color = string;
-  type DigPlan = [Direction, number, Color];
+  type DigPlan = [Direction, number];
   type Position = [number, number];
 
-  export const parse = (input: string): DigPlan[] =>
+  export const parseDec = (input: string): DigPlan[] =>
     input
       .split(/\r?\n/)
       .map((x) => x.split(" "))
-      .map(([direction, times, color]) => [direction, +times, color] as DigPlan);
+      .map(([direction, times]) => [direction, +times] as DigPlan);
+
+  export const parseHex = (input: string): DigPlan[] => {
+    const hex = (x: string) => parseInt(x, 16);
+    const colorToDirection = (color: string) => {
+      switch (hex(color.slice(7, 8))) {
+        case 0:
+          return Direction.Right;
+        case 1:
+          return Direction.Down;
+        case 2:
+          return Direction.Left;
+        case 3:
+          return Direction.Up;
+      }
+    };
+    const colorToTimes = (color: string) => hex(color.slice(2, 7));
+
+    return input
+      .split(/\r?\n/)
+      .map((x) => x.split(" "))
+      .map(([, , color]) => [colorToDirection(color), colorToTimes(color)] as DigPlan);
+  };
 
   export const asPath = (plan: DigPlan[]): Position[] => {
     let x = 0;
