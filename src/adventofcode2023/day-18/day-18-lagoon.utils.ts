@@ -77,7 +77,7 @@ export namespace Lagoon {
   export const calcArea = (path: Position[]): number => {
     let area = 0;
 
-    for (let i = 0; i < path.length; i++) {
+    for (let i = 0, it = path.length; i < it; ++i) {
       const [x1, y1] = path[i];
       const [x2, y2] = path[(i + 1) % path.length];
 
