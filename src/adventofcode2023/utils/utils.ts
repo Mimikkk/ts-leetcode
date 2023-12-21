@@ -35,7 +35,7 @@ export const withColors = <T>(
   positions: readonly (readonly [number, number, Color])[],
   separator: string = "",
 ) => {
-  const result = structuredClone(map.map((x) => x.map((x) => `${x}`)));
+  const result = structuredClone(map.map((x) => [...x].map((x) => `${x}`)));
 
   for (let i = 0, it = result.length, jt = result[0].length; i < it; ++i) {
     for (let j = 0; j < jt; ++j) {
