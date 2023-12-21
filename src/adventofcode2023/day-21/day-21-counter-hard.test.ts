@@ -5,13 +5,13 @@ import { Position } from "../day-10/10-pipe-maze.utils.js";
 namespace Counter {
   const key = (i: number, j: number): string => `${i},${j}`;
 
-  type Grid = {
+  interface Grid {
     walls: Set<string>;
     plots: Map<string, number>;
     start: Position;
     n: number;
     m: number;
-  };
+  }
 
   const parse = (input: string): Grid => {
     const grid = input.split(/\r?\n/).map((line) => line.trim());
@@ -58,7 +58,7 @@ namespace Counter {
       : [];
   };
 
-  export const start = (map: Grid, steps: number = 64) => {
+  const start = (map: Grid, steps: number = 64) => {
     const queue: [number, number, number][] = [[map.start[0], map.start[1], steps]];
 
     while (queue.length) queue.push(...movement(map, ...queue.shift()!));
