@@ -28,15 +28,18 @@ export namespace Counter {
   export const loopingMovement = function* (map: Map, [x, y]: Position): Generator<Position> {
     // looping means that we can go out of bounds and come back in from the other side of the map
 
-    for (const [i, J] of neighbours) {
+    for (const [i, j] of neighbours) {
       let xi = x + i;
-      let yj = y + J;
+      let yj = y + j;
 
-      if (xi > map.n) xi = xi % map.n;
-      else if (xi < 0) xi = map.n + xi;
-      if (yj > map.m) yj = yj % map.m;
-      else if (yj < 0) yj = map.m + yj;
-      if (map[xi][yj] === Cell.Rock) continue;
+      let xc = xi;
+      let yc = yj;
+      if (xi >= map.n) xc = xi % map.n;
+      else if (xi < 0) xc = Math.abs(xi) % map.n;
+      if (yj >= map.m) yc = yj % map.m;
+      else if (yj < 0) yc = Math.abs(yj) % map.m;
+
+      if (map[xc][yc] === Cell.Rock) continue;
 
       yield [xi, yj];
     }
