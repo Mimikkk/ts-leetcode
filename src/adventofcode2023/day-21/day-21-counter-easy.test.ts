@@ -10,9 +10,9 @@ const counter = (input: string, steps: number): number => {
 
   let level: Position[] = [start];
 
-  const hash = ([x, y]: Position) => x * 1e8 + y;
+  const hash = ([x, y]: Position) => `${x},${y}`;
   for (let i = 0; i < steps; ++i) {
-    const hashes = new Set();
+    const hashes = new Set<string>();
     const next = [];
 
     while (level.length) {
