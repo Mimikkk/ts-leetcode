@@ -74,7 +74,7 @@ namespace Counter {
     a,
   ];
 
-  export const counter = (input: string): number => {
+  export const solve = (input: string): number => {
     const map = parse(input);
     let arg0 = 65;
     let arg1 = 131;
@@ -86,4 +86,4 @@ namespace Counter {
     return a * x ** 2 + b * x + c;
   };
 }
-exercise(Counter.counter, [[[UserCase], 596857397104703]]);
+exercise(Counter.solve, [[[UserCase], 596857397104703]]);
