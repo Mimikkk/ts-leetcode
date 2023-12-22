@@ -1,17 +1,19 @@
 import { exercise } from "@shared/utilities/exercise.js";
-import TestCase from "./day-20-pulse.case.txt?raw";
+import Test1Case from "./day-20-pulse.case-1.txt?raw";
+import Test2Case from "./day-20-pulse.case-2.txt?raw";
+import UserCase from "./day-20-pulse.user.txt?raw";
 
-namespace Pulse {
+export namespace Pulse {
   export type Signal = "low" | "high";
   export type Module = (
     | {
-        type: "conjunction";
-        memory: Map<string, Signal>;
-        get isEveryHigh(): boolean;
-      }
+    type: "conjunction";
+    memory: Map<string, Signal>;
+    get isEveryHigh(): boolean;
+  }
     | { type: "flip-flop"; value: boolean }
     | { type: "broadcast" }
-  ) & { name: string; destinations: string[] };
+    ) & { name: string; destinations: string[] };
   export type ModuleType = Module["type"];
   type ModuleMap = Map<string, Module>;
 
@@ -32,16 +34,15 @@ namespace Pulse {
     if (to.type === "conjunction") {
       to.memory.set(from.name, signal);
 
-      console.log(to.memory);
-
       return transmit(map, to, to.isEveryHigh ? "low" : "high");
     }
 
     return [];
   };
 
-  export const parse = (input: string): ModuleMap =>
-    new Map(
+  export const parse = (input: string): ModuleMap => {
+
+    const map = new Map(
       input
         .split(/\r?\n/)
         .map((line) => line.trim().split(" -> "))
@@ -49,6 +50,21 @@ namespace Pulse {
         .map(([name, type, names]) => [type === "broadcast" ? name : name.substring(1), type, names] as const)
         .map(([name, type, names]) => [name, moduleByType(type, name, names)]),
     );
+
+    const conjunctions = [];
+    for (let module of map.values()) if (module.type === "conjunction") conjunctions.push(module);
+
+    for (let conjunction of conjunctions) {
+      for (let module of map.values()) {
+        if (module.destinations.some((name) => name === conjunction.name)) {
+          conjunction.memory.set(module.name, "low");
+        }
+      }
+
+    }
+
+    return map;
+  };
 
   const typeByPrefix = ([prefix]: string): ModuleType =>
     prefix === "%" ? "flip-flop" : prefix === "&" ? "conjunction" : "broadcast";
@@ -60,7 +76,7 @@ namespace Pulse {
       name,
       type,
       destinations,
-      memory: new Map(destinations.map((n) => [n, "low"])),
+      memory: new Map(),
       get isEveryHigh() {
         for (let signal of this.memory.values()) if (signal === "low") return false;
         return true;
@@ -69,21 +85,34 @@ namespace Pulse {
   };
 }
 
+
 const pulse = (input: string): number => {
   const map = Pulse.parse(input);
 
-  const stack: [Pulse.Module, Pulse.Module, Pulse.Signal][] = [[undefined!, map.get("broadcaster")!, "low"]];
 
-  while (stack.length) {
-    let [from, to, signal] = stack.shift()!;
-    console.log(`${from ? `${from.name} ${from.type} ` : ""}-${signal}-> ${to.name}`);
-    stack.push(...Pulse.propagate(map, from, to, signal));
-  }
+  let lowCount = 0;
+  let highCount = 0;
+  const pushbutton = () => {
+    const stack: [Pulse.Module, Pulse.Module, Pulse.Signal][] = [[undefined!, map.get("broadcaster")!, "low"]];
 
-  return 0;
+    while (stack.length) {
+      let [from, to, signal] = stack.shift()!;
+
+      if (signal === "high") ++highCount;
+      else ++lowCount;
+
+      if (to) stack.push(...Pulse.propagate(map, from, to, signal));
+    }
+  };
+
+  let count = 1000;
+  while (count--) pushbutton();
+  return lowCount * highCount;
 };
 
+
 exercise(pulse, [
-  [[TestCase], 5],
-  // [[UserCase], 3617],
+  [[Test1Case], 32000000],
+  [[Test2Case], 11687500],
+  [[UserCase], 788081152],
 ]);
