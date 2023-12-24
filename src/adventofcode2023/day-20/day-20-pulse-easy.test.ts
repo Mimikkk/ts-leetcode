@@ -5,13 +5,13 @@ import UserCase from "./day-20-pulse.user.txt?raw";
 import { Pulse } from "./day-20-pulse.utils.js";
 
 const pulse = (input: string): number => {
-  const map = Pulse.parse(input);
-
+  const modules = Pulse.parse(input);
+  let broadcaster = modules.find(({ name }) => name === "broadcaster")!;
 
   let lowCount = 0;
   let highCount = 0;
-  const pushbutton = () => {
-    const stack: [Pulse.Module, Pulse.Module, Pulse.Signal][] = [[undefined!, map.get("broadcaster")!, "low"]];
+  const handleClick = () => {
+    const stack: [Pulse.Module | null, Pulse.Module, Pulse.Signal][] = [[null, broadcaster, "low"]];
 
     while (stack.length) {
       const [from, to, signal] = stack.shift()!;
@@ -19,15 +19,15 @@ const pulse = (input: string): number => {
       if (signal === "high") ++highCount;
       else ++lowCount;
 
-      if (to) stack.push(...Pulse.propagate(map, from, to, signal));
+      stack.push(...Pulse.propagate(from, to, signal));
     }
   };
 
   let count = 1000;
-  while (count--) pushbutton();
+  while (count--) handleClick();
+
   return lowCount * highCount;
 };
-
 
 exercise(pulse, [
   [[Test1Case], 32000000],
