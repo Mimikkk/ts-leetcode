@@ -3,42 +3,43 @@ import UserCase from "./day-20-pulse.user.txt?raw";
 import { Pulse } from "./day-20-pulse.utils.js";
 import { memoize } from "../utils/utils.js";
 
-const gcd = memoize((a: number, b: number): number => (b === 0 ? a : gcd(b, a % b)));
-const lcm = memoize((a: number, b: number): number => (a * b) / gcd(a, b));
+const gcd = memoize((a: number, b: number): number => (b ? gcd(b, a % b) : a));
+const lcd = memoize((a: number, b: number): number => (a * b) / gcd(a, b));
+const lcds = (...nums: number[]): number => nums.reduce(lcd, 1);
 
 const pulse = (input: string): number => {
-  const map = Pulse.parse(input);
+  const modules = Pulse.parse(input);
 
-  let rxFeeder: Pulse.Module;
-  for (const module of map.values()) {
-    if (module.destinations.some(({ name }) => name === "rx")) {
-      rxFeeder = module;
-      break;
-    }
-  }
+  const broadcaster = modules.find(({ name }) => name === "broadcaster")!;
+  const rxFeeder = modules.find(({ destinations }) => destinations.some(({ name }) => name === "rx"))!;
 
-  let times: number[] = [];
-  const pushbutton = () => {
-    const stack: [Pulse.Module, Pulse.Module, Pulse.Signal][] = [[undefined!, map.get("broadcaster")!, "low"]];
+  const lengths = new Map(
+    modules.filter(({ destinations }) => destinations.includes(rxFeeder)).map((module) => [module, 0]),
+  );
 
-    let count = 0;
-    let timeToHit = 0;
+  type State = [Pulse.Module | null, Pulse.Module, Pulse.Signal];
+  const initial = [null, broadcaster, "low"] as State;
+
+  const stack: State[] = [];
+
+  let count = 0;
+  while (true) {
+    ++count;
+    stack.push(initial);
+
     while (stack.length) {
       const [from, to, signal] = stack.shift()!;
 
-      ++count;
-      if (to?.name === "rx" && timeToHit === 0) timeToHit = count;
+      if (from && to === rxFeeder && signal === "high" && !lengths.get(from)) {
+        lengths.set(from, count);
 
-      if (to) stack.push(...Pulse.propagate(map, from, to, signal));
+        const values = [...lengths.values()];
+        if (values.every((v) => v)) return lcds(...values);
+      }
+
+      stack.push(...Pulse.propagate(from, to, signal));
     }
-
-    times.push(timeToHit);
-  };
-
-  pushbutton();
-  console.log(times);
-
-  return Math.min(...times);
+  }
 };
 
-exercise(pulse, [[[UserCase], 788081152]]);
+exercise(pulse, [[[UserCase], 224602011344203]]);

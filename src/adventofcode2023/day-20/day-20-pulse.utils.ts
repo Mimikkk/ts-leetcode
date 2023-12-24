@@ -15,8 +15,6 @@ export namespace Pulse {
     export const Unknown: Module = { type: "unknown", name: "unknown", destinations: [] };
   }
 
-  export type ModuleType = Module["type"];
-
   export const transmit = (transmitter: Module, signal: Signal): [Module, Module, Signal][] =>
     transmitter.destinations.map((destination) => [transmitter, destination, signal]);
 
@@ -42,6 +40,26 @@ export namespace Pulse {
   };
 
   export const parse = (input: string): Module[] => {
+    const typeByPrefix = ([prefix]: string): Module["type"] =>
+      prefix === "%" ? "flip-flop" : prefix === "&" ? "conjunction" : "broadcast";
+
+    const moduleByType = (type: Module["type"], name: string): Module => {
+      if (type === "unknown") return Module.Unknown;
+      if (type === "broadcast") return { name, type, destinations: [] };
+      if (type === "flip-flop") return { name, type, destinations: [], value: false };
+
+      return {
+        name,
+        type,
+        destinations: [],
+        memory: new Map(),
+        get isEveryHigh() {
+          for (let signal of this.memory.values()) if (signal === "low") return false;
+          return true;
+        },
+      };
+    };
+
     const descriptors = input
       .split(/\r?\n/)
       .map((line) => line.trim().split(" -> "))
@@ -53,7 +71,7 @@ export namespace Pulse {
 
     const modules: Pulse.Module[] = descriptors.map(([module]) => module);
     for (const [module, destinations] of descriptors) {
-      module.destinations = destinations.map((name) => map.get(name) ?? Module.Unknown);
+      module.destinations = destinations.map((name) => map.get(name) ?? { destinations: [], type: "unknown", name });
     }
 
     const conjunctions = [];
@@ -63,32 +81,11 @@ export namespace Pulse {
 
     for (const conjunction of conjunctions) {
       for (const module of modules) {
-        if (module.destinations.some(({ name }) => name === conjunction.name)) {
-          conjunction.memory.set(module.name, "low");
-        }
+        if (module.destinations.every(({ name }) => name !== conjunction.name)) continue;
+        conjunction.memory.set(module.name, "low");
       }
     }
 
     return modules;
-  };
-
-  const typeByPrefix = ([prefix]: string): ModuleType =>
-    prefix === "%" ? "flip-flop" : prefix === "&" ? "conjunction" : "broadcast";
-
-  const moduleByType = (type: ModuleType, name: string): Module => {
-    if (type === "unknown") return Module.Unknown;
-    if (type === "broadcast") return { name, type, destinations: [] };
-    if (type === "flip-flop") return { name, type, destinations: [], value: false };
-
-    return {
-      name,
-      type,
-      destinations: [],
-      memory: new Map(),
-      get isEveryHigh() {
-        for (let signal of this.memory.values()) if (signal === "low") return false;
-        return true;
-      },
-    };
   };
 }

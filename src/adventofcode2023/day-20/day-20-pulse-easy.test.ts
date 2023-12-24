@@ -6,7 +6,7 @@ import { Pulse } from "./day-20-pulse.utils.js";
 
 const pulse = (input: string): number => {
   const modules = Pulse.parse(input);
-  let broadcaster = modules.find(({ name }) => name === "broadcaster")!;
+  const broadcaster = modules.find(({ name }) => name === "broadcaster")!;
 
   let lowCount = 0;
   let highCount = 0;
