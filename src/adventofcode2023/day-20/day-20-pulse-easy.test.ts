@@ -14,7 +14,7 @@ const pulse = (input: string): number => {
     const stack: [Pulse.Module, Pulse.Module, Pulse.Signal][] = [[undefined!, map.get("broadcaster")!, "low"]];
 
     while (stack.length) {
-      let [from, to, signal] = stack.shift()!;
+      const [from, to, signal] = stack.shift()!;
 
       if (signal === "high") ++highCount;
       else ++lowCount;

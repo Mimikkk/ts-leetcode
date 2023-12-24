@@ -13,7 +13,11 @@ export namespace Pulse {
   type ModuleMap = Map<string, Module>;
 
   export const transmit = (map: ModuleMap, transmitter: Module, signal: Signal): [Module, Module, Signal][] =>
-    transmitter.destinations.map((name) => map.get(name)!).map((destination) => [transmitter, destination, signal]);
+    transmitter.destinations.map((name) => map.get(name) ?? {
+      type: "broadcast" as const,
+      destinations: [],
+      name,
+    }).map((destination) => [transmitter, destination, signal]);
 
   export const propagate = (map: ModuleMap, from: Module, to: Module, signal: Signal): [Module, Module, Signal][] => {
     if (to.type === "broadcast") return transmit(map, to, signal);
