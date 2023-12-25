@@ -61,7 +61,10 @@ export const createMatrix = <T>(n: number, m: number, value: T | (() => T)): T[]
         .map(() => (value instanceof Function ? value() : value)),
     );
 
-export const memoize = <Fn extends (...args: any[]) => any>(fn: Fn, keyBy: (...args: Parameters<Fn>) => string = (...args) => JSON.stringify(args)) => {
+export const memoize = <Fn extends (...args: any[]) => any>(
+  fn: Fn,
+  keyBy: (...args: Parameters<Fn>) => string = (...args) => JSON.stringify(args),
+) => {
   const cache = new Map<string, ReturnType<Fn>>();
 
   return (...args: Parameters<Fn>): ReturnType<Fn> => {
@@ -78,4 +81,10 @@ export const memoize = <Fn extends (...args: any[]) => any>(fn: Fn, keyBy: (...a
 export const contains = <T>(items: T[], needle: T, start: number = 0, end: number = items.length) => {
   for (let i = start; i < end; ++i) if (items[i] === needle) return true;
   return false;
+};
+
+export const count = <T>(items: T[], predicate: (item: T, index: number, items: T[]) => boolean) => {
+  let count = 0;
+  for (let i = 0; i < items.length; ++i) if (predicate(items[i], i, items)) ++count;
+  return count;
 };
