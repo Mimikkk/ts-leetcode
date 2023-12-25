@@ -9,7 +9,10 @@ const slabs = (input: string): number => {
   const byId = Slabs.group(bricks);
   const byVec = Slabs.fall(bricks);
 
-  return count(bricks, (brick) => Slabs.canDisintegrate(brick, byId, byVec));
+  const result = count(bricks, (brick) => Slabs.canDisintegrate(brick, byId, byVec));
+  Slabs.Brick.topIds.clear();
+  Slabs.Brick.underIds.clear();
+  return result;
 };
 
 exercise(slabs, [

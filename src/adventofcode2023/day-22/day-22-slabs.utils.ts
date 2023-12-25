@@ -1,3 +1,5 @@
+import { memoize } from "../utils/utils.js";
+
 export namespace Slabs {
   export interface Vec3 {
     x: number;
@@ -21,32 +23,38 @@ export namespace Slabs {
   }
 
   export namespace Brick {
-    export const topIds = (map: IdVecMap, brick: Brick) => {
-      const ids = new Set<number>();
-      const z = brick.end.z + 1;
+    export const topIds = memoize(
+      (map: IdVecMap, brick: Brick) => {
+        const ids = new Set<number>();
+        const z = brick.end.z + 1;
 
-      for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
-        for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          const value = map.get(Vec3.hash({ x, y, z }));
-          if (value !== undefined) ids.add(value);
+        for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
+          for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
+            const value = map.get(Vec3.hash({ x, y, z }));
+            if (value !== undefined) ids.add(value);
+          }
         }
-      }
-      return ids;
-    };
+        return ids;
+      },
+      (_, { id }) => `${id}`,
+    );
 
-    export const underIds = (map: IdVecMap, brick: Brick) => {
-      const ids = new Set<number>();
-      const z = brick.start.z - 1;
-      if (z === 0) return ids;
+    export const underIds = memoize(
+      (map: IdVecMap, brick: Brick) => {
+        const ids = new Set<number>();
+        const z = brick.start.z - 1;
+        if (z === 0) return ids;
 
-      for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
-        for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          const value = map.get(Vec3.hash({ x, y, z }));
-          if (value !== undefined) ids.add(value);
+        for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
+          for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
+            const value = map.get(Vec3.hash({ x, y, z }));
+            if (value !== undefined) ids.add(value);
+          }
         }
-      }
-      return ids;
-    };
+        return ids;
+      },
+      (_, { id }) => `${id}`,
+    );
 
     export const someUnder = (map: IdVecMap, brick: Brick): boolean => {
       const z = brick.start.z - 1;
@@ -61,11 +69,7 @@ export namespace Slabs {
     };
   }
 
-  const brick = (id: number, start: Vec3, end: Vec3): Brick => ({
-    id,
-    start,
-    end,
-  });
+  const brick = (id: number, start: Vec3, end: Vec3): Brick => ({ id, start, end });
 
   export const group = (bricks: Brick[]): BrickMap => new Map(bricks.map((brick) => [brick.id, brick]));
 
@@ -78,9 +82,9 @@ export namespace Slabs {
         --brick.end.z;
       }
 
-      for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
-        for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          for (let z = brick.start.z, zt = brick.end.z; z <= zt; ++z) {
+      for (let x = brick.start.x, xt = brick.end.x, yt = brick.end.y, zt = brick.end.z; x <= xt; ++x) {
+        for (let y = brick.start.y; y <= yt; ++y) {
+          for (let z = brick.start.z; z <= zt; ++z) {
             idByPosition.set(Vec3.hash({ x, y, z }), brick.id);
           }
         }
