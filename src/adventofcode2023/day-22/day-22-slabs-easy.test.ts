@@ -5,10 +5,11 @@ import { count } from "../utils/utils.js";
 import { Slabs } from "./day-22-slabs.utils.js";
 
 const slabs = (input: string): number => {
-  const [map, bricks] = Slabs.fall(Slabs.parse(input));
-  const byId = Object.fromEntries(bricks.map((brick) => [brick.id, brick]));
+  const bricks = Slabs.parse(input);
+  const byId = Slabs.group(bricks);
+  const byVec = Slabs.fall(bricks);
 
-  return count(bricks, (brick) => Slabs.canDisintegrate(map, byId, brick));
+  return count(bricks, (brick) => Slabs.canDisintegrate(brick, byId, byVec));
 };
 
 exercise(slabs, [

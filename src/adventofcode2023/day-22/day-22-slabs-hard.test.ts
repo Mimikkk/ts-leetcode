@@ -4,10 +4,11 @@ import { count } from "../utils/utils.js";
 import { Slabs } from "./day-22-slabs.utils.js";
 
 const slabs = (input: string): number => {
-  const [map, bricks] = Slabs.fall(Slabs.parse(input));
-  const byId = Object.fromEntries(bricks.map((brick) => [brick.id, brick]));
+  const bricks = Slabs.parse(input);
+  const byId = Slabs.group(bricks);
+  const byVec = Slabs.fall(bricks);
 
-  return bricks.flatMap((brick) => Slabs.supports(map, byId, brick)).reduce((a, b) => a + b, 0);
+  return bricks.flatMap((brick) => Slabs.countSupported(brick, byId, byVec)).reduce((a, b) => a + b, 0);
 };
 
 exercise(slabs, [[[UserCase], 63491]]);

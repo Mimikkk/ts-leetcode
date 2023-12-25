@@ -69,7 +69,9 @@ export namespace Slabs {
     end,
   });
 
-  export const fall = (bricks: Brick[]): [IdVecMap, Brick[]] => {
+  export const group = (bricks: Brick[]) => Object.fromEntries(bricks.map((brick) => [brick.id, brick]));
+
+  export const fall = (bricks: Brick[]): IdVecMap => {
     const idByPosition: IdVecMap = {};
 
     for (const brick of bricks) {
@@ -87,20 +89,19 @@ export namespace Slabs {
       }
     }
 
-    return [idByPosition, bricks];
+    return idByPosition;
   };
 
-  export const canDisintegrate = (vecMap: IdVecMap, byId: BrickMap, brick: Brick): boolean => {
+  export const canDisintegrate = (brick: Brick, byId: BrickMap, vecMap: IdVecMap): boolean => {
     for (const id of Brick.topIds(vecMap, brick)) {
       const other = byId[id];
       if (other === undefined) continue;
       if (Brick.underIds(vecMap, other).size === 1) return false;
     }
-
     return true;
   };
 
-  export const supports = (vecMap: IdVecMap, byId: BrickMap, brick: Brick): number => {
+  export const countSupported = (brick: Brick, byId: BrickMap, vecMap: IdVecMap): number => {
     const stack: Brick[] = [brick];
     const support = new Set([brick.id]);
 
