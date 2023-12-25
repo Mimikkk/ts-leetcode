@@ -8,7 +8,7 @@ export namespace Slabs {
   }
 
   export namespace Vec3 {
-    export const hash = ({ x, y, z }: Vec3): string => `${x},${y},${z}`;
+    export const hash = (x: number, y: number, z: number): string => `${x},${y},${z}`;
   }
 
   const vec3 = (x: number, y: number, z: number): Vec3 => ({ x, y, z });
@@ -28,15 +28,15 @@ export namespace Slabs {
         const ids = new Set<number>();
         const z = brick.end.z + 1;
 
-        for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
-          for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-            const value = map.get(Vec3.hash({ x, y, z }));
+        for (let x = brick.start.x, xt = brick.end.x, yt = brick.end.y; x <= xt; ++x) {
+          for (let y = brick.start.y; y <= yt; ++y) {
+            const value = map.get(Vec3.hash(x, y, z));
             if (value !== undefined) ids.add(value);
           }
         }
         return ids;
       },
-      (_, { id }) => `${id}`,
+      (_, { id }) => id,
     );
 
     export const underIds = memoize(
@@ -45,24 +45,24 @@ export namespace Slabs {
         const z = brick.start.z - 1;
         if (z === 0) return ids;
 
-        for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
-          for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-            const value = map.get(Vec3.hash({ x, y, z }));
+        for (let x = brick.start.x, xt = brick.end.x, yt = brick.end.y; x <= xt; ++x) {
+          for (let y = brick.start.y; y <= yt; ++y) {
+            const value = map.get(Vec3.hash(x, y, z));
             if (value !== undefined) ids.add(value);
           }
         }
         return ids;
       },
-      (_, { id }) => `${id}`,
+      (_, { id }) => id,
     );
 
     export const someUnder = (map: IdVecMap, brick: Brick): boolean => {
       const z = brick.start.z - 1;
       if (z === 0) return false;
 
-      for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
-        for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          if (map.has(Vec3.hash({ x, y, z }))) return true;
+      for (let x = brick.start.x, xt = brick.end.x, yt = brick.end.y; x <= xt; ++x) {
+        for (let y = brick.start.y; y <= yt; ++y) {
+          if (map.has(Vec3.hash(x, y, z))) return true;
         }
       }
       return false;
@@ -85,7 +85,7 @@ export namespace Slabs {
       for (let x = brick.start.x, xt = brick.end.x, yt = brick.end.y, zt = brick.end.z; x <= xt; ++x) {
         for (let y = brick.start.y; y <= yt; ++y) {
           for (let z = brick.start.z; z <= zt; ++z) {
-            idByPosition.set(Vec3.hash({ x, y, z }), brick.id);
+            idByPosition.set(Vec3.hash(x, y, z), brick.id);
           }
         }
       }

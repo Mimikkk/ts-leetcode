@@ -63,9 +63,9 @@ export const createMatrix = <T>(n: number, m: number, value: T | (() => T)): T[]
 
 export const memoize = <Fn extends (...args: any[]) => any>(
   fn: Fn,
-  keyBy: (...args: Parameters<Fn>) => string = (...args) => JSON.stringify(args),
+  keyBy: (...args: Parameters<Fn>) => string | number = (...args) => JSON.stringify(args),
 ) => {
-  const cache = new Map<string, ReturnType<Fn>>();
+  const cache = new Map<string | number, ReturnType<Fn>>();
 
   const memoizedFn = (...args: Parameters<Fn>): ReturnType<Fn> => {
     const key = keyBy(...args);
