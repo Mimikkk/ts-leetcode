@@ -8,7 +8,7 @@ const slabs = (input: string): number => {
   const byId = Slabs.group(bricks);
   const byVec = Slabs.fall(bricks);
 
-  return bricks.flatMap((brick) => Slabs.countSupported(brick, byId, byVec)).reduce((a, b) => a + b, 0);
+  return bricks.map((brick) => Slabs.countSupported(brick, byId, byVec)).reduce((a, b) => a + b, 0);
 };
 
 exercise(slabs, [[[UserCase], 63491]]);
