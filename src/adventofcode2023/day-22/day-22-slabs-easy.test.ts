@@ -1,13 +1,17 @@
 import { exercise } from "@shared/utilities/exercise.js";
-import TestCase from "./day-22-slabs.case.txt?raw";
 import UserCase from "./day-22-slabs.user.txt?raw";
+import TestCase from "./day-22-slabs.case.txt?raw";
 import { count } from "../utils/utils.js";
 import { Slabs } from "./day-22-slabs.utils.js";
 
-const slabs = (input: string): number =>
-  count(Slabs.fall(Slabs.parse(input)), (brick, _, bricks) => Slabs.canDisintegrate(bricks, brick));
+const slabs = (input: string): number => {
+  const [map, bricks] = Slabs.fall(Slabs.parse(input));
+  const byId = Object.fromEntries(bricks.map((brick) => [brick.id, brick]));
+
+  return count(bricks, (brick) => Slabs.canDisintegrate(map, byId, brick));
+};
 
 exercise(slabs, [
   [[TestCase], 5],
-  [[UserCase], 3617],
+  [[UserCase], 401],
 ]);
