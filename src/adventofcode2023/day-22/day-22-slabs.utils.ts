@@ -1,5 +1,5 @@
 export namespace Slabs {
-  interface Vec3 {
+  export interface Vec3 {
     x: number;
     y: number;
     z: number;
@@ -11,10 +11,10 @@ export namespace Slabs {
 
   const vec3 = (x: number, y: number, z: number): Vec3 => ({ x, y, z });
 
-  export type IdVecMap = Record<string, number>;
-  export type BrickMap = Record<number, Brick>;
+  export type IdVecMap = Map<string, number>;
+  export type BrickMap = Map<number, Brick>;
 
-  interface Brick {
+  export interface Brick {
     id: number;
     start: Vec3;
     end: Vec3;
@@ -27,9 +27,8 @@ export namespace Slabs {
 
       for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
         for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          if (map[Vec3.hash({ x, y, z })] !== undefined) {
-            ids.add(map[Vec3.hash({ x, y, z })]);
-          }
+          const value = map.get(Vec3.hash({ x, y, z }));
+          if (value !== undefined) ids.add(value);
         }
       }
       return ids;
@@ -42,9 +41,8 @@ export namespace Slabs {
 
       for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
         for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          if (map[Vec3.hash({ x, y, z })] !== undefined) {
-            ids.add(map[Vec3.hash({ x, y, z })]);
-          }
+          const value = map.get(Vec3.hash({ x, y, z }));
+          if (value !== undefined) ids.add(value);
         }
       }
       return ids;
@@ -56,7 +54,7 @@ export namespace Slabs {
 
       for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
         for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
-          if (map[Vec3.hash({ x, y, z })] !== undefined) return true;
+          if (map.has(Vec3.hash({ x, y, z }))) return true;
         }
       }
       return false;
@@ -69,10 +67,10 @@ export namespace Slabs {
     end,
   });
 
-  export const group = (bricks: Brick[]) => Object.fromEntries(bricks.map((brick) => [brick.id, brick]));
+  export const group = (bricks: Brick[]): BrickMap => new Map(bricks.map((brick) => [brick.id, brick]));
 
   export const fall = (bricks: Brick[]): IdVecMap => {
-    const idByPosition: IdVecMap = {};
+    const idByPosition: IdVecMap = new Map();
 
     for (const brick of bricks) {
       while (!Brick.someUnder(idByPosition, brick) && brick.start.z > 1) {
@@ -83,7 +81,7 @@ export namespace Slabs {
       for (let x = brick.start.x, xt = brick.end.x; x <= xt; ++x) {
         for (let y = brick.start.y, yt = brick.end.y; y <= yt; ++y) {
           for (let z = brick.start.z, zt = brick.end.z; z <= zt; ++z) {
-            idByPosition[Vec3.hash({ x, y, z })] = brick.id;
+            idByPosition.set(Vec3.hash({ x, y, z }), brick.id);
           }
         }
       }
@@ -94,7 +92,7 @@ export namespace Slabs {
 
   export const canDisintegrate = (brick: Brick, byId: BrickMap, vecMap: IdVecMap): boolean => {
     for (const id of Brick.topIds(vecMap, brick)) {
-      const other = byId[id];
+      const other = byId.get(id);
       if (other === undefined) continue;
       if (Brick.underIds(vecMap, other).size === 1) return false;
     }
@@ -114,7 +112,7 @@ export namespace Slabs {
       const brick = stack.pop()!;
 
       for (let id of Brick.topIds(vecMap, brick)) {
-        const brick = byId[id];
+        const brick = byId.get(id)!;
         if (hasDifference(Brick.underIds(vecMap, brick), support)) continue;
         support.add(brick.id);
         stack.push(brick);
