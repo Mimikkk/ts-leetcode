@@ -1,6 +1,7 @@
 import { exercise } from "@shared/utilities/exercise.js";
 import TestCase from "./day-24-odds.case.txt?raw";
 import UserCase from "./day-24-odds.user.txt?raw";
+import { range } from "../utils/utils.js";
 
 const odds = (input: string): number => {
   interface Hailstone {
@@ -18,26 +19,10 @@ const odds = (input: string): number => {
   const velocitiesY: Record<number, number[]> = {};
   const velocitiesZ: Record<number, number[]> = {};
 
-  const getRockVelocity = (velocities: Record<number, number[]>): number => {
-    let possibleV: number[] = [];
-    for (let x = -1000; x <= 1000; x++) possibleV.push(x);
-
-    Object.keys(velocities).forEach((velocity) => {
-      const vel = +velocity;
-      if (velocities[vel].length < 2) return;
-
-      let newPossibleV: number[] = [];
-      possibleV.forEach((possible) => {
-        if ((velocities[vel][0] - velocities[vel][1]) % (possible - vel) === 0) {
-          newPossibleV.push(possible);
-        }
-      });
-
-      possibleV = newPossibleV;
-    });
-
-    return possibleV[0];
-  };
+  const getRockVelocity = (velocities: Record<number, number[]>): number =>
+    Object.entries(velocities)
+      .filter(([, [, vy]]) => vy !== undefined)
+      .reduce((acc, [v, [vx, vy]]) => acc.filter((value) => (vx - vy) % (value - +v) === 0), range(-1000, 1000))[0];
 
   for (const line of input.split(/\r?\n/).filter((x) => x)) {
     const [positions, velocity] = line.split(" @ ");
