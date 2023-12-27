@@ -13,6 +13,8 @@ export class TreeNode {
 }
 
 export module TreeNode {
+  export const empty = new TreeNode();
+
   export const array = (root: TreeNode): (number | null)[] => {
     const result: (number | null)[] = [];
     const queue: TreeNode[] = [root];
