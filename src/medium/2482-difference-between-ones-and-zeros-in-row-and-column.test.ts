@@ -1,23 +1,15 @@
 import { exercise } from "@shared/utilities/exercise.js";
 
+const add = (a: number, b: number): number => a + b;
+const sum = (array: number[]): number => array.reduce(add, 0);
+
 const onesMinusZeros = (grid: number[][]): number[][] => {
-  const onesInColumns = grid[0].map((_, index) => grid.reduce((acc, row) => acc + row[index], 0));
-  const zerosInColumns = grid[0].map((_, index) => grid.reduce((acc, row) => acc + (row[index] ? 0 : 1), 0));
+  const onesInColumns = grid[0].map((_, i) => sum(grid.map((x) => x[i])));
+  const zerosInColumns = grid[0].map((_, i) => grid.length - onesInColumns[i]);
+  const onesInRows = grid.map(sum);
+  const zerosInRows = grid.map((row, i) => row.length - onesInRows[i]);
 
-  const onesInRows = grid.map((row) => row.reduce((acc, value) => acc + value, 0));
-  const zerosInRows = grid.map((row) => row.reduce((acc, value) => acc + (value ? 0 : 1), 0));
-
-  const result = Array(grid.length)
-    .fill(0)
-    .map(() => Array(grid[0].length).fill(0));
-
-  for (let row = 0; row < grid.length; row++) {
-    for (let column = 0; column < grid[0].length; column++) {
-      result[row][column] = onesInRows[row] + onesInColumns[column] - zerosInRows[row] - zerosInColumns[column];
-    }
-  }
-
-  return result;
+  return grid.map((row, i) => row.map((_, j) => onesInRows[i] + onesInColumns[j] - zerosInRows[i] - zerosInColumns[j]));
 };
 
 exercise(onesMinusZeros, [
