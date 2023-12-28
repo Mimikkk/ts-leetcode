@@ -1,6 +1,6 @@
 import { exercise } from "@shared/utilities/exercise.js";
 
-import { sleep } from "../easy/2621-sleep.test";
+import { sleep } from "../easy/2621-sleep.test.js";
 
 const debounce = <Fn extends (...args: any) => void>(fn: Fn, timeMs: number): Fn => {
   let timer: NodeJS.Timeout;
