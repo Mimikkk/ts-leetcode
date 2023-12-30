@@ -1,18 +1,6 @@
 import { Chalk } from "./chalk.js";
 import { findMaxWidth, splitlines } from "./text.js";
-
-enum Pipe {
-  Horizontal = "─",
-  Vertical = "│",
-  TopLeft = "╭",
-  TopRight = "╮",
-  BottomRight = "╯",
-  BottomLeft = "╰",
-}
-
-namespace Pipe {
-  export const horizontal = (width: number) => Pipe.Horizontal.repeat(width);
-}
+import { Pipe } from "./pipe.js";
 
 export const box = (text: string, left: number = 0, right: number = left): string => {
   const { TopLeft, TopRight, BottomRight, BottomLeft, Vertical, horizontal } = Pipe;

@@ -13,22 +13,6 @@ class Pipe:
   BottomLeft = '\u2570'
   NewLine = '\n'
 
-  @classmethod
-  def line(cls, width: int) -> str:
-    return cls.Horizontal * width
-
-  @classmethod
-  def top(cls, width: int) -> str:
-    return cls.TopLeft + cls.line(width) + cls.TopRight
-
-  @classmethod
-  def pad(cls, text: str, width: int, left: int, right: int) -> str:
-    return cls.Vertical + ' ' * left + text.ljust(width) + ' ' * right + cls.Vertical
-
-  @classmethod
-  def bottom(cls, width: int) -> str:
-    return cls.BottomLeft + cls.line(width) + cls.BottomRight
-
 def pad_sentences(text: str, left_pad: int, right_pad: int) -> list[str]:
   lines = text.splitlines()
 
@@ -112,20 +96,7 @@ def binary_edge(parent: str, left: None | str, right: None | str):
 
   return join_horizontal(parent, left, right, left_width=width_left, gap_width=width_gap)
 
-def box(value: str, pad: int = 0):
-  width = find_width(value)
-
-  return '\n'.join((
-    Pipe.top(width + 2 * pad),
-    *(
-      Pipe.pad(line, width, pad, pad)
-      for line in value.splitlines()
-    ),
-    Pipe.bottom(width + 2 * pad)
-  ))
-
 def main():
-  print(box('123', 2))
   print(binary_edge('p', 'a', binary_edge('q', 'b', binary_edge('q', 'b', 'c'))))
   print(binary_edge('p', None, binary_edge('q', 'b', binary_edge('q', 'b', None))))
   print(binary_edge('p', None, None))
