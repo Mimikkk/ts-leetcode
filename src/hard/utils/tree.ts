@@ -1,5 +1,6 @@
 import { splitlines } from "./text.js";
 import { Pipe } from "./pipe.js";
+import { TreeNode } from "@shared/structures/index.js";
 
 export namespace Tree {
   const justLeft = (text: string, width: number, fill: string = " ") =>
@@ -10,9 +11,11 @@ export namespace Tree {
 
     const lines = [...parent];
     let max = Math.max(left.length, right.length);
-    for (let i = 0; i < max; ++i) lines.push(justLeft(left[i] ?? "", leftWidth) + gap + right[i] ?? "");
-
-    return lines.map((line) => line.trimEnd()).join("\n");
+    for (let i = 0; i < max; ++i) lines.push(justLeft(left[i] ?? "", leftWidth) + gap + (right[i] ?? ""));
+    return lines
+      .map((line) => line.trimEnd())
+      .filter((line) => line)
+      .join("\n");
   };
 
   const findLeftPad = (text: string): number => text.length - text.trimStart().length;
@@ -70,5 +73,12 @@ export namespace Tree {
       leftTop + linesParent[linesParent.length - 1].slice(skip, skip + widthParent) + rightTop;
 
     return join(linesParent, linesLeft, linesRight, widthLeft, widthGap);
+  };
+
+  export const tree = (root: null | TreeNode): string => {
+    if (root === null) return "";
+    const { val, left, right } = root;
+
+    return edge(`${val}`, left ? tree(left) : undefined, right ? tree(right) : undefined);
   };
 }

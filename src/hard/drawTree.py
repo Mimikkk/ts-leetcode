@@ -81,7 +81,6 @@ def binary_edge(parent: str, left: None | str, right: None | str):
   width_gap = 1
   width_parent = find_width(parent)
   left_pad_parent = (a_l + width_left + b_r) // 2 - width_parent // 2
-  print(a_l, a_c, a_r, b_l, b_c, b_r, width_parent, left_pad_parent)
 
   parent = pad_sentences(parent, left_pad_parent, 0)
 
@@ -93,8 +92,6 @@ def binary_edge(parent: str, left: None | str, right: None | str):
 
   skip = len(left_top)
   parent[-1] = left_top + parent[-1][skip:skip + width_parent] + right_top
-
-  print(parent[-1])
 
   return join_horizontal(parent, left, right, left_width=width_left, gap_width=width_gap)
 
