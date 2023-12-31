@@ -30,10 +30,19 @@ const recoverFromPreorder = (traversal: string): TreeNode | null => {
         parentNode.left = node;
       }
     }
+
+    if (depth === parentDepth) {
+      stack.pop();
+      stack[stack.length - 1][0].right = node;
+    } else {
+      stack.push([node, depth]);
+    }
   }
 
   console.log(TreeNode.array(tree));
-  console.log(Tree.tree(tree, (n) => Chalk.chalk(n.val, "red")));
+  console.log(Tree.tree(tree, Tree.Color.create("red")));
+  console.log(Tree.tree(tree));
+  console.log(Tree.tree(TreeNode.node([1, 2, 5, 3, 4, 6, 7])));
 
   return tree;
 };
@@ -42,8 +51,10 @@ const wrap = (traversal: string) => TreeNode.array(recoverFromPreorder(traversal
 
 exercise(wrap, [
   [["1-2-3"], [1, 2, 3]],
-  // [["1-2--3"], [1, 2, null, 3]],
-  // [["1-2--3---4"], [1, 2, null, 3, null, 4]],
+  [["1-2--3"], [1, 2, null, 3]],
+  [["1-2--3--4"], [1, 2, null, 3, 4]],
+  [["1-2--3--4-5"], [1, 2, 5, 3, 4]],
+  [["1-2--3--4-5--6--7"], [1, 2, 5, 3, 4, 6, 7]],
   // [["1-2--3--4"], [1, 2, null, 3, 4]],
   // [["1-2--3--4-5--6--7"], TreeNode.node([1, 2, 5, 3, 4, 6, 7])],
   // [["1-2--3---4-5--6---7"], TreeNode.node([1, 2, 5, 3, null, 6, null, 4, null, 7])],

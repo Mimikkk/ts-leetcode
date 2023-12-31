@@ -19,8 +19,12 @@ export namespace Tree {
       .join("\n");
   };
 
-  const findLeftPad = (text: string): number => text.length - text.trimStart().length;
-  const findRightPad = (text: string): number => text.trimEnd().length;
+  const findLeftPad = (text: string): number => {
+    const clear = Chalk.clear(text);
+
+    return clear.length - clear.trimStart().length;
+  };
+  const findRightPad = (text: string): number => Chalk.clear(text).trimEnd().length;
   const findTextSpan = (text: string): [left: number, center: number, right: number] => {
     const right = text.replace(endRegexp, "").length;
     const left = text.length - text.replace(startRegexp, "").length;
@@ -81,9 +85,19 @@ export namespace Tree {
     return join(linesParent, linesLeft, linesRight, widthLeft, widthGap);
   };
 
+  export namespace Color {
+    export type ColorFn = (node: TreeNode, depth: number) => string;
+
+    export const natural: ColorFn = ({ val }) => `${val}`;
+
+    export const create =
+      (color: Chalk.Color): ColorFn =>
+      ({ val }) =>
+        Chalk.chalk(`${val}`, color);
+  }
   export const tree = (
     root: null | TreeNode,
-    valueFn: (node: TreeNode, depth: number) => string = ({ val }) => `${val}`,
+    valueFn: (node: TreeNode, depth: number) => string = Color.natural,
   ): string => {
     const traverse = (node: null | TreeNode, depth: number): string | undefined =>
       node ? edge(valueFn(node, depth), traverse(node.left, depth + 1), traverse(node.right, depth + 1)) : undefined;
