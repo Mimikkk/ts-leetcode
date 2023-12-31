@@ -1,50 +1,31 @@
 import { exercise } from "@shared/utilities/exercise.js";
 import { TreeNode } from "@shared/structures/index.js";
-import { Tree } from "./utils/tree.js";
-import { Chalk } from "./utils/chalk.js";
 
 const regex = /(-+)?(\d+)/g;
 const recoverFromPreorder = (traversal: string): TreeNode | null => {
-  let values = [];
-  for (const [, dashes = "", value] of traversal.matchAll(regex)) values.push([dashes.length, +value]);
-  values.reverse();
+  let values: [number, TreeNode][] = [];
+  for (const [, dashes = "", value] of traversal.matchAll(regex)) values.push([dashes.length, new TreeNode(+value)]);
 
   if (values.length === 0) return null;
 
-  const [depth, value] = values.pop()!;
-  const tree = new TreeNode(value);
+  const levels = new Map<number, TreeNode[]>();
+  const add = (depth: number, node: TreeNode) => {
+    const level = levels.get(depth) ?? [];
+    level.push(node);
+    levels.set(depth, level);
+  };
 
-  const stack: [TreeNode, number][] = [[tree, depth]];
+  for (const [depth, node] of values) {
+    add(depth, node);
 
-  console.log({ values });
-  while (values.length > 0) {
-    const [depth, value] = values.pop()!;
-    const [parentNode, parentDepth] = stack[stack.length - 1];
+    const parent = levels.get(depth - 1)?.findLast((node) => !node.left || !node.right);
+    if (!parent) continue;
 
-    const node = new TreeNode(value);
-
-    if (depth === parentDepth + 1) {
-      if (parentNode.left) {
-        parentNode.right = node;
-      } else {
-        parentNode.left = node;
-      }
-    }
-
-    if (depth === parentDepth) {
-      stack.pop();
-      stack[stack.length - 1][0].right = node;
-    } else {
-      stack.push([node, depth]);
-    }
+    if (!parent.left) parent.left = node;
+    else parent.right = node;
   }
 
-  console.log(TreeNode.array(tree));
-  console.log(Tree.tree(tree, Tree.Color.create("red")));
-  console.log(Tree.tree(tree));
-  console.log(Tree.tree(TreeNode.node([1, 2, 5, 3, 4, 6, 7])));
-
-  return tree;
+  return values[0][1];
 };
 
 const wrap = (traversal: string) => TreeNode.array(recoverFromPreorder(traversal) ?? TreeNode.node([0]));
@@ -55,8 +36,6 @@ exercise(wrap, [
   [["1-2--3--4"], [1, 2, null, 3, 4]],
   [["1-2--3--4-5"], [1, 2, 5, 3, 4]],
   [["1-2--3--4-5--6--7"], [1, 2, 5, 3, 4, 6, 7]],
-  // [["1-2--3--4"], [1, 2, null, 3, 4]],
-  // [["1-2--3--4-5--6--7"], TreeNode.node([1, 2, 5, 3, 4, 6, 7])],
-  // [["1-2--3---4-5--6---7"], TreeNode.node([1, 2, 5, 3, null, 6, null, 4, null, 7])],
-  // [["1-401--349---90--88"], TreeNode.node([1, 401, null, 349, 88, 90])],
+  [["1-2--3---4-5--6---7"], [1, 2, 5, 3, null, 6, null, 4, null, 7]],
+  [["1-401--349---90--88"], [1, 401, null, 349, 88, 90]],
 ]);
