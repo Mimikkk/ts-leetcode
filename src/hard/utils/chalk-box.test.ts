@@ -7,8 +7,8 @@ describe("Draw - Box with Chalk", () => {
     expect(Chalk.chalk(box("Hello, world!"), "red")).toBe(
       trimlines(`
 \x1b[31m╭─────────────╮
-        │Hello, world!│
-        ╰─────────────╯\x1b[0m
+│Hello, world!│
+╰─────────────╯\x1b[0m
       `),
     );
   });
