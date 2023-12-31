@@ -43,7 +43,8 @@ export namespace Tree {
     return lines.map((line) => pad + justLeft(line.slice(trimLeft).trimEnd(), columnRight + padRight));
   };
 
-  const _str = Pipe.Horizontal + Pipe.TopLeft + Pipe.TopRight + " ";
+  const { Horizontal, TopLeft, TopRight, horizontal } = Pipe;
+  const _str = Horizontal + TopLeft + TopRight + " ";
   const startRegexp = new RegExp(`^[${_str}]+`, "g");
   const endRegexp = new RegExp(`[${_str}]+$`, "g");
 
@@ -72,13 +73,11 @@ export namespace Tree {
     linesParent = padSentences(linesParent, leftPadParent, 0);
 
     const leftTop = hasLeft
-      ? justLeft(" ".repeat(a_c) + Pipe.TopLeft, leftPadParent, Pipe.Horizontal)
+      ? justLeft(" ".repeat(a_c) + TopLeft, leftPadParent, Horizontal)
       : justLeft("", leftPadParent);
 
     const widthGap = 1;
-    const rightTop = hasRight
-      ? Pipe.Horizontal.repeat(widthLeft + widthGap + b_c - leftPadParent - widthParent) + Pipe.TopRight
-      : "";
+    const rightTop = hasRight ? horizontal(widthLeft + widthGap + b_c - leftPadParent - widthParent) + TopRight : "";
 
     linesParent[linesParent.length - 1] = leftTop + originalParent + rightTop;
 
@@ -95,6 +94,7 @@ export namespace Tree {
       ({ val }) =>
         Chalk.chalk(`${val}`, color);
   }
+
   export const tree = (
     root: null | TreeNode,
     valueFn: (node: TreeNode, depth: number) => string = Color.natural,
