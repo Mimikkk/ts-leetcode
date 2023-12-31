@@ -72,7 +72,7 @@ const colors = new Map<ChalkColor, number>([
 ]);
 
 export namespace Chalk {
-  export const chalk = (text: string, color: ChalkColor) => `\x1b[${colors.get(color)}m${text}\x1b[0m`;
+  export const chalk = (text: string | number, color: ChalkColor) => `\x1b[${colors.get(color)}m${text}\x1b[0m`;
 
   export const clear = (text: string) => text.replace(/\x1b\[\d+m/g, "");
 }

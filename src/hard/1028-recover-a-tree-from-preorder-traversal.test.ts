@@ -1,12 +1,7 @@
 import { exercise } from "@shared/utilities/exercise.js";
 import { TreeNode } from "@shared/structures/index.js";
-
-const drawTreeWithDepth = (tree: TreeNode | null, depth = 0) => {
-  if (tree === null) return;
-  console.log(" ".repeat(depth * 2) + tree.val);
-  drawTreeWithDepth(tree.left, depth + 1);
-  drawTreeWithDepth(tree.right, depth + 1);
-};
+import { Tree } from "./utils/tree.js";
+import { Chalk } from "./utils/chalk.js";
 
 const regex = /(-+)?(\d+)/g;
 const recoverFromPreorder = (traversal: string): TreeNode | null => {
@@ -38,6 +33,7 @@ const recoverFromPreorder = (traversal: string): TreeNode | null => {
   }
 
   console.log(TreeNode.array(tree));
+  console.log(Tree.tree(tree, (n) => Chalk.chalk(n.val, "red")));
 
   return tree;
 };
@@ -46,8 +42,8 @@ const wrap = (traversal: string) => TreeNode.array(recoverFromPreorder(traversal
 
 exercise(wrap, [
   [["1-2-3"], [1, 2, 3]],
-  [["1-2--3"], [1, 2, null, 3]],
-  [["1-2--3---4"], [1, 2, null, 3, null, 4]],
+  // [["1-2--3"], [1, 2, null, 3]],
+  // [["1-2--3---4"], [1, 2, null, 3, null, 4]],
   // [["1-2--3--4"], [1, 2, null, 3, 4]],
   // [["1-2--3--4-5--6--7"], TreeNode.node([1, 2, 5, 3, 4, 6, 7])],
   // [["1-2--3---4-5--6---7"], TreeNode.node([1, 2, 5, 3, null, 6, null, 4, null, 7])],

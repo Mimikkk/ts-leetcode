@@ -1,6 +1,7 @@
 import { splitlines } from "./text.js";
 import { Pipe } from "./pipe.js";
 import { TreeNode } from "@shared/structures/index.js";
+import { Chalk } from "./chalk.js";
 
 export namespace Tree {
   const justLeft = (text: string, width: number, fill: string = " ") =>
@@ -48,37 +49,45 @@ export namespace Tree {
     left ??= "";
     right ??= "";
 
+    const originalParent = parent;
+
+    parent = Chalk.clear(parent);
     const linesLeft = padSentences(splitlines(left), 0, 1);
     const linesRight = padSentences(splitlines(right), 1, 0);
     let linesParent = splitlines(parent);
 
-    const widthLeft = linesLeft[0]?.length ?? 0;
-    const widthGap = 1;
-    const [a_l, a_c] = findTextSpan(linesLeft[0] ?? "");
-    const [, b_c, b_r] = findTextSpan(linesRight[0] ?? "");
+    const clearLeft = Chalk.clear(linesLeft[0] ?? "");
+    const clearRight = Chalk.clear(linesRight[0] ?? "");
+
+    const widthLeft = clearLeft.length;
+    const [a_l, a_c] = findTextSpan(clearLeft);
+    const [, b_c, b_r] = findTextSpan(clearRight);
 
     const widthParent = Math.max(...linesParent.map((line) => line.length));
     const leftPadParent = ~~((a_l + widthLeft + b_r) / 2) - ~~(widthParent / 2);
     linesParent = padSentences(linesParent, leftPadParent, 0);
 
-    let leftTop = justLeft(" ".repeat(a_c) + Pipe.TopLeft, leftPadParent, Pipe.Horizontal);
-    leftTop = hasLeft ? leftTop : justLeft("", leftPadParent);
+    const leftTop = hasLeft
+      ? justLeft(" ".repeat(a_c) + Pipe.TopLeft, leftPadParent, Pipe.Horizontal)
+      : justLeft("", leftPadParent);
 
-    let rightTop = Pipe.Horizontal.repeat(widthLeft + widthGap + b_c - leftPadParent - widthParent) + Pipe.TopRight;
-    rightTop = hasRight ? rightTop : "";
+    const widthGap = 1;
+    const rightTop = hasRight
+      ? Pipe.Horizontal.repeat(widthLeft + widthGap + b_c - leftPadParent - widthParent) + Pipe.TopRight
+      : "";
 
-    const skip = leftTop.length;
-
-    linesParent[linesParent.length - 1] =
-      leftTop + linesParent[linesParent.length - 1].slice(skip, skip + widthParent) + rightTop;
+    linesParent[linesParent.length - 1] = leftTop + originalParent + rightTop;
 
     return join(linesParent, linesLeft, linesRight, widthLeft, widthGap);
   };
 
-  export const tree = (root: null | TreeNode): string => {
-    if (root === null) return "";
-    const { val, left, right } = root;
+  export const tree = (
+    root: null | TreeNode,
+    valueFn: (node: TreeNode, depth: number) => string = ({ val }) => `${val}`,
+  ): string => {
+    const traverse = (node: null | TreeNode, depth: number): string | undefined =>
+      node ? edge(valueFn(node, depth), traverse(node.left, depth + 1), traverse(node.right, depth + 1)) : undefined;
 
-    return edge(`${val}`, left ? tree(left) : undefined, right ? tree(right) : undefined);
+    return traverse(root, 0) ?? "";
   };
 }
