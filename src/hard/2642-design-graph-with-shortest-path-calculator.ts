@@ -94,6 +94,51 @@ export namespace Sol2_2642 {
   }
 }
 
+export namespace Sol3_2642 {
+  export type Edge = [from: number, to: number, weight: number];
+
+  export class Graph {
+    declare ["constructor"]: (n: number, edges: Edge[]) => Graph;
+    declare n: number;
+    declare adjacency: [number, number][][];
+
+    constructor(n: number, edges: Edge[]) {
+      this.adjacency = Array(n)
+        .fill(0)
+        .map(() => []);
+      this.n = n;
+      for (const edge of edges) this.addEdge(edge);
+    }
+
+    addEdge([from, to, weight]: Edge): void {
+      this.adjacency[from].push([to, weight]);
+    }
+
+    shortestPath(from: number, to: number): number {
+      const memory = Array(this.n).fill(Infinity);
+      memory[from] = 0;
+
+      const queue = [from];
+      while (queue.length) {
+        const node = queue.pop()!;
+
+        const adj = this.adjacency[node];
+        if (!adj) continue;
+
+        for (const [next, weight] of adj) {
+          const value = memory[node] + weight;
+          if (memory[next] <= value) continue;
+
+          memory[next] = value;
+          queue.push(next);
+        }
+      }
+
+      return memory[to] ?? -1;
+    }
+  }
+}
+
 export namespace T2642 {
   type ParameterMap = {
     Graph: Parameters<Sol1_2642.Graph["constructor"]>;
