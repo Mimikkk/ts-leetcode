@@ -28,7 +28,7 @@ export namespace Sol1_2642 {
       memory.set(from, 0);
 
       while (queue.length > 0) {
-        const node = queue.shift()!;
+        const node = queue.pop()!;
 
         const map = this.adjacency.get(node);
         if (!map) continue;
