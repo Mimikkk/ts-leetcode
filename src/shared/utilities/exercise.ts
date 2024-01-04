@@ -4,7 +4,7 @@ const problemRe = /src[\\/](easy|medium|hard)[\\/](\d+)-/;
 
 export const exercise = <Fn extends (...args: any) => any>(
   fn: Fn,
-  cases: ({ input: Parameters<Fn>; output: ReturnType<Fn> } | [Parameters<Fn>, ReturnType<Fn>])[],
+  cases: ({ input: Parameters<Fn>; output: ReturnType<Fn> } | [input: Parameters<Fn>, output: ReturnType<Fn>])[],
 ): void => {
   const problemNo = problemRe.exec(
     new Error("reading stacktrace").stack!.split("\n").filter((line) => problemRe.test(line))[0],
