@@ -1,4 +1,5 @@
 import { exercise } from "@shared/utilities/exercise.js";
+
 export namespace Sol1_2642 {
   export type Edge = [from: number, to: number, weight: number];
   export class Graph {
@@ -7,16 +8,16 @@ export namespace Sol1_2642 {
     adjacency: Map<number, Map<number, number>> = new Map();
 
     constructor(_: number, edges: Edge[]) {
-      for (const edge of edges) this.addEdge(edge);
+      // for (const edge of edges) this.addEdge(edge);
     }
 
     addEdge([from, to, weight]: Edge): void {
-      let map = this.adjacency.get(from);
-      if (map === undefined) {
-        map = new Map();
-        this.adjacency.set(from, map);
-      }
-      map.set(to, weight);
+      // let map = this.adjacency.get(from);
+      // if (map === undefined) {
+      //   map = new Map();
+      //   this.adjacency.set(from, map);
+      // }
+      // map.set(to, weight);
     }
 
     shortestPath(from: number, to: number): number {
@@ -56,16 +57,16 @@ export namespace Sol2_2642 {
     adjacency: Map<number, Map<number, number>> = new Map();
 
     constructor(_: number, edges: Edge[]) {
-      for (const edge of edges) this.addEdge(edge);
+      // for (const edge of edges) this.addEdge(edge);
     }
 
     addEdge([from, to, weight]: Edge): void {
-      let map = this.adjacency.get(from);
-      if (map === undefined) {
-        map = new Map();
-        this.adjacency.set(from, map);
-      }
-      map.set(to, weight);
+      // let map = this.adjacency.get(from);
+      // if (map === undefined) {
+      //   map = new Map();
+      //   this.adjacency.set(from, map);
+      // }
+      // map.set(to, weight);
     }
 
     shortestPath(from: number, to: number): number {
