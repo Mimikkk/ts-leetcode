@@ -1,4 +1,5 @@
 import { exercise } from "@shared/utilities/exercise.js";
+import { Heap } from "heap-js";
 
 export namespace Sol1_2642 {
   export type Edge = [from: number, to: number, weight: number];
@@ -8,43 +9,40 @@ export namespace Sol1_2642 {
     adjacency: Map<number, Map<number, number>> = new Map();
 
     constructor(_: number, edges: Edge[]) {
-      // for (const edge of edges) this.addEdge(edge);
+      for (const edge of edges) this.addEdge(edge);
     }
 
     addEdge([from, to, weight]: Edge): void {
-      // let map = this.adjacency.get(from);
-      // if (map === undefined) {
-      //   map = new Map();
-      //   this.adjacency.set(from, map);
-      // }
-      // map.set(to, weight);
+      let map = this.adjacency.get(from);
+      if (map === undefined) {
+        map = new Map();
+
+        this.adjacency.set(from, map);
+      }
+      map.set(to, weight);
     }
 
     shortestPath(from: number, to: number): number {
-      // const dfs = (node: number, visited: Set<number>): number => {
-      //   if (node === to) return 0;
-      //   if (visited.has(node)) return Infinity;
-      //
-      //   visited.add(node);
-      //
-      //   let min = Infinity;
-      //   let map = this.adjacency.get(node);
-      //   if (!map) return Infinity;
-      //   for (const [next, weight] of map) {
-      //     const value = dfs(next, visited);
-      //     if (value === Infinity) continue;
-      //
-      //     const total = value + weight;
-      //     if (total < min) min = total;
-      //   }
-      //
-      //   visited.delete(node);
-      //   return min;
-      // };
-      //
-      // const value = dfs(from, new Set());
-      // return value === Infinity ? -1 : value;
-      return 0;
+      const memory = new Map<number, number>();
+      const queue = [from];
+      memory.set(from, 0);
+
+      while (queue.length > 0) {
+        const node = queue.shift()!;
+
+        const map = this.adjacency.get(node);
+        if (!map) continue;
+
+        for (const [next, weight] of map) {
+          const value = memory.get(node)! + weight;
+          if (memory.has(next) && memory.get(next)! <= value) continue;
+
+          memory.set(next, value);
+          queue.push(next);
+        }
+      }
+
+      return memory.get(to) ?? -1;
     }
   }
 }
@@ -57,43 +55,41 @@ export namespace Sol2_2642 {
     adjacency: Map<number, Map<number, number>> = new Map();
 
     constructor(_: number, edges: Edge[]) {
-      // for (const edge of edges) this.addEdge(edge);
+      for (const edge of edges) this.addEdge(edge);
     }
 
     addEdge([from, to, weight]: Edge): void {
-      // let map = this.adjacency.get(from);
-      // if (map === undefined) {
-      //   map = new Map();
-      //   this.adjacency.set(from, map);
-      // }
-      // map.set(to, weight);
+      let map = this.adjacency.get(from);
+      if (map === undefined) {
+        map = new Map();
+
+        this.adjacency.set(from, map);
+      }
+      map.set(to, weight);
     }
 
     shortestPath(from: number, to: number): number {
-      // const dfs = (node: number, visited: Set<number>): number => {
-      //   if (node === to) return 0;
-      //   if (visited.has(node)) return Infinity;
-      //
-      //   visited.add(node);
-      //
-      //   let min = Infinity;
-      //   let map = this.adjacency.get(node);
-      //   if (!map) return Infinity;
-      //   for (const [next, weight] of map) {
-      //     const value = dfs(next, visited);
-      //     if (value === Infinity) continue;
-      //
-      //     const total = value + weight;
-      //     if (total < min) min = total;
-      //   }
-      //
-      //   visited.delete(node);
-      //   return min;
-      // };
-      //
-      // const value = dfs(from, new Set());
-      // return value === Infinity ? -1 : value;
-      return 0;
+      const memory = new Map<number, number>();
+      memory.set(from, 0);
+      const queue = new Heap<number>(Heap.maxComparator);
+      queue.init([from]);
+
+      while (queue.length) {
+        const node = queue.pop()!;
+
+        const map = this.adjacency.get(node);
+        if (!map) continue;
+
+        for (const [next, weight] of map) {
+          const value = memory.get(node)! + weight;
+          if (memory.has(next) && memory.get(next)! <= value) continue;
+
+          memory.set(next, value);
+          queue.push(next);
+        }
+      }
+
+      return memory.get(to) ?? -1;
     }
   }
 }
