@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 
 const problemRe = /src[\\/](easy|medium|hard)[\\/](\d+)-/;
 
-export const exercise = <Fn extends (...args: any) => any>(
+export function exercise<Fn extends (...args: any) => any>(
   fn: Fn,
   cases: ({ input: Parameters<Fn>; output: ReturnType<Fn> } | [input: Parameters<Fn>, output: ReturnType<Fn>])[],
-): void => {
+): void {
   const problemNo = problemRe.exec(
     new Error("reading stacktrace").stack!.split("\n").filter((line) => problemRe.test(line))[0],
   )?.[2]!;
@@ -24,4 +24,8 @@ export const exercise = <Fn extends (...args: any) => any>(
       expect(await fn(...(input as Iterable<unknown>))).toEqual(await output),
     ),
   );
-};
+}
+
+export namespace exercise {
+  export type cases<fn extends (...args: any) => any> = Parameters<typeof exercise<fn>>[1];
+}
