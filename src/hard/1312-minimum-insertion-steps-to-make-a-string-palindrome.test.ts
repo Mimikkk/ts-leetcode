@@ -4,4 +4,8 @@ const minInsertions = (s: string): number => {
   return 0;
 };
 
-exercise(minInsertions, [[["zzazz"], 3]]);
+exercise(minInsertions, [
+  [["zzazz"], 3],
+  [["mbadm"], 2],
+  [["leetcode"], 5],
+]);
