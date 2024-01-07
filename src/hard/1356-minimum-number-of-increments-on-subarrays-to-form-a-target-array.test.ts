@@ -1,11 +1,5 @@
 import { exercise } from "@shared/utilities/exercise.js";
+import { S1_1356, S2_1356, T1356 } from "./1356-minimum-number-of-increments-on-subarrays-to-form-a-target-array.js";
 
-const minNumberOperations = (target: number[]): number => {
-  return 0;
-};
-
-exercise(minNumberOperations, [
-  [[[1, 2, 3, 2, 1]], 3],
-  [[[3, 1, 1, 2]], 4],
-  [[[3, 1, 5, 4, 2]], 7],
-]);
+exercise(S1_1356.minNumberOperations, T1356.cases);
+exercise(S2_1356.minNumberOperations, T1356.cases);
