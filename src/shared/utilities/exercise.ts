@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { bench, describe, expect, it } from "vitest";
 
 const problemRe = /src[\\/](easy|medium|hard)[\\/](\d+)-/;
 
@@ -29,3 +29,47 @@ export function exercise<Fn extends (...args: any) => any>(
 export namespace exercise {
   export type cases<fn extends (...args: any) => any> = Parameters<typeof exercise<fn>>[1];
 }
+
+export const exercises = <const Fn extends (...args: any) => any, Cases extends exercise.cases<Fn>>(
+  solutions: Fn[],
+  cases: Cases,
+): void => solutions.forEach((solution) => exercise(solution, cases));
+
+export type TypedKey<R, T> = { [K in keyof R]: R[K] extends T ? K : never }[keyof R];
+
+export const exercisesNs = <
+  Cases extends Record<"cases", exercise.cases<Fn>>,
+  Namespace extends Record<Name, Fn>,
+  Name extends TypedKey<Namespace, Fn>,
+  Fn extends (...args: any) => any,
+>(
+  [{ cases }, ...solutions]: [Cases, ...Namespace[]],
+  key: Name,
+): void =>
+  exercises(
+    solutions.map((ns) => ns[key]),
+    cases,
+  );
+
+export const benches = <
+  Cases extends Record<"cases", exercise.cases<Fn>>,
+  Namespace extends Record<Name, Fn>,
+  Name extends TypedKey<Namespace, Fn>,
+  Fn extends (...args: any) => any,
+>(
+  input: [Cases, ...Namespace[]],
+  key: Name,
+): void => {
+  exercisesNs(input, key as never);
+
+  const [{ cases }, ...solutions] = input;
+  cases.forEach((case_, j) => {
+    const [input] = Array.isArray(case_) ? case_ : [case_.input, case_.output];
+
+    describe(`case ${j + 1}`, () => {
+      solutions.forEach((solution, i) => {
+        bench(`${key.toString()} - Solution ${i + 1}`, () => solution[key](input));
+      });
+    });
+  });
+};
