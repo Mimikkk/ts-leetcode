@@ -8,11 +8,11 @@ describe("Draw - Tree-Node", () => {
     const tree = TreeNode.node([1, 2, 3, 4, 5, 6, 7]);
 
     expect(Tree.repr(tree)).toBe(
-      trimlines(`
+      trimlines`
          ╭───1────╮
        ╭─2──╮   ╭─3──╮
        4    5   6    7
-      `),
+      `,
     );
   });
 
@@ -20,12 +20,12 @@ describe("Draw - Tree-Node", () => {
     const tree = TreeNode.node([1, 2, null, 4, 5, null, 7]);
 
     expect(Tree.repr(tree)).toBe(
-      trimlines(`
+      trimlines`
          ╭──1
       ╭──2───╮
       4╮     5
        7
-      `),
+      `,
     );
   });
 });

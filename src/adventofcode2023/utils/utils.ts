@@ -91,3 +91,9 @@ export const count = <T>(items: T[], predicate: (item: T, index: number, items: 
   for (let i = 0; i < items.length; ++i) if (predicate(items[i], i, items)) ++count;
   return count;
 };
+
+export const createCounter = (nums: number[]) => {
+  const counter = new Map<number, number>();
+  nums.forEach((n) => counter.set(n, (counter.get(n) ?? 0) + 1));
+  return counter;
+};

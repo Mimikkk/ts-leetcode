@@ -1,6 +1,7 @@
 export const splitlines = (text: string) => text.split("\n");
-export const trimlines = (text: string) => {
-  const lines = splitlines(text).filter((line) => line.trim());
+export const trimlines = (text: string | TemplateStringsArray) => {
+  if (Array.isArray(text)) text = text.join("\n");
+  const lines = splitlines(text as string).filter((line) => line.trim());
 
   const start = lines
     .map((line) => {

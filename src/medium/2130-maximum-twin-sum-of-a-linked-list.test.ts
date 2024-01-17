@@ -12,7 +12,7 @@
 
 import { ListNode } from "@shared/structures/ListNode.js";
 import { exercisesNs } from "@shared/utilities/exercise.js";
-import { Line } from "../hard/utils/tree.js";
+import { Line } from "../hard/utils/line.js";
 
 namespace S2130_1 {
   const listToArray = (head: ListNode | null): number[] => {
@@ -62,4 +62,4 @@ namespace S2130_2 {
   };
 }
 
-exercisesNs([{ cases: [[[ListNode.node([5, 4, 2, 1, 1])], 6]] }, S2130_1, S2130_2], "pairSum");
+exercisesNs([{ cases: [[[ListNode.node([554, 4312, 31, 123, 11254])], 6]] }, S2130_1, S2130_2], "pairSum");

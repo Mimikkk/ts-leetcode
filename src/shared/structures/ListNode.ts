@@ -14,6 +14,7 @@ export namespace ListNode {
   export const node = (numbers: number[]): Nullable<ListNode> => {
     let head: ListNode | null = null;
     let tail: ListNode | null = null;
+
     for (let n of numbers) {
       const node = new ListNode(n);
       if (head === null) {
@@ -27,13 +28,62 @@ export namespace ListNode {
   };
 
   export const array = (node: Nullable<ListNode>): number[] => {
-    const result: number[] = [];
+    const numbers: number[] = [];
+    const seen = new Set<ListNode>();
 
     while (node) {
-      result.push(node.val);
+      if (seen.has(node)) break;
+      seen.add(node);
+
+      numbers.push(node.val);
       node = node.next;
     }
 
-    return result;
+    return numbers;
+  };
+
+  export const list = (node: Nullable<ListNode>): ListNode[] => {
+    const nodes: ListNode[] = [];
+
+    while (node) {
+      if (nodes.includes(node)) break;
+      nodes.push(node);
+      node = node.next;
+    }
+    return nodes;
+  };
+
+  export const hasCycle = (node: Nullable<ListNode>): boolean => {
+    let first = node;
+    let second = node;
+
+    while (second?.next?.next) {
+      first = first!.next;
+      second = second.next.next;
+      if (first === second) return true;
+    }
+
+    return false;
+  };
+
+  export const cycleAt = (node: Nullable<ListNode>): Nullable<ListNode> => {
+    let first = node;
+    let second = node;
+
+    while (second?.next?.next) {
+      first = first!.next;
+      second = second.next.next;
+      if (first === second) break;
+    }
+
+    if (!second?.next?.next) return null;
+
+    first = node;
+    while (first !== second) {
+      first = first!.next;
+      second = second!.next;
+    }
+
+    return first;
   };
 }

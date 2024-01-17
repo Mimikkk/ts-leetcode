@@ -1,8 +1,7 @@
 import { splitlines } from "./text.js";
 import { Pipe } from "./pipe.js";
-import { ListNode, TreeNode } from "@shared/structures/index.js";
+import { TreeNode } from "@shared/structures/index.js";
 import { Chalk } from "./chalk.js";
-import { Color, createMatrix } from "../../adventofcode2023/utils/utils.js";
 
 export namespace Tree {
   const justLeft = (text: string, width: number, fill: string = " ") =>
@@ -104,37 +103,5 @@ export namespace Tree {
       node ? edge(valueFn(node, depth), traverse(node.left, depth + 1), traverse(node.right, depth + 1)) : undefined;
 
     return traverse(root, 0) ?? "";
-  };
-}
-
-export namespace Line {
-  export const repr = (line: ListNode, nodes: [ListNode, Color][]) => {
-    const array: ListNode[] = [];
-    let current: ListNode | null = line;
-    while (current) {
-      array.push(current);
-      current = current.next;
-    }
-
-    const cursors = nodes.map(([node, color]) => [array.indexOf(node) * 3, color] as const);
-    const arrowLine = array.map((node) => node.val).join("->");
-    const pointers = cursors.map(([pointer, color]) => [pointer, Chalk.chalk("^", color)] as const);
-
-    let counter = new Map<number, number>();
-    pointers.forEach(([pointer]) => counter.set(pointer, (counter.get(pointer) ?? 0) + 1));
-
-    let lineCount = Math.max(...counter.values());
-
-    const result = createMatrix(lineCount, arrowLine.length, " ");
-
-    for (const [pointer, cursor] of pointers) {
-      for (let i = 0; i < counter.get(pointer)!; ++i) {
-        if (result[i][pointer] !== " ") continue;
-        result[i][pointer] = cursor;
-        break;
-      }
-    }
-
-    return [arrowLine, ...result.map((line) => line.join(""))].join("\n");
   };
 }
