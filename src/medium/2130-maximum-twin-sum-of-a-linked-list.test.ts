@@ -1,18 +1,5 @@
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
-
 import { ListNode } from "@shared/structures/ListNode.js";
 import { exercisesNs } from "@shared/utilities/exercise.js";
-import { Line } from "../hard/utils/line.js";
 
 namespace S2130_1 {
   const listToArray = (head: ListNode | null): number[] => {
@@ -51,15 +38,51 @@ namespace S2130_2 {
       end = end.next.next;
     }
 
-    console.log(
-      Line.repr(head, [
-        [middle, "red"],
-        [end, "green"],
-      ]),
-    );
+    let current = middle.next;
+    let prev = null;
+    while (current) {
+      const next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    middle.next = prev;
+    middle = middle.next!;
 
-    return 0;
+    let max = 0;
+    let start = head;
+    while (middle) {
+      const sum = start.val + middle.val;
+      if (sum > max) max = sum;
+      start = start.next!;
+      middle = middle.next!;
+    }
+
+    return max;
   };
 }
 
-exercisesNs([{ cases: [[[ListNode.node([554, 4312, 31, 123, 11254])], 6]] }, S2130_1, S2130_2], "pairSum");
+exercisesNs(
+  [
+    {
+      cases: [
+        [[ListNode.node([])], 0],
+        [[ListNode.node([1, 3, 3, 4])], 6],
+        [[ListNode.node([1, 3, 9, 12, 3, 4])], 21],
+        [
+          [
+            ListNode.node([
+              1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9,
+              12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4,
+              1, 3, 9, 12, 3, 4, 1, 3, 9, 12, 3, 4,
+            ]),
+          ],
+          21,
+        ],
+      ],
+    },
+    S2130_1,
+    S2130_2,
+  ],
+  "pairSum",
+);

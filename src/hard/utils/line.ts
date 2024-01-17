@@ -13,9 +13,7 @@ export namespace Line {
     const positionsMap = new Map<ListNode, number>();
 
     let offset = 0;
-    for (let node of array) {
-      const { length } = `${node.val}`;
-
+    for (const [node, length] of array.map((node) => [node, `${node.val}`.length] as const)) {
       positionsMap.set(node, offset + ~~((length - 1) / 2));
       offset += length + 1;
     }
@@ -42,6 +40,6 @@ export namespace Line {
       }
     }
 
-    return [...arrows, ...cursors.map((c) => c.join("").trimEnd())].join("\n");
+    return arrows.concat(cursors.map((c) => c.join("").trimEnd())).join("\n");
   };
 }
