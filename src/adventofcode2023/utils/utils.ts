@@ -9,7 +9,7 @@ export const colors = {
 export type Color = keyof typeof colors;
 export const chalk = (input: string, color: Color) => `\x1b[${colors[color]}m${input}\x1b[0m`;
 
-export const withCursors = (line: string | string[], cursors: [number, Color][]) => {
+export const withCursors = (line: string | string[] | number[], cursors: [number, Color][]) => {
   const pointers = cursors.map(([pointer, color]) => [pointer, chalk("^", color)] as const);
 
   let counter = new Map<number, number>();
