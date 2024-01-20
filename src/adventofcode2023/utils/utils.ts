@@ -47,11 +47,6 @@ export const withColors = <T>(
   return result.map((line) => line.join(separator)).join("\n");
 };
 
-export const range = (a: number, b: number) =>
-  Array(b - a + 1)
-    .fill(undefined)
-    .map((_, i) => a + i);
-
 export const createMatrix = <T>(n: number, m: number, value: T | (() => T)): T[][] =>
   Array(n)
     .fill(0)
@@ -96,4 +91,14 @@ export const createCounter = (nums: number[]) => {
   const counter = new Map<number, number>();
   nums.forEach((n) => counter.set(n, (counter.get(n) ?? 0) + 1));
   return counter;
+};
+
+export const range = (startOrN: number, end?: number, step = 1): number[] => {
+  const start = end === undefined ? 0 : startOrN;
+  const n = end === undefined ? startOrN : end;
+  const result = [];
+
+  for (let i = start; i < n; i += step) result.push(i);
+
+  return result;
 };
