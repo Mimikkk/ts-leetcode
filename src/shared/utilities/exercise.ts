@@ -68,7 +68,7 @@ export const benches = <
 
     describe(`case ${j + 1}`, () => {
       solutions.forEach((solution, i) => {
-        bench(`${key.toString()} - Solution ${i + 1}`, () => solution[key](input));
+        bench(`${key.toString()} - Solution ${i + 1}`, () => solution[key](...(input as unknown[])));
       });
     });
   });
