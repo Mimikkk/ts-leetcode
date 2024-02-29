@@ -3,6 +3,7 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "@arktype/attest": "^0.6.2",
     "@types/node": "^20.11.5",
     "heap-js": "^2.3.0",
     "prettier": "^3.2.4",
@@ -11,5 +12,8 @@
     "vite-node": "^1.2.1",
     "vitest": "^1.2.1"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "tsx": "^4.7.1"
+  }
 }
