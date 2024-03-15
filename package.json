@@ -14,6 +14,7 @@
   },
   "type": "module",
   "dependencies": {
-    "tsx": "^4.7.1"
+    "tsx": "^4.7.1",
+    "@type-challenges/utils": "^0.1.1"
   }
 }
