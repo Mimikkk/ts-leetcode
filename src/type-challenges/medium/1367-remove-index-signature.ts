@@ -1,4 +1,8 @@
-type RemoveIndexSignature<T> = {};
+type ExcludeIndex<K, P = PropertyKey> = P extends K ? never : K extends P ? K : never;
+
+type RemoveIndexSignature<T, P = PropertyKey> = {
+  [K in keyof T as ExcludeIndex<K, P>]: T[K];
+};
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
