@@ -1,40 +1,35 @@
-type IsIn<T extends any[], Y> = T extends [infer HT, ...infer TT]
-  ? Equal<HT, Y> extends true
+type Filter<T extends any[], X> = T extends [infer H, ...infer T]
+  ? Equal<H, X> extends true
+    ? [H, ...Filter<T, X>]
+    : Filter<T, X>
+  : [];
+
+type Count<T extends any[], X> = Filter<T, X>["length"];
+
+type IsIn<T extends any[], X> = T extends [infer H, ...infer T]
+  ? Equal<H, X> extends true
     ? true
-    : IsIn<TT, Y>
+    : IsIn<T, X>
   : false;
 
-type HasAnyOf<T extends any[], Y extends any[]> = Y extends [infer HY, ...infer TY]
-  ? IsIn<T, HY> extends true
-    ? true
-    : HasAnyOf<T, TY>
-  : false;
+type Elements<T extends any[], R extends any[] = []> = T extends [infer H, ...infer TA]
+  ? IsIn<R, H> extends false
+    ? Elements<TA, [...R, H]>
+    : Elements<TA, R>
+  : R;
 
-type ElementsOf<Array extends any[], Result extends any[] = []> = Array extends [infer HA, ...infer TA]
-  ? Result extends [...infer TR, infer HR]
-    ? Equal<HA, HR> extends true
-      ? ElementsOf<TA, [...Result]>
-      : ElementsOf<TA, [...Result, HA]>
-    : ElementsOf<TA, [HA]>
-  : Result;
-
-type Unique<Array extends any[]> = [];
-
-const x: ElementsOf<[2, 2, 2, 2]> = void 0 as never;
+type UniqueElements<T extends any[], E extends any[] = Elements<T>> = E extends [infer HE, ...infer TE]
+  ? Count<T, HE> extends 1
+    ? [HE, ...UniqueElements<T, TE>]
+    : UniqueElements<T, TE>
+  : [];
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<Unique<[1, 2, 2, 3, 3, 4, 5, 6, 6, 6]>, [1, 4, 5]>>,
-  Expect<Equal<Unique<[2, 2, 3, 3, 6, 6, 6]>, []>>,
-  Expect<Equal<Unique<[1, 2, 3]>, [1, 2, 3]>>,
-  Expect<Equal<Unique<[]>, []>>,
+  Expect<Equal<UniqueElements<[1, 2, 2, 3, 3, 4, 5, 6, 6, 6]>, [1, 4, 5]>>,
+  Expect<Equal<UniqueElements<[2, 2, 3, 3, 6, 6, 6]>, []>>,
+  Expect<Equal<UniqueElements<[1, 2, 3]>, [1, 2, 3]>>,
+  Expect<Equal<UniqueElements<[]>, []>>,
 ];
-
-/* _____________ Further Steps _____________ */
-/*
-  > Share your solutions: https://tsch.js.org/9898/answer
-  > View solutions: https://tsch.js.org/9898/solutions
-  > More Challenges: https://tsch.js.org
-*/

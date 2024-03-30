@@ -1,39 +1,26 @@
-/*
-  9989 - Count Element Number To Object
-  -------
-  by 凤之兮原 (@kongmingLatern) #medium
+type ElementFilter<T extends any[], X> = T extends [infer H, ...infer T]
+  ? Equal<H, X> extends true
+    ? [H, ...ElementFilter<T, X>]
+    : ElementFilter<T, X>
+  : [];
 
-  ### Question
+type ElementCount<T extends any[], X> = ElementFilter<T, X>["length"];
 
-  With type ``CountElementNumberToObject``, get the number of occurrences of every item from an array and return them in an object. For example:
+type Flatten<T extends any[]> = T extends [infer F, ...infer R]
+  ? F extends any[]
+    ? [...Flatten<F>, ...Flatten<R>]
+    : [F, ...Flatten<R>]
+  : [];
 
-  ~~~ts
-  type Simple1 = CountElementNumberToObject<[]> // return {}
-  type Simple2 = CountElementNumberToObject<[1,2,3,4,5]>
-  // return {
-  //   1: 1,
-  //   2: 1,
-  //   3: 1,
-  //   4: 1,
-  //   5: 1
-  // }
-
-  type Simple3 = CountElementNumberToObject<[1,2,3,4,5,[1,2,3]]>
-  // return {
-  //   1: 2,
-  //   2: 2,
-  //   3: 2,
-  //   4: 1,
-  //   5: 1
-  // }
-  ~~~
-
-  > View on GitHub: https://tsch.js.org/9989
-*/
-
-/* _____________ Your Code Here _____________ */
-
-type CountElementNumberToObject<T> = any;
+type CountElementNumberToObject<T extends any[]> = T extends never[]
+  ? {}
+  : Flatten<T> extends infer I
+    ? I extends any[]
+      ? {
+          [K in I[number]]: ElementCount<I, K>;
+        }
+      : {}
+    : {};
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -98,10 +85,3 @@ type cases = [
     >
   >,
 ];
-
-/* _____________ Further Steps _____________ */
-/*
-  > Share your solutions: https://tsch.js.org/9989/answer
-  > View solutions: https://tsch.js.org/9989/solutions
-  > More Challenges: https://tsch.js.org
-*/
