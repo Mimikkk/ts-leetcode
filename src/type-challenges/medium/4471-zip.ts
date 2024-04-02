@@ -1,21 +1,4 @@
-/*
-  4471 - Zip
-  -------
-  by キリサメ qianxi (@qianxi0410) #medium #tuple
-
-  ### Question
-
-  In This Challenge, You should implement a type `Zip<T, U>`, T and U must be `Tuple`
-  ```ts
-  type exp = Zip<[1, 2], [true, false]> // expected to be [[1, true], [2, false]]
-  ```
-
-  > View on GitHub: https://tsch.js.org/4471
-*/
-
-/* _____________ Your Code Here _____________ */
-
-type Zip<T, U> = any;
+type Zip<A, B> = [A, B] extends [[infer HA, ...infer TA], [infer HB, ...infer TB]] ? [[HA, HB], ...Zip<TA, TB>] : [];
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -27,10 +10,3 @@ type cases = [
   Expect<Equal<Zip<[], [1, 2, 3]>, []>>,
   Expect<Equal<Zip<[[1, 2]], [3]>, [[[1, 2], 3]]>>,
 ];
-
-/* _____________ Further Steps _____________ */
-/*
-  > Share your solutions: https://tsch.js.org/4471/answer
-  > View solutions: https://tsch.js.org/4471/solutions
-  > More Challenges: https://tsch.js.org
-*/

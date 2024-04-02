@@ -1,25 +1,30 @@
-/*
-  2257 - MinusOne
-  -------
-  by Mustafo Faiz (@fayzzzm) #medium #math
+type Int<T extends string> = T extends `${infer N extends number}` ? N : never;
 
-  ### Question
+type ReverseString<S extends string> = S extends `${infer H}${infer T}` ? `${ReverseString<T>}${H}` : "";
 
-  Given a number (always positive) as a type. Your type should return the number decreased by one.
+type TrimLeft<S extends string> = S extends "0" ? S : S extends `${"0"}${infer R}` ? TrimLeft<R> : S;
 
-  For example:
+type SubOne<S extends string> = S extends `${infer H extends number}${infer T}`
+  ? H extends 0
+    ? `9${SubOne<T>}`
+    : `${[9, 0, 1, 2, 3, 4, 5, 6, 7, 8][H]}${T}`
+  : never;
 
-  ```ts
-  type Zero = MinusOne<1> // 0
-  type FiftyFour = MinusOne<55> // 54
-  ```
+type AddOne<S extends string> = S extends "9"
+  ? "01"
+  : S extends `${infer H extends number}${infer T}`
+    ? H extends 9
+      ? `0${AddOne<T>}`
+      : `${[1, 2, 3, 4, 5, 6, 7, 8, 9][H]}${T}`
+    : never;
 
-  > View on GitHub: https://tsch.js.org/2257
-*/
+type Negative<S extends string> = `-${S}`;
 
-/* _____________ Your Code Here _____________ */
-
-type MinusOne<T extends number> = any;
+type MinusOne<T extends number> = T extends 0
+  ? -1
+  : `${T}` extends `-${infer A}`
+    ? Int<Negative<ReverseString<AddOne<ReverseString<`${A}`>>>>>
+    : Int<TrimLeft<ReverseString<SubOne<ReverseString<`${T}`>>>>>;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -36,7 +41,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
-  > Share your solutions: https://tsch.js.org/2257/answer
-  > View solutions: https://tsch.js.org/2257/solutions
-  > More Challenges: https://tsch.js.org
-*/
+ > Share your solutions: https://tsch.js.org/2257/answer
+ > View solutions: https://tsch.js.org/2257/solutions
+ > More Challenges: https://tsch.js.org
+ */
