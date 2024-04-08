@@ -1,39 +1,21 @@
-/*
-  9142 - CheckRepeatedChars
-  -------
-  by Hong (@RThong) #medium #union #string
+type Count<T extends string, E, C extends any[] = []> = T extends `${infer H}${infer T}`
+  ? Equal<H, E> extends true
+    ? Count<T, E, [...C, any]>
+    : Count<T, E, C>
+  : C["length"];
 
-  ### Question
-
-  Implement type ```CheckRepeatedChars<S>``` which will return whether type ```S``` contains duplicated chars?
-
-  For example:
-
-  ```ts
-  type CheckRepeatedChars<'abc'>   // false
-  type CheckRepeatedChars<'aba'>   // true
-  ```
-
-  > View on GitHub: https://tsch.js.org/9142
-*/
-
-/* _____________ Your Code Here _____________ */
-
-type CheckRepeatedChars<T extends string> = any
+type CheckRepeatedChars<S extends string> = S extends `${infer H}${infer T}`
+  ? Count<S, H> extends 1
+    ? CheckRepeatedChars<T>
+    : true
+  : false;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<CheckRepeatedChars<'abc'>, false>>,
-  Expect<Equal<CheckRepeatedChars<'abb'>, true>>,
-  Expect<Equal<CheckRepeatedChars<'cbc'>, true>>,
-  Expect<Equal<CheckRepeatedChars<''>, false>>,
-]
-
-/* _____________ Further Steps _____________ */
-/*
-  > Share your solutions: https://tsch.js.org/9142/answer
-  > View solutions: https://tsch.js.org/9142/solutions
-  > More Challenges: https://tsch.js.org
-*/
+  Expect<Equal<CheckRepeatedChars<"abc">, false>>,
+  Expect<Equal<CheckRepeatedChars<"abb">, true>>,
+  Expect<Equal<CheckRepeatedChars<"cbc">, true>>,
+  Expect<Equal<CheckRepeatedChars<"">, false>>,
+];

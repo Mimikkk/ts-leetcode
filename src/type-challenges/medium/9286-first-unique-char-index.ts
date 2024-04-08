@@ -1,18 +1,12 @@
-/*
-  9286 - FirstUniqueCharIndex
-  -------
-  by jiangshan (@jiangshanmeta) #medium #string
-
-  ### Question
-
-  Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1. (Inspired by [leetcode 387](https://leetcode.com/problems/first-unique-character-in-a-string/))
-
-  > View on GitHub: https://tsch.js.org/9286
-*/
-
-/* _____________ Your Code Here _____________ */
-
-type FirstUniqueCharIndex<T extends string> = any;
+type FirstUniqueCharIndex<T extends string, A extends string[] = []> = T extends ""
+  ? -1
+  : T extends `${infer H}${infer T}`
+    ? H extends A[number]
+      ? FirstUniqueCharIndex<T, [...A, H]>
+      : T extends `${string}${H}${string}`
+        ? FirstUniqueCharIndex<T, [...A, H]>
+        : A["length"]
+    : never;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -24,10 +18,3 @@ type cases = [
   Expect<Equal<FirstUniqueCharIndex<"">, -1>>,
   Expect<Equal<FirstUniqueCharIndex<"aaa">, -1>>,
 ];
-
-/* _____________ Further Steps _____________ */
-/*
-  > Share your solutions: https://tsch.js.org/9286/answer
-  > View solutions: https://tsch.js.org/9286/solutions
-  > More Challenges: https://tsch.js.org
-*/
