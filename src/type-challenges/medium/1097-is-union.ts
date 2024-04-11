@@ -1,4 +1,9 @@
-type IsUnion<T> = any;
+type Distributive<T, C> = T extends infer E ? (C extends E ? true : false) : false;
+
+type IsUnion<T> = Distributive<T, T> extends true ? false : true;
+
+let x: IsUnion<string | number>;
+let y: IsUnion<string>;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";

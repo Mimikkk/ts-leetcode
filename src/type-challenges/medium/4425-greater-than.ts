@@ -1,34 +1,17 @@
-/*
-  4425 - Greater Than
-  -------
-  by ch3cknull (@ch3cknull) #medium #array
-
-  ### Question
-
-  In This Challenge, You should implement a type `GreaterThan<T, U>` like `T > U`
-
-  Negative numbers do not need to be considered.
-
-  For example
-
-  ```ts
-  GreaterThan<2, 1> //should be true
-  GreaterThan<1, 1> //should be false
-  GreaterThan<10, 100> //should be false
-  GreaterThan<111, 11> //should be true
-  ```
-
-  Good Luck!
-
-  > View on GitHub: https://tsch.js.org/4425
-*/
-
-/* _____________ Your Code Here _____________ */
-
-type GreaterThan<T extends number, U extends number> = any
+type GreaterThan<
+  A extends number | string,
+  B extends number | string,
+  IsEqual extends boolean = false,
+> = `${A}` extends `${infer AH}${infer AT}`
+  ? `${B}` extends `${infer BH}${infer BT}`
+    ? [IsEqual, AH & BH] extends [false, never]
+      ? GreaterThan<AT, BT, "0123456789" extends `${string}${AH}${string}${BH}${string}` ? false : true>
+      : GreaterThan<AT, BT, IsEqual>
+    : true
+  : IsEqual;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
   Expect<Equal<GreaterThan<1, 0>, true>>,
@@ -40,11 +23,4 @@ type cases = [
   Expect<Equal<GreaterThan<10, 100>, false>>,
   Expect<Equal<GreaterThan<111, 11>, true>>,
   Expect<Equal<GreaterThan<1234567891011, 1234567891010>, true>>,
-]
-
-/* _____________ Further Steps _____________ */
-/*
-  > Share your solutions: https://tsch.js.org/4425/answer
-  > View solutions: https://tsch.js.org/4425/solutions
-  > More Challenges: https://tsch.js.org
-*/
+];
