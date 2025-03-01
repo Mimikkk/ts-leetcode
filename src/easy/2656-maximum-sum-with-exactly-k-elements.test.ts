@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const maximizeSum = (nums: number[], k: number): number => {
   let max = nums[0];

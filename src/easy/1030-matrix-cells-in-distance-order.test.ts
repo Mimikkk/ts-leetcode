@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const distance = (x1: number, y1: number, x2: number, y2: number) => Math.abs(x1 - x2) + Math.abs(y1 - y2);
 const allCellsDistOrder = (m: number, n: number, ...center: [number, number]): number[][] => {

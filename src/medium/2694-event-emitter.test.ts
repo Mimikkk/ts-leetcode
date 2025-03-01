@@ -1,5 +1,7 @@
 type Fn = (...args: any[]) => any;
 type CancelFn = { unsubscribe: () => void };
+import { it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 class EventEmitter {
   subscribers: Map<string, Fn[]> = new Map();

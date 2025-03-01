@@ -1,5 +1,5 @@
-import { bench, describe } from "vitest";
-import { Sol1_1255, Sol2_1255 } from "./1255-maximum-score-words-formed-by-letters.js";
+import { describe } from "jsr:@std/testing/bdd";
+import { Sol1_1255, Sol2_1255 } from "./1255-maximum-score-words-formed-by-letters.ts";
 
 describe("bench", () => {
   const [a, b, c] = [
@@ -100,11 +100,11 @@ describe("bench", () => {
     [2, 6, 3, 7, 5, 9, 4, 4, 8, 1, 6, 9, 1, 1, 1, 1, 7, 5, 2, 5, 0, 0, 0, 0, 0, 0],
   ];
 
-  bench("sol1 - maxScoreWords", () => {
+  Deno.bench("sol1 - maxScoreWords", () => {
     Sol1_1255.maxScoreWords(a, b, c);
   });
 
-  bench("sol2 - maxScoreWords", () => {
+  Deno.bench("sol2 - maxScoreWords", () => {
     Sol2_1255.maxScoreWords(a, b, c);
   });
 });

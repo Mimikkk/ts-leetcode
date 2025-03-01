@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const countTestedDevices = (batteryPercentages: number[]): number => {
   const n = batteryPercentages.length;

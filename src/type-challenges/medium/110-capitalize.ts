@@ -38,7 +38,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
- > Share your solutions: https://tsch.js.org/110/answer
- > View solutions: https://tsch.js.org/110/solutions
- > More Challenges: https://tsch.js.org
+ > Share your solutions: https://tsch.ts.org/110/answer
+ > View solutions: https://tsch.ts.org/110/solutions
+ > More Challenges: https://tsch.ts.org
  */

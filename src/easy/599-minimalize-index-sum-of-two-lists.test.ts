@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const findRestaurant = (l1: string[], l2: string[]): string[] => {
   const indexSum: Record<string, number> = {};

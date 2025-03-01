@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const reverseBits = (n: number): number => {
   let result = 0;
@@ -12,19 +14,19 @@ const reverseBits = (n: number): number => {
 };
 
 describe("190 - reverse bits", () => {
-  test("Case 1", () => {
+  it("Case 1", () => {
     expect(reverseBits(43261596)).toEqual(964176192);
   });
 
-  test("Case 2", () => {
+  it("Case 2", () => {
     expect(reverseBits(4294967293)).toEqual(3221225471);
   });
 
-  test("Case 3", () => {
+  it("Case 3", () => {
     expect(reverseBits(0)).toEqual(0);
   });
 
-  test("Case 4", () => {
+  it("Case 4", () => {
     expect(reverseBits(1)).toEqual(2147483648);
   });
 });

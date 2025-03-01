@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const deleteGreatestValue = (grid: number[][]): number => {
   for (let row of grid) row.sort((a, b) => b - a);

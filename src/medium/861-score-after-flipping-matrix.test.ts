@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const matrixScore = (grid: number[][]): number => {
   const n = grid.length;

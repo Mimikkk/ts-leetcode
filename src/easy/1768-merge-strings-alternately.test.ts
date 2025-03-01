@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const mergeAlternately = (word1: string, word2: string): string => {
   const result = [];
@@ -14,7 +16,7 @@ const mergeAlternately = (word1: string, word2: string): string => {
 };
 
 describe("interweave strings", () => {
-  test("should return correct result", () => {
+  it("should return correct result", () => {
     expect(mergeAlternately("abc", "pqr")).toEqual("apbqcr");
   });
 });

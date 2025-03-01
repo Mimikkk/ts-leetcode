@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countConsistentStrings = (allowed: string, words: string[]): number =>
   words.map((word) => word.split("")).filter((word) => !word.filter((c) => !allowed.includes(c)).length).length;

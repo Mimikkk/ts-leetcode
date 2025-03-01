@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 type RectangleDescriptor = [width: number, height: number];
 const areaOfMaxDiagonal = (descriptors: RectangleDescriptor[]): number => {

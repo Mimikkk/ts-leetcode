@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findTheArrayConcVal = (nums: number[]): number => {
   let result = 0;

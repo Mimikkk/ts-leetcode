@@ -1,6 +1,6 @@
-import { A } from "./arrays.js";
+import { A } from "./arrays.ts";
 
-export module M {
+export namespace M {
   export const create = <T>(m: number, n: number, fn: (i: number, j: number) => T): T[][] =>
     A.create(n, (i) => A.create(n, (j) => fn(i, j)));
   export const rotateBy90Degrees = (mat: number[][]) => {

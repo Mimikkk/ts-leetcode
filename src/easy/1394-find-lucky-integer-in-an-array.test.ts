@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const createCounter = (nums: number[]) => {
   const counter: Record<number, number> = {};
   nums.forEach((n) => (counter[n] = (counter[n] || 0) + 1));

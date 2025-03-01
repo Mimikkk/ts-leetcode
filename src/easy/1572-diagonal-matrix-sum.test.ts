@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const diagonalSum = (mat: number[][]): number => {
   const [m, n] = [mat.length, mat[0].length];

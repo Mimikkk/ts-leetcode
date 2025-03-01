@@ -1,4 +1,6 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const preorderTraversal = (root: TreeNode | null): number[] =>
   root ? [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)] : [];

@@ -1,4 +1,6 @@
-import { A } from "@shared/modules/arrays.js";
+import { A } from "@shared/modules/arrays.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const sortEvenOdd = (nums: number[]): number[] => {
   const even = nums.filter((_, i) => i % 2 === 0).sort(A.N.asc);

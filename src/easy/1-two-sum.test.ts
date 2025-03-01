@@ -1,4 +1,5 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const twoSum = (nums: number[], target: number): number[] => {
   const complements: Record<number, number> = {};

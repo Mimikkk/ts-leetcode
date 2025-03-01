@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isIsomorphic = (s: string, t: string): boolean => {
   if (s.length !== t.length) return false;

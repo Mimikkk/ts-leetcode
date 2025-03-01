@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const isPalindrome = (n: number): boolean => [...`${n}`].join("") == [...`${n}`].reverse().join("");
 

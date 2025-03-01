@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findArray = (pref: number[]): number[] => {
   const result = Array(pref.length);

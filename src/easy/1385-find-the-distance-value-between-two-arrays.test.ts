@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const findTheDistanceValue = (arr1: number[], arr2: number[], d: number) =>
   arr1.filter((n1) => arr2.every((n2) => Math.abs(n1 - n2) > d)).length;

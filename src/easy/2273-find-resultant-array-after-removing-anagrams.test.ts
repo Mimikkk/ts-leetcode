@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const isAnagram = (a: string, b: string) => a.split("").sort().join("") === b.split("").sort().join("");
 
 const removeAnagrams = (words: string[]): string[] => {

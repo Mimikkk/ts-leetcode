@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countBinarySubstrings = (s: string): number => {
   let [count, previous, current] = [0, 0, 1];

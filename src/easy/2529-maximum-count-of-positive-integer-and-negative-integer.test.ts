@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const enum BoxType {
   Heavy = "Heavy",
@@ -18,7 +18,7 @@ const categorizeBox = (length: number, width: number, height: number, mass: numb
 };
 
 exercise(categorizeBox, [
-  [[1000, 35, 700, 300], "Heavy"],
-  [[200, 50, 800, 50], "Neither"],
-  [[3223, 1271, 2418, 749], "Both"],
+  [[1000, 35, 700, 300], BoxType.Heavy],
+  [[200, 50, 800, 50], BoxType.Neither],
+  [[3223, 1271, 2418, 749], BoxType.Both],
 ]);

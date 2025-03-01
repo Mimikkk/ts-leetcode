@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const licenseKeyFormatting = (s: string, k: number): string => {
   const arr = [...s.split("-").join("")];

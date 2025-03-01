@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const divideString = (s: string, k: number, fill: string): string[] => {
   const groups = s.match(new RegExp(`.{1,${k}}`, "g")) || [];

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isPrefixOfWord = (sentence: string, searchWord: string): number =>
   sentence.split(" ").findIndex((word) => word.startsWith(searchWord)) + 1 || -1;

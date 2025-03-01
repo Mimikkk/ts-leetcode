@@ -1,7 +1,9 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 import node = TreeNode.node;
 
-module Binary {
+namespace Binary {
   export const add = (a: number, b: number) => (a << 1) + b;
   export const num = (path: number[]) => path.reduce(add, 0);
 }

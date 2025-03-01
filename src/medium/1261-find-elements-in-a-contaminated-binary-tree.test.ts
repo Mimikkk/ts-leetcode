@@ -1,4 +1,6 @@
-import { TreeNode } from "@shared/structures/index.js";
+import { it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { TreeNode } from "@shared/structures/index.ts";
 
 const findValues = (node: TreeNode | null): Set<number> => {
   const set = new Set<number>();

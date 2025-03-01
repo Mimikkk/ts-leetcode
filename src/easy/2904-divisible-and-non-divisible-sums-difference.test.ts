@@ -1,6 +1,6 @@
-import { expect } from "vitest";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
-export {};
 
 const differenceOfSums = (n: number, m: number): number => {
   let sum = (n * (n + 1)) / 2;

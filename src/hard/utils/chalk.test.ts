@@ -1,5 +1,7 @@
-import { describe } from "vitest";
-import { Chalk } from "./chalk.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { Chalk } from "./chalk.ts";
 
 describe("Draw - Chalk", () => {
   const { clear, chalk } = Chalk;

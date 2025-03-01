@@ -1,5 +1,6 @@
-import { A } from "@shared/modules/arrays.js";
-import Pair = A.Pair;
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { A } from "@shared/modules/arrays.ts";
 
 const hasAbsoluteDifferenceK =
   (k: number) =>
@@ -8,7 +9,7 @@ const hasAbsoluteDifferenceK =
 
 const countKDifference = (nums: number[], k: number): number =>
   A.count(
-    A.pairs(nums).map(([[a], [b]]): Pair<number> => [a, b]),
+    A.pairs(nums).map(([[a], [b]]): A.Pair<number> => [a, b]),
     hasAbsoluteDifferenceK(k),
   );
 

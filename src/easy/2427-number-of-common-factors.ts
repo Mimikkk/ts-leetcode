@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const commonFactors = (a: number, b: number): number => {
   [a, b] = a > b ? [a, b] : [b, a];

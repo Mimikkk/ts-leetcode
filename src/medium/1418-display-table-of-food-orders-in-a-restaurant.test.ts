@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const displayTable = (orders: [string, string, string][]): string[][] => {
   const map = new Map<string, Map<string, number>>();

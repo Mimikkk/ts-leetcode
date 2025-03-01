@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { createMatrix } from "../adventofcode2023/utils/utils.js";
+import { exercise } from '@shared/utilities/exercise.ts';
+import { createMatrix } from '../aoc/2023/utils/utils.ts';
 
 const restoreMatrix = (rowSums: number[], colSums: number[]): number[][] => {
   const n = rowSums.length;

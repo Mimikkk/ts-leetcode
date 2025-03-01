@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { QuadTree } from "@shared/structures/QuadTree.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { QuadTree } from "@shared/structures/QuadTree.ts";
 
 type Node = QuadTree;
 const Node = QuadTree;

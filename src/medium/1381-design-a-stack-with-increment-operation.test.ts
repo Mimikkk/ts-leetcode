@@ -1,4 +1,5 @@
-import { it } from "vitest";
+import { it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 class CustomStack {
   stack: number[];

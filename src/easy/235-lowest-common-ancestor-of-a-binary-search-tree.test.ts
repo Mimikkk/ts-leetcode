@@ -1,4 +1,6 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 
 const lowestCommonAncestor = (root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null => {
   if (!root || !p || !q) return root;

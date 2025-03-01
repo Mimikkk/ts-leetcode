@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const array = (n: number, fill: number = 0) => new Array(n).fill(fill);
 const distributeCandies = (candies: number, num_people: number): number[] => {

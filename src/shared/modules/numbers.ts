@@ -1,4 +1,4 @@
-export module N {
+export namespace N {
   export const divmod = (n: number, mod: number) => [Math.floor(n / mod), n % mod];
   export const add = (a: number, b: number) => a + b;
   export const sub = (a: number, b: number) => a - b;
@@ -6,7 +6,7 @@ export module N {
   export const isOdd = (a: number, b: number) => +(a & 1);
   export const isEven = (a: number, b: number) => !(a & 1);
 
-  export module D {
+  export namespace D {
     type digit = number;
 
     export const sum = (n: number): number => {

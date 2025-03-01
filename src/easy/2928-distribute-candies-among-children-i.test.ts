@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const { min, max } = Math;
 const distributeCandies = (n: number, limit: number): number => {

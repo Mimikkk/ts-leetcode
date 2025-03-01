@@ -1,5 +1,7 @@
-import { A } from "@shared/modules/arrays.js";
-export {};
+import { A } from "@shared/modules/arrays.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 

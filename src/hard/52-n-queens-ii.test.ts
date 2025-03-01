@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 namespace Queen {
   export const countValidPositions = (board: boolean[][], x: number = 0): number => {

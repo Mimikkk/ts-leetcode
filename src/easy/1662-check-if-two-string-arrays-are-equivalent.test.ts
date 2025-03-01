@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const arrayStringsAreEqual = (word1: string[], word2: string[]) => word1.join("") === word2.join("");
 

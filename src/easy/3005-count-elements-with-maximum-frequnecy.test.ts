@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const createCounter = <T>(arr: T[]): Map<T, number> => {
   const counter = new Map<T, number>();

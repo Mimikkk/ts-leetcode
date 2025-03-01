@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const minOperations = (n: number): number => (~~(n / 2) + (n & 1)) * ~~(n / 2);
 

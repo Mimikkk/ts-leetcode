@@ -1,4 +1,6 @@
-import { R } from "@shared/modules/records.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { R } from "@shared/modules/records.ts";
 
 const checkAlmostEquivalent = (word1: string, word2: string) => {
   const c1 = R.counter<string>(word1);

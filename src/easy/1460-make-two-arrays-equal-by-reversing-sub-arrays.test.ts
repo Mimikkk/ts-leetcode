@@ -1,8 +1,10 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 interface Counter extends Record<number, number> {}
 
-module Counter {
+namespace Counter {
   export const create = (items: number[]) => {
     const counter: Record<number, number> = {};
     for (let item of items) counter[item] = (counter[item] || 0) + 1;

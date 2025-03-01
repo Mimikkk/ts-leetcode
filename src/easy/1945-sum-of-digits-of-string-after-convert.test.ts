@@ -1,6 +1,8 @@
-import { N } from "@shared/modules/numbers.js";
-import { A } from "@shared/modules/arrays.js";
-export {};
+import { N } from "@shared/modules/numbers.ts";
+import { A } from "@shared/modules/arrays.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const encoder = new TextEncoder();
 const transformString = (s: string) => A.N.sum([...encoder.encode(s)].map((c) => c - 96).map(N.D.sum));

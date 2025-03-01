@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const convert = (s: string, numRows: number): string => {
   if (numRows === 1) return s;
   const rows = Array(numRows).fill("");

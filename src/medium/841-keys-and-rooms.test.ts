@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const canVisitAllRooms = (rooms: number[][]): boolean => {
   const visited = new Set<number>();

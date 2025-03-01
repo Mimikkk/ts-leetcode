@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const minOperations = (boxes: string): number[] =>
   [...boxes].map((_, i, arr) => arr.reduce((a, b, j) => (b === "0" ? a : a + Math.abs(i - j)), 0));

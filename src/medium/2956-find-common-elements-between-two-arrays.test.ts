@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findIntersectionValues = (nums1: number[], nums2: number[]): [number, number] => [
   nums1.filter((element) => nums2.includes(element)).length,

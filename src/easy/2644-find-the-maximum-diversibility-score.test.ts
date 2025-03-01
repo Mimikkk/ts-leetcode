@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const maxDivScore = (nums: number[], divisors: number[]): number => {
   const scores = Array(divisors.length).fill(0);

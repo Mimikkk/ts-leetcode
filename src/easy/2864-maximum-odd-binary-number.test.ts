@@ -1,6 +1,6 @@
-import { expect } from "vitest";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
-export {};
 
 const maximumOddBinaryNumber = (s: string): string => {
   const ones = [...s].filter((c) => c === "1").length;

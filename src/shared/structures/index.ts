@@ -1,3 +1,3 @@
-export * from "./ListNode.js";
-export * from "./TreeNode.js";
-export * from "./Node.js";
+export * from "./ListNode.ts";
+export * from "./TreeNode.ts";
+export * from "./Node.ts";

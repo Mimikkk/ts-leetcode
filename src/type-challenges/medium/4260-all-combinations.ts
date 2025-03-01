@@ -14,7 +14,7 @@
   // should be '' | 'A' | 'B' | 'C' | 'AB' | 'AC' | 'BA' | 'BC' | 'CA' | 'CB' | 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA'
   ```
 
-  > View on GitHub: https://tsch.js.org/4260
+  > View on GitHub: https://tsch.ts.org/4260
 */
 
 /* _____________ Your Code Here _____________ */
@@ -34,7 +34,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
-  > Share your solutions: https://tsch.js.org/4260/answer
-  > View solutions: https://tsch.js.org/4260/solutions
-  > More Challenges: https://tsch.js.org
+  > Share your solutions: https://tsch.ts.org/4260/answer
+  > View solutions: https://tsch.ts.org/4260/solutions
+  > More Challenges: https://tsch.ts.org
 */

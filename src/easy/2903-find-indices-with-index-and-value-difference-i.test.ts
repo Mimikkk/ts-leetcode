@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const findIndices = (nums: number[], indexDifference: number, valueDifference: number): [number, number] | [-1, -1] => {
   for (let i = 0; i < nums.length - indexDifference; ++i) {

@@ -1,6 +1,9 @@
-import { box } from "./box.js";
-import { Chalk } from "./chalk.js";
-import { trimlines } from "./text.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { box } from "./box.ts";
+import { Chalk } from "./chalk.ts";
+import { trimlines } from "./text.ts";
 
 describe("Draw - Box with Chalk", () => {
   it("should box and color a string", () => {

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const shift = (c: string, n: number) => String.fromCharCode(c.charCodeAt(0) + n);
 const replaceDigits = (s: string) => {

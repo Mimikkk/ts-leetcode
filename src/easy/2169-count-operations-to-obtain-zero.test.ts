@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countOperations = (n1: number, n2: number, count: number = -1): number => {
   while ((count++, n1 && n2)) n1 >= n2 ? (n1 -= n2) : (n2 -= n1);

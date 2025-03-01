@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const deckRevealedIncreasing = (deck: number[]): number[] => {
   const stack = deck.sort((a, b) => b - a);

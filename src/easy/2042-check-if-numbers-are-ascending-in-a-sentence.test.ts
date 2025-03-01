@@ -1,4 +1,6 @@
-import { A } from "@shared/modules/arrays.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { A } from "@shared/modules/arrays.ts";
 
 const areNumbersAscending = (s: string) => {
   let numbers = s.match(/(\d+)/g)?.map(Number) || [];

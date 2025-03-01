@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const maxWidthOfVerticalArea = (points: [number, number][]): number => {
   const xs = [...new Set(points.map(([x]) => x).sort((a, b) => a - b))];

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 const sumDigits = (n: number) => {
@@ -20,7 +22,7 @@ const countBalls = (lowLimit: number, highLimit: number): number => {
 };
 
 describe("count balls", () => {
-  test("should return correct result", () => {
+  it("should return correct result", () => {
     expect(countBalls(1, 10)).toEqual(2);
     expect(countBalls(5, 15)).toEqual(2);
     expect(countBalls(19, 28)).toEqual(2);

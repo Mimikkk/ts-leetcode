@@ -1,5 +1,7 @@
-import { expect } from "vitest";
-export {};
+
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const sortPeople = (names: string[], heights: number[]): string[] =>
   Object.entries(names)

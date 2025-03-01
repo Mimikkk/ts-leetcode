@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const percentageLetter = (s: string, letter: string) =>
   Math.floor(([...s].filter((c) => c === letter).length / s.length) * 100);

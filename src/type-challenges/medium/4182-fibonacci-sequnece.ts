@@ -16,7 +16,7 @@
   type Result2 = Fibonacci<8> // 21
   ```
 
-  > View on GitHub: https://tsch.js.org/4182
+  > View on GitHub: https://tsch.ts.org/4182
 */
 
 /* _____________ Your Code Here _____________ */
@@ -35,7 +35,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
-  > Share your solutions: https://tsch.js.org/4182/answer
-  > View solutions: https://tsch.js.org/4182/solutions
-  > More Challenges: https://tsch.js.org
+  > Share your solutions: https://tsch.ts.org/4182/answer
+  > View solutions: https://tsch.ts.org/4182/solutions
+  > More Challenges: https://tsch.ts.org
 */

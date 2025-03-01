@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const removeOccurrences = (s: string, part: string): string => {
   const partLength = part.length;

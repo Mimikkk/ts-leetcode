@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const maximumDifference = (nums: number[]): number => {
   let [min, max] = [nums[0], -1];

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 type Rectangle = [number, number, number, number];
 const isRectangleOverlap = ([x1, y1, x2, y2]: Rectangle, [x3, y3, x4, y4]: Rectangle) =>

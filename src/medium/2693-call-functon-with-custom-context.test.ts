@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 const callPolyfill = function <This extends (...args: any) => any>(
   this: This,
   context: unknown,

@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const calculateTax = (brackets: [number, number][], income: number): number => {
   let totalTax: number = 0;
   let totalIncome: number = 0;

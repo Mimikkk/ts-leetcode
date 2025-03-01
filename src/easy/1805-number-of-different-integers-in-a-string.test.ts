@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const numDifferentIntegers = (word: string): number =>
   [...new Set(word.match(/\d+/g)?.map((s) => s.replace(/^0+/, "")) ?? [])].length;

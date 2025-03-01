@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const getLongestSubsequence = (words: string[], groups: (0 | 1)[]): string[] =>
   words.reduce<string[]>((acc, word, index) => {

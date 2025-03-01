@@ -15,7 +15,7 @@
   type A = Subsequence<[1, 2]> // [] | [1] | [2] | [1, 2]
   ```
 
-  > View on GitHub: https://tsch.js.org/8987
+  > View on GitHub: https://tsch.ts.org/8987
 */
 
 /* _____________ Your Code Here _____________ */
@@ -32,7 +32,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
-  > Share your solutions: https://tsch.js.org/8987/answer
-  > View solutions: https://tsch.js.org/8987/solutions
-  > More Challenges: https://tsch.js.org
+  > Share your solutions: https://tsch.ts.org/8987/answer
+  > View solutions: https://tsch.ts.org/8987/solutions
+  > More Challenges: https://tsch.ts.org
 */

@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { exercise } from '@shared/utilities/exercise.ts';
 
 const countTime = (time: string): number => {
   let combinations = 1;
@@ -13,12 +13,9 @@ const countTime = (time: string): number => {
   return combinations;
 };
 
-describe("2437", () => {
-  it("case 1", () => expect(countTime("?5:00")).toBe(2));
-
-  it("case 2", () => expect(countTime("0?:0?")).toBe(100));
-
-  it("case 3", () => expect(countTime("??:??")).toBe(1440));
-
-  it("case 4", () => expect(countTime("?0:?6")).toBe(12));
-});
+exercise(countTime, [
+  [["?5:00"], 2],
+  [["0?:0?"], 100],
+  [["??:??"], 1440],
+  [["?0:?6"], 12],
+]);

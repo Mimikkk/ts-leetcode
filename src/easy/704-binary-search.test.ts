@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const search = (nums: number[], target: number): number => {
   let [left, right] = [0, nums.length - 1];

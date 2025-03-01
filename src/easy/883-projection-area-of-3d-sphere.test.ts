@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const sum = (args: number[]) => args.reduce((a, b) => a + b) ?? NaN;
 const max = (nums: number[]) => Math.max(...nums) ?? NaN;

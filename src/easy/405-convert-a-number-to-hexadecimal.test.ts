@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 
@@ -19,19 +21,19 @@ const toHex = (num: number): string => {
 };
 
 describe("405. Convert a Number to Hexadecimal", () => {
-  test("Case 1", () => {
+  it("Case 1", () => {
     expect(toHex(26)).toEqual("1a");
   });
 
-  test("Case 2", () => {
+  it("Case 2", () => {
     expect(toHex(0)).toEqual("0");
   });
 
-  test("Case 3", () => {
+  it("Case 3", () => {
     expect(toHex(16)).toEqual("10");
   });
 
-  test("Case 4", () => {
+  it("Case 4", () => {
     expect(toHex(-1)).toEqual("ffffffff");
   });
 });

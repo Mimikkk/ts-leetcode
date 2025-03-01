@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const diagonalSort = (mat: number[][]): number[][] => {
   for (let i = 0; i < mat[0].length; ++i) {

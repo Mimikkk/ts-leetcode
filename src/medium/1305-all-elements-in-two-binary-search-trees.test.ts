@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { TreeNode } from "@shared/structures/index.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { TreeNode } from "@shared/structures/index.ts";
 
 const getAllElements = (root1: TreeNode | null, root2: TreeNode | null): number[] => {
   const values: number[] = [];

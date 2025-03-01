@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const theMaximumAchievableX = (num: number, t: number): number => num + 2 * t;
 

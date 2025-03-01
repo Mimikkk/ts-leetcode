@@ -1,4 +1,4 @@
-import { Nullable } from "../utilities/nullable.js";
+import { Nullable } from "../utilities/nullable.ts";
 
 export class ListNode {
   val: number;

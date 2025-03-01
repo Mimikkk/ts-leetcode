@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const numberOfSteps = (n: number, count: number = -1): number => {
   while ((count++, n > 0)) n & 1 ? n-- : (n /= 2);

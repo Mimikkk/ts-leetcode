@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 type TriangleSides = [number, number, number];
 type TriangleType = "none" | "equilateral" | "isosceles" | "scalene";

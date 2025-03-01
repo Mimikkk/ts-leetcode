@@ -1,4 +1,6 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 
 function findMode(root: TreeNode | null): number[] {
   const occurrences: Record<number, number> = {};

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const add = (a: number, b: number) => a + b;
 const sum = (args: number[]) => args.reduce(add, 0);

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const subsetXORSum = (nums: number[]) => nums.reduce((a, b) => a | b, 0) * Math.pow(2, nums.length - 1);
 

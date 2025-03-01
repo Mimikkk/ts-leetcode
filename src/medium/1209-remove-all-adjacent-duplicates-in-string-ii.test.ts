@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const add = (a: string, b: string) => a + b;
 const concat = (...args: string[]) => args.reduce(add, "");

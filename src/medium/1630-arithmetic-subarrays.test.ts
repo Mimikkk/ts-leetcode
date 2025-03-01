@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const isArithmetic = (nums: number[]): boolean => {
   const r = nums[1] - nums[0];

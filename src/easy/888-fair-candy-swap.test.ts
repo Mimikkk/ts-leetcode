@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const sum = (arr: number[]) => arr.reduce((a, b) => a + b) ?? NaN;
 const fairCandySwap = (aliceSizes: number[], bobSizes: number[]): number[] => {

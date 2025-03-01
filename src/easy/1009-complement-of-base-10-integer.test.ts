@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const bitwiseComplement = (n: number) => (n == 0 ? 1 : 2 ** (Math.floor(Math.log2(n)) + 1) - 1 - n);
 

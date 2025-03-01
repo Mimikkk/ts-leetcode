@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const transpose = (a: number[][]) => a[0].map((_, i) => a.map((row) => row[i]));
 const max = (nums: number[]) => Math.max(...nums);

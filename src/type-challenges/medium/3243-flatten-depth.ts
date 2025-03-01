@@ -27,7 +27,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
- > Share your solutions: https://tsch.js.org/3243/answer
- > View solutions: https://tsch.js.org/3243/solutions
- > More Challenges: https://tsch.js.org
+ > Share your solutions: https://tsch.ts.org/3243/answer
+ > View solutions: https://tsch.ts.org/3243/solutions
+ > More Challenges: https://tsch.ts.org
  */

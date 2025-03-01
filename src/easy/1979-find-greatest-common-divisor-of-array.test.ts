@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const gcd = (x: number, y: number): number => (!x ? y : gcd(y % x, x));
 const findGCD = (nums: number[]): number => gcd(Math.min(...nums), Math.max(...nums));

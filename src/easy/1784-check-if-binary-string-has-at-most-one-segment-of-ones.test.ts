@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const checkOnesSegment = (s: string) => s.split(/1+/g).length === 2;
 

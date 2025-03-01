@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const singleNumber = (nums: number[]): number => nums.reduce((acc, curr) => acc ^ curr, 0);
 

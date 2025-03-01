@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isLongPressedName = (name: string, typed: string): boolean => {
   let [i, j] = [0, 0];

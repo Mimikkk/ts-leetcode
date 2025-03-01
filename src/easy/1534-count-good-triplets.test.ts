@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countGoodTriplets = (arr: number[], a: number, b: number, c: number): number => {
   let count = 0;

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const merge = (nums1: number[], m: number, nums2: number[], n: number) => {
   let i = m-- + n--;

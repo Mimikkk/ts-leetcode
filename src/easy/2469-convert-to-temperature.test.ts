@@ -1,6 +1,8 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const celsiusToKalvin = (c: number): number => c + 273.15;
 const celsiusToFahrenheit = (c: number): number => (c * 9) / 5 + 32;

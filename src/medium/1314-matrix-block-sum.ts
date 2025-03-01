@@ -1,4 +1,4 @@
-import type { exercise } from "@shared/utilities/exercise.js";
+import type { exercise } from "@shared/utilities/exercise.ts";
 
 export namespace S1_1314 {
   export const matrixBlockSum = (mat: number[][], k: number): number[][] => {

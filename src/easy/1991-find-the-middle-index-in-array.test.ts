@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const zip = (a: number[], b: number[]): [number, number][] => a.map((x, i) => [x, b[i]]);
 const prefixsum = (nums: number[]) => {

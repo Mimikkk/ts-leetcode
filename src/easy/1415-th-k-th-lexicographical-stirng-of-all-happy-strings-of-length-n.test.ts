@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const HappyLetters = ["a", "b", "c"];
 const getHappyString = (n: number, k: number): string => {

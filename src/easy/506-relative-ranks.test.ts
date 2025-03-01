@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const findRelativeRanks = (score: number[]): string[] => {
   score.sort((a, b) => b - a);

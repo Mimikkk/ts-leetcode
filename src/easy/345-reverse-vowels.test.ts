@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const reverseVowels = (s: string): string => {
   const vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);

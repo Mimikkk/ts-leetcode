@@ -1,4 +1,6 @@
-import { A } from "@shared/modules/arrays";
+import { A } from "@shared/modules/arrays.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const canFormArray = (arr: number[], pieces: number[][]): boolean => {
   let piecesAdded = 0;

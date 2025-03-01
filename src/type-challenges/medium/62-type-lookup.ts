@@ -20,7 +20,7 @@ type cases = [Expect<Equal<LookUp<Animal, "dog">, Dog>>, Expect<Equal<LookUp<Ani
 
 /* _____________ Further Steps _____________ */
 /*
- > Share your solutions: https://tsch.js.org/62/answer
- > View solutions: h                     ttps://tsch.js.org/62/solutions
- > More Challenges: https://tsch.js.org
+ > Share your solutions: https://tsch.ts.org/62/answer
+ > View solutions: h                     ttps://tsch.ts.org/62/solutions
+ > More Challenges: https://tsch.ts.org
  */

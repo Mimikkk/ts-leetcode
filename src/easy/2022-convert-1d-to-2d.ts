@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const construct2DArray = (original: number[], m: number, n: number): number[][] => {
   if (original.length !== m * n) return [];

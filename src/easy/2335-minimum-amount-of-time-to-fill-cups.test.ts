@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const fillCups = (amount: number[]): number =>
   Math.max(Math.max(...amount), Math.floor((amount.reduce((a, b) => a + b) + 1) / 2));

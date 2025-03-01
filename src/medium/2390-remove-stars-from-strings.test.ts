@@ -1,4 +1,4 @@
-import { exercises } from "@shared/utilities/exercise.js";
+import { exercises } from "@shared/utilities/exercise.ts";
 
 namespace S2390_1 {
   export const removeStars = (s: string): string => {

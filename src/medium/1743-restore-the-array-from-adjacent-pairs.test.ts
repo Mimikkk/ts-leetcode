@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const restoreArray = (adjacentPairs: [from: number, to: number][]): number[] => {
   let map = new Map<number, number[]>();

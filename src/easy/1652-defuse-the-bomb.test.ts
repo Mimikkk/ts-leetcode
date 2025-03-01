@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const decrypt = (code: number[], k: number): number[] => {
   if (k === 0) return code.fill(0);
 

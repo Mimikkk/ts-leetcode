@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const kItemsWithMaximumSum = (numOnes: number, numZeros: number, numNegOnes: number, k: number): number =>
   k <= numOnes ? k : k <= numOnes + numZeros ? numOnes : numOnes - (k - numOnes - numZeros);

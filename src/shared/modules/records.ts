@@ -1,6 +1,6 @@
-import { A } from "./arrays.js";
+import { A } from "./arrays.ts";
 
-export module R {
+export namespace R {
   export const empty = <Key extends KeyType, Value>() => ({}) as Record<Key, Value>;
 
   export const isEmpty = <Key extends KeyType, Value>(record: Record<Key, Value>): boolean =>

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const reverse = (arr: number[]) => arr.reverse();
 const invert = (arr: number[]) => arr.map((x) => x ^ 1);

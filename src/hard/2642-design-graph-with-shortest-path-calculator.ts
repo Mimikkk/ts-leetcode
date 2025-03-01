@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 import { Heap } from "heap-js";
 
 export namespace Sol1_2642 {

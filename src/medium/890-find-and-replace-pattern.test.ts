@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const regex = /(\w)\1*/g;
 const createMapping = (word: string): [number, number][] => {

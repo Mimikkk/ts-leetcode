@@ -1,7 +1,7 @@
-import { splitlines } from "./text.js";
-import { Pipe } from "./pipe.js";
-import { TreeNode } from "@shared/structures/index.js";
-import { Chalk } from "./chalk.js";
+import { splitlines } from "./text.ts";
+import { Pipe } from "./pipe.ts";
+import { TreeNode } from "@shared/structures/index.ts";
+import { Chalk } from "./chalk.ts";
 
 export namespace Tree {
   const justLeft = (text: string, width: number, fill: string = " ") =>
@@ -48,7 +48,7 @@ export namespace Tree {
   const startRegexp = new RegExp(`^[${_str}]+`, "g");
   const endRegexp = new RegExp(`[${_str}]+$`, "g");
 
-  const edge = (parent: string, left?: string, right?: string): string => {
+  export const edge = (parent: string, left?: string, right?: string): string => {
     const hasLeft = left !== undefined;
     const hasRight = right !== undefined;
     left ??= "";

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const earliestFullBloom = (plantTime: number[], growTime: number[]): number => {
   const times = Array.from(plantTime, (plant, i) => [plant, growTime[i]]).sort(([, a], [, b]) => b - a);

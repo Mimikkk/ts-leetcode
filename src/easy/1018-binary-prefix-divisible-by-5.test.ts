@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const prefixesDivBy5 = (nums: number[], acc = 0) => nums.map((n) => !(acc = ((acc << 1) + n) % 5));
 

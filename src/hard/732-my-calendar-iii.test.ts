@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { Sol1_732, Sol2_732 } from "./732-my-calendar-iii.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { Sol1_732, Sol2_732 } from "./732-my-calendar-iii.ts";
 
 const use =
   (namespace: typeof Sol1_732 | typeof Sol2_732) =>

@@ -1,4 +1,4 @@
-import { Nullable } from "../utilities/nullable.js";
+import { Nullable } from "../utilities/nullable.ts";
 
 export class TreeNode {
   val: number;
@@ -12,7 +12,7 @@ export class TreeNode {
   }
 }
 
-export module TreeNode {
+export namespace TreeNode {
   export const empty = new TreeNode();
 
   export const array = (root: TreeNode | null): (number | null)[] => {

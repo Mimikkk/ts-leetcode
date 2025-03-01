@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findingUsersActiveMinutes = (logs: [id: number, minute: number][], k: number): number[] => {
   const userMinutes = new Map<number, Set<number>>();

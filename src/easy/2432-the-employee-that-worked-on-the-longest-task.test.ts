@@ -1,5 +1,7 @@
-import { expect } from "vitest";
-export {};
+
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const hardestWorker = (_: number, logs: [number, number][]): number => {
   let longestTime = 0;
   let bestEmployeeId = 0;

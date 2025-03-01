@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => start + i);
 const divmod = (n: number, mod: number) => [~~(n / mod), n % mod];
 

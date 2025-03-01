@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const maxArea = (height: number[]): number => {
   let [max, left, right] = [0, 0, height.length - 1];
 

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const createCounter = (word: string): Map<string, number> => {
   const counter = new Map<string, number>();

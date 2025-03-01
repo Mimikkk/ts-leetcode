@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const maxBy = <T>(list: T[], fn: (item: T) => number): T | undefined => {
   let max: T | undefined;

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const getMinDistance = (nums: number[], target: number, start: number) => {
   let distance: number = undefined!;

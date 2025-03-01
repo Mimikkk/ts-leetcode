@@ -1,4 +1,6 @@
-import { R } from "@shared/modules/records.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { R } from "@shared/modules/records.ts";
 
 const rearrangeCharacters = (s: string, target: string) => {
   const leftover = R.counter(s);

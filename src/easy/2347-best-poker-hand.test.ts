@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 type Suit = "a" | "b" | "c" | "d";
 type Rank = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
@@ -9,7 +11,7 @@ export type Tuple<T, N extends number> = N extends N ? (number extends N ? T[] :
 
 type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N ? R : _TupleOf<T, N, [T, ...R]>;
 
-module Hand {
+namespace Hand {
   export const from = (ranks: Tuple<Rank, 5>, suits: Tuple<Suit, 5>): Hand =>
     ranks.map((rank, index) => [rank, suits[index]]) as Hand;
 

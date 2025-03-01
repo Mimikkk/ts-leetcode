@@ -1,4 +1,6 @@
-import { R } from "@shared/modules/records.js";
+import { R } from "@shared/modules/records.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const areOccurrencesEqual = (s: string) => R.values(R.counter(s)).every((v, _, values) => v === values[0]);
 

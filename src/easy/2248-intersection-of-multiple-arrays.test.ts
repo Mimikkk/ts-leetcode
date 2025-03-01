@@ -1,4 +1,6 @@
-import { A } from "@shared/modules/arrays.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { A } from "@shared/modules/arrays.ts";
 
 const intersection = (nums: number[][]): number[] => A.sorted(A.intersection(...nums), A.N.asc);
 

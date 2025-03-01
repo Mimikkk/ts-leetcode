@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const vowels = new Set(["a", "e", "i", "o", "u"]);
 const vowelStrings = (words: string[], left: number, right: number): number => {

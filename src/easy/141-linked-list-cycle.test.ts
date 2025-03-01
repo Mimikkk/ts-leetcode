@@ -1,4 +1,6 @@
-import { ListNode } from "@shared/structures/ListNode.js";
+import { ListNode } from "@shared/structures/ListNode.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const hasCycle = (head: ListNode | null): boolean => {
   if (!head) return false;

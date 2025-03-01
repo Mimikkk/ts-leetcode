@@ -1,6 +1,8 @@
-import { A } from "@shared/modules/arrays.js";
+import { A } from "@shared/modules/arrays.ts";
 import range = A.N.range;
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const minimumRecolors = (blocks: string, k: number) => {
   let whites = range(0, k - 1).filter((i) => blocks[i] == "W").length;

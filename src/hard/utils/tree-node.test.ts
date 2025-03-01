@@ -1,7 +1,9 @@
-import { describe, it } from "vitest";
-import { trimlines } from "./text.js";
-import { Tree } from "./tree.js";
-import { TreeNode } from "@shared/structures/index.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { trimlines } from "./text.ts";
+import { Tree } from "./tree.ts";
+import { TreeNode } from "@shared/structures/index.ts";
 
 describe("Draw - Tree-Node", () => {
   it("should draw a tree", () => {

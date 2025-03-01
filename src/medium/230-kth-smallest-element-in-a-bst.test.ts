@@ -1,4 +1,7 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 import node = TreeNode.node;
 
 const kthSmallest = (root: TreeNode | null, k: number): number => {

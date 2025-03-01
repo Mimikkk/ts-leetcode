@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const maximumPopulation = (logs: [number, number][]) => {
   const years = new Array(101).fill(0);

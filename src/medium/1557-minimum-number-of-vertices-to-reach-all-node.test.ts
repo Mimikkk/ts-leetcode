@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findSmallestSetOfVertices = (n: number, edges: number[][]): number[] => {
   const ends = new Set(edges.map(([, to]) => to));

@@ -1,4 +1,6 @@
-import { R } from "@shared/modules/records.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { R } from "@shared/modules/records.ts";
 
 const findKDistantIndices = (nums: number[], key: number, k: number) => {
   let indices = R.keys(R.filterByValue<number, number>(nums, (n) => n === key));

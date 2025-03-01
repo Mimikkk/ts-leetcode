@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 class TimeLimitedCache {
   #valueByKey: Map<number, number> = new Map();
-  #timerByKey: Map<number, NodeJS.Timeout> = new Map();
+  #timerByKey: Map<number, number> = new Map();
 
   set(key: number, value: number, duration: number): boolean {
     const wasDefined = this.#valueByKey.has(key);

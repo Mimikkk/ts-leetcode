@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const isStrictlyIncreasing = (nums: number[], from: number, to: number) => {
   let previous = 0;

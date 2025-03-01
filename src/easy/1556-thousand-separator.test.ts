@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const thousandSeparator = (n: number): string =>
   n
@@ -14,7 +16,7 @@ const thousandSeparator = (n: number): string =>
     .join("");
 
 describe("thousandSeparator", () => {
-  test("should return correct result", () => {
+  it("should return correct result", () => {
     expect(thousandSeparator(123456789)).toEqual("123.456.789");
     expect(thousandSeparator(123)).toEqual("123");
     expect(thousandSeparator(1234)).toEqual("1.234");

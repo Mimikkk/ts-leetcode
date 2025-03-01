@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const max = (n: number[]) => Math.max(...n);
 const maxIncreaseKeepingSkyline = (grid: number[][]): number => {

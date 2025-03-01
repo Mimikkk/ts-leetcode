@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { exercise } from '@shared/utilities/exercise.ts';
 
 const findMaxK = (nums: number[]): number => {
   const set = new Set(nums);
@@ -15,19 +15,9 @@ const findMaxK = (nums: number[]): number => {
   return max;
 };
 
-describe("2441", () => {
-  it.each([
-    {
-      a: [-1, 2, -3, 3],
-      b: 3,
-    },
-    {
-      a: [-1, 10, 6, 7, -7, 1],
-      b: 7,
-    },
-    {
-      a: [-10, 8, 6, 7, -2, -3],
-      b: -1,
-    },
-  ])("$a -> $b", ({ a, b }) => expect(findMaxK(a)).toBe(b));
-});
+exercise(findMaxK, [
+  [[[-1, 2, -3, 3]], 3],
+  [[[-1, 10, 6, 7, -7, 1]], 7],
+  [[[-10, 8, 6, 7, -2, -3]], -1],
+]);
+

@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { TreeNode } from "@shared/structures/index.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { TreeNode } from "@shared/structures/index.ts";
 
 const createNode = () => new TreeNode();
 const structuredClone = <T>(value: T): T => JSON.parse(JSON.stringify(value));

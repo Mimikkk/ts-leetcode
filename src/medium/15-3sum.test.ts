@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 type Triplet = [number, number, number];
 
 const threeSum = (nums: number[]): Triplet[] => {

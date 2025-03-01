@@ -1,5 +1,7 @@
-import { expect } from "vitest";
-export {};
+
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const add = (a: number, b: number) => a + b;

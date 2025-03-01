@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isPalindrome = (s: string): boolean => {
   s = s.toLowerCase().replace(/[^A-Za-z0-9]+/g, "");

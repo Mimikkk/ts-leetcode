@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const maxCount = (m: number, n: number, ops: [number, number][]): number => {
   for (const [x, y] of ops) {

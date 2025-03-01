@@ -1,5 +1,5 @@
-import { ListNode } from "@shared/structures/ListNode.js";
-import { exercisesNs } from "@shared/utilities/exercise.js";
+import { ListNode } from "@shared/structures/ListNode.ts";
+import { exercisesNs } from "@shared/utilities/exercise.ts";
 
 namespace S2130_1 {
   const listToArray = (head: ListNode | null): number[] => {

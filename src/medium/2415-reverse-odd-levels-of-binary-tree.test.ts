@@ -1,5 +1,5 @@
-import { TreeNode } from "@shared/structures/index.js";
-import { exercise } from "@shared/utilities/exercise.js";
+import { TreeNode } from "@shared/structures/index.ts";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const reverseOddLevels = (root: TreeNode | null): TreeNode | null => {
   if (!root) return null;

@@ -1,4 +1,4 @@
-import { Nullable } from "../utilities/nullable.js";
+import { Nullable } from "../utilities/nullable.ts";
 
 export class Node {
   val: number;
@@ -13,7 +13,7 @@ export class Node {
 interface RA<T> extends Array<T | RA<T>> {}
 type Descriptor = [number, ...Descriptor[]];
 
-export module Node {
+export namespace Node {
   export const node = ([value, ...children]: Descriptor): Node => new Node(value, children.map(node));
 
   export const array = (root?: Nullable<Node>): Descriptor => {

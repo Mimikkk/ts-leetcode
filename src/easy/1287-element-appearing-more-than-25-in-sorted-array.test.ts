@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const createCounter = (nums: number[]) => {
   const counter: Record<number, number> = {};
@@ -7,7 +9,7 @@ const createCounter = (nums: number[]) => {
 };
 
 type Entry<K, V> = [K, V];
-module Entry {
+namespace Entry {
   export const key = <K, V>(entry?: Entry<K, V>) => entry?.[0];
   export const isOver =
     (threshold: number) =>

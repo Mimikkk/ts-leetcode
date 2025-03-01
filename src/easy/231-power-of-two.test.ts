@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isPowerOfTwo = (n: number): boolean => n > 0 && !(n & (n - 1));
 

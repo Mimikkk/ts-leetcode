@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const countVowelStrings = (n: number): number => {
   const memory = [1, 2, 3, 4, 5];

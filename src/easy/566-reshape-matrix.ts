@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const matrixReshape = (mat: number[][], r: number, c: number): number[][] => {
   if (mat.length * mat[0].length !== r * c) return mat;

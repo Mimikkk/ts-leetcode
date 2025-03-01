@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countElements = (nums: number[]): number =>
   nums.filter((num) => nums.some((n) => n < num)).filter((num) => nums.some((n) => n > num)).length;

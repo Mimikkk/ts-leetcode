@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const { max, floor, log10 } = Math;
 const digitize = (n: number): number[] => {

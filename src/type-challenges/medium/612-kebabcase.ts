@@ -30,7 +30,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
-  > Share your solutions: https://tsch.js.org/612/answer
-  > View solutions: https://tsch.js.org/612/solutions
-  > More Challenges: https://tsch.js.org
+  > Share your solutions: https://tsch.ts.org/612/answer
+  > View solutions: https://tsch.ts.org/612/solutions
+  > More Challenges: https://tsch.ts.org
 */

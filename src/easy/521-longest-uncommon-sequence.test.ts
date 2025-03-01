@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const findLUSlength = (a: string, b: string): number => (a === b ? -1 : Math.max(a.length, b.length));
 

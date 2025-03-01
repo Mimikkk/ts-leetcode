@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { ListNode } from "@shared/structures/index.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { ListNode } from "@shared/structures/index.ts";
 
 const spiralMatrix = (m: number, n: number, head: ListNode | null): number[][] => {
   if (head === null) return [];

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const mergeRanges = (nums: [number, number][]): [number, number][] => {
   if (nums.length === 0) return [];

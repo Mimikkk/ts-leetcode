@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const unique = (items: string[]) => [...new Set(items)];
 const removeDots = (s: string) => s.replace(/\./g, "");

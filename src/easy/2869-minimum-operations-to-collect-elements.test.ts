@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const minOperations = (nums: number[], k: number): number => {
   const set = new Set();
 

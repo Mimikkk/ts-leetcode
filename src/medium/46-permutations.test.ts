@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const swap = (nums: number[], i: number, j: number): void => {
   const temp = nums[i];

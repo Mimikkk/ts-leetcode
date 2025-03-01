@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findMissingAndRepeatedValues = (grid: number[][]): [number, number] => {
   const { length: n } = grid;

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const solution =
   (isBadVersion: (n: number) => boolean) =>
@@ -15,7 +17,7 @@ const solution =
   };
 
 describe("278 - implement queues using stack", () => {
-  test("case 1", () => {
+  it("case 1", () => {
     expect(true).toEqual(true);
   });
 });

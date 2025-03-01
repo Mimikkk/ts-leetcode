@@ -1,5 +1,7 @@
-import { A } from "@shared/modules/arrays.js";
-import { R } from "@shared/modules/records.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { A } from "@shared/modules/arrays.ts";
+import { R } from "@shared/modules/records.ts";
 
 const numberOfPairs = (nums: number[]): [number, number] => {
   const counter = R.counter(nums);

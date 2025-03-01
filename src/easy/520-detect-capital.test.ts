@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const detectCapitalUse = (word: string) => {
   const allCapital = word.toUpperCase() === word;

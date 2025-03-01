@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { ListNode } from "@shared/structures/index.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { ListNode } from "@shared/structures/index.ts";
 
 const appendNode = (node: ListNode | null, value: number): ListNode => {
   if (node === null) return new ListNode(value);

@@ -1,6 +1,6 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 import { bench, describe } from "vitest";
-import { Sol1_1255 } from "./1255-maximum-score-words-formed-by-letters.js";
+import { Sol1_1255 } from "./1255-maximum-score-words-formed-by-letters.ts";
 
 exercise(Sol1_1255.maxScoreWords, [
   [

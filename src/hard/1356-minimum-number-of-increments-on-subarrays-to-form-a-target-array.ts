@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import testcases from "./1356-minimum-number-of-increments-on-subarrays-to-form-a-target-array.cases.json";
+import { exercise } from "@shared/utilities/exercise.ts";
+import testcases from "./1356-minimum-number-of-increments-on-subarrays-to-form-a-target-array.cases.json" with { type: "json" };
 
 export namespace S1_1356 {
   export const minNumberOperations = (target: number[]): number => {

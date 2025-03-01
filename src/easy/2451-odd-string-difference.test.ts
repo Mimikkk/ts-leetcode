@@ -1,6 +1,8 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const differenceAt = (a: string, i: number): number => a.charCodeAt(i + 1) - a.charCodeAt(i);
 const findDifferences = (word: string): number[] => {

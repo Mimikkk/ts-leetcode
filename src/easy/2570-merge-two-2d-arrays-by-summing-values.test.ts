@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const mergeArrays = (nums1: [number, number][], nums2: [number, number][]): [number, number][] => {
   const map = new Map<number, number>();

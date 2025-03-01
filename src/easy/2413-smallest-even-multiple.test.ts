@@ -1,5 +1,7 @@
-import { expect } from "vitest";
-export {};
+
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const smallestEvenMultiple = (n: number): number => (n & 1 ? n << 1 : n);
 

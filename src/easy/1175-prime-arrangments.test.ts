@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isPrime = (n: number) => {
   for (let i = 2; i <= Math.sqrt(n); ++i) if (n % i === 0) return false;

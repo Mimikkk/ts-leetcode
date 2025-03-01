@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const maximumTime = (time: string): string => {
   let [a, b, _, c, d] = time.split("");

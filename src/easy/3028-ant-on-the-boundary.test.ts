@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const returnToBoundaryCount = (numbers: number[]): number => {
   let count = 0;

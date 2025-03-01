@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { TreeNode } from "@shared/structures/index.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { TreeNode } from "@shared/structures/index.ts";
 
 const allPathsSourceTarget = (graph: number[][]): number[][] => {
   let start = 0;

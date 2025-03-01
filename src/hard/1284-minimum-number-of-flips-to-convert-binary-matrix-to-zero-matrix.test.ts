@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { Sol2_1284 } from "./1284-minimum-number-of-flips-to-convert-binary-matrix-to-zero-matrix.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { Sol2_1284 } from "./1284-minimum-number-of-flips-to-convert-binary-matrix-to-zero-matrix.ts";
 
 exercise(Sol2_1284.minFlips, [
   [

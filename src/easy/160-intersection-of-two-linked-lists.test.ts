@@ -1,4 +1,6 @@
-import { ListNode } from "@shared/structures/ListNode.js";
+import { ListNode } from "@shared/structures/ListNode.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const getIntersectionNode = (l1: ListNode | null, l2: ListNode | null): ListNode | null => {
   if (!l1 || !l2) return null;

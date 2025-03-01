@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const zip = <T extends string | any[], U extends string | any[]>(a: T, b: U): [T[number], U[number]][] => {
   const result: [T, U][] = [];

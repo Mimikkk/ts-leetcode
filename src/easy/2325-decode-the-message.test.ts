@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const decodeMessage = (key: string, message: string): string => {
   const unique = [...new Set(key.split(" ").join(""))];

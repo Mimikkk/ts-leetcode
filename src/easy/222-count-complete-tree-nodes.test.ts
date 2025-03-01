@@ -1,5 +1,7 @@
-export {};
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 
 const countNodes = (root: TreeNode | null): number => {
   let count = 0;

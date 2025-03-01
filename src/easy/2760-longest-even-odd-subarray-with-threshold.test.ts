@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const longestAlternatingSubarray = (nums: number[], threshold: number): number => {
   let longest = 0;

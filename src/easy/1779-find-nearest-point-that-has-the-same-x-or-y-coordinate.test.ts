@@ -1,4 +1,6 @@
-import { A } from "@shared/modules/arrays.js";
+import { A } from "@shared/modules/arrays.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 type Point = [number, number];
 const distance = ([x1, y1]: Point, [x2, y2]: Point) => Math.hypot(x1 - x2, y1 - y2);

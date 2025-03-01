@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const hasTrailingZeros = (nums: number[]): boolean => nums.filter((n) => n % 2 === 0).length > 1;
 

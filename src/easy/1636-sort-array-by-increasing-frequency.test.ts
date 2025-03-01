@@ -1,5 +1,7 @@
-import { A } from "@shared/modules/arrays.js";
-import { R } from "@shared/modules/records.js";
+import { A } from "@shared/modules/arrays.ts";
+import { R } from "@shared/modules/records.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const frequencySort = (nums: number[]): number[] => {
   const frequencies = R.counter<number>(nums);

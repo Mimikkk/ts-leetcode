@@ -1,4 +1,6 @@
-import { R } from "@shared/modules/records.js";
+import { R } from "@shared/modules/records.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 type Color = "R" | "G" | "B";
 type Position = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 import { it, suite } from "vitest";
 
 const countDistinctIntegers = (nums: number[]): number =>

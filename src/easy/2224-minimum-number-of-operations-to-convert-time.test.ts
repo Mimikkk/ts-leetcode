@@ -1,8 +1,10 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 type time = string;
 
-module Time {
+namespace Time {
   export const asMinuteHourPair = (str: time) => str.split(":").map(Number);
 
   export const asMinutes = (time: time) => asMinuteHourPair(time).reduce((a, b) => a * 60 + b);

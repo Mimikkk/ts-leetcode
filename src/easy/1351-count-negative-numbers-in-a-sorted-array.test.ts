@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countNegatives = (grid: number[][]) => grid.flat().filter((x) => x < 0).length;
 

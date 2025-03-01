@@ -1,4 +1,7 @@
-import { ListNode } from "shared/structures/ListNode.js";
+import { ListNode } from "@shared/structures/ListNode.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const { node, array } = ListNode;
 
 const tester = (l1: number[], l2: number[]): number[] => array(addTwoNumbers(node(l1), node(l2)));

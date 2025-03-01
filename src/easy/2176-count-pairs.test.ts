@@ -1,5 +1,7 @@
-import { A } from "@shared/modules/arrays.js";
-export {};
+import { A } from "@shared/modules/arrays.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countPairs = (nums: number[], k: number) =>
   A.count(A.pairs(nums), ([[a, i], [b, j]]) => a === b && (i * j) % k === 0);

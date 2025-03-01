@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const areAlmostEqual = (s1: string, s2: string) => {
   if (s1 === s2) return true;

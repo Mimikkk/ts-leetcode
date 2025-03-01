@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const maximumXOR = (nums: number[]): number => nums.reduce((acc, num) => acc | num, 0);
 

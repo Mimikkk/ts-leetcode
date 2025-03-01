@@ -1,6 +1,8 @@
-import { ListNode } from "@shared/structures/ListNode.js";
-const { array, node } = ListNode;
+import { ListNode } from "@shared/structures/ListNode.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
+const { array, node } = ListNode;
 const tester = (l1: number[], l2: number[]): number[] => array(mergeTwoLists(node(l1), node(l2)));
 
 const mergeTwoLists = (l1: ListNode | null, l2: ListNode | null): ListNode | null => {

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const vowelRegex = /[aeiou]/i;
 const isVowel = (char: string): boolean => vowelRegex.test(char);

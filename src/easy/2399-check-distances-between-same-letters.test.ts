@@ -1,5 +1,7 @@
-import { expect } from "vitest";
-export {};
+
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const checkDistances = (s: string, distance: number[]): boolean => {
   const distanceBetweenOccurrencesByChar = Object.fromEntries(

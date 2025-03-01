@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const isLetter = (c: string): boolean => ("a" <= c && c <= "z") || ("A" <= c && c <= "Z");
 const letterCasePermutation = (s: string): string[] => {

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const mat = <T>(m: number, n: number, fill: T): T[][] => Array.from(Array(m), () => Array(n).fill(fill));
 

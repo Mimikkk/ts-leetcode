@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const dayOfTheWeek = (day: number, month: number, year: number): string =>
   new Date(year, month - 1, day).toLocaleString("en-US", { weekday: "long" });

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findNonMinOrMax = (nums: number[]): number => (nums.length < 3 ? -1 : nums.sort((a, b) => a - b)[1]);
 

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const sortArrayByParityII = (nums: number[]) =>
   nums.sort((a) => ~-(a & 1)).map((_, i) => nums[(i >> 1) + (i & 1) * (nums.length >> 1)]);

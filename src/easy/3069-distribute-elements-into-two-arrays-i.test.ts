@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const resultArray = (nums: number[]): number[] => {
   const arr1: number[] = [nums[0]];

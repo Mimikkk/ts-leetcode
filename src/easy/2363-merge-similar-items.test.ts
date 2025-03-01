@@ -1,5 +1,8 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 type item = [number, number];
-module Item {
+namespace Item {
   export const byValue = ([a]: item, [b]: item) => a - b;
 }
 const mergeSimilarItems = (items1: item[], items2: item[]): item[] => {

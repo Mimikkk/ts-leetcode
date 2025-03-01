@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const sumOfUnique = (nums: number[]): number => {
   const unique = new Set<number>(nums);

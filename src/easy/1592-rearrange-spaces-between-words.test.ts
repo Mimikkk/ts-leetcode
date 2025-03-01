@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const countSpaces = (text: string) => text.replace(/[^ ]/g, "").length;
 const createSpaces = (n: number) => " ".repeat(n);

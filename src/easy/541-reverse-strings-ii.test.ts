@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const reverseArr = (arr: string[], k: number) => {
   for (let i = 0; i < arr.length; i += 2 * k) {

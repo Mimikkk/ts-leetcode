@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const maximum69Number = (num: number): number => (`${num}`.indexOf("6") === -1 && num) || +`${num}`.replace("6", "9");
 

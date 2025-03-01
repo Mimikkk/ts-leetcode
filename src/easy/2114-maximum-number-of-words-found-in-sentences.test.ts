@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const mostWordsFound = (sentences: string[]): number =>
   sentences.map((s) => s.split(" ").length).reduce((a, b) => Math.max(a, b), 0);

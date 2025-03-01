@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isSameAfterReversals = (num: number) => num === 0 || !`${num}`.endsWith("0");
 

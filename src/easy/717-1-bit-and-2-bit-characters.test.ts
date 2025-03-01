@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isOneBitCharacter = (bits: number[]): boolean => {
   for (let i = 0; i < bits.length; i++) {

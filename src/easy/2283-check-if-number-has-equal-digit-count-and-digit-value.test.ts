@@ -1,6 +1,8 @@
-import { R } from "@shared/modules/records.js";
+import { R } from "@shared/modules/records.ts";
 
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const digitCount = (num: string) => {
   const counter = R.counter(num);

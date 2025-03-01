@@ -1,18 +1,10 @@
 {
-  "scripts": {
-    "test": "vitest"
-  },
-  "devDependencies": {
-    "@arktype/attest": "^0.6.2",
-    "@types/node": "^20.11.5",
-    "heap-js": "^2.3.0",
-    "prettier": "^3.2.4",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vite-node": "^1.2.1",
-    "vitest": "^1.2.1"
-  },
   "type": "module",
+  "devDependencies": {
+    "@arktype/attest": "^0.41.3",
+    "heap-js": "^2.6.0",
+    "typescript": "^5.7.3"
+  },
   "dependencies": {
     "tsx": "^4.7.1",
     "@type-challenges/utils": "^0.1.1"

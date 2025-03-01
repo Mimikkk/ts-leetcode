@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const subsets = (nums: number[]): number[][] =>
   Array.from(new Set<number>(nums)).reduce<number[][]>(

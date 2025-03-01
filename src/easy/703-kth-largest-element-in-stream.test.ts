@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const swap = (arr: number[], i: number, j: number) => ([arr[i], arr[j]] = [arr[j], arr[i]]);
 

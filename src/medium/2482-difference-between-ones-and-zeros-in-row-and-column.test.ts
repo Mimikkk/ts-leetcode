@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const add = (a: number, b: number): number => a + b;
 const sum = (array: number[]): number => array.reduce(add, 0);

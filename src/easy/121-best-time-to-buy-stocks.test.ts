@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const maxProfit = (prices: number[]): number => {
   if (prices.length < 2) return 0;

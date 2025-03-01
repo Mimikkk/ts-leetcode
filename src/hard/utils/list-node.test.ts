@@ -1,8 +1,10 @@
-import { describe, it } from "vitest";
-import { trimlines } from "./text.js";
-import { ListNode } from "@shared/structures/index.js";
-import { Line } from "./line.js";
-import { Chalk } from "./chalk.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { trimlines } from "./text.ts";
+import { ListNode } from "@shared/structures/index.ts";
+import { Line } from "./line.ts";
+import { Chalk } from "./chalk.ts";
 
 describe("Draw - Line-Node", () => {
   describe("Base Suite", () => {

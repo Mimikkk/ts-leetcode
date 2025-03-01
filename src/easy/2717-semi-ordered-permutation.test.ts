@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const count = (n: number, i: number, j: number) => (i > j ? -1 : 0) + i + (n - j - 1);
 const semiOrderedPermutation = (nums: number[]): number => {

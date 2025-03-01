@@ -1,4 +1,5 @@
-import { bench, describe, expect, it } from "vitest";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const problemRe = /src[\\/](easy|medium|hard)[\\/](\d+)-/;
 
@@ -10,19 +11,20 @@ export function exercise<Fn extends (...args: any) => any>(
     new Error("reading stacktrace").stack!.split("\n").filter((line) => problemRe.test(line))[0],
   )?.[2]!;
 
-  describe(problemNo, () =>
-    it.each(
-      cases
-        .map((c) => (Array.isArray(c) ? { input: c[0], output: c[1] } : c))
-        .map(({ input, output }, index) => ({
-          input,
-          output,
-          index: index + 1,
-          repr: `${JSON.stringify(input)} -> ${JSON.stringify(output)}`.substring(0, 200),
-        })),
-    )("case $index: $repr", async ({ input, output }) =>
-      expect(await fn(...(input as Iterable<unknown>))).toEqual(await output),
-    ),
+  describe(`Problem - ${problemNo}`, () => {
+    for (const { input, output, index, repr } of cases
+      .map((c) => (Array.isArray(c) ? { input: c[0], output: c[1] } : c))
+      .map(({ input, output }, index) => ({
+        input,
+        output,
+        index: index + 1,
+        repr: `${JSON.stringify(input)} -> ${JSON.stringify(output)}`.substring(0, 200),
+      }))) {
+        it(`case ${index}: ${repr}`, async () =>
+          expect(await fn(...(input as Iterable<unknown>))).toEqual(await output),
+        );
+      }
+    }
   );
 }
 
@@ -68,7 +70,7 @@ export const benches = <
 
     describe(`case ${j + 1}`, () => {
       solutions.forEach((solution, i) => {
-        bench(`${key.toString()} - Solution ${i + 1}`, () => solution[key](...(input as unknown[])));
+        Deno.bench(`${key.toString()} - Solution ${i + 1}`, () => solution[key](...(input as unknown[])));
       });
     });
   });

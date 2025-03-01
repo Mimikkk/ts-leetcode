@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const passThePillow = (n: number, time: number): number =>
   (time / (n - 1)) & 1 ? n - (time % (n - 1)) : 1 + (time % (n - 1));

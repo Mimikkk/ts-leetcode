@@ -1,6 +1,6 @@
-import { Chalk } from "./chalk.js";
-import { findMaxWidth, splitlines } from "./text.js";
-import { Pipe } from "./pipe.js";
+import { Chalk } from "./chalk.ts";
+import { findMaxWidth, splitlines } from "./text.ts";
+import { Pipe } from "./pipe.ts";
 
 export const box = (text: string, left: number = 0, right: number = left): string => {
   const { TopLeft, TopRight, BottomRight, BottomLeft, Vertical, horizontal } = Pipe;

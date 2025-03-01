@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const processQueries = (queries: number[], m: number): number[] => {
   const P = Array.from({ length: m }, (_, i) => i + 1);

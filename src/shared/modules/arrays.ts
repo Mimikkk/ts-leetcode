@@ -1,5 +1,5 @@
-import { N as Num } from "./numbers.js";
-export module A {
+import { N as Num } from "./numbers.ts";
+export namespace A {
   export const first = <T, Y = undefined>(arr: T[], or?: Y): T | Y => (arr[0] === undefined ? or : arr[0])!;
 
   export const second = <T, Y = undefined>(arr: T[], or?: Y): T | Y => arr[1] ?? or!;
@@ -76,7 +76,7 @@ export module A {
     return first.filter((x) => sets.every((s) => s.has(x)));
   };
 
-  export module N {
+  export namespace N {
     export const range = (start: number, end: number, step: number = 1) =>
       Array.from({ length: (end - start) / step + 1 }, (_, i) => start + i * step);
 
@@ -88,7 +88,7 @@ export module A {
     export const desc = (a: number, b: number) => b - a;
   }
 
-  export module S {
+  export namespace S {
     export const asc = (a: string, b: string) => a.localeCompare(b);
     export const desc = (a: string, b: string) => b.localeCompare(a);
   }

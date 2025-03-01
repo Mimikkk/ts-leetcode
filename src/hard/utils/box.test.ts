@@ -1,5 +1,8 @@
-import { box } from "./box.js";
-import { trimlines } from "./text.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { box } from "./box.ts";
+import { trimlines } from "./text.ts";
 
 describe("Draw - Box", () => {
   it("should box a string", () => {

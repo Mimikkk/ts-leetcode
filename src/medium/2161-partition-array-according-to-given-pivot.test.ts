@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const pivotArray = (nums: number[], pivot: number): number[] => {
   const result = [];

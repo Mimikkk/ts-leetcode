@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
 

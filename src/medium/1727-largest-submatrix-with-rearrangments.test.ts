@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const largestSubmatrix = (matrix: number[][]): number => {
   const columnHeights = Array(matrix[0].length).fill(0);

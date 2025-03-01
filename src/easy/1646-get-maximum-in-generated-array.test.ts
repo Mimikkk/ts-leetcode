@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const next = (arr: number[], i: number): number => {
   if (i % 2 === 0) return arr[i / 2];

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const numSpecial = (mat: number[][]): number => {
   const [m, n] = [mat.length, mat[0].length];
@@ -27,7 +29,7 @@ const numSpecial = (mat: number[][]): number => {
 };
 
 describe("num special", () => {
-  test("should return correct result", () => {
+  it("should return correct result", () => {
     expect(
       numSpecial([
         [1, 0, 0],

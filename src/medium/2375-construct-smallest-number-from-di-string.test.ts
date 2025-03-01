@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const reverse = <T>(arr: T[], from: number, to: number): void => {
   while (from < to) {

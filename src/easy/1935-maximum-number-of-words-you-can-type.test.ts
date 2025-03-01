@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const canBeTypedWords = (text: string, brokenLetters: string) => {
   const regexp = new RegExp(`[${brokenLetters}]`);

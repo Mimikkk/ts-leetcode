@@ -1,13 +1,11 @@
-import { createMatrix } from "../adventofcode2023/utils/utils.js";
-export {};
+import { createMatrix } from '../aoc/2023/utils/utils.ts';
+import { describe, it } from 'jsr:@std/testing/bdd';
+import { expect } from 'jsr:@std/expect';
 
 type position = [number, number];
 
 const isOdd = (n: number) => !!(n & 1);
-const filterBy =
-  <T>(pred: (n: T) => boolean) =>
-  (nums: T[]) =>
-    nums.filter(pred);
+const filterBy = <T>(pred: (n: T) => boolean) => (nums: T[]) => nums.filter(pred);
 
 const countOddCells = (matrix: number[][]): number => matrix.flatMap(filterBy(isOdd)).length;
 
@@ -22,8 +20,8 @@ const oddCells = (m: number, n: number, indices: position[]) => {
   return countOddCells(matrix);
 };
 
-describe("odd cells", () => {
-  it("case 1", () => {
+describe('odd cells', () => {
+  it('case 1', () => {
     expect(
       oddCells(2, 3, [
         [0, 1],
@@ -32,7 +30,7 @@ describe("odd cells", () => {
     ).toBe(6);
   });
 
-  it("case 2", () => {
+  it('case 2', () => {
     expect(
       oddCells(2, 2, [
         [1, 1],

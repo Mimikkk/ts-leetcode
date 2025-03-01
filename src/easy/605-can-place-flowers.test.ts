@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const canPlaceFlowers = (flowerbed: number[], n: number): boolean =>
   flowerbed.reduce((acc, _, i) => {

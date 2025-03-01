@@ -1,7 +1,9 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 type BoxType = [number, number];
-module BoxType {
+namespace BoxType {
   export const desc = ([, u1]: BoxType, [, u2]: BoxType) => u2 - u1;
 }
 

@@ -1,6 +1,6 @@
-import { expect } from "vitest";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
-export {};
 
 const countBits = (n: number) => {
   let count = 0;

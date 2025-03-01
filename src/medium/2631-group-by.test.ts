@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 function groupBy<T>(this: T[], fn: (item: T) => string): Record<string, T[]> {
   let result: Record<string, T[]> = {};

@@ -1,4 +1,4 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 const levelOrder = (root: TreeNode | null): number[][] => {
   if (!root) return [];
 

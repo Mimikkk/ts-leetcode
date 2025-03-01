@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const lengthOfLastWord = (s: string): number => {
   const words = s.split(/ +/).filter(Boolean);

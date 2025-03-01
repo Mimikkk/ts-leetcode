@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const minPartitions = (n: string) => Math.max(...n.split("").map(Number));
 
 describe("1689 - partitioning-into-minimum-number-of-deci-binary-numbers", () => {

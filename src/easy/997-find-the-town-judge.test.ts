@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const findJudge = (n: number, trust: [number, number][]): number => {
   if (n === 1) return 1;

@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const numberOfEmployeesWhoMetTarget = (hours: number[], target: number): number => {
   const n = hours.length;

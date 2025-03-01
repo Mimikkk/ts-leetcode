@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const alternatingSubarray = (nums: number[]): number => {
   const n = nums.length;

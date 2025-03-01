@@ -1,4 +1,6 @@
-import { M } from "@shared/modules";
+import { M } from "@shared/modules/matrices.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const findRotation = (mat: number[][], target: number[][]) => {
   for (let i = 0; i < 4; ++i) {

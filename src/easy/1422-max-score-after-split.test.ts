@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const maxScore = (s: string): number => {
   let max = 0;
   let [leftOnes, rightZeros] = [s.split("1").length - 1, 0];

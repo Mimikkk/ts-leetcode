@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const isPrefixAndSuffix = (fix: string, word: string) => word.startsWith(fix) && word.endsWith(fix);
 

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isPeak = (num: number, i: number, nums: number[]) => num > nums[i + 1] && num > nums[i - 1];
 

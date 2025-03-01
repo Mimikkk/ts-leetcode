@@ -1,4 +1,6 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 import node = TreeNode.node;
 
 const isCousins = (root: TreeNode | null, x: number, y: number): boolean => {

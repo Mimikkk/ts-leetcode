@@ -13,7 +13,7 @@
   ParseUrlParams<'posts/:id/:user'> // id | user
   ```
 
-  > View on GitHub: https://tsch.js.org/9616
+  > View on GitHub: https://tsch.ts.org/9616
 */
 
 /* _____________ Your Code Here _____________ */
@@ -34,7 +34,7 @@ type cases = [
 
 /* _____________ Further Steps _____________ */
 /*
-  > Share your solutions: https://tsch.js.org/9616/answer
-  > View solutions: https://tsch.js.org/9616/solutions
-  > More Challenges: https://tsch.js.org
+  > Share your solutions: https://tsch.ts.org/9616/answer
+  > View solutions: https://tsch.ts.org/9616/solutions
+  > More Challenges: https://tsch.ts.org
 */

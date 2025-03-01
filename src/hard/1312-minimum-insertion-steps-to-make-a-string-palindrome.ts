@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 export namespace Sol1_1312 {
   export const minInsertions = (s: string): number => {

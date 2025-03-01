@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 type Domino = [number, number];
 const toString = ([a, b]: Domino) => [a, b].sort().join("-");

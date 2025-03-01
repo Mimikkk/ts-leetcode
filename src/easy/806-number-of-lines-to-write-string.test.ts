@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const Max = 100;
 const numberOfLines = (widths: number[], s: string): [number, number] => {

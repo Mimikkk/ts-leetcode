@@ -1,3 +1,6 @@
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 const isLetter = (c: string): boolean => !!c.match(/[a-z]/i);
 const splitIntoDigitsAndLetters = (s: string): [string[], string[]] => {
   let letters: string[] = [];

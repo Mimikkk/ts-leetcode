@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isPalindrome = (word: string) => word.split("").reverse().join("") === word;
 const firstPalindrome = (words: string[]) => words.find(isPalindrome) || "";

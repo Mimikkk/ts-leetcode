@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const isInverse = (a: string, b: string) => {
   if (a.length !== b.length) return false;

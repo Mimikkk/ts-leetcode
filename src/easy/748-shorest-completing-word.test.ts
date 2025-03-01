@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const shortestCompletingWord = (licensePlate: string, words: string[]): string => {
   licensePlate = licensePlate.toLowerCase().replace(/[ 0-9]/g, "");

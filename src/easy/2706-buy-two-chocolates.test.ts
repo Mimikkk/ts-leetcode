@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const buyChoco = (prices: number[], money: number): number => {
   const [first, second] = prices.sort((a, b) => a - b);

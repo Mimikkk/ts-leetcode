@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 type Position = [number, number];
 const cross = ([x1, y1]: Position, [x2, y2]: Position) => x1 * y2 - x2 * y1;

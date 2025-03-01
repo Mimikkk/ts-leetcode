@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const arrangeCoins = (n: number) => Math.floor(-0.5 + Math.sqrt(2 * n + 0.25));
 

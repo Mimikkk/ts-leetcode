@@ -1,4 +1,4 @@
-import { exercises } from "@shared/utilities/exercise.js";
+import { exercises } from "@shared/utilities/exercise.ts";
 
 const numTilePossibilities1 = (tiles: string): number =>
   (function traverse(letters: string, current: string = "", permutations: Set<string> = new Set()) {

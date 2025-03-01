@@ -1,4 +1,6 @@
-import { TreeNode } from "@shared/structures/TreeNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { TreeNode } from "@shared/structures/TreeNode.ts";
 
 const utility = (node: TreeNode | null, path: string, result: string[]): string[] => {
   if (!node) return result;
@@ -16,7 +18,7 @@ const utility = (node: TreeNode | null, path: string, result: string[]): string[
 const binaryTreePaths = (root: TreeNode | null): string[] => utility(root, "", []);
 
 describe("257-binary-tree-paths", () => {
-  test("Case 0", () => {
+  it("Case 0", () => {
     expect(binaryTreePaths(null)).toEqual([]);
   });
 });

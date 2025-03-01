@@ -1,6 +1,8 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const applyOperations = (nums: number[]): number[] => {
   for (let i = 1; i < nums.length; ++i) {

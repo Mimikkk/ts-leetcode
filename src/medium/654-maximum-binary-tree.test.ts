@@ -1,5 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.js";
-import { TreeNode } from "@shared/structures/index.js";
+import { exercise } from "@shared/utilities/exercise.ts";
+import { TreeNode } from "@shared/structures/index.ts";
 
 const constructMaximumBinaryTree = (nums: number[]): TreeNode | null => {
   const construct = (nums: number[], start: number, end: number): TreeNode | null => {

@@ -1,6 +1,8 @@
-import { A } from "@shared/modules/arrays.js";
+import { A } from "@shared/modules/arrays.ts";
 
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const isCovered = (ranges: [number, number][], left: number, right: number) =>
   A.N.range(left, right + 1).some((n) => ranges.some(([l, r]) => l <= n && n <= r));

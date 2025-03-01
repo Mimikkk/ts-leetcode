@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const areSimilar = (mat: number[][], k: number): boolean => {
   const n = mat.length;

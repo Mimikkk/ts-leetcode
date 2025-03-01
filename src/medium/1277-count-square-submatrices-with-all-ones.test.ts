@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const countSquares = (matrix: (0 | 1)[][]): number => {
   const n = matrix.length;

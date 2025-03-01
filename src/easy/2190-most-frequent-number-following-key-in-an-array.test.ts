@@ -1,4 +1,6 @@
-import { R } from "@shared/modules/records.js";
+import { R } from "@shared/modules/records.ts";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 const mostFrequent = (nums: number[], key: number) => {
   const frequencies = R.counter(nums, (n, i, nums) => nums[i - 1] === key);

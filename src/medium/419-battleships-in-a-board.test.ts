@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const countBattleships = (board: ("X" | ".")[][]): number => {
   const n = board.length;

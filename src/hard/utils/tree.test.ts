@@ -1,6 +1,8 @@
-import { describe, it } from "vitest";
-import { trimlines } from "./text.js";
-import { Tree } from "./tree.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
+import { trimlines } from "./text.ts";
+import { Tree } from "./tree.ts";
 
 describe("Draw - Tree", () => {
   it("should draw an edge", () => {

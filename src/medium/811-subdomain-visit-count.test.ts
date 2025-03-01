@@ -1,4 +1,4 @@
-import { exercises } from "@shared/utilities/exercise.js";
+import { exercises } from "@shared/utilities/exercise.ts";
 
 const subdomainVisits = (cpdomains: string[]): string[] => {
   const map = new Map<string, number>();

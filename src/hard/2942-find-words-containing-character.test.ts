@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const findWordsContaining = (words: string[], target: string): number[] =>
   words.map((word, i) => (word.includes(target) ? i : null)).filter((i) => i !== null) as number[];

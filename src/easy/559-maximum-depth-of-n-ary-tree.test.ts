@@ -1,4 +1,6 @@
-import { Node } from "@shared/structures/Node.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { Node } from "@shared/structures/Node.ts";
 
 const maxDepthR = (root: Node | null): number => {
   const utility = (node: Node | null, depth: number): number => {

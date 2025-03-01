@@ -1,4 +1,6 @@
-import { ListNode } from "@shared/structures/ListNode.js";
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+import { ListNode } from "@shared/structures/ListNode.ts";
 const { node } = ListNode;
 
 const getDecimalValue = (node: ListNode | null): number => {

@@ -1,4 +1,6 @@
-export {};
+import { describe, it } from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
+
 
 const numOfStrings = (patterns: string[], word: string) => patterns.filter((pattern) => word.includes(pattern)).length;
 

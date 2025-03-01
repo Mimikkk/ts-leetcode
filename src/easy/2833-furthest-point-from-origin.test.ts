@@ -1,4 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.js";
+import { exercise } from "@shared/utilities/exercise.ts";
 
 const furthestDistanceFromOrigin = (moves: string): number => {
   let countLeft = 0;
