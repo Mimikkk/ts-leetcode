@@ -1,12 +1,22 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const UserCase = await Deno.readTextFile("./day-14-dish.user.txt");
-const TestCase = await Deno.readTextFile("./day-14-dish.case.txt");
-import { Dish } from "./day-14-dish.utils.ts";
+import { Dish } from './day-14-dish.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const { scoreLoad, tilt, parse } = Dish;
-const dish = (input: string): number => scoreLoad(tilt(parse(input), "north"));
+const dish = (input: string): number => scoreLoad(tilt(parse(input), 'north'));
 
-exercise(dish, [
-  [[TestCase], 136],
-  [[UserCase], 108955],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:day-14-dish.case.txt',
+        result: 136,
+      },
+      user: {
+        input: 'file:day-14-dish.user.txt',
+        result: 108955,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => dish(input),
+  },
+});

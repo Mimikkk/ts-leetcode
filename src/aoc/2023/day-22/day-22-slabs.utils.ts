@@ -1,4 +1,4 @@
-import { memoize } from "../utils/utils.ts";
+import { memoize } from '../../utils/utils.ts';
 
 export namespace Slabs {
   export interface Vec3 {
@@ -136,7 +136,7 @@ export namespace Slabs {
         line
           .match(regex)!
           .splice(1)
-          .map((n) => +n),
+          .map((n) => +n)
       )
       .sort(([, , z1, , , z2], [, , z3, , , z4]) => {
         const a = min(z1, z2);
@@ -151,6 +151,6 @@ export namespace Slabs {
         return 0;
       })
       .map(([x1, y1, z1, x2, y2, z2], id) =>
-        brick(id, vec3(min(x1, x2), min(y1, y2), min(z1, z2)), vec3(max(x1, x2), max(y1, y2), max(z1, z2))),
+        brick(id, vec3(min(x1, x2), min(y1, y2), min(z1, z2)), vec3(max(x1, x2), max(y1, y2), max(z1, z2)))
       );
 }

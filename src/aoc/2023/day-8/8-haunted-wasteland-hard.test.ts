@@ -1,6 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./8-haunted-wasteland.hard-case.txt");
-const UserCase = await Deno.readTextFile("./8-haunted-wasteland.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 const enum Direction {
   Left = 0,
@@ -17,13 +15,13 @@ const parse = (input: string): [string[], Direction[], Map<string, [string, stri
     const line = lines[i];
     const [, from, left, right] = line.match(/(\w+) = \((\w+), (\w+)\)/)!;
 
-    if (from[2] === "A") starts.push(from);
+    if (from[2] === 'A') starts.push(from);
     pathways.set(from, [left, right]);
   }
 
   const directions = [];
   for (let i = 0, it = lines[0].length; i < it; ++i) {
-    directions.push(lines[0][i] === "L" ? Direction.Left : Direction.Right);
+    directions.push(lines[0][i] === 'L' ? Direction.Left : Direction.Right);
   }
 
   return [starts, directions, pathways];
@@ -41,7 +39,7 @@ const gcd = (a: number, b: number): number => {
 
 const lcm = (a: number, b: number): number => (a * b) / gcd(a, b);
 
-const isEnd = (x: string) => x[2] === "Z";
+const isEnd = (x: string) => x[2] === 'Z';
 export const iterWasteland = (input: string): number => {
   const [starts, directions, pathways] = parse(input);
 
@@ -70,32 +68,19 @@ export const iterWasteland = (input: string): number => {
   return counts.reduce(lcm);
 };
 
-export const funcWasteland = (input: string): number => {
-  const [starts, directions, pathways] = parse(input);
-  let directionCount = directions.length;
-
-  return starts
-    .map((current) => {
-      let count = 0;
-      let direction = 0;
-
-      while (!isEnd(current)) {
-        ++count;
-        current = pathways.get(current)![directions[direction]];
-        if (++direction === directionCount) direction = 0;
-      }
-
-      return count;
-    })
-    .reduce(lcm);
-};
-
-exercise(iterWasteland, [
-  [[TestCase], 6],
-  [[UserCase], 10921547990923],
-]);
-
-exercise(funcWasteland, [
-  [[TestCase], 6],
-  [[UserCase], 10921547990923],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:8-haunted-wasteland.hard-case.txt',
+        result: 6,
+      },
+      user: {
+        input: 'file:8-haunted-wasteland.user.txt',
+        result: 10921547990923,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => iterWasteland(input),
+  },
+});

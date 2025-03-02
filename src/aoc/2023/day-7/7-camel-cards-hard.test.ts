@@ -1,14 +1,12 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./7-camel-cards.case.txt");
-const UserCase = await Deno.readTextFile("./7-camel-cards.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 namespace Hand {
-  const ranks = "AKQT98765432J";
+  const ranks = 'AKQT98765432J';
   type Hand = { cards: string; values: Record<string, number> };
 
   const score = (hand: Hand) => {
     const [first, second] = Object.entries(hand.values)
-      .filter(([card]) => card !== "J")
+      .filter(([card]) => card !== 'J')
       .map(([, count]) => count)
       .sort((a, b) => b - a);
 
@@ -98,7 +96,19 @@ const camelCards = (input: string): number =>
     .map(([, pot], index) => [pot, index + 1] as const)
     .reduce((a, [value, rank]) => a + value * rank, 0);
 
-exercise(camelCards, [
-  [[TestCase], 5905],
-  [[UserCase], 249776650],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:7-camel-cards.case.txt',
+        result: 5905,
+      },
+      user: {
+        input: 'file:7-camel-cards.user.txt',
+        result: 249776650,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => camelCards(input),
+  },
+});

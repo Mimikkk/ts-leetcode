@@ -1,7 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-24-odds.case.txt");
-const UserCase = await Deno.readTextFile("./day-24-odds.user.txt");
-import { range } from "../utils/utils.ts";
+import { range } from '../../utils/utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const odds = (input: string): number => {
   interface Hailstone {
@@ -25,9 +23,9 @@ const odds = (input: string): number => {
       .reduce((acc, [v, [vx, vy]]) => acc.filter((value) => (vx - vy) % (value - +v) === 0), range(-1000, 1000))[0];
 
   for (const line of input.split(/\r?\n/).filter((x) => x)) {
-    const [positions, velocity] = line.split(" @ ");
-    const [px, py, pz] = positions.split(", ").map((n) => +n);
-    const [vx, vy, vz] = velocity.split(", ").map((n) => +n);
+    const [positions, velocity] = line.split(' @ ');
+    const [px, py, pz] = positions.split(', ').map((n) => +n);
+    const [vx, vy, vz] = velocity.split(', ').map((n) => +n);
 
     if (!velocitiesX[vx]) velocitiesX[vx] = [px];
     else velocitiesX[vx].push(px);
@@ -72,7 +70,19 @@ const odds = (input: string): number => {
   return +Object.keys(results).sort((a, b) => results[+b] - results[+a])[0];
 };
 
-exercise(odds, [
-  [[TestCase], 3],
-  [[UserCase], 641619849766168],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:day-24-odds.case.txt',
+        result: 3,
+      },
+      user: {
+        input: 'file:day-24-odds.user.txt',
+        result: 641619849766168,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => odds(input),
+  },
+});

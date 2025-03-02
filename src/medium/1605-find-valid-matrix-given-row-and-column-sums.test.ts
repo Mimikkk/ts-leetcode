@@ -1,5 +1,5 @@
 import { exercise } from '@shared/utilities/exercise.ts';
-import { createMatrix } from '../aoc/2023/utils/utils.ts';
+import { createMatrix } from '../aoc/utils/utils.ts';
 
 const restoreMatrix = (rowSums: number[], colSums: number[]): number[][] => {
   const n = rowSums.length;

@@ -1,6 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./5-fertilizer.case.txt");
-const UserCase = await Deno.readTextFile("./5-fertilizer.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 type SeedMap = [number, number, number];
 
@@ -8,14 +6,14 @@ export const parseFertilizer = (input: string): [number[], SeedMap[][]] => {
   const lines = input.split(/\r?\n/);
 
   const seeds = lines[0]
-    .split(" ")
+    .split(' ')
     .map((s) => +s)
     .slice(1);
 
   const maps: SeedMap[][] = Array(7);
   for (let i = 0; i < 7; ++i) maps[i] = [];
   for (let i = 3, j = 0, it = lines.length; i < it; i += 2, ++j) {
-    while (lines[i] !== "" && i < it) maps[j].push(lines[i++].split(" ").map((s) => +s) as SeedMap);
+    while (lines[i] !== '' && i < it) maps[j].push(lines[i++].split(' ').map((s) => +s) as SeedMap);
   }
 
   return [seeds, maps] as const;
@@ -48,26 +46,19 @@ export const iterFertilizer = (input: string): number => {
   return min;
 };
 
-const canMap = (seed: number, [, source, range]: SeedMap): boolean => seed >= source && seed < source + range;
-const mapRange = (seed: number, [destination, source]: SeedMap): number => destination + (seed - source);
-
-export const funcFertilizer = (input: string): number => {
-  let [seeds, maps] = parseFertilizer(input);
-
-  return Math.min(
-    ...maps.reduce(
-      (seeds, map) => seeds.map((seed) => mapRange(seed, map.find((range) => canMap(seed, range)) ?? [seed, seed, 0])),
-      seeds,
-    ),
-  );
-};
-
-exercise(iterFertilizer, [
-  [[TestCase], 35],
-  [[UserCase], 199602917],
-]);
-
-exercise(funcFertilizer, [
-  [[TestCase], 35],
-  [[UserCase], 199602917],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:5-fertilizer.case.txt',
+        result: 35,
+      },
+      user: {
+        input: 'file:5-fertilizer.user.txt',
+        result: 199602917,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => iterFertilizer(input),
+  },
+});

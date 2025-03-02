@@ -1,23 +1,20 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-
-const TestCase = await Deno.readTextFile("./2-cube-conundrum.case.txt");
-const UserCase = await Deno.readTextFile("./2-cube-conundrum.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 namespace Bag {
-  export type Color = "red" | "green" | "blue";
+  export type Color = 'red' | 'green' | 'blue';
 
   const counts: Record<Color, number> = { red: 12, green: 13, blue: 14 };
   export const isInvalid = (entries: [number, Color][]) => entries.some(([count, color]) => count > counts[color]);
 }
 
 const conundrum = (input: string): number => {
-  const lines = input.split("\r\n").filter((Line) => Line);
+  const lines = input.split('\r\n').filter((Line) => Line);
 
   const bags = lines.map((line) =>
     line.match(/(\d+) (\w+)/g)!.map((x) => {
-      const [count, color] = x.split(" ");
+      const [count, color] = x.split(' ');
       return [+count, color];
-    }),
+    })
   ) as [number, Bag.Color][][];
 
   let invalidIdSum = 0;
@@ -30,7 +27,21 @@ const conundrum = (input: string): number => {
   return invalidIdSum;
 };
 
-exercise(conundrum, [
-  [[TestCase], 8],
-  [[UserCase], 2476],
-]);
+createDay(
+  {
+    easy: {
+      cases: {
+        test: {
+          input: 'file:2-cube-conundrum.case.txt',
+          result: 8,
+        },
+        user: {
+          input: 'file:2-cube-conundrum.user.txt',
+          result: 2476,
+        },
+      },
+      prepare: (x) => x,
+      solve: (input) => conundrum(input),
+    },
+  },
+);

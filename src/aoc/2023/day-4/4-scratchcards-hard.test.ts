@@ -1,6 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./4-scratchcards.case.txt");
-const UserCase = await Deno.readTextFile("./4-scratchcards.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 const intersectionSize = ([a, b]: [Set<string>, Set<string>]): number => {
   let count = 0;
@@ -10,13 +8,13 @@ const intersectionSize = ([a, b]: [Set<string>, Set<string>]): number => {
 
 const scratchCards = (input: string): number =>
   input
-    .split("\n")
+    .split('\n')
     .filter((line) => line)
     .map(
       (line) =>
         line
-          .split(":")[1]
-          .split("|")
+          .split(':')[1]
+          .split('|')
           .map((x) => new Set(x.trim().split(/ +/))) as [Set<string>, Set<string>],
     )
     .map(intersectionSize)
@@ -26,7 +24,19 @@ const scratchCards = (input: string): number =>
       return acc + count;
     }, 0);
 
-exercise(scratchCards, [
-  [[TestCase], 30],
-  [[UserCase], 11787590],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:4-scratchcards.case.txt',
+        result: 30,
+      },
+      user: {
+        input: 'file:4-scratchcards.user.txt',
+        result: 11787590,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => scratchCards(input),
+  },
+});

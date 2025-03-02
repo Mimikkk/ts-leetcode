@@ -1,13 +1,13 @@
-import { createMatrix } from "../utils/utils.ts";
+import { createMatrix } from '../../utils/utils.ts';
 
 export type Position = [number, number];
 export type Maze = Tile[][] & { n: number; m: number };
 export namespace Maze {
   export const parse = (input: string): Maze => {
-    const map = <Maze>input
+    const map = <Maze> input
       .split(/\r?\n/)
       .filter((line) => line)
-      .map((line) => line.split(""));
+      .map((line) => line.split(''));
     map.n = map.length;
     map.m = map[0].length;
 
@@ -23,7 +23,7 @@ export namespace Maze {
       }
     }
 
-    throw Error("Invalid map: no start found");
+    throw Error('Invalid map: no start found');
   };
 
   interface SearchResult {
@@ -124,14 +124,14 @@ export namespace Position {
 }
 
 export enum Tile {
-  VerticalPipe = "|",
-  HorizontalPipe = "-",
-  BottomLeftCorner = "L",
-  BottomRightCorner = "J",
-  TopRightCorner = "7",
-  TopLeftCorner = "F",
-  Ground = ".",
-  Start = "S",
+  VerticalPipe = '|',
+  HorizontalPipe = '-',
+  BottomLeftCorner = 'L',
+  BottomRightCorner = 'J',
+  TopRightCorner = '7',
+  TopLeftCorner = 'F',
+  Ground = '.',
+  Start = 'S',
 }
 
 export namespace Tile {

@@ -1,21 +1,20 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./3-gear-ratios.case.txt");
-const UserCase = await Deno.readTextFile("./3-gear-ratios.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 namespace Gear {
-  export const isDigit = (char: string) => char >= "0" && char <= "9";
+  export const isDigit = (char: string) => char >= '0' && char <= '9';
 
   export const isPart = (schema: string[], minx: number, maxx: number, miny: number, maxy: number) => {
-    for (let x = minx; x < maxx; ++x)
+    for (let x = minx; x < maxx; ++x) {
       for (let y = miny; y < maxy; ++y) {
-        if (!isDigit(schema[x][y]) && schema[x][y] !== ".") return true;
+        if (!isDigit(schema[x][y]) && schema[x][y] !== '.') return true;
       }
+    }
     return false;
   };
 }
 
 export const gearRatios = (input: string): number => {
-  const schema = input.split("\r\n").filter((x) => x);
+  const schema = input.split('\r\n').filter((x) => x);
 
   let sum = 0;
 
@@ -39,7 +38,19 @@ export const gearRatios = (input: string): number => {
   return sum;
 };
 
-exercise(gearRatios, [
-  [[TestCase], 4361],
-  [[UserCase], 498559],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:3-gear-ratios.case.txt',
+        result: 4361,
+      },
+      user: {
+        input: 'file:3-gear-ratios.user.txt',
+        result: 498559,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => gearRatios(input),
+  },
+});

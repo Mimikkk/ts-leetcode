@@ -1,4 +1,4 @@
-import { createMatrix } from '../aoc/2023/utils/utils.ts';
+import { createMatrix } from '../aoc/utils/utils.ts';
 import { describe, it } from 'jsr:@std/testing/bdd';
 import { expect } from 'jsr:@std/expect';
 

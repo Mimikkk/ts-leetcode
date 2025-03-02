@@ -1,6 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./6-wait.case.txt");
-const UserCase = await Deno.readTextFile("./6-wait.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 const zip = function* <T, Y>(a: T[], b: Y[]): Generator<[T, Y]> {
   const container = Array(2) as [T, Y];
@@ -21,7 +19,7 @@ const waitforit = (input: string): number => {
         line
           .split(/ +/)
           .slice(1)
-          .map((x) => +x),
+          .map((x) => +x)
       ) as [number[], number[]]),
   );
 
@@ -37,7 +35,19 @@ const waitforit = (input: string): number => {
   return product;
 };
 
-exercise(waitforit, [
-  [[TestCase], 288],
-  [[UserCase], 861300],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:6-wait.case.txt',
+        result: 288,
+      },
+      user: {
+        input: 'file:6-wait.user.txt',
+        result: 861300,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => waitforit(input),
+  },
+});

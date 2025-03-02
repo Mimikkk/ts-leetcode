@@ -1,6 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-24-odds.case.txt");
-const UserCase = await Deno.readTextFile("./day-24-odds.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 const odds = (input: string): number => {
   interface Hailstone {
@@ -41,9 +39,9 @@ const odds = (input: string): number => {
   const max = 400000000000000;
 
   for (const line of input.split(/\r?\n/).filter((x) => x)) {
-    const [positions, velocity] = line.split(" @ ");
-    const [px, py, pz] = positions.split(", ").map((n) => Number(n));
-    const [vx, vy, vz] = velocity.split(", ").map((n) => Number(n));
+    const [positions, velocity] = line.split(' @ ');
+    const [px, py, pz] = positions.split(', ').map((n) => Number(n));
+    const [vx, vy, vz] = velocity.split(', ').map((n) => Number(n));
 
     hailstones.push({ px, py, pz, vx, vy, vz });
   }
@@ -70,7 +68,19 @@ const odds = (input: string): number => {
   return count;
 };
 
-exercise(odds, [
-  [[TestCase], 0],
-  [[UserCase], 27732],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:day-24-odds.case.txt',
+        result: 0,
+      },
+      user: {
+        input: 'file:day-24-odds.user.txt',
+        result: 27732,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => odds(input),
+  },
+});

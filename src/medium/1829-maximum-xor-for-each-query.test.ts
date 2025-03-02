@@ -1,5 +1,5 @@
 import { exercise } from '@shared/utilities/exercise.ts';
-import { createMatrix } from '../aoc/2023/utils/utils.ts';
+import { createMatrix } from '../aoc/utils/utils.ts';
 
 const getMaximumXor = (nums: number[], maximumBit: number): number[] => {
   for (let i = 1; i < nums.length; ++i) nums[i] ^= nums[i - 1];

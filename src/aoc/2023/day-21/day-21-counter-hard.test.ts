@@ -1,6 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const UserCase = await Deno.readTextFile("./day-21-counter.user.txt");
-import { Position } from "../day-10/10-pipe-maze.utils.ts";
+import { Position } from '../day-10/10-pipe-maze.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 namespace Counter {
   const key = (i: number, j: number): string => `${i},${j}`;
@@ -23,8 +22,8 @@ namespace Counter {
 
     for (let i = 0; i < n; ++i) {
       for (let j = 0; j < m; ++j) {
-        if (grid[i][j] == "#") walls.add(key(i, j));
-        else if (grid[i][j] == "S") {
+        if (grid[i][j] == '#') walls.add(key(i, j));
+        else if (grid[i][j] == 'S') {
           plots.set(key(i, j), 0);
           start = [i, j];
         }
@@ -50,11 +49,11 @@ namespace Counter {
 
     return remaining
       ? [
-          [i + 1, j, remaining - 1],
-          [i - 1, j, remaining - 1],
-          [i, j + 1, remaining - 1],
-          [i, j - 1, remaining - 1],
-        ]
+        [i + 1, j, remaining - 1],
+        [i - 1, j, remaining - 1],
+        [i, j + 1, remaining - 1],
+        [i, j - 1, remaining - 1],
+      ]
       : [];
   };
 
@@ -86,4 +85,16 @@ namespace Counter {
     return a * x ** 2 + b * x + c;
   };
 }
-exercise(Counter.solve, [[[UserCase], 596857397104703]]);
+
+createDay({
+  hard: {
+    cases: {
+      user: {
+        input: 'file:day-21-counter.user.txt',
+        result: 596857397104703,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => Counter.solve(input),
+  },
+});

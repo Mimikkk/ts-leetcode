@@ -1,8 +1,6 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const UserCase = await Deno.readTextFile("./day-22-slabs.user.txt");
-const TestCase = await Deno.readTextFile("./day-22-slabs.case.txt");
-import { count } from "../utils/utils.ts";
-import { Slabs } from "./day-22-slabs.utils.ts";
+import { count } from '../../utils/utils.ts';
+import { Slabs } from './day-22-slabs.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const slabs = (input: string): number => {
   const bricks = Slabs.parse(input);
@@ -15,7 +13,19 @@ const slabs = (input: string): number => {
   return result;
 };
 
-exercise(slabs, [
-  [[TestCase], 5],
-  [[UserCase], 401],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:day-22-slabs.case',
+        result: 5,
+      },
+      user: {
+        input: 'file:day-22-slabs.user',
+        result: 401,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => slabs(input),
+  },
+});

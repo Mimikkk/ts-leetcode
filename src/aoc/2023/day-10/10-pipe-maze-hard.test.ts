@@ -1,12 +1,6 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const SimpleTestCase = await Deno.readTextFile("./10-pipe-maze.easy-simple-case.txt");
-const Complex1TestCase = await Deno.readTextFile("./10-pipe-maze.hard-1-case.txt");
-const Complex2TestCase = await Deno.readTextFile("./10-pipe-maze.hard-2-case.txt");
-const Complex3TestCase = await Deno.readTextFile("./10-pipe-maze.hard-3-case.txt");
-const Complex4TestCase = await Deno.readTextFile("./10-pipe-maze.hard-4-case.txt");
-const UserCase = await Deno.readTextFile("./10-pipe-maze.user.txt");
-import { Direction, Maze, Position, Tile } from "./10-pipe-maze.utils.ts";
-import { createMatrix } from "../utils/utils.ts";
+import { Direction, Maze, Position, Tile } from './10-pipe-maze.utils.ts';
+import { createMatrix } from '../../utils/utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const maze = (input: string): number => {
   const map = Maze.parse(input);
@@ -33,41 +27,41 @@ const maze = (input: string): number => {
   for (let i = 1; i < path.length; ++i) dirs.push(directionOf(path[i - 1], path[i]));
   dirs.push(directionOf(path[path.length - 1], path[0]));
 
-  const findCircuitDirection = (): "right" | "left" => {
+  const findCircuitDirection = (): 'right' | 'left' => {
     for (let i = 1; i < dirs.length; ++i) {
       const previous = dirs[i - 1];
       const next = dirs[i];
 
       if (previous === next) continue;
-      if (previous === Direction.right && next === Direction.down) return "right";
-      if (previous === Direction.down && next === Direction.left) return "right";
-      if (previous === Direction.left && next === Direction.up) return "right";
-      if (previous === Direction.up && next === Direction.right) return "right";
+      if (previous === Direction.right && next === Direction.down) return 'right';
+      if (previous === Direction.down && next === Direction.left) return 'right';
+      if (previous === Direction.left && next === Direction.up) return 'right';
+      if (previous === Direction.up && next === Direction.right) return 'right';
 
-      if (previous === Direction.right && next === Direction.up) return "left";
-      if (previous === Direction.up && next === Direction.left) return "left";
-      if (previous === Direction.left && next === Direction.down) return "left";
-      if (previous === Direction.down && next === Direction.right) return "left";
-      return "right";
+      if (previous === Direction.right && next === Direction.up) return 'left';
+      if (previous === Direction.up && next === Direction.left) return 'left';
+      if (previous === Direction.left && next === Direction.down) return 'left';
+      if (previous === Direction.down && next === Direction.right) return 'left';
+      return 'right';
     }
-    throw Error("Invalid circuit");
+    throw Error('Invalid circuit');
   };
   let direction = findCircuitDirection();
 
   const directionMap = new Map(
-    direction === "left"
+    direction === 'left'
       ? [
-          [Direction.up, Direction.left],
-          [Direction.left, Direction.down],
-          [Direction.down, Direction.right],
-          [Direction.right, Direction.up],
-        ]
+        [Direction.up, Direction.left],
+        [Direction.left, Direction.down],
+        [Direction.down, Direction.right],
+        [Direction.right, Direction.up],
+      ]
       : [
-          [Direction.up, Direction.right],
-          [Direction.right, Direction.down],
-          [Direction.down, Direction.left],
-          [Direction.left, Direction.up],
-        ],
+        [Direction.up, Direction.right],
+        [Direction.right, Direction.down],
+        [Direction.down, Direction.left],
+        [Direction.left, Direction.up],
+      ],
   );
 
   const neighbours: Position[] = [Direction.up, Direction.right, Direction.down, Direction.left];
@@ -106,11 +100,35 @@ const maze = (input: string): number => {
   return sum;
 };
 
-exercise(maze, [
-  [[SimpleTestCase], 1],
-  [[Complex1TestCase], 18],
-  [[Complex2TestCase], 8],
-  [[Complex3TestCase], 10],
-  [[Complex4TestCase], 4],
-  [[UserCase], 367],
-]);
+createDay({
+  hard: {
+    cases: {
+      simple: {
+        input: 'file:10-pipe-maze.easy-simple-case.txt',
+        result: 1,
+      },
+      complex1: {
+        input: 'file:10-pipe-maze.hard-1-case.txt',
+        result: 18,
+      },
+      complex2: {
+        input: 'file:10-pipe-maze.hard-2-case.txt',
+        result: 8,
+      },
+      complex3: {
+        input: 'file:10-pipe-maze.hard-3-case.txt',
+        result: 10,
+      },
+      complex4: {
+        input: 'file:10-pipe-maze.hard-4-case.txt',
+        result: 4,
+      },
+      user: {
+        input: 'file:10-pipe-maze.user.txt',
+        result: 367,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => maze(input),
+  },
+});

@@ -1,9 +1,9 @@
-import { contains, memoize } from "../utils/utils.ts";
+import { contains, memoize } from '../../utils/utils.ts';
 export namespace Springs {
   enum Cell {
-    Operating = ".",
-    Damaged = "#",
-    Unknown = "?",
+    Operating = '.',
+    Damaged = '#',
+    Unknown = '?',
   }
 
   type Schema = [Cell[], number[]];
@@ -38,6 +38,6 @@ export namespace Springs {
   export const parse = (input: string): Schema[] =>
     input
       .split(/\r?\n/)
-      .map((line) => line.split(" "))
-      .map(([combination, sizes]) => [combination as unknown as Cell[], sizes.split(",").map((s) => +s)]);
+      .map((line) => line.split(' '))
+      .map(([combination, sizes]) => [combination as unknown as Cell[], sizes.split(',').map((s) => +s)]);
 }

@@ -1,13 +1,24 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-13-points.case.txt");
-import { Pattern } from "./day-13-points.utils.ts";
+import { Pattern } from './day-13-points.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const points = (input: string): number =>
   Pattern.parse(input)
     .map((pattern) => Pattern.score(pattern, 1))
     .reduce((sum, curr) => sum + curr, 0);
 
-exercise(points, [
-  [[TestCase], 400],
-  // [[UserCase], 31954],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:day-13-points.case.txt',
+        result: 400,
+      },
+      user: {
+        input: 'file:day-13-points.user.txt',
+        result: 31954,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => points(input),
+  },
+});

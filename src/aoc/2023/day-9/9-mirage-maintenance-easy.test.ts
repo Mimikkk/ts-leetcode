@@ -1,6 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./9-mirage-maintenance.case.txt");
-const UserCase = await Deno.readTextFile("./9-mirage-maintenance.user.txt");
+import { createDay } from '../../utils/createDay.ts';
 
 const add = (a: number, b: number): number => a + b;
 const sum = (numbers: number[]): number => numbers.reduce(add, 0);
@@ -9,7 +7,7 @@ const mirage = (input: string): number =>
   input
     .split(/\r?\n/)
     .filter((line) => line)
-    .map((history) => history.split(" ").map((chapter) => +chapter))
+    .map((history) => history.split(' ').map((chapter) => +chapter))
     .map((history) => {
       for (let j = 0, it = history.length; j < it; j++) {
         for (let k = 1; k < it - j; k++) history[k - 1] = history[k] - history[k - 1];
@@ -22,7 +20,19 @@ const mirage = (input: string): number =>
     .map(sum)
     .reduce(add);
 
-exercise(mirage, [
-  [[TestCase], 114],
-  [[UserCase], 1972648895],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:9-mirage-maintenance.case.txt',
+        result: 114,
+      },
+      user: {
+        input: 'file:9-mirage-maintenance.user.txt',
+        result: 1972648895,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => mirage(input),
+  },
+});

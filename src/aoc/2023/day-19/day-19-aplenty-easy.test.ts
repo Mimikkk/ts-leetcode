@@ -1,20 +1,18 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-19-aplenty.case.txt");
-const UserCase = await Deno.readTextFile("./day-19-aplenty.user.txt");
-import { Aplenty } from "./day-19-aplenty.utils.ts";
+import { Aplenty } from './day-19-aplenty.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const aplenty = (input: string): number => {
   const [workflows, rules] = Aplenty.parse(input);
 
   const decide = (workflow: Aplenty.Workflow, stack: Aplenty.Rule[]) => {
-    for (let i = 0; i < stack.length; ) {
+    for (let i = 0; i < stack.length;) {
       const rule = stack[i];
 
       const decision = Aplenty.Rule.evaluate(rule, workflow);
 
-      if (decision === "rejected") return false;
-      if (decision === "accepted") return true;
-      if (decision === "continue") ++i;
+      if (decision === 'rejected') return false;
+      if (decision === 'accepted') return true;
+      if (decision === 'continue') ++i;
       else {
         stack = rules[decision];
         i = 0;
@@ -30,7 +28,19 @@ const aplenty = (input: string): number => {
     .reduce((a, b) => a + b, 0);
 };
 
-exercise(aplenty, [
-  [[TestCase], 19114],
-  [[UserCase], 472630],
-]);
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:day-19-aplenty.case.txt',
+        result: 19114,
+      },
+      user: {
+        input: 'file:day-19-aplenty.user.txt',
+        result: 472630,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => aplenty(input),
+  },
+});

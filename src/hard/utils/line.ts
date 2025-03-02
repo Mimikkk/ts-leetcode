@@ -1,7 +1,7 @@
 import { Pipe } from './pipe.ts';
 import { ListNode } from '@shared/structures/index.ts';
 import { Chalk } from './chalk.ts';
-import { Color, createCounter, createMatrix } from '../../aoc/2023/utils/utils.ts';
+import { Color, createCounter, createMatrix } from '../../aoc/utils/utils.ts';
 
 export namespace Line {
   export const repr = (node: ListNode | null, nodes?: ([ListNode, Color] | ListNode)[]): string => {

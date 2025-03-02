@@ -1,8 +1,4 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-23-walk.case.txt");
-const UserCase = await Deno.readTextFile("./day-23-walk.user.txt");
-import { createMatrix } from "../utils/utils.ts";
-import { vi } from "vitest";
+import { createDay } from '../../utils/createDay.ts';
 
 type Connection = {
   edgeA: [number, number];
@@ -24,14 +20,14 @@ const neighbours: Record<string, [number, number]> = {
 const movement = [neighbours.right, neighbours.down, neighbours.up, neighbours.left];
 
 const directions: Record<string, [number, number]> = {
-  ">": neighbours.right,
-  "<": neighbours.left,
-  "^": neighbours.up,
+  '>': neighbours.right,
+  '<': neighbours.left,
+  '^': neighbours.up,
   v: neighbours.down,
 };
 
 const part1 = (lines: string[], n: number, m: number) => {
-  const stack: [number, number, number, Set<string>][] = [[1, 1, 0, new Set<string>().add("0:1")]];
+  const stack: [number, number, number, Set<string>][] = [[1, 1, 0, new Set<string>().add('0:1')]];
 
   let max = 0;
   while (stack.length) {
@@ -49,7 +45,7 @@ const part1 = (lines: string[], n: number, m: number) => {
       const yj = y + j;
 
       const hash = `${xi}:${yj}`;
-      if (lines[xi][yj] === "#" || visited.has(hash) || (cell !== "." && directions[cell] !== move)) continue;
+      if (lines[xi][yj] === '#' || visited.has(hash) || (cell !== '.' && directions[cell] !== move)) continue;
 
       stack.push([xi, yj, distance + 1, new Set(visited).add(hash)]);
     }
@@ -123,7 +119,7 @@ const createGraph = (lines: string[], n: number, m: number) => {
         [cr, cc - 1],
         [cr, cc + 1],
         [cr + 1, cc],
-      ].filter(([nr, nc]) => !(nr === pr && nc === pc) && lines[nr][nc] !== "#");
+      ].filter(([nr, nc]) => !(nr === pr && nc === pc) && lines[nr][nc] !== '#');
       connectionLength = next.length;
       if (connectionLength === 1) {
         [pr, pc] = [cr, cc];
@@ -169,19 +165,50 @@ const createGraph = (lines: string[], n: number, m: number) => {
   return map;
 };
 
-const walk = (input: string) => {
+const easy = (input: string) => {
   const map = input.split(/\r?\n/);
   const n = map.length - 1;
   const m = map[0].length - 2;
 
-  const p1 = part1(map, n, m);
-  const graph = createGraph(map, n, m);
-  const p2 = part2(graph, "0:1", `${n}:${m}`, new Set<string>().add("0:1"), 0);
-
-  return [p1, p2];
+  return part1(map, n, m);
 };
 
-exercise(walk, [
-  [[TestCase], [94, 154]],
-  [[UserCase], [2074, 6494]],
-]);
+const hard = (input: string) => {
+  const map = input.split(/\r?\n/);
+  const n = map.length - 1;
+  const m = map[0].length - 2;
+  const graph = createGraph(map, n, m);
+
+  return part2(graph, '0:1', `${n}:${m}`, new Set<string>().add('0:1'), 0);
+};
+
+createDay({
+  easy: {
+    cases: {
+      test: {
+        input: 'file:day-23-walk.case.txt',
+        result: 94,
+      },
+      user: {
+        input: 'file:day-23-walk.user.txt',
+        result: 2074,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => easy(input),
+  },
+  hard: {
+    cases: {
+      test: {
+        input: 'file:day-23-walk.case.txt',
+        result: 154,
+      },
+      user: {
+        input: 'file:day-23-walk.user.txt',
+        result: 6494,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => hard(input),
+  },
+});

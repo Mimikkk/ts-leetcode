@@ -1,7 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./5-fertilizer.case.txt");
-const UserCase = await Deno.readTextFile("./5-fertilizer.user.txt");
-import { parseFertilizer } from "./5-fertilizer-easy.test.ts";
+import { parseFertilizer } from './5-fertilizer-easy.test.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 export const iterFertilizer = (input: string): number => {
   let [seeds, maps] = parseFertilizer(input);
@@ -19,8 +17,9 @@ export const iterFertilizer = (input: string): number => {
         const min = Math.min(start + end, source + range) - max;
 
         next.push([max - source + destination, min]);
-        if (max > start || max + min < start + end)
+        if (max > start || max + min < start + end) {
           ranges.push([start, max - start], [max + min, start + end - max - min]);
+        }
 
         continue ranges;
       }
@@ -34,7 +33,19 @@ export const iterFertilizer = (input: string): number => {
   return Math.min(...ranges.map(([s]) => s));
 };
 
-exercise(iterFertilizer, [
-  [[TestCase], 46],
-  [[UserCase], 2254686],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:5-fertilizer.case.txt',
+        result: 46,
+      },
+      user: {
+        input: 'file:5-fertilizer.user.txt',
+        result: 2254686,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => iterFertilizer(input),
+  },
+});

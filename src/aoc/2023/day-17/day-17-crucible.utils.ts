@@ -1,22 +1,22 @@
-import { Heap } from "heap-js";
-import { createMatrix } from "../utils/utils.ts";
+import { Heap } from 'heap-js';
+import { createMatrix } from '../../utils/utils.ts';
 
 export namespace Crucible {
   export type Position = [number, number];
-  export type Direction = "left" | "right" | "up" | "down";
+  export type Direction = 'left' | 'right' | 'up' | 'down';
   export type Map = number[][] & { n: number; m: number };
 
   export const parse = (input: string) => {
-    const map = <Map>input.split(/\r?\n/).map((x) => x.split("").map((x) => +x));
+    const map = <Map> input.split(/\r?\n/).map((x) => x.split('').map((x) => +x));
     map.n = map.length;
     map.m = map[0].length;
     return map;
   };
   const neighbours: Record<Direction, [Position, Direction]> = {
-    left: [[0, -1], "left"],
-    right: [[0, 1], "right"],
-    up: [[-1, 0], "up"],
-    down: [[1, 0], "down"],
+    left: [[0, -1], 'left'],
+    right: [[0, 1], 'right'],
+    up: [[-1, 0], 'up'],
+    down: [[1, 0], 'down'],
   };
 
   const directions: Record<Direction, [Position, Direction][]> = {
@@ -33,7 +33,7 @@ export namespace Crucible {
 
     const heap = new Heap<[number, Position, Direction]>(([a], [b]) => a - b);
     const start: Position = [0, 0];
-    heap.push([0, start, "right"], [0, start, "down"]);
+    heap.push([0, start, 'right'], [0, start, 'down']);
 
     while (heap.size()) {
       let [cost, [x, y], direction] = heap.pop()!;

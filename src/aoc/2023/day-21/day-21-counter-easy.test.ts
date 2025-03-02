@@ -1,9 +1,6 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const Test1Case = await Deno.readTextFile("./day-21-counter.case-1.txt");
-const Test2Case = await Deno.readTextFile("./day-21-counter.case-2.txt");
-const UserCase = await Deno.readTextFile("./day-21-counter.user.txt");
-import { Counter } from "./day-21-counter.utils.ts";
-import { Position } from "../day-10/10-pipe-maze.utils.ts";
+import { Counter } from './day-21-counter.utils.ts';
+import { Position } from '../day-10/10-pipe-maze.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const counter = (input: string, steps: number): number => {
   const [start, map] = Counter.parse(input);
@@ -33,8 +30,26 @@ const counter = (input: string, steps: number): number => {
   return level.length;
 };
 
-exercise(counter, [
-  [[Test1Case, 6], 5],
-  [[Test2Case, 6], 16],
-  [[UserCase, 64], 3617],
-]);
+createDay({
+  easy: {
+    cases: {
+      test1: {
+        input: 'file:day-21-counter.case-1.txt',
+        result: 5,
+        arguments: [6],
+      },
+      test2: {
+        input: 'file:day-21-counter.case-2.txt',
+        result: 16,
+        arguments: [6],
+      },
+      user: {
+        input: 'file:day-21-counter.user.txt',
+        result: 3617,
+        arguments: [64],
+      },
+    },
+    prepare: (x) => x,
+    solve: (input, steps) => counter(input, steps),
+  },
+});

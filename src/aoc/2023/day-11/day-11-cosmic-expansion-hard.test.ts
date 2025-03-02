@@ -1,7 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-11-cosmic-expansion.case.txt");
-const UserCase = await Deno.readTextFile("./day-11-cosmic-expansion.user.txt");
-import { findGalaxies, manhattan, parse } from "./day-11-cosmic-expansion.utils.ts";
+import { findGalaxies, manhattan, parse } from './day-11-cosmic-expansion.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const expansion = (input: string): number => {
   const map = parse(input);
@@ -17,7 +15,19 @@ const expansion = (input: string): number => {
   return distance;
 };
 
-exercise(expansion, [
-  [[TestCase], 82000210],
-  [[UserCase], 377318892554],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:day-11-cosmic-expansion.case.txt',
+        result: 82000210,
+      },
+      user: {
+        input: 'file:day-11-cosmic-expansion.user.txt',
+        result: 377318892554,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => expansion(input),
+  },
+});

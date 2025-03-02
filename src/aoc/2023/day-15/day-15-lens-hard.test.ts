@@ -1,8 +1,6 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-15-lens.case.txt");
-const UserCase = await Deno.readTextFile("./day-15-lens.user.txt");
-import { Lens } from "./day-15-lens.utils.ts";
-import { range } from "../utils/utils.ts";
+import { Lens } from './day-15-lens.utils.ts';
+import { range } from '../../utils/utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const lens = (input: string): number => {
   const operations = Lens.operations(Lens.parse(input));
@@ -12,13 +10,13 @@ const lens = (input: string): number => {
     const box = boxes[Lens.hash(label)];
 
     switch (operation) {
-      case "=": {
+      case '=': {
         const index = box.findIndex(([l]) => l === label);
         if (index !== -1) box[index] = [label, focus];
         else box.push([label, focus]);
         break;
       }
-      case "-": {
+      case '-': {
         const index = box.findIndex(([l]) => l === label);
         if (index !== -1) box.splice(index, 1);
         break;
@@ -36,7 +34,19 @@ const lens = (input: string): number => {
   return total;
 };
 
-exercise(lens, [
-  [[TestCase], 145],
-  [[UserCase], 244461],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:day-15-lens.case.txt',
+        result: 145,
+      },
+      user: {
+        input: 'file:day-15-lens.user.txt',
+        result: 244461,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => lens(input),
+  },
+});

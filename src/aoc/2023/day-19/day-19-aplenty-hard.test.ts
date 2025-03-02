@@ -1,7 +1,5 @@
-import { exercise } from "@shared/utilities/exercise.ts";
-const TestCase = await Deno.readTextFile("./day-19-aplenty.case.txt");
-const UserCase = await Deno.readTextFile("./day-19-aplenty.user.txt");
-import { Aplenty } from "./day-19-aplenty.utils.ts";
+import { Aplenty } from './day-19-aplenty.utils.ts';
+import { createDay } from '../../utils/createDay.ts';
 
 const minv = 1;
 const maxv = 4000;
@@ -19,7 +17,7 @@ const aplenty = (input: string): number => {
   };
 
   let rule = rules.in;
-  here: for (let i = 0; i < rule.length; ) {
+  here: for (let i = 0; i < rule.length;) {
     let r = rule[i];
 
     switch (r.length) {
@@ -28,7 +26,7 @@ const aplenty = (input: string): number => {
 
         let isValid = false;
 
-        if (operator === "less-than") {
+        if (operator === 'less-than') {
           if (valid[operand].max < value) {
             isValid = true;
           } else if (valid[operand].max > value - 1) {
@@ -36,7 +34,7 @@ const aplenty = (input: string): number => {
           }
         }
 
-        if (operator === "greater-than") {
+        if (operator === 'greater-than') {
           if (valid[operand].min > value) {
             isValid = true;
           } else if (valid[operand].min < value + 1) {
@@ -46,27 +44,27 @@ const aplenty = (input: string): number => {
 
         if (!isValid) break;
         rule = rules[target];
-        console.log("a", { rule, target });
+        console.log('a', { rule, target });
         i = 0;
         continue;
       }
       case 2: {
         const [, target] = r;
         rule = rules[target];
-        console.log("b", { rule, target });
+        console.log('b', { rule, target });
         i = 0;
         continue;
       }
       case 1: {
         const [target] = r;
-        if (target === "accept") {
+        if (target === 'accept') {
           break here;
         }
-        if (target === "reject") {
+        if (target === 'reject') {
           break here;
         }
         rule = rules[target];
-        console.log("c", { rule, target });
+        console.log('c', { rule, target });
         i = 0;
         continue;
       }
@@ -78,7 +76,19 @@ const aplenty = (input: string): number => {
   return combinations(valid);
 };
 
-exercise(aplenty, [
-  [[TestCase], 167409079868000],
-  [[UserCase], 472630],
-]);
+createDay({
+  hard: {
+    cases: {
+      test: {
+        input: 'file:day-19-aplenty.case.txt',
+        result: 167409079868000,
+      },
+      user: {
+        input: 'file:day-19-aplenty.user.txt',
+        result: 472630,
+      },
+    },
+    prepare: (x) => x,
+    solve: (input) => aplenty(input),
+  },
+});

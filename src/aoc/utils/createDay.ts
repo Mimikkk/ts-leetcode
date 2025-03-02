@@ -17,18 +17,19 @@ const readLocalDirectory = (): string | undefined => {
   return dirname(path.join(':'));
 };
 
-interface Case<R> {
+interface Case<R, A extends any[]> {
   input: string;
+  arguments?: A;
   result: R;
 }
 
-interface Challenge<I, R> {
-  cases: Record<string, Case<R>>;
+interface Challenge<I, R, A extends any[]> {
+  cases: Record<string, Case<R, A>>;
   prepare: (input: string) => I;
-  solve: (input: I) => R;
+  solve: (...args: [I, ...A]) => R;
 }
 
-const itChallenge = <I, R>(challenge: Challenge<I, R>, directory: string) => {
+const itChallenge = <I, R, A extends any[]>(challenge: Challenge<I, R, A>, name: string, directory: string) => {
   const entries = Object.entries(challenge.cases);
 
   const names = entries.map(([name]) => name);
@@ -48,10 +49,10 @@ const itChallenge = <I, R>(challenge: Challenge<I, R>, directory: string) => {
   });
 
   for (let i = 0; i < entries.length; i++) {
-    it(`case: ${names[i]}`, () => {
+    it(`${name}-case: ${names[i]}`, () => {
       const expected = results[i];
       const prepared = inputs[i];
-      const solution = challenge.solve(prepared);
+      const solution = challenge.solve(prepared, ...(entries[i][1]?.arguments ?? []) as A);
 
       expect(solution).toBe(expected);
     });
@@ -69,14 +70,16 @@ const readParams = (directory: string): { year: number; day: number } => {
   return { year: +year, day: +day };
 };
 
-export const createDay = <I1, I2, R1, R2>({ easy, hard }: { easy?: Challenge<I1, R1>; hard?: Challenge<I2, R2> }) => {
+export const createDay = <I1, I2, R1, R2, A1 extends any[], A2 extends any[]>(
+  { easy, hard }: { easy?: Challenge<I1, R1, A1>; hard?: Challenge<I2, R2, A2> },
+) => {
   const directory = readLocalDirectory();
   if (!directory) throw Error('Failed to read directory name from error');
 
   const { year, day } = readParams(directory);
 
-  describe(`Advent of Code: ${year} - ${day}`, () => {
-    if (easy) itChallenge(easy, directory);
-    if (hard) itChallenge(hard, directory);
+  describe(`AOC:Advent of Code: ${year} - ${day}`, () => {
+    if (easy) itChallenge(easy, 'easy', directory);
+    if (hard) itChallenge(hard, 'hard', directory);
   });
 };

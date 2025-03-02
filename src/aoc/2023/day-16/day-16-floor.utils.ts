@@ -1,27 +1,27 @@
-import { createMatrix } from "../utils/utils.ts";
+import { createMatrix } from '../../utils/utils.ts';
 export namespace Floor {
   export type Position = [number, number];
 
   enum Cell {
-    Floor = ".",
-    MirrorRight = "\\",
-    MirrorLeft = "/",
-    SplitterHorizontal = "-",
-    SplitterVertical = "|",
+    Floor = '.',
+    MirrorRight = '\\',
+    MirrorLeft = '/',
+    SplitterHorizontal = '-',
+    SplitterVertical = '|',
   }
-  export type Direction = "left" | "right" | "up" | "down";
+  export type Direction = 'left' | 'right' | 'up' | 'down';
 
   const directions: Record<Direction, [Position, Direction]> = {
-    left: [[0, -1], "left"],
-    right: [[0, 1], "right"],
-    up: [[-1, 0], "up"],
-    down: [[1, 0], "down"],
+    left: [[0, -1], 'left'],
+    right: [[0, 1], 'right'],
+    up: [[-1, 0], 'up'],
+    down: [[1, 0], 'down'],
   };
 
   type Map = Cell[][] & { n: number; m: number };
 
   export const parse = (input: string) => {
-    const map = <Map>input.split(/\r?\n/).map((x) => x.split(""));
+    const map = <Map> input.split(/\r?\n/).map((x) => x.split(''));
     map.n = map.length;
     map.m = map[0].length;
     return map;
@@ -35,44 +35,44 @@ export namespace Floor {
         return [directions[direction]];
       case Cell.SplitterHorizontal:
         switch (direction) {
-          case "right":
-          case "left":
+          case 'right':
+          case 'left':
             return [directions[direction]];
-          case "up":
+          case 'up':
             return [directions.left, directions.right];
-          case "down":
+          case 'down':
             return [directions.left, directions.right];
         }
       case Cell.SplitterVertical:
         switch (direction) {
-          case "up":
-          case "down":
+          case 'up':
+          case 'down':
             return [directions[direction]];
-          case "right":
+          case 'right':
             return [directions.up, directions.down];
-          case "left":
+          case 'left':
             return [directions.up, directions.down];
         }
       case Cell.MirrorRight:
         switch (direction) {
-          case "right":
+          case 'right':
             return [directions.down];
-          case "left":
+          case 'left':
             return [directions.up];
-          case "up":
+          case 'up':
             return [directions.left];
-          case "down":
+          case 'down':
             return [directions.right];
         }
       case Cell.MirrorLeft:
         switch (direction) {
-          case "right":
+          case 'right':
             return [directions.up];
-          case "left":
+          case 'left':
             return [directions.down];
-          case "up":
+          case 'up':
             return [directions.right];
-          case "down":
+          case 'down':
             return [directions.left];
         }
     }
