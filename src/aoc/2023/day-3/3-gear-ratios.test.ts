@@ -16,13 +16,13 @@ const findStart = (schema: string[], i: number, j: number) => {
   while (Str.isDigit(schema[i][j])) --j;
   return ++j;
 };
+
 const findEnd = (schema: string[], i: number, j: number) => {
   while (Str.isDigit(schema[i][j])) ++j;
   return --j;
 };
 
 type Input = { schema: string[]; n: number; m: number };
-
 const parseInput = (input: string): Input => {
   const schema = Str.trimlines(input);
   const n = schema.length;

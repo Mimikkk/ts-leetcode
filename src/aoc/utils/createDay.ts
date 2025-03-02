@@ -22,21 +22,26 @@ interface Case<R, A extends any[]> {
   input: string;
   arguments?: A;
   result: R;
+  disabled?: boolean;
 }
 
 interface Challenge<I, R, A extends any[]> {
   cases: Record<string, Case<R, A>>;
   prepare: (input: string) => I;
   solve: (...args: [I, ...A]) => R;
+  disabled?: boolean;
 }
 
 const itChallenge = <I, R, A extends any[]>(challenge: Challenge<I, R, A>, name: string, directory: string) => {
+  if (challenge.disabled) return;
+
   const entries = Object.entries(challenge.cases);
 
   const names = entries.map(([name]) => name);
   const results = entries.map(([, { result }]) => result);
   const inputs: I[] = [];
   const parameters = entries.map(([, { arguments: params }]) => (params ?? []) as A);
+  const disabled = entries.map(([, { disabled }]) => disabled ?? false);
 
   beforeAll(async () => {
     const raw = await Promise.all(entries.map(([, { input }]) => {
@@ -51,7 +56,8 @@ const itChallenge = <I, R, A extends any[]>(challenge: Challenge<I, R, A>, name:
   });
 
   for (let i = 0; i < entries.length; i++) {
-    it(`${name}-case: ${names[i]}`, () => {
+    const testFn = disabled[i] ? it.skip : it;
+    testFn(`${name}-case: ${names[i]}`, () => {
       const expected = results[i];
       const prepared = inputs[i];
       const params = parameters[i];
