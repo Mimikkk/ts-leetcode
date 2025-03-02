@@ -39,11 +39,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:6-wait.case.txt',
+        input: 'file:6-wait.case',
         result: 288,
       },
       user: {
-        input: 'file:6-wait.user.txt',
+        input: 'file:6-wait.user',
         result: 861300,
       },
     },

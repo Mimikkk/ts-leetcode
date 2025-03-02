@@ -186,11 +186,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-23-walk.case.txt',
+        input: 'file:day-23-walk.case',
         result: 94,
       },
       user: {
-        input: 'file:day-23-walk.user.txt',
+        input: 'file:day-23-walk.user',
         result: 2074,
       },
     },
@@ -200,11 +200,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-23-walk.case.txt',
+        input: 'file:day-23-walk.case',
         result: 154,
       },
       user: {
-        input: 'file:day-23-walk.user.txt',
+        input: 'file:day-23-walk.user',
         result: 6494,
       },
     },

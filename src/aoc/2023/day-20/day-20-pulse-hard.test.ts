@@ -45,7 +45,7 @@ createDay({
   hard: {
     cases: {
       user: {
-        input: 'file:day-20-pulse.user.txt',
+        input: 'file:day-20-pulse.user',
         result: 224602011344203,
       },
     },

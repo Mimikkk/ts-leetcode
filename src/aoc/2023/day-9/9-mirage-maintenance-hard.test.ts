@@ -29,11 +29,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:9-mirage-maintenance.case.txt',
+        input: 'file:9-mirage-maintenance.case',
         result: 2,
       },
       user: {
-        input: 'file:9-mirage-maintenance.user.txt',
+        input: 'file:9-mirage-maintenance.user',
         result: 919,
       },
     },

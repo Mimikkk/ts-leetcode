@@ -12,7 +12,8 @@ const readLocalDirectory = (): string | undefined => {
   const path = fileLine.split('at file:///')[1]?.split(':');
   if (!path) return;
 
-  path.splice(-2);
+  path.pop();
+  path.pop();
 
   return dirname(path.join(':'));
 };
@@ -35,6 +36,7 @@ const itChallenge = <I, R, A extends any[]>(challenge: Challenge<I, R, A>, name:
   const names = entries.map(([name]) => name);
   const results = entries.map(([, { result }]) => result);
   const inputs: I[] = [];
+  const parameters = entries.map(([, { arguments: params }]) => (params ?? []) as A);
 
   beforeAll(async () => {
     const raw = await Promise.all(entries.map(([, { input }]) => {
@@ -52,7 +54,9 @@ const itChallenge = <I, R, A extends any[]>(challenge: Challenge<I, R, A>, name:
     it(`${name}-case: ${names[i]}`, () => {
       const expected = results[i];
       const prepared = inputs[i];
-      const solution = challenge.solve(prepared, ...(entries[i][1]?.arguments ?? []) as A);
+      const params = parameters[i];
+
+      const solution = challenge.solve(prepared, ...params);
 
       expect(solution).toBe(expected);
     });
@@ -61,6 +65,7 @@ const itChallenge = <I, R, A extends any[]>(challenge: Challenge<I, R, A>, name:
 
 const readParams = (directory: string): { year: number; day: number } => {
   const parts = directory.split('/');
+
   const year = parts.at(-2);
   if (!year) throw Error('Failed to read year from directory');
 

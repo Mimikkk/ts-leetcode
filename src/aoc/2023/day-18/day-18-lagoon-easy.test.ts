@@ -11,11 +11,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-18-lagoon.case.txt',
+        input: 'file:day-18-lagoon.case',
         result: 62,
       },
       user: {
-        input: 'file:day-18-lagoon.user.txt',
+        input: 'file:day-18-lagoon.user',
         result: 108909,
       },
     },

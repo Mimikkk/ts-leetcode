@@ -17,11 +17,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-16-floor.case.txt',
+        input: 'file:day-16-floor.case',
         result: 51,
       },
       user: {
-        input: 'file:day-16-floor.user.txt',
+        input: 'file:day-16-floor.user',
         result: 8026,
       },
     },

@@ -34,17 +34,17 @@ createDay({
   easy: {
     cases: {
       test1: {
-        input: 'file:day-21-counter.case-1.txt',
+        input: 'file:day-21-counter.case-1',
         result: 5,
         arguments: [6],
       },
       test2: {
-        input: 'file:day-21-counter.case-2.txt',
+        input: 'file:day-21-counter.case-2',
         result: 16,
         arguments: [6],
       },
       user: {
-        input: 'file:day-21-counter.user.txt',
+        input: 'file:day-21-counter.user',
         result: 3617,
         arguments: [64],
       },

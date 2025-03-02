@@ -14,11 +14,11 @@ createDay({
         result: 52,
       },
       test2: {
-        input: 'file:day-15-lens.case.txt',
+        input: 'file:day-15-lens.case',
         result: 1320,
       },
       user: {
-        input: 'file:day-15-lens.user.txt',
+        input: 'file:day-15-lens.user',
         result: 514025,
       },
     },

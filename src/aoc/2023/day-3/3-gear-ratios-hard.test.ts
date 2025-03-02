@@ -67,11 +67,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:3-gear-ratios.case.txt',
+        input: 'file:3-gear-ratios.case',
         result: 467835,
       },
       user: {
-        input: 'file:3-gear-ratios.user.txt',
+        input: 'file:3-gear-ratios.user',
         result: 72246648,
       },
     },

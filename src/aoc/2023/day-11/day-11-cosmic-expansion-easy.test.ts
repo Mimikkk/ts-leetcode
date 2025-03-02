@@ -19,11 +19,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-11-cosmic-expansion.case.txt',
+        input: 'file:day-11-cosmic-expansion.case',
         result: 374,
       },
       user: {
-        input: 'file:day-11-cosmic-expansion.user.txt',
+        input: 'file:day-11-cosmic-expansion.user',
         result: 9647174,
       },
     },

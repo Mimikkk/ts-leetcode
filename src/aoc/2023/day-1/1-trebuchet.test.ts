@@ -1,69 +1,37 @@
 import { createDay } from '../../utils/createDay.ts';
 import { Str } from '../../utils/ns/str.ts';
 
-type FindFn = (s: string, i: number) => number | undefined;
-
-class NumberSearch {
-  static create(find: FindFn) {
-    return new this(find);
-  }
-
-  private constructor(
-    private readonly find: FindFn,
-  ) {}
-
-  last(s: string): number | undefined {
-    for (let i = s.length - 1; i >= 0; --i) {
-      const result = this.find(s, i);
-      if (result !== undefined) return result;
-    }
-  }
-
-  first(s: string): number | undefined {
-    for (let i = 0; i < s.length; ++i) {
-      const result = this.find(s, i);
-      if (result !== undefined) return result;
-    }
-
-    return;
-  }
-}
-
-const isDigit = (c: string): boolean => c >= '0' && c <= '9';
-
-const charNumberSearch = NumberSearch.create((s, i) => isDigit(s[i]) ? +s[i] : undefined);
-
 const Digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'] as const;
 const DigitCount = 10;
-const wordNumberSearch = NumberSearch.create(
-  (s, i) => {
-    if (isDigit(s[i])) return +s[i];
 
-    for (let j = 0; j < DigitCount; ++j) {
-      const end = i + Digits[j].length - 1;
-      if (end >= s.length) continue;
-
-      let start = i;
-      while (start <= end && s[start] === Digits[j][start - i]) ++start;
-      if (start <= end) continue;
-
-      return j;
+const createSolver = (find: (line: string, i: number) => number | undefined) => {
+  const first = (line: string): number | undefined => {
+    for (let i = 0; i < line.length; ++i) {
+      const result = find(line, i);
+      if (result !== undefined) return result;
     }
-  },
-);
+  };
 
-const createSolver = (search: NumberSearch) => (input: string[]): number => {
-  let result = 0;
+  const last = (line: string): number | undefined => {
+    for (let i = line.length - 1; i >= 0; --i) {
+      const result = find(line, i);
+      if (result !== undefined) return result;
+    }
+  };
 
-  for (const line of input) {
-    const first = search.first(line);
-    const last = search.last(line);
-    if (first === undefined || last === undefined) continue;
+  return (input: string[]): number => {
+    let result = 0;
 
-    result += 10 * first + last;
-  }
+    for (const line of input) {
+      const a = first(line);
+      const b = last(line);
+      if (a === undefined || b === undefined) continue;
 
-  return result;
+      result += 10 * a + b;
+    }
+
+    return result;
+  };
 };
 
 createDay({
@@ -79,7 +47,7 @@ createDay({
       },
     },
     prepare: Str.trimlines,
-    solve: createSolver(charNumberSearch),
+    solve: createSolver((s, i) => (Str.isDigit(s[i]) ? +s[i] : undefined)),
   },
   hard: {
     cases: {
@@ -93,6 +61,19 @@ createDay({
       },
     },
     prepare: Str.trimlines,
-    solve: createSolver(wordNumberSearch),
+    solve: createSolver((s, i) => {
+      if (Str.isDigit(s[i])) return +s[i];
+
+      for (let j = 0; j < DigitCount; ++j) {
+        const end = i + Digits[j].length - 1;
+        if (end >= s.length) continue;
+
+        let start = i;
+        while (start <= end && s[start] === Digits[j][start - i]) ++start;
+        if (start <= end) continue;
+
+        return j;
+      }
+    }),
   },
 });

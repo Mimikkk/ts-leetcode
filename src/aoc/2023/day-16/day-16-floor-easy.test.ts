@@ -7,11 +7,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-16-floor.case.txt',
+        input: 'file:day-16-floor.case',
         result: 46,
       },
       user: {
-        input: 'file:day-16-floor.user.txt',
+        input: 'file:day-16-floor.user',
         result: 7798,
       },
     },

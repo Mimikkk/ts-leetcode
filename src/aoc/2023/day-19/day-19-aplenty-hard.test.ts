@@ -80,11 +80,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-19-aplenty.case.txt',
+        input: 'file:day-19-aplenty.case',
         result: 167409079868000,
       },
       user: {
-        input: 'file:day-19-aplenty.user.txt',
+        input: 'file:day-19-aplenty.user',
         result: 472630,
       },
     },

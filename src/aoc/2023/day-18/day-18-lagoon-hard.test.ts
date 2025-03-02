@@ -11,11 +11,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-18-lagoon.case.txt',
+        input: 'file:day-18-lagoon.case',
         result: 952408144115,
       },
       user: {
-        input: 'file:day-18-lagoon.user.txt',
+        input: 'file:day-18-lagoon.user',
         result: 133125706867777,
       },
     },

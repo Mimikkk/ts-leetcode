@@ -28,11 +28,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:4-scratchcards.case.txt',
+        input: 'file:4-scratchcards.case',
         result: 30,
       },
       user: {
-        input: 'file:4-scratchcards.user.txt',
+        input: 'file:4-scratchcards.user',
         result: 11787590,
       },
     },

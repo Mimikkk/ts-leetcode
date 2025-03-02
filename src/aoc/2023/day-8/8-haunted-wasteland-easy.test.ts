@@ -38,11 +38,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:8-haunted-wasteland.case.txt',
+        input: 'file:8-haunted-wasteland.case',
         result: 2,
       },
       user: {
-        input: 'file:8-haunted-wasteland.user.txt',
+        input: 'file:8-haunted-wasteland.user',
         result: 14429,
       },
     },

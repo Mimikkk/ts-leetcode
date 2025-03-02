@@ -10,11 +10,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-13-points.case.txt',
+        input: 'file:day-13-points.case',
         result: 400,
       },
       user: {
-        input: 'file:day-13-points.user.txt',
+        input: 'file:day-13-points.user',
         result: 31954,
       },
     },

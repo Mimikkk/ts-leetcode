@@ -8,11 +8,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-14-dish.case.txt',
+        input: 'file:day-14-dish.case',
         result: 64,
       },
       user: {
-        input: 'file:day-14-dish.user.txt',
+        input: 'file:day-14-dish.user',
         result: 106689,
       },
     },

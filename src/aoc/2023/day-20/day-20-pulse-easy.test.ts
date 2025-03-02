@@ -30,15 +30,15 @@ createDay({
   easy: {
     cases: {
       test1: {
-        input: 'file:day-20-pulse.case-1.txt',
+        input: 'file:day-20-pulse.case-1',
         result: 32000000,
       },
       test2: {
-        input: 'file:day-20-pulse.case-2.txt',
+        input: 'file:day-20-pulse.case-2',
         result: 11687500,
       },
       user: {
-        input: 'file:day-20-pulse.user.txt',
+        input: 'file:day-20-pulse.user',
         result: 788081152,
       },
     },

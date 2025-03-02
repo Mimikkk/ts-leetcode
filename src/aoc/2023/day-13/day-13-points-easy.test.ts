@@ -10,11 +10,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-13-points.case.txt',
+        input: 'file:day-13-points.case',
         result: 405,
       },
       user: {
-        input: 'file:day-13-points.user.txt',
+        input: 'file:day-13-points.user',
         result: 30487,
       },
     },

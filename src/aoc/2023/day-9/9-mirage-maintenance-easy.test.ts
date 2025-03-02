@@ -24,11 +24,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:9-mirage-maintenance.case.txt',
+        input: 'file:9-mirage-maintenance.case',
         result: 114,
       },
       user: {
-        input: 'file:9-mirage-maintenance.user.txt',
+        input: 'file:9-mirage-maintenance.user',
         result: 1972648895,
       },
     },

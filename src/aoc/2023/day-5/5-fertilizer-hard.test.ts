@@ -37,11 +37,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:5-fertilizer.case.txt',
+        input: 'file:5-fertilizer.case',
         result: 46,
       },
       user: {
-        input: 'file:5-fertilizer.user.txt',
+        input: 'file:5-fertilizer.user',
         result: 2254686,
       },
     },

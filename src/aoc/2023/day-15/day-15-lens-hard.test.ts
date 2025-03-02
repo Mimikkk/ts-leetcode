@@ -38,11 +38,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-15-lens.case.txt',
+        input: 'file:day-15-lens.case',
         result: 145,
       },
       user: {
-        input: 'file:day-15-lens.user.txt',
+        input: 'file:day-15-lens.user',
         result: 244461,
       },
     },

@@ -104,27 +104,27 @@ createDay({
   hard: {
     cases: {
       simple: {
-        input: 'file:10-pipe-maze.easy-simple-case.txt',
+        input: 'file:10-pipe-maze.easy-simple-case',
         result: 1,
       },
       complex1: {
-        input: 'file:10-pipe-maze.hard-1-case.txt',
+        input: 'file:10-pipe-maze.hard-1-case',
         result: 18,
       },
       complex2: {
-        input: 'file:10-pipe-maze.hard-2-case.txt',
+        input: 'file:10-pipe-maze.hard-2-case',
         result: 8,
       },
       complex3: {
-        input: 'file:10-pipe-maze.hard-3-case.txt',
+        input: 'file:10-pipe-maze.hard-3-case',
         result: 10,
       },
       complex4: {
-        input: 'file:10-pipe-maze.hard-4-case.txt',
+        input: 'file:10-pipe-maze.hard-4-case',
         result: 4,
       },
       user: {
-        input: 'file:10-pipe-maze.user.txt',
+        input: 'file:10-pipe-maze.user',
         result: 367,
       },
     },

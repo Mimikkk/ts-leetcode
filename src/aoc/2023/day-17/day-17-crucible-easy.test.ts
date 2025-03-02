@@ -7,15 +7,15 @@ createDay({
   easy: {
     cases: {
       test1: {
-        input: 'file:day-17-crucible.case-1.txt',
+        input: 'file:day-17-crucible.case-1',
         result: 3,
       },
       test2: {
-        input: 'file:day-17-crucible.case-2.txt',
+        input: 'file:day-17-crucible.case-2',
         result: 102,
       },
       user: {
-        input: 'file:day-17-crucible.user.txt',
+        input: 'file:day-17-crucible.user',
         result: 665,
       },
     },

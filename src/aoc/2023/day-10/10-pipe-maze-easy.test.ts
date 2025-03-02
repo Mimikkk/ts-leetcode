@@ -19,15 +19,15 @@ createDay({
   easy: {
     cases: {
       simple: {
-        input: 'file:10-pipe-maze.easy-simple-case.txt',
+        input: 'file:10-pipe-maze.easy-simple-case',
         result: 4,
       },
       complex: {
-        input: 'file:10-pipe-maze.easy-complex-case.txt',
+        input: 'file:10-pipe-maze.easy-complex-case',
         result: 8,
       },
       user: {
-        input: 'file:10-pipe-maze.user.txt',
+        input: 'file:10-pipe-maze.user',
         result: 6897,
       },
     },

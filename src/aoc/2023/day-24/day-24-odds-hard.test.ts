@@ -74,11 +74,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:day-24-odds.case.txt',
+        input: 'file:day-24-odds.case',
         result: 3,
       },
       user: {
-        input: 'file:day-24-odds.user.txt',
+        input: 'file:day-24-odds.user',
         result: 641619849766168,
       },
     },

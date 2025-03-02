@@ -32,11 +32,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-19-aplenty.case.txt',
+        input: 'file:day-19-aplenty.case',
         result: 19114,
       },
       user: {
-        input: 'file:day-19-aplenty.user.txt',
+        input: 'file:day-19-aplenty.user',
         result: 472630,
       },
     },

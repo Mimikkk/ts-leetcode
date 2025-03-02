@@ -72,11 +72,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:day-24-odds.case.txt',
+        input: 'file:day-24-odds.case',
         result: 0,
       },
       user: {
-        input: 'file:day-24-odds.user.txt',
+        input: 'file:day-24-odds.user',
         result: 27732,
       },
     },

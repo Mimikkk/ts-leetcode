@@ -10,15 +10,15 @@ createDay({
   easy: {
     cases: {
       test1: {
-        input: 'file:day-12-hot-springs.case-1.txt',
+        input: 'file:day-12-hot-springs.case-1',
         result: 4,
       },
       test2: {
-        input: 'file:day-12-hot-springs.case-2.txt',
+        input: 'file:day-12-hot-springs.case-2',
         result: 21,
       },
       user: {
-        input: 'file:day-12-hot-springs.user.txt',
+        input: 'file:day-12-hot-springs.user',
         result: 7843,
       },
     },

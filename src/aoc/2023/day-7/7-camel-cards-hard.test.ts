@@ -100,11 +100,11 @@ createDay({
   hard: {
     cases: {
       test: {
-        input: 'file:7-camel-cards.case.txt',
+        input: 'file:7-camel-cards.case',
         result: 5905,
       },
       user: {
-        input: 'file:7-camel-cards.user.txt',
+        input: 'file:7-camel-cards.user',
         result: 249776650,
       },
     },

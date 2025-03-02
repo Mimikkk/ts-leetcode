@@ -57,11 +57,11 @@ createDay({
   easy: {
     cases: {
       test: {
-        input: 'file:7-camel-cards.case.txt',
+        input: 'file:7-camel-cards.case',
         result: 6440,
       },
       user: {
-        input: 'file:7-camel-cards.user.txt',
+        input: 'file:7-camel-cards.user',
         result: 249638405,
       },
     },

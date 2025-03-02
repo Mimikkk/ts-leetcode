@@ -11,15 +11,15 @@ createDay({
   hard: {
     cases: {
       test1: {
-        input: 'file:day-12-hot-springs.case-1.txt',
+        input: 'file:day-12-hot-springs.case-1',
         result: 16384,
       },
       test2: {
-        input: 'file:day-12-hot-springs.case-2.txt',
+        input: 'file:day-12-hot-springs.case-2',
         result: 525152,
       },
       user: {
-        input: 'file:day-12-hot-springs.user.txt',
+        input: 'file:day-12-hot-springs.user',
         result: 10153896718999,
       },
     },

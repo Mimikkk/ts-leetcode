@@ -90,7 +90,7 @@ createDay({
   hard: {
     cases: {
       user: {
-        input: 'file:day-21-counter.user.txt',
+        input: 'file:day-21-counter.user',
         result: 596857397104703,
       },
     },
