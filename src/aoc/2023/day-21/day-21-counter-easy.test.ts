@@ -1,7 +1,7 @@
 import { Counter } from './day-21-counter.utils.ts';
-import { Position } from '../day-10/10-pipe-maze.utils.ts';
 import { createDay } from '../../utils/createDay.ts';
 
+type Position = [x: number, y: number];
 const counter = (input: string, steps: number): number => {
   const [start, map] = Counter.parse(input);
 

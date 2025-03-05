@@ -1,5 +1,6 @@
-import { Position } from '../day-10/10-pipe-maze.utils.ts';
 import { createDay } from '../../utils/createDay.ts';
+
+type Position = [x: number, y: number];
 
 namespace Counter {
   const key = (i: number, j: number): string => `${i},${j}`;
