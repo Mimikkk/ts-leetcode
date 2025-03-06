@@ -55,7 +55,7 @@ const hard = (input: string): number => {
   let direction = 0;
   const directionsCount = directions.length;
 
-  let counts = Array(starts.length);
+  const counts = Array(starts.length);
   counter: while (true) {
     ++count;
 

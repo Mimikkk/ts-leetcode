@@ -6,7 +6,7 @@ export namespace Springs {
     Unknown = '?',
   }
 
-  type Schema = [Cell[], number[]];
+  export type Schema = [Cell[], number[]];
 
   export const countArrangements = memoize(
     (conditions: Cell[], sizes: number[]): number => {
